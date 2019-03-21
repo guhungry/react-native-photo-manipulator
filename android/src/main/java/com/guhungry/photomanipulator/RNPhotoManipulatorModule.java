@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.guhungry.photomanipulator;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
