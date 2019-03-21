@@ -1,4 +1,4 @@
-# React-Native-Photo-Manipulator
+# React Native Photo Manipulator
 Image processing library to edit photo programmatically in React Native
 
 ## Getting started
@@ -22,7 +22,7 @@ Image processing library to edit photo programmatically in React Native
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNPhotoManipulatorPackage;` to the imports at the top of the file
+  - Add `import com.guhungry.photomanipulator.RNPhotoManipulatorPackage;` to the imports at the top of the file
   - Add `new RNPhotoManipulatorPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
@@ -31,16 +31,8 @@ Image processing library to edit photo programmatically in React Native
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      compile project(':react-native-photo-manipulator')
+      implementation project(':react-native-photo-manipulator')
   	```
-
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNPhotoManipulator.sln` in `node_modules/react-native-photo-manipulator/windows/RNPhotoManipulator.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Photo.Manipulator.RNPhotoManipulator;` to the usings at the top of the file
-  - Add `new RNPhotoManipulatorPackage()` to the `List<IReactPackage>` returned by the `Packages` method
 
 
 ## Usage
