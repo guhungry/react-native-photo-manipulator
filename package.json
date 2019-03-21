@@ -1,20 +1,60 @@
-
 {
   "name": "react-native-photo-manipulator",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Image processing library to edit photo programmatically in React Native",
   "main": "index.js",
+  "typings": "index.d.ts",
+  "author": "Woraphot Chokratanasombat <guhungry@gmail.com>",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ci": "CI=true && yarn lint && yarn test",
+    "ci:publish": "yarn semantic-release",
+    "lint": "yarn tsc --noEmit && yarn eslint ./src --ext .ts,.tsx",
+    "build": "yarn tsc",
+    "prepack": "yarn build",
+    "test": "yarn jest"
+  },
+  "peerDependencies": {
+    "react": "^16.0",
+    "react-native": ">=0.57 <0.60"
+  },
+  "devDependencies": {
+    "@babel/core": "7.3.4",
+    "@semantic-release/git": "7.0.5",
+    "@types/escape-string-regexp": "1.0.0",
+    "@types/invariant": "^2.2.29",
+    "@types/jest": "24.0.11",
+    "@types/react": "16.8.8",
+    "@types/react-native": "0.57.40",
+    "@typescript-eslint/eslint-plugin": "1.4.2",
+    "@typescript-eslint/parser": "1.4.2",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "^24.0.0",
+    "eslint": "5.15.1",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "4.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-react-native": "3.6.0",
+    "jest": "24.5.0",
+    "metro-react-native-babel-preset": "0.53.1",
+    "react": "16.8.3",
+    "react-native": "0.59.1",
+    "semantic-release": "15.10.3",
+    "ts-jest": "24.0.0",
+    "typescript": "3.3.3333"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guhungry/react-native-photo-manipulator.git"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "image-processing"
   ],
-  "author": "",
-  "license": "",
-  "peerDependencies": {
-    "react-native": "^0.41.2",
-    "react-native-windows": "0.41.0-rc.1"
-
-  }
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guhungry/react-native-photo-manipulator/issues"
+  },
+  "homepage": "https://github.com/guhungry/react-native-photo-manipulator#readme"
 }
