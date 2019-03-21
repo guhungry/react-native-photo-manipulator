@@ -1,6 +1,5 @@
 
-import { NativeModules } from 'react-native';
+import PhotoManipulator from './lib/PhotoManipulator';
 
-const { RNPhotoManipulator } = NativeModules;
-
-export default RNPhotoManipulator;
+export { PhotoManipulator };
+export default PhotoManipulator;
