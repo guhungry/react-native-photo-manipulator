@@ -56,5 +56,13 @@
   "bugs": {
     "url": "https://github.com/guhungry/react-native-photo-manipulator/issues"
   },
-  "homepage": "https://github.com/guhungry/react-native-photo-manipulator#readme"
+  "homepage": "https://github.com/guhungry/react-native-photo-manipulator#readme",
+  "files": [
+    "android",
+    "ios",
+    "lib",
+    "index.js",
+    "index.d.ts",
+    "react-native-image-manipulator.podspec"
+  ]
 }
