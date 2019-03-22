@@ -1,5 +1,5 @@
 
-package com.guhungry.photomanipulator;
+package com.guhungry.rnphotomanipulator;
 
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -11,8 +11,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.guhungry.photomanipulator.utils.ImageUtils;
-import com.guhungry.photomanipulator.utils.ParamUtils;
+import com.guhungry.photomanipulator.BitmapUtils;
+import com.guhungry.photomanipulator.MimeUtils;
+import com.guhungry.rnphotomanipulator.utils.ImageUtils;
+import com.guhungry.rnphotomanipulator.utils.ParamUtils;
 
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     private final String FILE_PREFIX = "RNPM_";

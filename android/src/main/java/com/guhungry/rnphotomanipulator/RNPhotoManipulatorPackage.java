@@ -1,5 +1,5 @@
 
-package com.guhungry.photomanipulator;
+package com.guhungry.rnphotomanipulator;
 
 import java.util.Arrays;
 import java.util.Collections;

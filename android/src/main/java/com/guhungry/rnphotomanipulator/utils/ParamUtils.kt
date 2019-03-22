@@ -1,4 +1,4 @@
-package com.guhungry.photomanipulator.utils
+package com.guhungry.rnphotomanipulator.utils
 
 import android.graphics.Color
 import android.graphics.PointF
