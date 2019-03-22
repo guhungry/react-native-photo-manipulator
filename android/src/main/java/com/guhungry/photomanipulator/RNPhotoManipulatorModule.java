@@ -17,7 +17,6 @@ import com.guhungry.photomanipulator.utils.ParamUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     private final String FILE_PREFIX = "RNPM_";
@@ -34,16 +33,8 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void batch(String uri, ReadableMap size, int quality, ReadableArray operations, Promise promise) throws IOException {
-        InputStream stream = null;
-
         try {
-            // Read Dimension
-            CGSize originalSize = ImageUtils.dimensionFromUri(getReactApplicationContext(), uri);
-
-            // Resize
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            Bitmap output = BitmapUtils.cropAndResize(stream, new CGRect(new android.graphics.Point(0, 0), originalSize), ParamUtils.sizeFromMap(size), new BitmapFactory.Options());
-            stream.close();
+            Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(size));
 
             // Operations
             for (int i = 0, count = operations.size(); i < count; i++) {
@@ -57,7 +48,6 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             promise.resolve(Uri.fromFile(file).toString());
         } catch (Exception e) {
-            if (stream != null) stream.close();
             promise.reject(e);
         }
     }
@@ -144,16 +134,8 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void resize(String uri, ReadableMap targetSize, Promise promise) throws IOException {
-        InputStream stream = null;
-
         try {
-            // Read Dimension
-            CGSize originalSize = ImageUtils.dimensionFromUri(getReactApplicationContext(), uri);
-
-            // Resize
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            Bitmap output = BitmapUtils.cropAndResize(stream, new CGRect(new android.graphics.Point(0, 0), originalSize), ParamUtils.sizeFromMap(targetSize), new BitmapFactory.Options());
-            stream.close();
+            Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(targetSize));
 
             // Save
             File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
@@ -162,7 +144,6 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             promise.resolve(Uri.fromFile(file).toString());
         } catch (Exception e) {
-            if (stream != null) stream.close();
             promise.reject(e);
         }
     }
