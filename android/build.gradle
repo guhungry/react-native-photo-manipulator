@@ -24,6 +24,7 @@ def getExtOrIntegerDefault(name) {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
