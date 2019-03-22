@@ -1,7 +1,6 @@
 import { PhotoManipulatorStatic } from './lib/PhotoManipulatorTypes';
 
-interface PhotoManipulator extends PhotoManipulatorStatic {
-}
+declare var PhotoManipulator: PhotoManipulatorStatic
 
 export { PhotoManipulator };
 export default PhotoManipulator;
