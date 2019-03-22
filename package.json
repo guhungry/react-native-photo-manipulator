@@ -63,7 +63,7 @@
     "lib",
     "index.js",
     "index.d.ts",
-    "react-native-image-manipulator.podspec"
+    "react-native-photo-manipulator.podspec"
   ],
   "dependencies": {
     "parse-color": "^1.0.0"
