@@ -4,10 +4,8 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
-import com.guhungry.photomanipulator.BitmapUtils
-import com.guhungry.photomanipulator.CGRect
-import com.guhungry.photomanipulator.CGSize
-import com.guhungry.photomanipulator.FileUtils
+import android.net.Uri
+import com.guhungry.photomanipulator.*
 
 object ImageUtils {
     /**
@@ -50,5 +48,18 @@ object ImageUtils {
         FileUtils.openBitmapInputStream(context, uri).use {
             return BitmapUtils.readImageDimensions(it)
         }
+    }
+
+    /**
+     * Save image to temp file
+     *
+     * @param context
+     * @param uri Uri of Image file
+     */
+    @JvmStatic fun saveTempFile(context: Context, image: Bitmap, mimeType: String, prefix: String, quality: Int): String {
+        val file = FileUtils.createTempFile(context, prefix, mimeType)
+        FileUtils.saveImageFile(image, mimeType, quality, file)
+
+        return Uri.fromFile(file).toString()
     }
 }

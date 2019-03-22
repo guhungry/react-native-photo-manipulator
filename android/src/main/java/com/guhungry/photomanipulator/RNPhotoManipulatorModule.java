@@ -4,7 +4,6 @@ package com.guhungry.photomanipulator;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.PointF;
-import android.net.Uri;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -15,7 +14,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.guhungry.photomanipulator.utils.ImageUtils;
 import com.guhungry.photomanipulator.utils.ParamUtils;
 
-import java.io.File;
 import java.io.IOException;
 
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
@@ -42,11 +40,10 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             }
 
             // Save & Optimize
-            File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
-            FileUtils.saveImageFile(output, MimeUtils.JPEG, quality, file);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, quality);
             output.recycle();
 
-            promise.resolve(Uri.fromFile(file).toString());
+            promise.resolve(file);
         } catch (Exception e) {
             promise.reject(e);
         }
@@ -72,19 +69,16 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void overlayImage(String uri, String icon, ReadableMap position, Promise promise) throws IOException {
         try {
-            // Read
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
             Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), icon);
 
             BitmapUtils.overlay(output, overlay, ParamUtils.pointfFromMap(position));
             overlay.recycle();
 
-            // Save
-            File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
-            FileUtils.saveImageFile(output, MimeUtils.JPEG, DEFAULT_QUALITY, file);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
 
-            promise.resolve(Uri.fromFile(file).toString());
+            promise.resolve(file);
         } catch (Exception e) {
             promise.reject(e);
         }
@@ -93,7 +87,6 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void printText(String uri, ReadableArray list, Promise promise) throws IOException {
         try {
-            // Read
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
 
             for (int i = 0, count = list.size(); i < count; i++) {
@@ -102,11 +95,10 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
                 printLine(output, text.getString("text"), (float) text.getDouble("size"), ParamUtils.pointfFromMap(text.getMap("location")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
             }
 
-            File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
-            FileUtils.saveImageFile(output, MimeUtils.JPEG, DEFAULT_QUALITY, file);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
 
-            promise.resolve(Uri.fromFile(file).toString());
+            promise.resolve(file);
         } catch (Exception e) {
             promise.reject(e);
         }
@@ -121,12 +113,10 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         try {
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
 
-            // Save
-            File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
-            FileUtils.saveImageFile(output, MimeUtils.JPEG, quality, file);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, quality);
             output.recycle();
 
-            promise.resolve(Uri.fromFile(file).toString());
+            promise.resolve(file);
         } catch (Exception e) {
             promise.reject(e);
         }
@@ -137,12 +127,10 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         try {
             Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(targetSize));
 
-            // Save
-            File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
-            FileUtils.saveImageFile(output, MimeUtils.JPEG, DEFAULT_QUALITY, file);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
 
-            promise.resolve(Uri.fromFile(file).toString());
+            promise.resolve(file);
         } catch (Exception e) {
             promise.reject(e);
         }
