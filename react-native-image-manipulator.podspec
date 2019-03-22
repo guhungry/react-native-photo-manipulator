@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency 'React'
+  s.dependency 'WCPhotoManipulator', :git => 'https://github.com/guhungry/ios-image-manipulator.git', :tag => 'v0.0.1'
 end
