@@ -16,7 +16,7 @@ import com.guhungry.photomanipulator.utils.ParamUtils;
 
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     private final String FILE_PREFIX = "RNPM_";
-    private final int DEFAULT_QUALITY = 90;
+    private final int DEFAULT_QUALITY = 100;
 
     public RNPhotoManipulatorModule(ReactApplicationContext reactContext) {
         super(reactContext);
