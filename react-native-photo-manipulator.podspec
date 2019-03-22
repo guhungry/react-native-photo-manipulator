@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
   s.homepage     = package['homepage']
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/guhungry/react-native-image-manipulator.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/guhungry/react-native-photo-manipulator.git", :tag => "#{s.version}" }
   s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency 'React'
-  s.dependency 'WCPhotoManipulator', :git => 'https://github.com/guhungry/ios-image-manipulator.git', :tag => 'v0.0.1'
+  s.dependency 'WCPhotoManipulator', :git => 'https://github.com/guhungry/ios-photo-manipulator.git', :tag => 'v0.0.1'
 end
