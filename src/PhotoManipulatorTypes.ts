@@ -5,7 +5,7 @@ export interface Point { x: number, y: number }
 export interface Size { width: number, height: number }
 
 export interface TextOptions {
-  location: Point
+  position: Point
   text: string
   textSize?: number
   color?: string

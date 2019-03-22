@@ -54,7 +54,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             ReadableMap text = operation.getMap("options");
             if (text == null) return;
 
-            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), ParamUtils.pointfFromMap(text.getMap("location")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
         } else if ("overlay".equals(type)) {
             String uri = operation.getString("overlay");
             if (uri == null) return;
