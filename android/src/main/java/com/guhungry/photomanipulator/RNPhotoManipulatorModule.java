@@ -2,7 +2,6 @@
 package com.guhungry.photomanipulator;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.net.Uri;
@@ -13,6 +12,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.guhungry.photomanipulator.utils.ImageUtils;
 import com.guhungry.photomanipulator.utils.ParamUtils;
 
 import java.io.File;
@@ -76,27 +76,17 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             String uri = operation.getString("overlay");
             if (uri == null) return;
 
-            InputStream stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), operation.getString("overlay"));
-            Bitmap overlay = BitmapFactory.decodeStream(stream);
-            stream.close();
+            Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), operation.getString("overlay"));
             BitmapUtils.overlay(image, overlay, ParamUtils.pointfFromMap(operation.getMap("position")));
         }
     }
 
     @ReactMethod
     public void overlayImage(String uri, String icon, ReadableMap position, Promise promise) throws IOException {
-        InputStream stream = null;
-
         try {
             // Read
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            Bitmap output = BitmapFactory.decodeStream(stream);
-            stream.close();
-
-            // Read
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), icon);
-            Bitmap overlay = BitmapFactory.decodeStream(stream);
-            stream.close();
+            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
+            Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), icon);
 
             BitmapUtils.overlay(output, overlay, ParamUtils.pointfFromMap(position));
             overlay.recycle();
@@ -108,20 +98,15 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             promise.resolve(Uri.fromFile(file).toString());
         } catch (Exception e) {
-            if (stream != null) stream.close();
             promise.reject(e);
         }
     }
 
     @ReactMethod
     public void printText(String uri, ReadableArray list, Promise promise) throws IOException {
-        InputStream stream = null;
-
         try {
             // Read
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            Bitmap output = BitmapFactory.decodeStream(stream);
-            stream.close();
+            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
 
             for (int i = 0, count = list.size(); i < count; i++) {
                 ReadableMap text = list.getMap(i);
@@ -135,7 +120,6 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             promise.resolve(Uri.fromFile(file).toString());
         } catch (Exception e) {
-            if (stream != null) stream.close();
             promise.reject(e);
         }
     }
@@ -146,13 +130,8 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void optimize(String uri, int quality, Promise promise) throws IOException {
-        InputStream stream = null;
-
         try {
-            // Read
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            Bitmap output = BitmapFactory.decodeStream(stream);
-            stream.close();
+            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
 
             // Save
             File file = FileUtils.createTempFile(getReactApplicationContext(), FILE_PREFIX, MimeUtils.JPEG);
@@ -161,7 +140,6 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             promise.resolve(Uri.fromFile(file).toString());
         } catch (Exception e) {
-            if (stream != null) stream.close();
             promise.reject(e);
         }
     }
