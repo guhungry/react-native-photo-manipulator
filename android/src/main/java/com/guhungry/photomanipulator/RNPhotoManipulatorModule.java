@@ -14,8 +14,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.guhungry.photomanipulator.utils.ImageUtils;
 import com.guhungry.photomanipulator.utils.ParamUtils;
 
-import java.io.IOException;
-
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     private final String FILE_PREFIX = "RNPM_";
     private final int DEFAULT_QUALITY = 90;
@@ -30,7 +28,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void batch(String uri, ReadableMap size, int quality, ReadableArray operations, Promise promise) throws IOException {
+    public void batch(String uri, ReadableMap size, int quality, ReadableArray operations, Promise promise) {
         try {
             Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(size));
 
@@ -49,7 +47,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void processBatchOperation(Bitmap image, ReadableMap operation) throws IOException {
+    private void processBatchOperation(Bitmap image, ReadableMap operation) {
         if (operation == null) return;
         String type = operation.getString("operation");
         if ("text".equals(type)) {
@@ -67,7 +65,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void overlayImage(String uri, String icon, ReadableMap position, Promise promise) throws IOException {
+    public void overlayImage(String uri, String icon, ReadableMap position, Promise promise) {
         try {
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
             Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), icon);
@@ -85,7 +83,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void printText(String uri, ReadableArray list, Promise promise) throws IOException {
+    public void printText(String uri, ReadableArray list, Promise promise) {
         try {
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
 
@@ -109,7 +107,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void optimize(String uri, int quality, Promise promise) throws IOException {
+    public void optimize(String uri, int quality, Promise promise) {
         try {
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
 
@@ -123,7 +121,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void resize(String uri, ReadableMap targetSize, Promise promise) throws IOException {
+    public void resize(String uri, ReadableMap targetSize, Promise promise) {
         try {
             Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(targetSize));
 
