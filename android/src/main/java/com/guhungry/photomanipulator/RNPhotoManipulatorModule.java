@@ -38,9 +38,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
         try {
             // Read Dimension
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            CGSize originalSize = BitmapUtils.readImageDimensions(stream);
-            stream.close();
+            CGSize originalSize = ImageUtils.dimensionFromUri(getReactApplicationContext(), uri);
 
             // Resize
             stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
@@ -150,9 +148,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
         try {
             // Read Dimension
-            stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
-            CGSize originalSize = BitmapUtils.readImageDimensions(stream);
-            stream.close();
+            CGSize originalSize = ImageUtils.dimensionFromUri(getReactApplicationContext(), uri);
 
             // Resize
             stream = FileUtils.openBitmapInputStream(getReactApplicationContext(), uri);
