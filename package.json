@@ -64,5 +64,8 @@
     "index.js",
     "index.d.ts",
     "react-native-image-manipulator.podspec"
-  ]
+  ],
+  "dependencies": {
+    "parse-color": "^1.0.0"
+  }
 }
