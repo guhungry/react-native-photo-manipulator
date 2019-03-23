@@ -17,4 +17,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'React'
   s.dependency 'WCPhotoManipulator', :git => 'https://github.com/guhungry/ios-photo-manipulator.git', :tag => 'v0.0.1'
+
+  s.swift_version = "4.2"
 end
