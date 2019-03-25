@@ -12,6 +12,8 @@
 
 @synthesize bridge = _bridge;
 
+const CGFloat DEFAULT_QUALITY = 100;
+
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
@@ -33,7 +35,7 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         
         UIImage *result = [image resize:[RCTConvert CGSize:size] scale:image.scale];
         
-        NSURL *uri = [ImageUtils saveTempFile:image mimeType:MimeType.JPEG quality:quality];
+        NSURL *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:quality];
         resolve(uri);
     }];
 }
@@ -58,7 +60,7 @@ RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri
             
             UIImage *result = [image overlayImage:icon position:[RCTConvert CGPoint:position]];
             
-            NSURL *uri = [ImageUtils saveTempFile:image mimeType:MimeType.JPEG quality:quality];
+            NSURL *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
             resolve(uri);
         }];
     }];
@@ -93,7 +95,7 @@ RCT_EXPORT_METHOD(resize:(NSURLRequest *)uri
         
         UIImage *result = [image resize:[RCTConvert CGSize:targetSize] scale:image.scale];
         
-        NSURL *uri = [ImageUtils saveTempFile:image mimeType:MimeType.JPEG quality:quality];
+        NSURL *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
         resolve(uri);
     }];
 }
