@@ -35,7 +35,7 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         
         UIImage *result = [image resize:[RCTConvert CGSize:size] scale:image.scale];
         
-        NSURL *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:quality];
+        NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:quality];
         resolve(uri);
     }];
 }
@@ -60,7 +60,7 @@ RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri
             
             UIImage *result = [image overlayImage:icon position:[RCTConvert CGPoint:position]];
             
-            NSURL *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
+            NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
             resolve(uri);
         }];
     }];
@@ -95,7 +95,7 @@ RCT_EXPORT_METHOD(resize:(NSURLRequest *)uri
         
         UIImage *result = [image resize:[RCTConvert CGSize:targetSize] scale:image.scale];
         
-        NSURL *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
+        NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
         resolve(uri);
     }];
 }

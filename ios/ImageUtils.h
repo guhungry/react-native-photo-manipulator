@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ImageUtils : NSObject
 
-+ (NSURL *)saveTempFile:(UIImage *)image mimeType:(NSString *)mimeType quality:(CGFloat)quality;
++ (NSString *)saveTempFile:(UIImage *)image mimeType:(NSString *)mimeType quality:(CGFloat)quality;
 
 @end
 

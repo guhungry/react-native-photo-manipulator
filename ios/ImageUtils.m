@@ -12,11 +12,11 @@
 
 @implementation ImageUtils
 
-+ (NSURL *)saveTempFile:(UIImage *)image mimeType:(NSString *)mimeType quality:(CGFloat)quality {
++ (NSString *)saveTempFile:(UIImage *)image mimeType:(NSString *)mimeType quality:(CGFloat)quality {
     NSString *file = [FileUtils createTempFile:@"" mimeType:mimeType];
     [FileUtils saveImageFile:image mimeType:mimeType quality:quality file:file];
     
-    return [NSURL fileURLWithPath:file];
+    return [NSURL fileURLWithPath:file].absoluteString;
 }
 
 @end
