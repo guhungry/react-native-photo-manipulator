@@ -1,10 +1,12 @@
 
 #import "RNPhotoManipulator.h"
+#import "ImageUtils.h"
 
 #import <React/RCTConvert.h>
 #import <React/RCTImageLoader.h>
 
 #import <WCPhotoManipulator/UIImage+PhotoManipulator.h>
+#import <WCPhotoManipulator/MimeUtils.h>
 
 @implementation RNPhotoManipulator
 
@@ -31,7 +33,8 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         
         UIImage *result = [image resize:[RCTConvert CGSize:size] scale:image.scale];
         
-        resolve(result);
+        NSURL *uri = [ImageUtils saveTempFile:image mimeType:MimeType.JPEG quality:quality];
+        resolve(uri);
     }];
 }
 
@@ -55,7 +58,8 @@ RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri
             
             UIImage *result = [image overlayImage:icon position:[RCTConvert CGPoint:position]];
             
-            resolve(result);
+            NSURL *uri = [ImageUtils saveTempFile:image mimeType:MimeType.JPEG quality:quality];
+            resolve(uri);
         }];
     }];
 }
@@ -89,7 +93,8 @@ RCT_EXPORT_METHOD(resize:(NSURLRequest *)uri
         
         UIImage *result = [image resize:[RCTConvert CGSize:targetSize] scale:image.scale];
         
-        resolve(result);
+        NSURL *uri = [ImageUtils saveTempFile:image mimeType:MimeType.JPEG quality:quality];
+        resolve(uri);
     }];
 }
 
