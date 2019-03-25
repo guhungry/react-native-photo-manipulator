@@ -61,7 +61,7 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         
         return [image drawText:text position:position color:color size:textSize thickness:thickness];
     }
-    return nil;
+    return image;
 }
 
 - (UIColor *)toColor:(NSDictionary *)color {
