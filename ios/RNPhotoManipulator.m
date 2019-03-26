@@ -1,6 +1,7 @@
 
 #import "RNPhotoManipulator.h"
 #import "ImageUtils.h"
+#import "ParamUtils.h"
 
 #import <React/RCTConvert.h>
 #import <React/RCTImageLoader.h>
@@ -56,16 +57,12 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         NSString *text = [RCTConvert NSString:options[@"text"]];
         CGPoint position = [RCTConvert CGPoint:options[@"position"]];
         CGFloat textSize = [RCTConvert CGFloat:options[@"textSize"]];
-        UIColor *color = [self toColor:[RCTConvert NSDictionary:options[@"color"]]];
+        UIColor *color = [ParamUtils color:options[@"color"]];
         CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
         
         return [image drawText:text position:position color:color size:textSize thickness:thickness];
     }
     return image;
-}
-
-- (UIColor *)toColor:(NSDictionary *)color {
-    return [UIColor colorWithRed:[color[@"r"] doubleValue] green:[color[@"g"] doubleValue] blue:[color[@"b"] doubleValue] alpha:[color[@"a"] doubleValue] / 255];
 }
 
 RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri

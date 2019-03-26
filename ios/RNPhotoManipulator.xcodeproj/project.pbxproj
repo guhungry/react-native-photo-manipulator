@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F85A5C72249D5CA005139A9 /* ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85A5C62249D5CA005139A9 /* ParamUtils.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNPhotoManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */; };
 		CC18CAD2224890F500BFB221 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18CAD1224890F500BFB221 /* ImageUtils.m */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNPhotoManipulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNPhotoManipulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F85A5C52249D5CA005139A9 /* ParamUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParamUtils.h; sourceTree = "<group>"; };
+		7F85A5C62249D5CA005139A9 /* ParamUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParamUtils.m; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNPhotoManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPhotoManipulator.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPhotoManipulator.m; sourceTree = "<group>"; };
 		CC18CAD0224890F500BFB221 /* ImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
@@ -55,6 +58,8 @@
 			children = (
 				CC18CAD0224890F500BFB221 /* ImageUtils.h */,
 				CC18CAD1224890F500BFB221 /* ImageUtils.m */,
+				7F85A5C52249D5CA005139A9 /* ParamUtils.h */,
+				7F85A5C62249D5CA005139A9 /* ParamUtils.m */,
 				B3E7B5881CC2AC0600A0062D /* RNPhotoManipulator.h */,
 				B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -119,6 +124,7 @@
 			files = (
 				B3E7B58A1CC2AC0600A0062D /* RNPhotoManipulator.m in Sources */,
 				CC18CAD2224890F500BFB221 /* ImageUtils.m in Sources */,
+				7F85A5C72249D5CA005139A9 /* ParamUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
