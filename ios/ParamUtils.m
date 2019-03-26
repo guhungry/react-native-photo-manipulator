@@ -14,7 +14,11 @@
 + (UIColor *)color:(NSDictionary *)data {
     NSDictionary *color = [RCTConvert NSDictionary:data];
     
-    return [UIColor colorWithRed:[RCTConvert CGFloat:color[@"r"]] green:[RCTConvert CGFloat:color[@"g"]] blue:[RCTConvert CGFloat:color[@"b"]] alpha:[RCTConvert CGFloat:color[@"a"]] / 255];
+    return [UIColor colorWithRed:[ParamUtils colorComponent:color[@"r"]] green:[ParamUtils colorComponent:color[@"g"]] blue:[ParamUtils colorComponent:color[@"b"]] alpha:[ParamUtils colorComponent:color[@"a"]]];
+}
+
++ (CGFloat)colorComponent:(id)color {
+    return [RCTConvert CGFloat:color] / 255;
 }
 
 @end
