@@ -12,6 +12,10 @@
 
 @implementation ImageUtils
 
++ (UIImage *)imageFromUrl:(NSURL *)url {
+    return [FileUtils imageFromUrl:url];
+}
+
 + (NSString *)saveTempFile:(UIImage *)image mimeType:(NSString *)mimeType quality:(CGFloat)quality {
     NSString *file = [FileUtils createTempFile:@"" mimeType:mimeType];
     [FileUtils saveImageFile:image mimeType:mimeType quality:quality file:file];

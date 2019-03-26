@@ -45,15 +45,18 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
     }];
 }
 
-- (UIImage *)processBatchOperation:(UIImage *)image operation:(NSDictionary *)operations {
-    NSString *type = [RCTConvert NSString:operations[@"operation"]];
-    NSDictionary *options = [RCTConvert NSDictionary:operations[@"options"]];
+- (UIImage *)processBatchOperation:(UIImage *)image operation:(NSDictionary *)operation {
+    NSString *type = [RCTConvert NSString:operation[@"operation"]];
     
     if ([type isEqual:@"overlay"]) {
-        NSURLRequest *overlay = [RCTConvert NSURLRequest:options[@"overlay"]];
-        CGPoint position = [RCTConvert CGPoint:options[@"position"]];
-        return image;
+        NSURL *url = [RCTConvert NSURL:operation[@"overlay"]];
+        CGPoint position = [RCTConvert CGPoint:operation[@"position"]];
+        UIImage *overlay = [ImageUtils imageFromUrl:url];
+        
+        return [image overlayImage:overlay position:position];
     } else if ([type isEqual:@"text"]) {
+        NSDictionary *options = [RCTConvert NSDictionary:operation[@"options"]];
+        
         NSString *text = [RCTConvert NSString:options[@"text"]];
         CGPoint position = [RCTConvert CGPoint:options[@"position"]];
         CGFloat textSize = [RCTConvert CGFloat:options[@"textSize"]];
