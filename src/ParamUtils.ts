@@ -26,10 +26,6 @@ export class ParamUtils {
     };
 
     static toImageNative = (source: ImageSource) => {
-        if (typeof source === "string") return source;
-
-        const {uri} = Image.resolveAssetSource(source);
-        if (uri.includes("://")) return uri;
-        return `file:///android_res/${uri}`
+        return typeof source === "string" ? source : Image.resolveAssetSource(source).uri;
     }
 }

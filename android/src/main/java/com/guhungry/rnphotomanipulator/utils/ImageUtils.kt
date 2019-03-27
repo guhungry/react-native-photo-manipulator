@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.net.Uri
 import com.guhungry.photomanipulator.*
+import java.io.InputStream
 
 object ImageUtils {
     /**
@@ -15,9 +16,29 @@ object ImageUtils {
      * @param uri Uri of Image file
      */
     @JvmStatic fun bitmapFromUri(context: Context, uri: String): Bitmap {
-        FileUtils.openBitmapInputStream(context, uri).use {
+        openBitmapInputStream(context, uri).use {
             return BitmapFactory.decodeStream(it)
         }
+    }
+
+    private fun openBitmapInputStream(context: Context, uri: String): InputStream = FileUtils.openBitmapInputStream(context, computeUri(context, uri))
+
+    private fun computeUri(context: Context, uri: String): String {
+        return if (Uri.parse(uri).scheme != null) uri else computeDrawableResourceUri(context, uri)
+    }
+    private fun computeDrawableResourceUri(context: Context, name: String) = "android.resource://${context.packageName}/${computeDrawableResourceId(context, name)}"
+    private fun computeDrawableResourceId(context: Context, name: String): Int {
+        if (name.isEmpty()) return 0
+
+        // name could be a resource id.
+        try {
+            return name.toInt()
+        } catch (e: NumberFormatException) {
+            // Do nothing.
+        }
+
+        val resource = name.toLowerCase().replace("-", "_")
+        return context.resources.getIdentifier(resource, "drawable", context.packageName)
     }
 
     /**
@@ -33,8 +54,8 @@ object ImageUtils {
     }
 
     private fun processResizedBitmap(context: Context, uri: String, originalSize: CGSize, targetSize: CGSize): Bitmap {
-        FileUtils.openBitmapInputStream(context, uri).use {
-            return BitmapUtils.cropAndResize(it, CGRect(Point(0, 0), originalSize), targetSize, BitmapFactory.Options());
+        openBitmapInputStream(context, uri).use {
+            return BitmapUtils.cropAndResize(it, CGRect(Point(0, 0), originalSize), targetSize, BitmapFactory.Options())
         }
     }
 
@@ -45,7 +66,7 @@ object ImageUtils {
      * @param uri Uri of Image file
      */
     @JvmStatic fun dimensionFromUri(context: Context, uri: String): CGSize {
-        FileUtils.openBitmapInputStream(context, uri).use {
+        openBitmapInputStream(context, uri).use {
             return BitmapUtils.readImageDimensions(it)
         }
     }
