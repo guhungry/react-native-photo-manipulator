@@ -42,8 +42,21 @@ import RNPhotoManipulator from 'react-native-photo-manipulator';
 ```
 
 ### Crop and resize
-Crop and resize image
+Crop image with `cropRegion` and resize to `targetSize` if specified
 
+#### Signature
+```typescript
+static crop(image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<string>
+```
+
+* `image` (required) Uri of image can be http://, https://, file:// and require()
+* `cropRegion` (required) Region in { x, y, width, height }
+* `targetSize` (optional) Size in { width, height }
+
+#### Returns
+Promise with image path in cache directory
+
+#### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
@@ -55,8 +68,21 @@ PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
 ```
 
 ### Optimize
-Save result image with specified quality between `0 - 100` in jpeg format
+Save result `image` with specified `quality` between `0 - 100` in jpeg format
 
+
+#### Signature
+```typescript
+static optimize(image: ImageSource, quality: number) => Promise<string>
+```
+
+* `image` (required) Uri of image can be http://, https://, file:// and require()
+* `quality` (required) quality of image between `0 - 100`
+
+#### Returns
+Promise with image path in cache directory
+
+#### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const quality = 90;
@@ -69,6 +95,19 @@ PhotoManipulator.optimize(image, 90).then(path => {
 ### Overlay Image
 Overlay image on top of background image
 
+#### Signature
+```typescript
+static overlayImage(image: ImageSource, overlay: ImageSource, position: Point) => Promise<string>
+```
+
+* `image` (required) Uri of image can be http://, https://, file:// and require()
+* `overlay` (required) Uri of image can be http://, https://, file:// and require()
+* `position` (required) Position of overlay image in { x, y }
+
+#### Returns
+Promise with image path in cache directory
+
+#### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const overlay = "https://www.iconfinder.com/icons/1174949/download/png/128";
@@ -82,6 +121,18 @@ PhotoManipulator.overlayImage(image, overlay, position).then(path => {
 ### Print Text
 Print texts into image
 
+#### Signature
+```typescript
+static printText(image: ImageSource, texts: TextOptions[]) => Promise<string>
+```
+
+* `image` (required) Uri of image can be http://, https://, file:// and require()
+* `texts` (required) List of text operations
+
+#### Returns
+Promise with image path in cache directory
+
+#### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const texts = [
@@ -95,8 +146,23 @@ PhotoManipulator.printText(image, texts).then(path => {
 ```
 
 ### Batch
-Process image with many operations
+Crop, resize and do operations (overlay and printText) on image
 
+#### Signature
+```typescript
+static batch(image: ImageSource, operations: PhotoBatchOperations[], cropRegion: Rect, targetSize?: Size, quality?: number) => Promise<string>
+```
+
+* `image` (required) Uri of image can be http://, https://, file:// and require()
+* `operations` (required) List of image processing operations
+* `cropRegion` (required) Region in { x, y, width, height }
+* `targetSize` (optional) Size in { width, height }
+* `quality` (optional) Quality of result image in `0 - 100`
+
+#### Returns
+Promise with image path in cache directory
+
+#### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
