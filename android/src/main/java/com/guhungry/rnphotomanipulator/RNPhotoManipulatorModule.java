@@ -4,6 +4,7 @@ package com.guhungry.rnphotomanipulator;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -63,6 +64,20 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), operation.getString("overlay"));
             BitmapUtils.overlay(image, overlay, ParamUtils.pointfFromMap(operation.getMap("position")));
+        }
+    }
+
+    @ReactMethod
+    public void crop(String uri, ReadableMap cropData, @Nullable ReadableMap targetSize, Promise promise) {
+        try {
+            Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropData), ParamUtils.sizeFromMap(targetSize));
+
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
+            output.recycle();
+
+            promise.resolve(file);
+        } catch (Exception e) {
+            promise.reject(e);
         }
     }
 

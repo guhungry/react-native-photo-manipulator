@@ -68,6 +68,30 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
     return image;
 }
 
+RCT_EXPORT_METHOD(crop:(NSURLRequest *)uri
+                  cropRegion:(NSDictionary *)cropRegion
+                  targetSize:(NSDictionary *)targetSize
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
+{
+    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+        if (error) {
+            reject(@(error.code).stringValue, error.description, error);
+            return;
+        }
+
+        UIImage *result = nil;
+        if (targetSize == nil) {
+            result = [image crop:[RCTConvert CGRect:cropRegion]];
+        } else {
+            result = [image crop:[RCTConvert CGRect:cropRegion] targetSize:[RCTConvert CGSize:targetSize]];
+        }
+
+        NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:quality];
+        resolve(uri);
+    }];
+}
+
 RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri
                   icon:(NSURLRequest *)icon
                   position:(NSDictionary *)position

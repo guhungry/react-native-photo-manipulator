@@ -42,6 +42,19 @@ object ImageUtils {
     }
 
     /**
+     * Get Crop and resize Bitmap from Image Uri
+     *
+     * @param context
+     * @param uri Uri of Image file
+     */
+    @JvmStatic fun cropBitmapFromUri(context: Context, uri: String, cropRegion: CGRect, targetSize: CGSize?): Bitmap {
+        openBitmapInputStream(context, uri).use {
+            if (targetSize != null) return BitmapUtils.cropAndResize(it, cropRegion, targetSize, BitmapFactory.Options())
+            return BitmapUtils.crop(it, cropRegion, BitmapFactory.Options());
+        }
+    }
+
+    /**
      * Get Resized Bitmap from Image Uri
      *
      * @param context

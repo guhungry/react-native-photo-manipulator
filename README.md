@@ -41,6 +41,19 @@ Import library with
 import RNPhotoManipulator from 'react-native-photo-manipulator';
 ```
 
+### Crop and resize
+Crop and resize image
+
+```javascript
+const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
+const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
+const targetSize = { size: 200, width: 150 };
+
+PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
+    console.log(`Result image path: ${path}`);
+});
+```
+
 ### Optimize
 Save result image with specified quality between `0 - 100` in jpeg format
 

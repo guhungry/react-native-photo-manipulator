@@ -3,6 +3,7 @@ package com.guhungry.rnphotomanipulator.utils
 import android.graphics.Color
 import android.graphics.PointF
 import com.facebook.react.bridge.ReadableMap
+import com.guhungry.photomanipulator.CGRect
 import com.guhungry.photomanipulator.CGSize
 
 /**
@@ -16,6 +17,9 @@ object ParamUtils {
     // Color
     @JvmStatic fun colorFromMap(map: ReadableMap): Int = Color.argb(map.getInt("a"), map.getInt("r"), map.getInt("g"), map.getInt("b"))
 
+    // CGRect
+    @JvmStatic fun rectFromMap(map: ReadableMap): CGRect = CGRect(map.getInt("x"), map.getInt("y"), map.getInt("width"), map.getInt("height"))
+
     // CGSize
-    @JvmStatic fun sizeFromMap(map: ReadableMap): CGSize = CGSize(map.getInt("width"), map.getInt("height"))
+    @JvmStatic fun sizeFromMap(map: ReadableMap?): CGSize? = if (map != null) CGSize(map.getInt("width"), map.getInt("height")) else null
 }
