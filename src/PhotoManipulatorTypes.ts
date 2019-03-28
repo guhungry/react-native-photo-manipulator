@@ -3,6 +3,7 @@
 export interface Point { x: number, y: number }
 
 export interface Size { width: number, height: number }
+export interface Rect extends Size, Point {}
 
 export interface TextOptions {
   position: Point
@@ -24,10 +25,10 @@ export type ImageSource = string | number
 interface PhotoBatchPrintText { operation: "text", options: TextOptions }
 interface PhotoBatchOverlay { operation: "overlay", overlay: ImageSource, position: Point }
 
-export type PhotoBatchOperations = PhotoBatchPrintText | PhotoBatchOverlay;
+export type PhotoBatchOperations = PhotoBatchPrintText | PhotoBatchOverlay
 
 export interface PhotoManipulatorStatic {
-  batch: (image: ImageSource, size: Size, quality: number, operations: Array<PhotoBatchOperations>) => Promise<string>
+  batch: (image: ImageSource, operations: PhotoBatchOperations[], cropRegion: Rect, targetSize?: Size, quality?: number) => Promise<string>
   crop: (image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<string>
   overlayImage: (image: ImageSource, overlay: ImageSource, position: Point) => Promise<string>
   printText: (image: ImageSource, texts: TextOptions[]) => Promise<string>

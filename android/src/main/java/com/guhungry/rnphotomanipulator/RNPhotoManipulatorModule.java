@@ -31,9 +31,9 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void batch(String uri, ReadableMap size, int quality, ReadableArray operations, Promise promise) {
+    public void batch(String uri, ReadableArray operations, ReadableMap cropRegion, @Nullable ReadableMap targetSize, int quality, Promise promise) {
         try {
-            Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(size));
+            Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropRegion), ParamUtils.sizeFromMap(targetSize));
 
             // Operations
             for (int i = 0, count = operations.size(); i < count; i++) {
@@ -68,9 +68,9 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void crop(String uri, ReadableMap cropData, @Nullable ReadableMap targetSize, Promise promise) {
+    public void crop(String uri, ReadableMap cropRegion, @Nullable ReadableMap targetSize, Promise promise) {
         try {
-            Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropData), ParamUtils.sizeFromMap(targetSize));
+            Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropRegion), ParamUtils.sizeFromMap(targetSize));
 
             String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();

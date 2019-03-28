@@ -49,26 +49,8 @@ object ImageUtils {
      */
     @JvmStatic fun cropBitmapFromUri(context: Context, uri: String, cropRegion: CGRect, targetSize: CGSize?): Bitmap {
         openBitmapInputStream(context, uri).use {
-            if (targetSize != null) return BitmapUtils.cropAndResize(it, cropRegion, targetSize, BitmapFactory.Options())
-            return BitmapUtils.crop(it, cropRegion, BitmapFactory.Options());
-        }
-    }
-
-    /**
-     * Get Resized Bitmap from Image Uri
-     *
-     * @param context
-     * @param uri Uri of Image file
-     */
-    @JvmStatic fun resizedBitmapFromUri(context: Context, uri: String, targetSize: CGSize): Bitmap {
-        val originalSize = ImageUtils.dimensionFromUri(context, uri)
-
-        return processResizedBitmap(context, uri, originalSize, targetSize)
-    }
-
-    private fun processResizedBitmap(context: Context, uri: String, originalSize: CGSize, targetSize: CGSize): Bitmap {
-        openBitmapInputStream(context, uri).use {
-            return BitmapUtils.cropAndResize(it, CGRect(Point(0, 0), originalSize), targetSize, BitmapFactory.Options())
+            return if (targetSize != null) BitmapUtils.cropAndResize(it, cropRegion, targetSize, BitmapFactory.Options())
+            else BitmapUtils.crop(it, cropRegion, BitmapFactory.Options())
         }
     }
 

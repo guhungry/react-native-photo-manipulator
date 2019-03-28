@@ -22,9 +22,10 @@ const CGFloat DEFAULT_QUALITY = 100;
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
-                  size:(NSDictionary *)size
-                  quality:(NSInteger)quality
                   operations:(NSArray *)operations
+                  cropRegion:(NSDictionary *)cropRegion
+                  targetSize:(NSDictionary *)targetSize
+                  quality:(NSInteger)quality
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
@@ -34,7 +35,10 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
             return;
         }
         
-        UIImage *result = [image resize:[RCTConvert CGSize:size] scale:image.scale];
+        UIImage *result = [image crop:[RCTConvert CGRect:cropRegion]];
+        if (targetSize != nil) {
+            result = [image resize:[RCTConvert CGSize:targetSize]];
+        }
         
         for (NSDictionary *operation in operations) {
             result = [self processBatchOperation:result operation:operation];
