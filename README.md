@@ -22,7 +22,7 @@ Image processing library to edit photo programmatically in React Native
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.guhungry.photomanipulator.RNPhotoManipulatorPackage;` to the imports at the top of the file
+  - Add `import com.guhungry.rnphotomanipulator.RNPhotoManipulatorPackage;` to the imports at the top of the file
   - Add `new RNPhotoManipulatorPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
@@ -36,9 +36,47 @@ Image processing library to edit photo programmatically in React Native
 
 
 ## Usage
+Import library with
 ```javascript
 import RNPhotoManipulator from 'react-native-photo-manipulator';
+```
 
-// TODO: What to do with the module?
-RNPhotoManipulator;
+### Optimize
+Save result image with specified quality between `0 - 100` in jpeg format
+
+```javascript
+const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
+const quality = 90;
+
+PhotoManipulator.optimize(image, 90).then(path => {
+    console.log(`Result image path: ${path}`);
+});
+```
+
+### Overlay Image
+Overlay image on top of background image
+
+```javascript
+const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
+const overlay = "https://www.iconfinder.com/icons/1174949/download/png/128";
+const position = { x: 5, y: 20 };
+
+PhotoManipulator.overlayImage(image, overlay, position).then(path => {
+    console.log(`Result image path: ${path}`);
+});
+```
+
+### Print Text
+Print texts into image
+
+```javascript
+const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
+const texts = [
+    { position: { x: 50, y: 30 }, text: "Text 1", textSize: 30, color: "#000000" },
+    { position: { x: 50, y: 30 }, text: "Text 1", textSize: 30, color: "#FFFFFF", thickness: 3 }
+];
+
+PhotoManipulator.printText(image, texts).then(path => {
+    console.log(`Result image path: ${path}`);
+});
 ```
