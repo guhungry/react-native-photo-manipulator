@@ -18,7 +18,6 @@ const PhotoManipulator: PhotoManipulatorStatic = {
     overlayImage: RNPhotoManipulator.overlayImage,
     printText: (image: ImageSource, texts: TextOptions[]) => RNPhotoManipulator.printText(image, texts.map(ParamUtils.toTextOptionsNative)),
     optimize: RNPhotoManipulator.optimize,
-    resize: RNPhotoManipulator.resize
 };
 
 export default PhotoManipulator

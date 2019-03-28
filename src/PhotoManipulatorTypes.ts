@@ -31,5 +31,4 @@ export interface PhotoManipulatorStatic {
   overlayImage: (image: ImageSource, overlay: ImageSource, position: Point) => Promise<string>
   printText: (image: ImageSource, texts: Array<TextOptions>) => Promise<string>
   optimize: (image: ImageSource, quality: number) => Promise<string>
-  resize: (image: ImageSource, targetSize: Size) => Promise<string>
 }

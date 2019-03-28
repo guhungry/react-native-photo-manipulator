@@ -110,22 +110,4 @@ RCT_EXPORT_METHOD(optimize:(NSURLRequest *)uri
     resolve(uri);
 }
 
-RCT_EXPORT_METHOD(resize:(NSURLRequest *)uri
-                  targetSize:(NSDictionary *)targetSize
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(__unused RCTPromiseRejectBlock)reject)
-{
-    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
-        if (error) {
-            reject(@(error.code).stringValue, error.description, error);
-            return;
-        }
-        
-        UIImage *result = [image resize:[RCTConvert CGSize:targetSize] scale:image.scale];
-        
-        NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
-        resolve(uri);
-    }];
-}
-
 @end

@@ -121,18 +121,4 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             promise.reject(e);
         }
     }
-
-    @ReactMethod
-    public void resize(String uri, ReadableMap targetSize, Promise promise) {
-        try {
-            Bitmap output = ImageUtils.resizedBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.sizeFromMap(targetSize));
-
-            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
-            output.recycle();
-
-            promise.resolve(file);
-        } catch (Exception e) {
-            promise.reject(e);
-        }
-    }
 }
