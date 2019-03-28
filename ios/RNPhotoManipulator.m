@@ -37,7 +37,7 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         
         UIImage *result = [image crop:[RCTConvert CGRect:cropRegion]];
         if (targetSize != nil) {
-            result = [image resize:[RCTConvert CGSize:targetSize]];
+            result = [result resize:[RCTConvert CGSize:targetSize] scale:result.scale];
         }
         
         for (NSDictionary *operation in operations) {
@@ -91,7 +91,7 @@ RCT_EXPORT_METHOD(crop:(NSURLRequest *)uri
             result = [image crop:[RCTConvert CGRect:cropRegion] targetSize:[RCTConvert CGSize:targetSize]];
         }
 
-        NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:quality];
+        NSString *uri = [ImageUtils saveTempFile:result mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
         resolve(uri);
     }];
 }
