@@ -1,12 +1,7 @@
 .npmignore
 
-*.iml
+.git
+.gitignore
+**/xcuserdata/
 
-build/
-.idea
-.gradle
-local.properties
-
-gradle
-gradlew
-gradlew.bat
+.DS_Store
