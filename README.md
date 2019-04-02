@@ -27,7 +27,7 @@ Image processing library to edit photo programmatically in React Native
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':react-native-photo-manipulator'
-  	project(':react-native-photo-manipulator').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-photo-manipulator/android')
+  	project(':react-native-photo-manipulator').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-photo-manipulator/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
