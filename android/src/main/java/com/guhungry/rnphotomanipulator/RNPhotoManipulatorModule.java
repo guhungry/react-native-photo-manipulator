@@ -12,12 +12,15 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.module.annotations.ReactModule;
 import com.guhungry.photomanipulator.BitmapUtils;
 import com.guhungry.photomanipulator.MimeUtils;
 import com.guhungry.rnphotomanipulator.utils.ImageUtils;
 import com.guhungry.rnphotomanipulator.utils.ParamUtils;
 
+@ReactModule(name = RNPhotoManipulatorModule.NAME)
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
+    public static final String NAME = "RNPhotoManipulator";
     private final String FILE_PREFIX = "RNPM_";
     private final int DEFAULT_QUALITY = 100;
 
@@ -27,7 +30,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "RNPhotoManipulator";
+        return NAME;
     }
 
     @ReactMethod
