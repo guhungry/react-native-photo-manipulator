@@ -1,31 +1,33 @@
+/**
+ * Parameter Utilities Class
+ */
 import { Image } from "react-native";
 // @ts-ignore
 import parse from "parse-color";
 import { Color, ImageSource, PhotoBatchOperations, TextOptions } from "./PhotoManipulatorTypes";
 
 /**
- * Parameter Utilities Class
+ * Convert color string to rgba object
+ * @param color
  */
-export class ParamUtils {
-    static toBatchNative = (it: PhotoBatchOperations) => {
-        if (it.operation === "text") return { ...it, options: ParamUtils.toTextOptionsNative(it.options) };
-        if (it.operation === "overlay") return { ...it, overlay: ParamUtils.toImageNative(it.overlay) };
-        return it
-    };
-
-    static toTextOptionsNative = (it: TextOptions) => ({ ...it, color: ParamUtils.toColorNative(it.color), thickness: it.thickness || 0 });
-
-    static toColorNative = (color?: string): Color => {
-        const result = parse(color || "#000000").rgba;
-        return {
-            r: result[0],
-            g: result[1],
-            b: result[2],
-            a: result[3] * 255,
-        }
-    };
-
-    static toImageNative = (source: ImageSource) => {
-        return typeof source === "string" ? source : Image.resolveAssetSource(source).uri;
+export const toColorNative = (color?: string): Color => {
+    const result = parse(color || "#000000").rgba;
+    return {
+        r: result[0],
+        g: result[1],
+        b: result[2],
+        a: result[3] * 255,
     }
-}
+};
+
+export const toImageNative = (source: ImageSource) => typeof source === "string" ? source : Image.resolveAssetSource(source).uri;
+
+export const toTextOptionsNative = (it: TextOptions) => ({
+    ...it, color: toColorNative(it.color), thickness: it.thickness || 0
+});
+
+export const toBatchNative = (it: PhotoBatchOperations) => {
+    if (it.operation === "text") return { ...it, options: toTextOptionsNative(it.options) };
+    if (it.operation === "overlay") return { ...it, overlay: toImageNative(it.overlay) };
+    return it
+};

@@ -6,7 +6,7 @@ import {
     PhotoManipulatorStatic, Rect, Size,
     TextOptions
 } from "./PhotoManipulatorTypes"
-import {ParamUtils} from "./ParamUtils";
+import * as ParamUtils from "./ParamUtils";
 
 const { RNPhotoManipulator } = NativeModules;
 
