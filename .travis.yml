@@ -1,0 +1,15 @@
+
+jobs:
+  include:
+    - stage: test
+      language: node_js
+      node_js:
+        - "10"
+
+      script:
+        - yarn ci
+
+#    - # stage name not required, will continue to use `test`
+#      script: ./test 2
+#    - stage: deploy
+#      script: ./deploy
