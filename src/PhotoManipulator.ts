@@ -10,7 +10,7 @@ const PhotoManipulator: PhotoManipulatorStatic = {
     },
     crop: (image: ImageSource, cropRegion: Rect, targetSize?: Size) => RNPhotoManipulator.crop(ParamUtils.toImageNative(image), cropRegion, targetSize),
     overlayImage: (image: ImageSource, overlay: ImageSource, position: Point) => RNPhotoManipulator.overlayImage(ParamUtils.toImageNative(image), ParamUtils.toImageNative(overlay), position),
-    printText: (image: ImageSource, texts: TextOptions[]) => RNPhotoManipulator.printText(image, texts.map(ParamUtils.toTextOptionsNative)),
+    printText: (image: ImageSource, texts: TextOptions[]) => RNPhotoManipulator.printText(ParamUtils.toImageNative(image), texts.map(ParamUtils.toTextOptionsNative)),
     optimize: RNPhotoManipulator.optimize,
 };
 
