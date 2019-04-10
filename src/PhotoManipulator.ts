@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native'
-import { ImageSource, PhotoBatchOperations, PhotoManipulatorStatic, Rect, Size, TextOptions } from "./PhotoManipulatorTypes"
+import { ImageSource, PhotoBatchOperations, PhotoManipulatorStatic, Point, Rect, Size, TextOptions } from "./PhotoManipulatorTypes"
 import * as ParamUtils from "./ParamUtils";
 
 const { RNPhotoManipulator } = NativeModules;
@@ -9,7 +9,7 @@ const PhotoManipulator: PhotoManipulatorStatic = {
         return RNPhotoManipulator.batch(ParamUtils.toImageNative(image), operations.map(ParamUtils.toBatchNative), cropRegion, targetSize, quality)
     },
     crop: (image: ImageSource, cropRegion: Rect, targetSize?: Size) => RNPhotoManipulator.crop(ParamUtils.toImageNative(image), cropRegion, targetSize),
-    overlayImage: RNPhotoManipulator.overlayImage,
+    overlayImage: (image: ImageSource, overlay: ImageSource, position: Point) => RNPhotoManipulator.overlayImage(ParamUtils.toImageNative(image), ParamUtils.toImageNative(overlay), position),
     printText: (image: ImageSource, texts: TextOptions[]) => RNPhotoManipulator.printText(image, texts.map(ParamUtils.toTextOptionsNative)),
     optimize: RNPhotoManipulator.optimize,
 };
