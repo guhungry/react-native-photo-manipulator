@@ -9,6 +9,23 @@ jobs:
       script:
         - yarn ci
 
+    - stage: build
+      name: "Build Android"
+      language: android
+      node_js:
+        - "10"
+      script:
+        - yarn
+
+    - stage: build
+      name: "Build iOS"
+      language: objective-c
+      osx_image: xcode10.1
+      node_js:
+        - "10"
+      script:
+        - yarn
+
 #    - # stage name not required, will continue to use `test`
 #      script: ./test 2
 #    - stage: deploy
