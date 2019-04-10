@@ -1,12 +1,12 @@
 import { NativeModules } from "react-native";
 import "jest-extended"
-import PhotoManipulator from "./PhotoManipulator"
-import { ParamUtils } from "../lib/ParamUtils"
+import PhotoManipulator from "../PhotoManipulator"
+import { toImageNative } from "../ParamUtils"
 
 describe("Photo Manipulator", () => {
     describe("batch()", () => {
         const imageUrl = "https://image.freepik.com/free-photo/tulips-bouquet-pink-background-with-copyspace_24972-271.jpg"
-        const imageRequire = require.resolve("../docs/test.png")
+        const imageRequire = require.resolve("../../docs/test.png")
         const cropRegion = { x: 30, y: 10, height: 400, width: 300 }
         const targetSize = { width: 300, height: 200 }
         const quality = 85
@@ -45,7 +45,7 @@ describe("Photo Manipulator", () => {
               cropRegion,
               targetSize,
               quality)
-            expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(ParamUtils.toImageNative(imageRequire), [], cropRegion, targetSize, quality);
+            expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(toImageNative(imageRequire), [], cropRegion, targetSize, quality);
         })
 
         test("convert operation text", () => {

@@ -1,4 +1,4 @@
-import {toBatchNative, toColorNative, toImageNative, toTextOptionsNative} from "./ParamUtils";
+import {toBatchNative, toColorNative, toImageNative, toTextOptionsNative} from "../ParamUtils";
 import "jest-extended"
 
 
@@ -14,7 +14,7 @@ describe("ParamUtils", () => {
     });
 
     test("toImageNative with require", () => {
-        expect(toImageNative(require.resolve("../docs/test.png"))).toEndWith("/docs/test.png");
+        expect(toImageNative(require.resolve("../../docs/test.png"))).toEndWith("/docs/test.png");
     });
 
     test("toTextOptionsNative", () => {
