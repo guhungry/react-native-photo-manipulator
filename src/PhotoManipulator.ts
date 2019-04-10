@@ -8,7 +8,7 @@ const PhotoManipulator: PhotoManipulatorStatic = {
     batch: (image: ImageSource, operations: PhotoBatchOperations[], cropRegion: Rect, targetSize?: Size, quality: number = 100) => {
         return RNPhotoManipulator.batch(ParamUtils.toImageNative(image), operations.map(ParamUtils.toBatchNative), cropRegion, targetSize, quality)
     },
-    crop: (image: ImageSource, cropRegion: Rect, targetSize?: Size) => RNPhotoManipulator.crop(image, cropRegion, targetSize),
+    crop: (image: ImageSource, cropRegion: Rect, targetSize?: Size) => RNPhotoManipulator.crop(ParamUtils.toImageNative(image), cropRegion, targetSize),
     overlayImage: RNPhotoManipulator.overlayImage,
     printText: (image: ImageSource, texts: TextOptions[]) => RNPhotoManipulator.printText(image, texts.map(ParamUtils.toTextOptionsNative)),
     optimize: RNPhotoManipulator.optimize,
