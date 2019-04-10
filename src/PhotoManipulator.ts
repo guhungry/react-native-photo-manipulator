@@ -1,11 +1,5 @@
-
 import { NativeModules } from 'react-native'
-import {
-    ImageSource,
-    PhotoBatchOperations,
-    PhotoManipulatorStatic, Rect, Size,
-    TextOptions
-} from "./PhotoManipulatorTypes"
+import { ImageSource, PhotoBatchOperations, PhotoManipulatorStatic, Rect, Size, TextOptions } from "./PhotoManipulatorTypes"
 import * as ParamUtils from "./ParamUtils";
 
 const { RNPhotoManipulator } = NativeModules;
