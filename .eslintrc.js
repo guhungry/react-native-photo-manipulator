@@ -52,6 +52,9 @@ module.exports = {
     '@typescript-eslint/prefer-namespace-keyword': 'error',
     '@typescript-eslint/type-annotation-spacing': 'error',
   },
+  env: {
+    jest: true
+  },
   settings: {
     'import/resolver': {
       node: {
