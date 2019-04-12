@@ -167,7 +167,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.ts(x)?$': 'ts-jest',
+    '^.+\\.ts(x)?$': 'babel-jest',
     '^.+\\.js$': 'babel-jest',
     '^.+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$':
       '<rootDir>/node_modules/react-native/jest/assetFileTransformer.js',
