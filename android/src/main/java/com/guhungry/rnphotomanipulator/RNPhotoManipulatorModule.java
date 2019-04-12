@@ -111,7 +111,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             for (int i = 0, count = list.size(); i < count; i++) {
                 ReadableMap text = list.getMap(i);
                 if (text == null) continue;
-                printLine(output, text.getString("text"), (float) text.getDouble("size"), ParamUtils.pointfFromMap(text.getMap("location")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+                printLine(output, text.getString("text"), (float) text.getDouble("textSize"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
             }
 
             String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
