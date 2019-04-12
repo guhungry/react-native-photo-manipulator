@@ -6,6 +6,7 @@ import ExamplePrintText from "./ExamplePrintText"
 import { IMAGE, OVERLAY } from "./settings"
 import ExampleCrop from "./ExampleCrop"
 import ExampleOptimize from "./ExampleOptimize"
+import ExampleBatch from "./ExampleBatch"
 
 export interface Example {
   id: string
@@ -50,6 +51,12 @@ const EXAMPLES: Example[] = [
     title: "optimize()",
     description: "Reduce image quality",
     render: () => <ExampleOptimize />
+  },
+  {
+    id: "exampleBatch",
+    title: "batch()",
+    description: "Do everything in one operation",
+    render: () => <ExampleBatch />
   },
 ]
 
