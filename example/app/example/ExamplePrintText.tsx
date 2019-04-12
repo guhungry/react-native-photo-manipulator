@@ -1,10 +1,10 @@
 import * as React from "react"
 import { Image } from "react-native"
 import styles from "../App.styles"
-import { IMAGE } from "./index"
 import { noop } from "../utils"
 import PhotoManipulator from "../../../src/PhotoManipulator"
 import { TextOptions } from "../../../src/PhotoManipulatorTypes"
+import { IMAGE } from "./settings"
 
 export default React.memo(function ExamplePrintText() {
   const [image, setImage] = React.useState<string|null>(null)
