@@ -2,6 +2,7 @@ import * as React from "react"
 import { Image } from "react-native"
 import styles from "../App.styles"
 import ExampleOverlayImage from "./ExampleOverlayImage"
+import ExamplePrintText from "./ExamplePrintText"
 
 export interface Example {
   id: string
@@ -31,6 +32,12 @@ const EXAMPLES: Example[] = [
     title: "overlayImage()",
     description: "Overlay image to background image at 30, 65",
     render: () => <ExampleOverlayImage />
+  },
+  {
+    id: "examplePrintText",
+    title: "printText()",
+    description: "Print text into image",
+    render: () => <ExamplePrintText />
   },
 ]
 
