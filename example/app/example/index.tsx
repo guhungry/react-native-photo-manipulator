@@ -5,6 +5,7 @@ import ExampleOverlayImage from "./ExampleOverlayImage"
 import ExamplePrintText from "./ExamplePrintText"
 import { IMAGE, OVERLAY } from "./settings"
 import ExampleCrop from "./ExampleCrop"
+import ExampleOptimize from "./ExampleOptimize"
 
 export interface Example {
   id: string
@@ -40,9 +41,15 @@ const EXAMPLES: Example[] = [
   },
   {
     id: "exampleCrop",
-    title: "exampleCrop()",
+    title: "crop()",
     description: "Crop Image & Resize if specified targetSize",
     render: () => <ExampleCrop />
+  },
+  {
+    id: "exampleOptimize",
+    title: "optimize()",
+    description: "Reduce image quality",
+    render: () => <ExampleOptimize />
   },
 ]
 
