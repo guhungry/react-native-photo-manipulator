@@ -2,6 +2,7 @@
 package com.guhungry.rnphotomanipulator;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.support.annotation.Nullable;
@@ -87,7 +88,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void overlayImage(String uri, String icon, ReadableMap position, Promise promise) {
         try {
-            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
+            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri, ImageUtils.mutableOptions());
             Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), icon);
 
             BitmapUtils.overlay(output, overlay, ParamUtils.pointfFromMap(position));
@@ -105,7 +106,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void printText(String uri, ReadableArray list, Promise promise) {
         try {
-            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri);
+            Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri, ImageUtils.mutableOptions());
 
             for (int i = 0, count = list.size(); i < count; i++) {
                 ReadableMap text = list.getMap(i);

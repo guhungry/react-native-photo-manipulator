@@ -15,11 +15,14 @@ object ImageUtils {
      * @param context
      * @param uri Uri of Image file
      */
-    @JvmStatic fun bitmapFromUri(context: Context, uri: String): Bitmap {
+    @JvmOverloads
+    @JvmStatic fun bitmapFromUri(context: Context, uri: String, options: BitmapFactory.Options? = null): Bitmap {
         openBitmapInputStream(context, uri).use {
-            return BitmapFactory.decodeStream(it)
+            return BitmapFactory.decodeStream(it, null, options)!!
         }
     }
+
+    @JvmStatic fun mutableOptions() = BitmapFactory.Options().apply { inMutable = true }
 
     private fun openBitmapInputStream(context: Context, uri: String): InputStream = FileUtils.openBitmapInputStream(context, computeUri(context, uri))
 
