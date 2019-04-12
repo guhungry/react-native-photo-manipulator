@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Image } from "react-native"
+import styles from "../App.styles"
+import ExampleOverlayImage from "./ExampleOverlayImage"
 
 export interface Example {
   id: string
@@ -8,21 +10,27 @@ export interface Example {
   render: () => React.ReactNode
 }
 
-const IMAGE = "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?cs=srgb&dl=beauty-bloom-blue-67636.jpg&fm=jpg?dl&fit=crop&crop=entropy&w=800&h="
-const OVERLAY = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png"
+export const IMAGE = "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?cs=srgb&dl=beauty-bloom-blue-67636.jpg&fm=jpg?dl&fit=crop&crop=entropy&w=800&h="
+export const OVERLAY = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png"
 
 const EXAMPLES: Example[] = [
   {
     id: "originalImage",
     title: "Source Image",
     description: "Original Source Image size 1120 * 800",
-    render: () => <Image style={{ width: "100%", aspectRatio: 1120 / 800, paddingHorizontal: 20 }} source={{ uri: IMAGE}} />
+    render: () => <Image style={styles.image} source={{ uri: IMAGE}} />
   },
   {
     id: "overlayImage",
     title: "Overlay Image",
     description: "Overlay Image size 200 * 141",
     render: () => <Image style={{ width: "100%", height: 141, paddingHorizontal: 20 }} resizeMode="center" source={{ uri: OVERLAY}} />
+  },
+  {
+    id: "exampleOverlayImage",
+    title: "overlayImage()",
+    description: "Overlay image to background image at 30, 65",
+    render: () => <ExampleOverlayImage />
   },
 ]
 

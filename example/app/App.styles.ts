@@ -30,4 +30,9 @@ export default StyleSheet.create({
     borderTopWidth: 1,
     paddingTop: 16,
   },
+  image: {
+    width: "100%",
+    aspectRatio: 1120 / 800,
+    paddingHorizontal: 20
+  },
 });
