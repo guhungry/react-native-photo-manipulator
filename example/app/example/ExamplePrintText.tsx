@@ -7,17 +7,17 @@ import { TextOptions } from "../../../src/PhotoManipulatorTypes"
 import { IMAGE } from "./settings"
 
 export default React.memo(function ExamplePrintText() {
-  const [image, setImage] = React.useState<string|null>(null)
+  const [image, setImage] = React.useState<string|null>(null);
 
   React.useEffect(() => {
     const operation = async () => {
       setImage(await PhotoManipulator.printText(IMAGE, texts()))
-    }
+    };
 
     operation().then(noop).catch(console.log);
-  }, [])
+  }, []);
 
-  return image && <Image style={styles.image} source={{ uri: image}} /> || null
+  return image && <Image testID="printTextResult" style={styles.image} source={{ uri: image}} /> || null;
 
   function texts(): TextOptions[] {
     return [

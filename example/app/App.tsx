@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { SafeAreaView, ScrollView, Text, View } from 'react-native'
 import EXAMPLES, { Example } from "./example"
 import styles from "./App.styles"
