@@ -7,17 +7,17 @@ import { PhotoBatchOperations } from "../../../src/PhotoManipulatorTypes"
 import { IMAGE, OVERLAY } from "./settings"
 
 export default React.memo(function ExampleBatch() {
-  const [image, setImage] = React.useState<string|null>(null)
+  const [image, setImage] = React.useState<string|null>(null);
 
   React.useEffect(() => {
     const operation = async () => {
       setImage(await PhotoManipulator.batch(IMAGE, operations(), { x: 40, y: 5, width: 600, height: 400 }, { width: 300, height: 200 }, 30))
-    }
+    };
 
     operation().then(noop).catch(console.log);
-  }, [])
+  }, []);
 
-  return image && <Image style={styles.image} source={{ uri: image}} /> || null
+  return image && <Image testID="batchResult" style={styles.image} source={{ uri: image}} /> || null;
 
   function operations(): PhotoBatchOperations[] {
     return [
