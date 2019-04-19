@@ -5,6 +5,7 @@ aliases:
   # -------------------------
   #      ALIASES: Caches
   # -------------------------
+  # Yarn
   - &restore-yarn-cache
     keys:
       - v1-yarn-cache-{{ arch }}-{{ checksum "package.json" }}
@@ -14,6 +15,18 @@ aliases:
     paths:
       - ~/.cache/yarn
     key: v1-yarn-cache-{{ arch }}-{{ checksum "package.json" }}
+
+  # Android
+
+  - &restore-gradle-downloads-cache
+    keys:
+      - v1-gradle-{{ checksum "example/android/build.gradle" }}
+      - v1-gradle-
+
+  - &save-gradle-downloads-cache
+    paths:
+      - ~/.gradle
+    key: v1-gradle-{{ checksum "example/android/build.gradle" }}
 
   # -------------------------
   #  ALIASES: Shared Commands
@@ -42,12 +55,11 @@ android_defaults: &android_defaults
   <<: *defaults
   docker:
     - image: reactnativecommunity/react-native-android:2019-1-19
-  resource_class: "large"
   environment:
     - TERM: "dumb"
     - ADB_INSTALL_TIMEOUT: 10
-    - _JAVA_OPTIONS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
-    - GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError"'
+    - _JAVA_OPTIONS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx2048m"
+    - GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"'
     - BUILD_THREADS: 2
 
 # iOS
@@ -109,6 +121,24 @@ jobs:
           command: yarn test
           when: always
 
+  # -------------------------
+  #    JOBS: Build Android
+  # -------------------------
+  # Run Android tests
+  build_android:
+    <<: *android_defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native
+
+      # Build and compile
+      - restore-cache: *restore-gradle-downloads-cache
+      - run:
+          name: Build Android App
+          command: yarn detox build -c android.emu.release
+          no_output_timeout: 6m
+      - save-cache: *save-gradle-downloads-cache
+
 # -------------------------
 #        WORK FLOWS
 # -------------------------
@@ -122,5 +152,8 @@ workflows:
           requires:
             - checkout_code
       - test_js:
+          requires:
+            - analyze
+      - build_android:
           requires:
             - analyze
