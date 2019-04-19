@@ -91,11 +91,23 @@ jobs:
 
       - run:
           name: Lint code
-          command: yarn ci
+          command: yarn lint
           when: always
 
-      - store_artifacts:
-          path: ~/react-native/yarn.lock
+
+  # -------------------------
+  #    JOBS: Test Javascript
+  # -------------------------
+  test_js:
+    <<: *js_defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native
+
+      - run:
+          name: Test Javascript
+          command: yarn test
+          when: always
 
 # -------------------------
 #        WORK FLOWS
@@ -109,3 +121,6 @@ workflows:
       - analyze:
           requires:
             - checkout_code
+      - test_js:
+          requires:
+            - analyze
