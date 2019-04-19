@@ -63,6 +63,10 @@ macos_defaults: &macos_defaults
 version: 2
 jobs:
   # Set up a Node environment for downstream jobs
+
+  # -------------------------
+  #    JOBS: Checkout Code
+  # -------------------------
   checkout_code:
     <<: *js_defaults
     steps:
@@ -76,6 +80,23 @@ jobs:
           root: .
           paths: .
 
+  # -------------------------
+  #    JOBS: Analyze Code
+  # -------------------------
+  analyze:
+    <<: *js_defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native
+
+      - run:
+          name: Lint code
+          command: yarn ci
+          when: always
+
+      - store_artifacts:
+          path: ~/react-native/yarn.lock
+
 # -------------------------
 #        WORK FLOWS
 # -------------------------
@@ -85,3 +106,6 @@ workflows:
   tests:
     jobs:
       - checkout_code
+      - analyze:
+          requires:
+            - checkout_code
