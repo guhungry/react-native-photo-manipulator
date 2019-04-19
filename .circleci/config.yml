@@ -1,0 +1,87 @@
+# -------------------------
+#        ALIASES
+# -------------------------
+aliases:
+  # -------------------------
+  #      ALIASES: Caches
+  # -------------------------
+  - &restore-yarn-cache
+    keys:
+      - v1-yarn-cache-{{ arch }}-{{ checksum "package.json" }}
+      - v1-yarn-cache-{{ arch }}
+
+  - &save-yarn-cache
+    paths:
+      - ~/.cache/yarn
+    key: v1-yarn-cache-{{ arch }}-{{ checksum "package.json" }}
+
+  # -------------------------
+  #  ALIASES: Shared Commands
+  # -------------------------
+  - &yarn
+    name: Run Yarn
+    command: |
+      yarn install --non-interactive --cache-folder ~/.cache/yarn
+
+# -------------------------
+#        ENVIRONMENT
+# -------------------------
+defaults: &defaults
+  working_directory: ~/react-native
+  environment:
+    - GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
+
+# JavaScript
+js_defaults: &js_defaults
+  <<: *defaults
+  docker:
+    - image: node:8
+
+# Android
+android_defaults: &android_defaults
+  <<: *defaults
+  docker:
+    - image: reactnativecommunity/react-native-android:2019-1-19
+  resource_class: "large"
+  environment:
+    - TERM: "dumb"
+    - ADB_INSTALL_TIMEOUT: 10
+    - _JAVA_OPTIONS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+    - GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError"'
+    - BUILD_THREADS: 2
+
+# iOS
+macos_defaults: &macos_defaults
+  <<: *defaults
+  macos:
+    xcode: "10.1.0"
+
+
+# -------------------------
+#        JOBS
+# -------------------------
+version: 2
+jobs:
+  # Set up a Node environment for downstream jobs
+  checkout_code:
+    <<: *js_defaults
+    steps:
+      - checkout
+
+      - restore-cache: *restore-yarn-cache
+      - run: *yarn
+      - save-cache: *save-yarn-cache
+
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+# -------------------------
+#        WORK FLOWS
+# -------------------------
+workflows:
+  version: 2
+
+  tests:
+    jobs:
+      - checkout_code
