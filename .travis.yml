@@ -54,4 +54,4 @@ jobs:
         - npm install -g yarn
         - yarn -version
       script:
-        - yarn
+        - yarn detox build -c ios.sim.release
