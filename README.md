@@ -41,10 +41,95 @@ Import library with
 import RNPhotoManipulator from 'react-native-photo-manipulator';
 ```
 
-### Crop and resize
+## API
+* **Types:**
+    * [`ImageSource`](README.md#imagesource)
+    * [`PhotoBatchOperations`](README.md#photobatchoperations)
+    * [`PhotoBatchOverlay`](README.md#photobatchoperations)
+    * [`PhotoBatchPrintText`](README.md#photobatchoperations)
+    * [`Point`](README.md#point)
+    * [`Rect`](README.md#rect)
+    * [`Size`](README.md#size)
+    * [`TextOptions`](README.md#textoptions)
+
+* **Methods:**
+  * [`crop()`](README.md#crop-and-resize)
+  * [`optimize()`](README.md#optimize)
+  * [`overlayImage()`](README.md#overlay-image)
+  * [`printText()`](README.md#print-text)
+  * [`batch()`](README.md#batch)
+
+### Types
+#### ImageSource
+Image resource can be url or require()
+
+| Type      | Description                                                      |
+| --------- | ---------------------------------------------------------------- |
+| number    | Image from require('path/to/image')                              |
+| string    | Image from url supports file://, http://, https:// and ftp://    |
+
+#### PhotoBatchOperations
+Represent [overlay image](README.md#photobatchoverlay) or [print text](README.md#photobatchprinttext) operation
+
+#### PhotoBatchOverlay
+Overlay image batch operation
+
+| Property        | Type                                      | Description                                           |
+| --------------- | ----------------------------------------- | ----------------------------------------------------- |
+| `operation`     | "overlay"                                 |                                                       |
+| `overlay`       | [`ImageSource`](README.md#imagesource)    | The overlay image                                     |
+| `position`      | [`Point`](README.md#point)                | he position of overlay image in background image      |
+
+#### PhotoBatchPrintText
+Print text batch operation
+
+| Property        | Type                                      | Description                          |
+| --------------- | ----------------------------------------- | ------------------------------------ |
+| `operation`     | "text"                                    |                                      |
+| `options`       | [`TextOptions`](README.md#textoptions)    | The text attributes                  |
+
+#### Point
+Represent position (x, y) from top-left of image
+
+| Property        | Type      | Description                          |
+| --------------- | --------- | ------------------------------------ |
+| `x`             | number    | The x-axis coordinate from top-left  |
+| `y`             | number    | The y-axis coordinate from top-left  |
+
+#### Rect
+Represent area of region
+
+| Property        | Type      | Description                          |
+| --------------- | --------- | ------------------------------------ |
+| `x`             | number    | The x-axis coordinate from top-left  |
+| `y`             | number    | The y-axis coordinate from top-left  |
+| `width`         | number    | The width of the region              |
+| `height`        | number    | The height of the region             |
+
+#### Size
+Represent size (width, height) of region or image
+
+| Property        | Type      | Description              |
+| --------------- | --------- | ------------------------ |
+| `width`         | number    | The width of the region  |
+| `height`        | number    | The height of the region |
+
+#### TextOptions
+Represent attributes of text such as text, color, size, and etc.
+
+| Property        | Type                          | Description                                    |
+| --------------- | ----------------------------- | ---------------------------------------------- |
+| `position`      | [`Point`](README.md#point)    | The position of the text in background image   |
+| `text`          | string                        | The value of the text                          |
+| `textSize`      | number                        | The size of the text                           |
+| `color`         | string                        | The color of the text                          |
+| `thickness`     | number                        | The thickness (border width) of the region     |
+
+### Method
+#### Crop and resize
 Crop image with `cropRegion` and resize to `targetSize` if specified
 
-#### Signature
+##### Signature
 ```typescript
 static crop(image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<string>
 ```
@@ -53,10 +138,10 @@ static crop(image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<
 * `cropRegion` (required) Region in { x, y, width, height }
 * `targetSize` (optional) Size in { width, height }
 
-#### Returns
+##### Returns
 Promise with image path in cache directory
 
-#### Example
+##### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
@@ -67,11 +152,11 @@ PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
 });
 ```
 
-### Optimize
+#### Optimize
 Save result `image` with specified `quality` between `0 - 100` in jpeg format
 
 
-#### Signature
+##### Signature
 ```typescript
 static optimize(image: ImageSource, quality: number) => Promise<string>
 ```
@@ -79,10 +164,10 @@ static optimize(image: ImageSource, quality: number) => Promise<string>
 * `image` (required) Uri of image can be http://, https://, file:// and require()
 * `quality` (required) quality of image between `0 - 100`
 
-#### Returns
+##### Returns
 Promise with image path in cache directory
 
-#### Example
+##### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const quality = 90;
@@ -92,10 +177,10 @@ PhotoManipulator.optimize(image, 90).then(path => {
 });
 ```
 
-### Overlay Image
+#### Overlay Image
 Overlay image on top of background image
 
-#### Signature
+##### Signature
 ```typescript
 static overlayImage(image: ImageSource, overlay: ImageSource, position: Point) => Promise<string>
 ```
@@ -104,10 +189,10 @@ static overlayImage(image: ImageSource, overlay: ImageSource, position: Point) =
 * `overlay` (required) Uri of image can be http://, https://, file:// and require()
 * `position` (required) Position of overlay image in { x, y }
 
-#### Returns
+##### Returns
 Promise with image path in cache directory
 
-#### Example
+##### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const overlay = "https://www.iconfinder.com/icons/1174949/download/png/128";
@@ -118,10 +203,10 @@ PhotoManipulator.overlayImage(image, overlay, position).then(path => {
 });
 ```
 
-### Print Text
+#### Print Text
 Print texts into image
 
-#### Signature
+##### Signature
 ```typescript
 static printText(image: ImageSource, texts: TextOptions[]) => Promise<string>
 ```
@@ -129,10 +214,10 @@ static printText(image: ImageSource, texts: TextOptions[]) => Promise<string>
 * `image` (required) Uri of image can be http://, https://, file:// and require()
 * `texts` (required) List of text operations
 
-#### Returns
+##### Returns
 Promise with image path in cache directory
 
-#### Example
+##### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const texts = [
@@ -145,10 +230,10 @@ PhotoManipulator.printText(image, texts).then(path => {
 });
 ```
 
-### Batch
+#### Batch
 Crop, resize and do operations (overlay and printText) on image
 
-#### Signature
+##### Signature
 ```typescript
 static batch(image: ImageSource, operations: PhotoBatchOperations[], cropRegion: Rect, targetSize?: Size, quality?: number) => Promise<string>
 ```
@@ -159,10 +244,10 @@ static batch(image: ImageSource, operations: PhotoBatchOperations[], cropRegion:
 * `targetSize` (optional) Size in { width, height }
 * `quality` (optional) Quality of result image in `0 - 100`
 
-#### Returns
+##### Returns
 Promise with image path in cache directory
 
-#### Example
+##### Example
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
