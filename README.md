@@ -134,9 +134,12 @@ Crop image with `cropRegion` and resize to `targetSize` if specified
 static crop(image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<string>
 ```
 
-* `image` (required) Uri of image can be http://, https://, file:// and require()
-* `cropRegion` (required) Region in { x, y, width, height }
-* `targetSize` (optional) Size in { width, height }
+| Parameter       | Type                                      | Required     | Description                                    |
+| --------------- | ----------------------------------------- | ------------ | ---------------------------------------------- |
+| `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The image                                      |
+| `cropRegion`    | [`Rect`](README.md#rect)                  | Yes          | The region of image to be cropped              |
+| `targetSize`    | [`Size`](README.md#size)                  | No           | The target size of result image                |
+
 
 ##### Returns
 Promise with image path in cache directory
@@ -161,8 +164,10 @@ Save result `image` with specified `quality` between `0 - 100` in jpeg format
 static optimize(image: ImageSource, quality: number) => Promise<string>
 ```
 
-* `image` (required) Uri of image can be http://, https://, file:// and require()
-* `quality` (required) quality of image between `0 - 100`
+| Parameter       | Type                                      | Required     | Description                                    |
+| --------------- | ----------------------------------------- | ------------ | ---------------------------------------------- |
+| `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The image                                      |
+| `quality`       | number                                    | Yes          | The quality of result image between `0 - 100`         |
 
 ##### Returns
 Promise with image path in cache directory
@@ -185,9 +190,11 @@ Overlay image on top of background image
 static overlayImage(image: ImageSource, overlay: ImageSource, position: Point) => Promise<string>
 ```
 
-* `image` (required) Uri of image can be http://, https://, file:// and require()
-* `overlay` (required) Uri of image can be http://, https://, file:// and require()
-* `position` (required) Position of overlay image in { x, y }
+| Parameter       | Type                                      | Required     | Description                                            |
+| --------------- | ----------------------------------------- | ------------ | ------------------------------------------------------ |
+| `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The background image                                   |
+| `overlay`       | [`ImageSource`](README.md#imagesource)    | Yes          | The overlay image                                      |
+| `position`      | [`Point`](README.md#point)                | Yes          | The position of overlay image in background image      |
 
 ##### Returns
 Promise with image path in cache directory
@@ -211,8 +218,10 @@ Print texts into image
 static printText(image: ImageSource, texts: TextOptions[]) => Promise<string>
 ```
 
-* `image` (required) Uri of image can be http://, https://, file:// and require()
-* `texts` (required) List of text operations
+| Parameter       | Type                                      | Required     | Description                                            |
+| --------------- | ----------------------------------------- | ------------ | ------------------------------------------------------ |
+| `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The image                                              |
+| `texts`         | [`TextOptions[]`](README.md#textoptions)  | Yes          | The list of text operations                            |
 
 ##### Returns
 Promise with image path in cache directory
@@ -238,11 +247,13 @@ Crop, resize and do operations (overlay and printText) on image
 static batch(image: ImageSource, operations: PhotoBatchOperations[], cropRegion: Rect, targetSize?: Size, quality?: number) => Promise<string>
 ```
 
-* `image` (required) Uri of image can be http://, https://, file:// and require()
-* `operations` (required) List of image processing operations
-* `cropRegion` (required) Region in { x, y, width, height }
-* `targetSize` (optional) Size in { width, height }
-* `quality` (optional) Quality of result image in `0 - 100`
+| Parameter       | Type                                                        | Required     | Description                                       |
+| --------------- | ----------------------------------------------------------- | ------------ | ------------------------------------------------- |
+| `image`         | [`ImageSource`](README.md#imagesource)                      | Yes          | The image                                         |
+| `operations`    | [`PhotoBatchOperations[]`](README.md#photobatchoperations)  | Yes          | The list of operations                            |
+| `cropRegion`    | [`Rect`](README.md#rect)                                    | Yes          | The region of image to be cropped                 |
+| `targetSize`    | [`Size`](README.md#size)                                    | No           | The target size of result image                   |
+| `quality`       | number                                                      | No           | The quality of result image between `0 - 100`     |
 
 ##### Returns
 Promise with image path in cache directory
