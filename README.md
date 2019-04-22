@@ -154,6 +154,8 @@ PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
+<img src="/docs/result-crop.jpg?raw=true" width="100" />
+<img src="/docs/result-crop-resize.jpg?raw=true" width="100" />
 
 #### Optimize
 Save result `image` with specified `quality` between `0 - 100` in jpeg format
@@ -181,6 +183,7 @@ PhotoManipulator.optimize(image, 90).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
+<img src="/docs/result-optimize.jpg?raw=true" width="100" />
 
 #### Overlay Image
 Overlay image on top of background image
@@ -209,6 +212,7 @@ PhotoManipulator.overlayImage(image, overlay, position).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
+<img src="/docs/result-overlay.jpg?raw=true" width="100" />
 
 #### Print Text
 Print texts into image
@@ -238,6 +242,7 @@ PhotoManipulator.printText(image, texts).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
+<img src="/docs/result-print-text.jpg?raw=true" width="100" />
 
 #### Batch
 Crop, resize and do operations (overlay and printText) on image
@@ -273,3 +278,4 @@ PhotoManipulator.batch(image, cropRegion, targetSize, operations, quality).then(
     console.log(`Result image path: ${path}`);
 });
 ```
+<img src="/docs/result-batch.jpg?raw=true" width="100" />
