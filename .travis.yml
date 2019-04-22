@@ -56,5 +56,5 @@ jobs:
         - brew tap wix/brew
         - brew install applesimutils
       script:
-        - yarn detox build -c ios.sim.release
-        - yarn detox test -c ios.sim.release
+        - yarn detox build -c ios.sim.debug
+        - yarn detox test -c ios.sim.debug
