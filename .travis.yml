@@ -53,5 +53,8 @@ jobs:
         - node --version
         - npm install -g yarn
         - yarn -version
+        - brew tap wix/brew
+        - brew install applesimutils
       script:
         - yarn detox build -c ios.sim.release
+        - yarn detox test -c ios.sim.release
