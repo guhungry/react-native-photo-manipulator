@@ -47,6 +47,7 @@ jobs:
     - stage: build
       name: "Build iOS"
       language: objective-c
+      os: osx
       osx_image: xcode10.1
       before_install:
         - nvm install 10
