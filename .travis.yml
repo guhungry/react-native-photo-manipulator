@@ -54,6 +54,8 @@ jobs:
         - node --version
         - npm install -g yarn
         - yarn -version
+        - softwareupdate --list
+        - softwareupdate --install "Command Line Tools (macOS High Sierra version 10.13) for Xcode-10.1"
         - brew tap wix/brew
         - brew install applesimutils
         - yarn detox clean-framework-cache &&  yarn detox build-framework-cache
