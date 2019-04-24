@@ -127,7 +127,24 @@ RCT_EXPORT_METHOD(printText:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-    resolve(uri);
+    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+        if (error) {
+            reject(@(error.code).stringValue, error.description, error);
+            return;
+        }
+        for (id options in list) {
+            NSString *text = [RCTConvert NSString:options[@"text"]];
+            CGPoint position = [RCTConvert CGPoint:options[@"position"]];
+            CGFloat textSize = [RCTConvert CGFloat:options[@"textSize"]];
+            UIColor *color = [ParamUtils color:options[@"color"]];
+            CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
+            
+            image = [image drawText:text position:position color:color size:textSize thickness:thickness];
+        }
+        
+        NSString *uri = [ImageUtils saveTempFile:image mimeType:MimeUtils.JPEG quality:DEFAULT_QUALITY];
+        resolve(uri);
+    }];
 }
 
 RCT_EXPORT_METHOD(optimize:(NSURLRequest *)uri
