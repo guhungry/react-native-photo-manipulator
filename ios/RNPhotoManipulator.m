@@ -152,7 +152,15 @@ RCT_EXPORT_METHOD(optimize:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-    resolve(uri);
+    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+        if (error) {
+            reject(@(error.code).stringValue, error.description, error);
+            return;
+        }
+        
+        NSString *uri = [ImageUtils saveTempFile:image mimeType:MimeUtils.JPEG quality:quality];
+        resolve(uri);
+    }];
 }
 
 @end
