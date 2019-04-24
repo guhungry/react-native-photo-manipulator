@@ -64,4 +64,4 @@ jobs:
         - react-native start &
       script:
         - yarn detox build -c ios.sim.debug
-        - yarn detox test -c ios.sim.debug
+        - yarn detox test -c ios.sim.debug -l verbose
