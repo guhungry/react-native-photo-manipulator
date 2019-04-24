@@ -1,0 +1,159 @@
+# -------------------------
+#        ALIASES
+# -------------------------
+aliases:
+  # -------------------------
+  #      ALIASES: Caches
+  # -------------------------
+  # Yarn
+  - &restore-yarn-cache
+    keys:
+      - v1-yarn-cache-{{ arch }}-{{ checksum "package.json" }}
+      - v1-yarn-cache-{{ arch }}
+
+  - &save-yarn-cache
+    paths:
+      - ~/.cache/yarn
+    key: v1-yarn-cache-{{ arch }}-{{ checksum "package.json" }}
+
+  # Android
+
+  - &restore-gradle-downloads-cache
+    keys:
+      - v1-gradle-{{ checksum "example/android/build.gradle" }}
+      - v1-gradle-
+
+  - &save-gradle-downloads-cache
+    paths:
+      - ~/.gradle
+    key: v1-gradle-{{ checksum "example/android/build.gradle" }}
+
+  # -------------------------
+  #  ALIASES: Shared Commands
+  # -------------------------
+  - &yarn
+    name: Run Yarn
+    command: |
+      yarn install --non-interactive --cache-folder ~/.cache/yarn
+
+# -------------------------
+#        ENVIRONMENT
+# -------------------------
+defaults: &defaults
+  working_directory: ~/react-native
+  environment:
+    - GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
+
+# JavaScript
+js_defaults: &js_defaults
+  <<: *defaults
+  docker:
+    - image: node:8
+
+# Android
+android_defaults: &android_defaults
+  <<: *defaults
+  docker:
+    - image: reactnativecommunity/react-native-android:2019-1-19
+  environment:
+    - TERM: "dumb"
+    - ADB_INSTALL_TIMEOUT: 10
+    - _JAVA_OPTIONS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx2048m"
+    - GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"'
+    - BUILD_THREADS: 2
+
+# iOS
+macos_defaults: &macos_defaults
+  <<: *defaults
+  macos:
+    xcode: "10.1.0"
+
+
+# -------------------------
+#        JOBS
+# -------------------------
+version: 2
+jobs:
+  # Set up a Node environment for downstream jobs
+
+  # -------------------------
+  #    JOBS: Checkout Code
+  # -------------------------
+  checkout_code:
+    <<: *js_defaults
+    steps:
+      - checkout
+
+      - restore-cache: *restore-yarn-cache
+      - run: *yarn
+      - save-cache: *save-yarn-cache
+
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  # -------------------------
+  #    JOBS: Analyze Code
+  # -------------------------
+  analyze:
+    <<: *js_defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native
+
+      - run:
+          name: Lint code
+          command: yarn lint
+          when: always
+
+
+  # -------------------------
+  #    JOBS: Test Javascript
+  # -------------------------
+  test_js:
+    <<: *js_defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native
+
+      - run:
+          name: Test Javascript
+          command: yarn test
+          when: always
+
+  # -------------------------
+  #    JOBS: Build Android
+  # -------------------------
+  # Run Android tests
+  build_android:
+    <<: *android_defaults
+    steps:
+      - attach_workspace:
+          at: ~/react-native
+
+      # Build and compile
+      - restore-cache: *restore-gradle-downloads-cache
+      - run:
+          name: Build Android App
+          command: yarn detox build -c android.emu.release
+          no_output_timeout: 6m
+      - save-cache: *save-gradle-downloads-cache
+
+# -------------------------
+#        WORK FLOWS
+# -------------------------
+workflows:
+  version: 2
+
+  tests:
+    jobs:
+      - checkout_code
+      - analyze:
+          requires:
+            - checkout_code
+      - test_js:
+          requires:
+            - analyze
+      - build_android:
+          requires:
+            - analyze

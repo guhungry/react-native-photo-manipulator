@@ -1,0 +1,71 @@
+cache:
+  directories:
+    - node_modules
+
+env:
+  global:
+    - ANDROID_HOME=/usr/local/android-sdk
+    - ANDROID_SDK_ROOT=/usr/local/android-sdk
+    - TOOLS=${ANDROID_HOME}/tools
+    - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+    - export QEMU_AUDIO_DRV=none
+
+jobs:
+  include:
+    - stage: test
+      language: node_js
+      node_js:
+        - "10"
+
+      before_install:
+        - npm install -g yarn
+      script:
+        - yarn ci
+
+    - stage: build
+      name: "Build Android"
+      language: android
+      android:
+        components:
+          - tools
+        licenses:
+          - 'android-sdk-preview-license-.+'
+          - 'android-sdk-license-.+'
+          - 'google-gdk-license-.+'
+      before_install:
+        - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid harmless sdkmanager warning
+        - yes | sdkmanager "platform-tools" >/dev/null
+        - yes | sdkmanager "tools" >/dev/null # A second time per Travis docs, gets latest versions
+        - yes | sdkmanager "build-tools;28.0.3" >/dev/null # Implicit gradle dependency - gradle drives changes
+        - yes | sdkmanager "platforms;android-28" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
+        - yes | sdkmanager "extras;android;m2repository" >/dev/null
+        - nvm install 10
+        - node --version
+        - npm install -g yarn
+        - yarn -version
+        - yarn
+      script:
+        - yarn detox build -c android.emu.release
+
+    - stage: build
+      name: "Build iOS"
+      language: objective-c
+      os: osx
+      osx_image: xcode10.1
+      before_install:
+        - nvm install 10
+        - node --version
+        - npm install -g yarn
+        - yarn -version
+        - yarn
+        - softwareupdate --list
+        - softwareupdate --install "Command Line Tools (macOS High Sierra version 10.13) for Xcode-10.1"
+        - brew tap wix/brew
+        - brew install applesimutils
+        - yarn global add react-native-cli
+        - yarn detox clean-framework-cache &&  yarn detox build-framework-cache
+        - xcrun simctl boot "iPhone X" || true
+        - react-native start &
+      script:
+        - yarn detox build -c ios.sim.debug
+        - yarn detox test -c ios.sim.debug -l verbose
