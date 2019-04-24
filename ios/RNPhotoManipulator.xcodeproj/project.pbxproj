@@ -7,26 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F35D1ED225322410016F006 /* WCPhotoManipulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F138CD1224B90870070D153 /* WCPhotoManipulator.framework */; };
 		7F85A5C72249D5CA005139A9 /* ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85A5C62249D5CA005139A9 /* ParamUtils.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNPhotoManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */; };
 		CC18CAD2224890F500BFB221 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18CAD1224890F500BFB221 /* ImageUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7F138CD0224B90870070D153 /* PBXContainerItemProxy */ = {
+		7FEFCB3B22701CC6000F4050 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7F138CCB224B90860070D153 /* WCPhotoManipulator.xcodeproj */;
+			containerPortal = 7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 7F85A5A52244DAB5005139A9;
+			remoteGlobalIDString = 7F4954582270118D004F8851;
 			remoteInfo = WCPhotoManipulator;
-		};
-		7F138CD2224B90870070D153 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7F138CCB224B90860070D153 /* WCPhotoManipulator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7F85A5AE2244DAB5005139A9;
-			remoteInfo = WCPhotoManipulatorTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,25 +36,14 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNPhotoManipulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNPhotoManipulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F138CCB224B90860070D153 /* WCPhotoManipulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WCPhotoManipulator.xcodeproj; path = WCPhotoManipulator/WCPhotoManipulator.xcodeproj; sourceTree = "<group>"; };
 		7F85A5C52249D5CA005139A9 /* ParamUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParamUtils.h; sourceTree = "<group>"; };
 		7F85A5C62249D5CA005139A9 /* ParamUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParamUtils.m; sourceTree = "<group>"; };
+		7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WCPhotoManipulator.xcodeproj; path = WCPhotoManipulator/WCPhotoManipulator.xcodeproj; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNPhotoManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPhotoManipulator.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPhotoManipulator.m; sourceTree = "<group>"; };
 		CC18CAD0224890F500BFB221 /* ImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		CC18CAD1224890F500BFB221 /* ImageUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		58B511D81A9E6C8500147676 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7F35D1ED225322410016F006 /* WCPhotoManipulator.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		134814211AA4EA7D00B7C361 /* Products */ = {
@@ -91,18 +72,9 @@
 		7F138CCA224B904A0070D153 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				7F138CCB224B90860070D153 /* WCPhotoManipulator.xcodeproj */,
+				7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		7F138CCC224B90860070D153 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7F138CD1224B90870070D153 /* WCPhotoManipulator.framework */,
-				7F138CD3224B90870070D153 /* WCPhotoManipulatorTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7F35D1EA225322410016F006 /* Frameworks */ = {
@@ -110,6 +82,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FEFCB3822701CC6000F4050 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FEFCB3C22701CC6000F4050 /* libWCPhotoManipulator.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +100,6 @@
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNPhotoManipulator" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
-				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
 			);
 			buildRules = (
@@ -158,8 +137,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 7F138CCC224B90860070D153 /* Products */;
-					ProjectRef = 7F138CCB224B90860070D153 /* WCPhotoManipulator.xcodeproj */;
+					ProductGroup = 7FEFCB3822701CC6000F4050 /* Products */;
+					ProjectRef = 7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -170,18 +149,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7F138CD1224B90870070D153 /* WCPhotoManipulator.framework */ = {
+		7FEFCB3C22701CC6000F4050 /* libWCPhotoManipulator.a */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = WCPhotoManipulator.framework;
-			remoteRef = 7F138CD0224B90870070D153 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7F138CD3224B90870070D153 /* WCPhotoManipulatorTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = WCPhotoManipulatorTests.xctest;
-			remoteRef = 7F138CD2224B90870070D153 /* PBXContainerItemProxy */;
+			fileType = archive.ar;
+			path = libWCPhotoManipulator.a;
+			remoteRef = 7FEFCB3B22701CC6000F4050 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
