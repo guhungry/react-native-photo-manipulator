@@ -81,3 +81,4 @@ jobs:
         - echo "//registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN" > ~/.npmrc
       script:
         - npm publish
+      if: branch = master AND branch =~ ^v
