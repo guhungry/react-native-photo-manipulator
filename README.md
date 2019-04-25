@@ -1,6 +1,9 @@
 # React Native Photo Manipulator
 Image processing library to edit photo programmatically in React Native
 
+[![Build Status](https://travis-ci.org/guhungry/react-native-photo-manipulator.svg?branch=master)](https://travis-ci.org/guhungry/react-native-photo-manipulator)
+[![npm version](http://img.shields.io/npm/v/react-native-photo-manipulator.svg?style=flat)](https://npmjs.org/package/react-native-photo-manipulator "View this project on npm")
+
 ## Getting started
 
 `$ yarn add react-native-photo-manipulator`
