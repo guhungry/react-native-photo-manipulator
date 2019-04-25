@@ -1,6 +1,6 @@
 {
   "name": "react-native-photo-manipulator",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Image processing library to edit photo programmatically in React Native",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -54,13 +54,13 @@
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "example/ios/build/Build/Products/Debug-iphonesimulator/PhotoManipulatorExample.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone X' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath example/ios/build -UseModernBuildSystem=YES -sdk iphonesimulator | xcpretty -k",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath example/ios/build -sdk iphonesimulator | xcpretty -k",
         "type": "ios.simulator",
         "name": "iPhone 5s"
       },
       "ios.sim.release": {
         "binaryPath": "example/ios/build/Build/Products/Release-iphonesimulator/PhotoManipulatorExample.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone X' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath example/ios/build -UseModernBuildSystem=YES -sdk iphonesimulator | xcpretty -k",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath example/ios/build -sdk iphonesimulator | xcpretty -k",
         "type": "ios.simulator",
         "name": "iPhone 5s"
       },
