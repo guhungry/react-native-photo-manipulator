@@ -9,6 +9,7 @@ env:
     - TOOLS=${ANDROID_HOME}/tools
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
     - export QEMU_AUDIO_DRV=none
+    - secure: "kTGiOTnUMxB1nWesS53dZdLeqgZpZBFS1/1a49dkWnLRtBv4ISwoe49x58tDmI1Qx24jcCNZOkc5mm+JAznAHt4qQF4gUip0y/Jv0mpALR3CX9K1tWml24xnn20U/2aON3UYXZmFM71w5yoFr3BS4FGXFR3zIfi44iUZaoj8LGAkjnu2sc0XFG5eb1C9CHi3MFz1MaLiNGQV/GhHHqNzZJCTn3/ICrT41F9i+0Lec+jjBneqTd8k2kg1JEsVZuviBi/QQd8WraAm1xb93ZOkUgl7wMMxRAV8pDE0+qqCx+r2LlONxMDMOkJpHE87GsNrKavOtojtWDk5lyHyUubezlSZXfE2Wu94/2bH65vT3g6+1QXq5AEtCc13p8D3Mm4XHXryHXBRBAP7nalrSpUdZj0DnbNP1BJEpC2AaJGOyFBaDT4ldFgCFcx2vXhj/+1ifhbV4+7XtEwX7NThT20Ub6eHgygUkxZ1bHSEXl7mKgblvKDuqeVBH4vVF3IgPW2fSZqsFDEkGiJDWmpkaKOi/B5fMX7uiigJtbjsRWHsxrLRxAFOy2DpDxK4yu8YGsTbDEuzd9um/57650kw22szKLMX+xXfVmxr0zdzVX+CLZVr9hNQ2OlWhu2uu1vXzY5yZWjtWJMA8iytTrVKzHvWwCUB9AzSKB0mYY8hFtlpaZg="
 
 jobs:
   include:
@@ -70,11 +71,13 @@ jobs:
         - yarn detox build -c ios.sim.debug
         - yarn detox test -c ios.sim.debug -l verbose
 
-deploy:
-  provider: npm
-  email: guhungry@gmail.com
-  api_key:
-    secure: KLmoUMac1wc5/2no4fIqUDarl4ET6gaJ8BNSYDXLMhFriCLtR7DzIqsLHPLL4HXbNySBs7RPCoJIOlPA2e/6HYjwWi/Ah+r6sEESuq2bETrw0yUa8O210TYy8GVPNkZkY8ZGCW94CcH+VMPuOqCqKMFiLVIsSIaUqEUYPRreb94yIv1B14sgs+s4GYG+RlwIKn62LxTxY/O3AMGFefLQsszhoVHfZf7XZUbKhQXSD/6KF9qABmgLSKMn4OdDgQdpRAU2KeLtnTXCvcgw9gZwP0AqTWEflM9oRHOxfWUIRb3uoaU+8zCdAZ+eODUpuJRDWzyXBa+DyGAlVEnFroV5dCnT020zfrF7nBB5Fse9inT8wiQ+oI0kmswEg+kqXCY6DFlSeA5RuEMkT3Ix4w9TGqByOaBb97uPJSxPeK9eUBLa6tJgdSee2pfce+fXDOgQybjhuAUsrvBswQBff6yiIn1jDiK5flPDzC4dD6OZCRGglPbLLdooJIS22rrCu1pqutnNIWS0ud50LA0WMMruicfX+djOyhBAN4wt3YEpUh4cdAGIuMdvdBFQLnNXQ/VhqD40A6Z2yFpclK6it2YQmMmCShtaT8ehvTzgy5v03NwMG79A/KXcMQGUSl5ztglbxlAZoSNCm9fJCbvNIn+V8TnB3dVBWdDMvdzLGLYqyy0=
-#  on:
-#    tags: true
-#    branch: master
+    - stage: deploy
+      name: "Publish to npm"
+      language: node_js
+      node_js:
+        - "10"
+
+      before_install:
+        - echo "//registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN" > ~/.npmrc
+      script:
+        - npm publish
