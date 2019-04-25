@@ -64,7 +64,7 @@ jobs:
         - brew install applesimutils
         - yarn global add react-native-cli
         - yarn detox clean-framework-cache &&  yarn detox build-framework-cache
-        - xcrun simctl boot "iPhone X" || true
+        - xcrun simctl boot "iPhone 5s" || true
         - react-native start &
       script:
         - yarn detox build -c ios.sim.debug

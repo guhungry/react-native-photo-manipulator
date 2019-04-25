@@ -56,13 +56,13 @@
         "binaryPath": "example/ios/build/Build/Products/Debug-iphonesimulator/PhotoManipulatorExample.app",
         "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone X' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath example/ios/build -UseModernBuildSystem=YES -sdk iphonesimulator | xcpretty -k",
         "type": "ios.simulator",
-        "name": "iPhone X"
+        "name": "iPhone 5s"
       },
       "ios.sim.release": {
         "binaryPath": "example/ios/build/Build/Products/Release-iphonesimulator/PhotoManipulatorExample.app",
         "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone X' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath example/ios/build -UseModernBuildSystem=YES -sdk iphonesimulator | xcpretty -k",
         "type": "ios.simulator",
-        "name": "iPhone X"
+        "name": "iPhone 5s"
       },
       "android.emu.debug": {
         "binaryPath": "example/android/app/build/outputs/apk/debug/app-debug.apk",
