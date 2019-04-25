@@ -69,3 +69,12 @@ jobs:
       script:
         - yarn detox build -c ios.sim.debug
         - yarn detox test -c ios.sim.debug -l verbose
+
+deploy:
+  provider: npm
+  email: guhungry@gmail.com
+  api_key:
+    secure: KLmoUMac1wc5/2no4fIqUDarl4ET6gaJ8BNSYDXLMhFriCLtR7DzIqsLHPLL4HXbNySBs7RPCoJIOlPA2e/6HYjwWi/Ah+r6sEESuq2bETrw0yUa8O210TYy8GVPNkZkY8ZGCW94CcH+VMPuOqCqKMFiLVIsSIaUqEUYPRreb94yIv1B14sgs+s4GYG+RlwIKn62LxTxY/O3AMGFefLQsszhoVHfZf7XZUbKhQXSD/6KF9qABmgLSKMn4OdDgQdpRAU2KeLtnTXCvcgw9gZwP0AqTWEflM9oRHOxfWUIRb3uoaU+8zCdAZ+eODUpuJRDWzyXBa+DyGAlVEnFroV5dCnT020zfrF7nBB5Fse9inT8wiQ+oI0kmswEg+kqXCY6DFlSeA5RuEMkT3Ix4w9TGqByOaBb97uPJSxPeK9eUBLa6tJgdSee2pfce+fXDOgQybjhuAUsrvBswQBff6yiIn1jDiK5flPDzC4dD6OZCRGglPbLLdooJIS22rrCu1pqutnNIWS0ud50LA0WMMruicfX+djOyhBAN4wt3YEpUh4cdAGIuMdvdBFQLnNXQ/VhqD40A6Z2yFpclK6it2YQmMmCShtaT8ehvTzgy5v03NwMG79A/KXcMQGUSl5ztglbxlAZoSNCm9fJCbvNIn+V8TnB3dVBWdDMvdzLGLYqyy0=
+#  on:
+#    tags: true
+#    branch: master
