@@ -8,8 +8,8 @@ env:
     - ANDROID_SDK_ROOT=/usr/local/android-sdk
     - TOOLS=${ANDROID_HOME}/tools
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-    - export QEMU_AUDIO_DRV=none
-    - secure: "kTGiOTnUMxB1nWesS53dZdLeqgZpZBFS1/1a49dkWnLRtBv4ISwoe49x58tDmI1Qx24jcCNZOkc5mm+JAznAHt4qQF4gUip0y/Jv0mpALR3CX9K1tWml24xnn20U/2aON3UYXZmFM71w5yoFr3BS4FGXFR3zIfi44iUZaoj8LGAkjnu2sc0XFG5eb1C9CHi3MFz1MaLiNGQV/GhHHqNzZJCTn3/ICrT41F9i+0Lec+jjBneqTd8k2kg1JEsVZuviBi/QQd8WraAm1xb93ZOkUgl7wMMxRAV8pDE0+qqCx+r2LlONxMDMOkJpHE87GsNrKavOtojtWDk5lyHyUubezlSZXfE2Wu94/2bH65vT3g6+1QXq5AEtCc13p8D3Mm4XHXryHXBRBAP7nalrSpUdZj0DnbNP1BJEpC2AaJGOyFBaDT4ldFgCFcx2vXhj/+1ifhbV4+7XtEwX7NThT20Ub6eHgygUkxZ1bHSEXl7mKgblvKDuqeVBH4vVF3IgPW2fSZqsFDEkGiJDWmpkaKOi/B5fMX7uiigJtbjsRWHsxrLRxAFOy2DpDxK4yu8YGsTbDEuzd9um/57650kw22szKLMX+xXfVmxr0zdzVX+CLZVr9hNQ2OlWhu2uu1vXzY5yZWjtWJMA8iytTrVKzHvWwCUB9AzSKB0mYY8hFtlpaZg="
+    - QEMU_AUDIO_DRV=none
+    - secure: hatwqC4bsfDLFU45N5bLhC8W0nxzXo2aH+HSvGKi1hjzwGgm+gjpJyrm1D45S7xJbgtrHkhOm6He4JqFz/kEgW2BfhIq4zHBO8fUUfOzG91lGNk9tvqlOY7FMQOLJL0bIAFsoy3E3ZWhdE4XJOSkvrQVVKA+IH9gDrfyV+9mkA3sgnKIT1Sa589Ty2p6nxbCsTLVyhHT2U1PXnasAa37rrD+jL78GbgoQHY6/2RGKJQIEfB6fgjSSxduft+1o7bC+bpWoSdQBDiWHYfw+7OIvBG64Cpnps5DTjBdnbKGPiFvTZ5pNRD3Q1bdvkF3HGRC4Oss9BeKm1oNx+3AceWHr/qA/LSuSk3M+rEbu7UkigAmILhDvzf10FZgoPC/IdPdwiXDAvpBDYA0CNz9+FwaWwtzncqndOQcj797kwDJ6JUGBpBkQWW9lpNSzxerygNNdmG2QmNEk8xOUPRht2aufc+0pPl/ZY9PUIW11IChvSrq5hqMmd/PIvO3mwf7zVj58ddBy5vFAakFuJrAUB0KD4dKW2NHkKFIwIvIs2NXHFhTJNSQxSs+qTN4vSGTKcPZfH0+eT0/kE6bQ5OnDkZryIbyW+7GTI/56R3EMuu+o5OE762S8G4gN2SwrqGxlxAVUdh3oltBLlfh73fiFdZDny+Nc3ABWC2QHFvAaT8Qor4=
 
 jobs:
   include:
@@ -76,9 +76,8 @@ jobs:
       language: node_js
       node_js:
         - "10"
-
       before_install:
         - echo "//registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN" > ~/.npmrc
       script:
         - npm publish
-      if: branch = master AND branch =~ ^v
+      if: tag =~ ^v
