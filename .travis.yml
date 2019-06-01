@@ -26,6 +26,7 @@ jobs:
     - stage: build
       name: "Build Android"
       language: android
+      dist: trusty
       android:
         components:
           - tools
