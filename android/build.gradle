@@ -60,5 +60,5 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 dependencies {
     api 'com.facebook.react:react-native:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "com.guhungry.android:photo-manipulator:0.0.6"
+    implementation "com.guhungry.android:photo-manipulator:1.0.0"
 }
