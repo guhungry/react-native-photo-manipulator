@@ -155,11 +155,13 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':react-native-photo-manipulator')
-    implementation project(':detox')
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    androidTestImplementation(project(path: ":detox"))
+    androidTestImplementation(project(path: ":detox")) {
+        transitive = true
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+    }
     androidTestImplementation 'junit:junit:4.12'
 }
 
