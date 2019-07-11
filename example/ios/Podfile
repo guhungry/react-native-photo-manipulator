@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
+require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
 target 'PhotoManipulatorExample' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
@@ -31,6 +33,8 @@ target 'PhotoManipulatorExample' do
   pod 'glog', :podspec => '../../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  use_native_modules!("../..")
+  
   target 'PhotoManipulatorExampleTests' do
     inherit! :search_paths
     # Pods for testing
