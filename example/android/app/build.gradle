@@ -94,6 +94,15 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+/**
+ * Use international variant JavaScriptCore
+ * International variant includes ICU i18n library and necessary data allowing to use
+ * e.g. Date.toLocaleString and String.localeCompare that give correct results
+ * when using with locales other than en-US.
+ * Note that this variant is about 6MiB larger per architecture than default.
+ */
+def useIntlJsc = false
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -158,6 +167,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
+    // JSC from node_modules
+    if (useIntlJsc) {
+        implementation 'org.webkit:android-jsc-intl:+'
+    } else {
+        implementation 'org.webkit:android-jsc:+'
+    }
+
     androidTestImplementation(project(path: ":detox")) {
         transitive = true
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
@@ -171,3 +187,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply from: file("../../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project, '../..')
