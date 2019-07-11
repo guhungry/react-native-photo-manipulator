@@ -11,7 +11,8 @@
     "lint": "yarn tsc --noEmit && yarn eslint ./src --ext .ts,.tsx",
     "build": "yarn tsc",
     "prepack": "yarn build",
-    "test": "yarn jest src"
+    "test": "yarn jest src",
+    "postinstall": "npx jetify"
   },
   "peerDependencies": {
     "react": "^16.0",
