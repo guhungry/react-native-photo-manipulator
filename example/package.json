@@ -18,7 +18,8 @@
     "detox": "^13.1.1",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "^0.54.1",
-    "react-test-renderer": "16.8.6"
+    "react-test-renderer": "16.8.6",
+    "typescript": "^3.5.3"
   },
   "jest": {
     "preset": "react-native"
