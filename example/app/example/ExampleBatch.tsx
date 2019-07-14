@@ -2,8 +2,7 @@ import * as React from "react"
 import { Image } from "react-native"
 import styles from "../App.styles"
 import { noop } from "../utils"
-import PhotoManipulator from "../../../src/PhotoManipulator"
-import { PhotoBatchOperations } from "../../../src/PhotoManipulatorTypes"
+import PhotoManipulator, { PhotoBatchOperations } from "react-native-photo-manipulator"
 import { IMAGE, OVERLAY } from "./settings"
 
 export default React.memo(function ExampleBatch() {

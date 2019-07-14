@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Image } from "react-native"
 import styles from "../App.styles"
-import PhotoManipulator from "../../../src/PhotoManipulator"
+import PhotoManipulator from "react-native-photo-manipulator"
 import { noop } from "../utils"
 import { IMAGE } from "./settings"
 

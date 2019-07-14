@@ -2,7 +2,7 @@ import * as React from "react"
 import { Image, Text } from "react-native"
 import styles from "../App.styles"
 import { noop } from "../utils"
-import PhotoManipulator from "../../../src/PhotoManipulator"
+import PhotoManipulator from "react-native-photo-manipulator"
 import { IMAGE } from "./settings"
 
 export default React.memo(function ExampleCrop() {
