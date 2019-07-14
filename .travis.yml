@@ -1,6 +1,7 @@
 cache:
   directories:
     - node_modules
+    - example/node_modules
 
 env:
   global:
@@ -46,6 +47,7 @@ jobs:
         - npm install -g yarn
         - yarn -version
         - yarn
+        - cd example && yarn && cd ..
       script:
         - yarn detox build -c android.emu.release
 
@@ -60,6 +62,7 @@ jobs:
         - npm install -g yarn
         - yarn -version
         - yarn
+        - cd example && yarn && cd ..
         - softwareupdate --list
         - softwareupdate --install "Command Line Tools (macOS High Sierra version 10.13) for Xcode-10.1"
         - brew tap wix/brew
