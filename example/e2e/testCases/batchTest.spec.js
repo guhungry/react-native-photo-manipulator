@@ -1,8 +1,9 @@
 /* global device, element, by */
 
 describe('PhotoManipulator', () => {
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     await device.reloadReactNative();
+    done()
   });
 
   describe("batch", () => {
