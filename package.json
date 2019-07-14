@@ -11,8 +11,7 @@
     "lint": "yarn tsc --noEmit && yarn eslint ./src --ext .ts,.tsx",
     "build": "yarn tsc",
     "prepack": "yarn build",
-    "test": "yarn jest src",
-    "postinstall": "npx jetify"
+    "test": "yarn jest src"
   },
   "peerDependencies": {
     "react": "^16.0",
@@ -42,7 +41,6 @@
     "eslint-plugin-react-native": "3.6.0",
     "jest": "^24.8.0",
     "jest-extended": "^0.11.1",
-    "jetifier": "^1.6.2",
     "metro-react-native-babel-preset": "^0.54.1",
     "react": "16.8.6",
     "react-native": "0.60.0",
