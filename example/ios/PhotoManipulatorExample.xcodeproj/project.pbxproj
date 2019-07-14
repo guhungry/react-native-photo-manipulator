@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PhotoManipulatorExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PhotoManipulatorExampleTests.m */; };
-		121B4038828295EDACF98101 /* libPods-PhotoManipulatorExample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5916F74F8C70FA5B9CE7DA23 /* libPods-PhotoManipulatorExample-tvOSTests.a */; };
+		128ABF22E2ED62022D835286 /* libPods-PhotoManipulatorExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE89AEE675DF5E975BF8912 /* libPods-PhotoManipulatorExampleTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -16,17 +16,10 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* PhotoManipulatorExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PhotoManipulatorExampleTests.m */; };
-		6F476B0B5A5F388CF292B020 /* libPods-PhotoManipulatorExample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEFD0B413563AF00ED0E97A /* libPods-PhotoManipulatorExample-tvOS.a */; };
-		7FEFCBB8227034E7000F4050 /* libRNPhotoManipulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFCBB5227034A0000F4050 /* libRNPhotoManipulator.a */; };
-		7FEFCBB9227034E7000F4050 /* libWCPhotoManipulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFCBAC22703384000F4050 /* libWCPhotoManipulator.a */; };
-		7FEFCBBA227034FA000F4050 /* libRNPhotoManipulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFCBB5227034A0000F4050 /* libRNPhotoManipulator.a */; };
-		7FEFCBBB227034FA000F4050 /* libWCPhotoManipulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEFCBAC22703384000F4050 /* libWCPhotoManipulator.a */; };
-		968C5110F6ECC0368A7580F6 /* libPods-PhotoManipulatorExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC7945449BBC155727C76A4 /* libPods-PhotoManipulatorExampleTests.a */; };
-		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
-		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
-		F4F8A497372F3965C7389EEC /* libPods-PhotoManipulatorExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE795A874DBEE8E3B1B8AF3 /* libPods-PhotoManipulatorExample.a */; };
+		9A96D27A91CC49FB40900AE4 /* libPods-PhotoManipulatorExample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 393430F01EAF1103F47D0D67 /* libPods-PhotoManipulatorExample-tvOS.a */; };
+		C065FC61B649F2893EAEF391 /* libPods-PhotoManipulatorExample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49795440D327CDBE4C7D2B7C /* libPods-PhotoManipulatorExample-tvOSTests.a */; };
+		EE167E3B06D37C0572030BF5 /* libPods-PhotoManipulatorExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E654A5687CA7CDE6FAA76AB /* libPods-PhotoManipulatorExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,40 +37,14 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "PhotoManipulatorExample-tvOS";
 		};
-		7FEFCBAB22703384000F4050 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7FEFCB8122703384000F4050 /* WCPhotoManipulator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7F4954582270118D004F8851;
-			remoteInfo = WCPhotoManipulator;
-		};
-		7FEFCBB4227034A0000F4050 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7FEFCBAF227034A0000F4050 /* RNPhotoManipulator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNPhotoManipulator;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		7F49543A226FFFDE004F8851 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* PhotoManipulatorExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoManipulatorExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PhotoManipulatorExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoManipulatorExampleTests.m; sourceTree = "<group>"; };
+		0E654A5687CA7CDE6FAA76AB /* libPods-PhotoManipulatorExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* PhotoManipulatorExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoManipulatorExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PhotoManipulatorExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PhotoManipulatorExample/AppDelegate.m; sourceTree = "<group>"; };
@@ -85,26 +52,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PhotoManipulatorExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PhotoManipulatorExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PhotoManipulatorExample/main.m; sourceTree = "<group>"; };
+		165C9D0E347366C09D6CB664 /* Pods-PhotoManipulatorExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample/Pods-PhotoManipulatorExample.release.xcconfig"; sourceTree = "<group>"; };
+		26375414024652E7D44F7FCE /* Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOSTests/Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* PhotoManipulatorExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoManipulatorExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PhotoManipulatorExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PhotoManipulatorExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AEFD0B413563AF00ED0E97A /* libPods-PhotoManipulatorExample-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AFE3C954AE2959831378FD7 /* Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOSTests/Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		56EAC079EFC9656E6B05A7D4 /* Pods-PhotoManipulatorExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExampleTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExampleTests/Pods-PhotoManipulatorExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		5916F74F8C70FA5B9CE7DA23 /* libPods-PhotoManipulatorExample-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AE795A874DBEE8E3B1B8AF3 /* libPods-PhotoManipulatorExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BF9BE172B5E5C0D5DAC1090 /* Pods-PhotoManipulatorExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExampleTests/Pods-PhotoManipulatorExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7FEFCB4B22701E38000F4050 /* libWCPhotoManipulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWCPhotoManipulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FEFCB8122703384000F4050 /* WCPhotoManipulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WCPhotoManipulator.xcodeproj; path = ../../ios/Vendor/WCPhotoManipulator/WCPhotoManipulator.xcodeproj; sourceTree = "<group>"; };
-		7FEFCBAF227034A0000F4050 /* RNPhotoManipulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNPhotoManipulator.xcodeproj; path = ../../ios/RNPhotoManipulator.xcodeproj; sourceTree = "<group>"; };
-		9DC7945449BBC155727C76A4 /* libPods-PhotoManipulatorExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCBB3A403881F4BAAA5CE99B /* Pods-PhotoManipulatorExample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOS/Pods-PhotoManipulatorExample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		DCB8A7E70DA9A750F054357B /* Pods-PhotoManipulatorExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample/Pods-PhotoManipulatorExample.debug.xcconfig"; sourceTree = "<group>"; };
-		E2FBAA213CD4980BBA4C3A91 /* Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOSTests/Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E9D5BDF3D5FE9D3282E49061 /* Pods-PhotoManipulatorExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample/Pods-PhotoManipulatorExample.release.xcconfig"; sourceTree = "<group>"; };
+		2DDCA621F41743C9C10B5762 /* Pods-PhotoManipulatorExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExampleTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExampleTests/Pods-PhotoManipulatorExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		393430F01EAF1103F47D0D67 /* libPods-PhotoManipulatorExample-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49795440D327CDBE4C7D2B7C /* libPods-PhotoManipulatorExample-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5738DF78DD7D13CDDE9D3E6D /* Pods-PhotoManipulatorExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExampleTests/Pods-PhotoManipulatorExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6CE89AEE675DF5E975BF8912 /* libPods-PhotoManipulatorExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		810F5904163FA44F71FB0540 /* Pods-PhotoManipulatorExample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOS/Pods-PhotoManipulatorExample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		AE01F6FEBB00943CB8B88296 /* Pods-PhotoManipulatorExample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOS/Pods-PhotoManipulatorExample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C1B8360A15B5C23811691737 /* Pods-PhotoManipulatorExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample/Pods-PhotoManipulatorExample.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F4C751057A793013B3599549 /* Pods-PhotoManipulatorExample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOS/Pods-PhotoManipulatorExample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FF61DD985F6AF953CB335319 /* Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample-tvOSTests/Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				968C5110F6ECC0368A7580F6 /* libPods-PhotoManipulatorExampleTests.a in Frameworks */,
+				128ABF22E2ED62022D835286 /* libPods-PhotoManipulatorExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,10 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FEFCBB8227034E7000F4050 /* libRNPhotoManipulator.a in Frameworks */,
-				7FEFCBB9227034E7000F4050 /* libWCPhotoManipulator.a in Frameworks */,
-				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
-				F4F8A497372F3965C7389EEC /* libPods-PhotoManipulatorExample.a in Frameworks */,
+				EE167E3B06D37C0572030BF5 /* libPods-PhotoManipulatorExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,11 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FEFCBBA227034FA000F4050 /* libRNPhotoManipulator.a in Frameworks */,
-				7FEFCBBB227034FA000F4050 /* libWCPhotoManipulator.a in Frameworks */,
-				ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */,
-				2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */,
-				6F476B0B5A5F388CF292B020 /* libPods-PhotoManipulatorExample-tvOS.a in Frameworks */,
+				9A96D27A91CC49FB40900AE4 /* libPods-PhotoManipulatorExample-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				121B4038828295EDACF98101 /* libPods-PhotoManipulatorExample-tvOSTests.a in Frameworks */,
+				C065FC61B649F2893EAEF391 /* libPods-PhotoManipulatorExample-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,57 +136,22 @@
 			name = PhotoManipulatorExample;
 			sourceTree = "<group>";
 		};
-		15DC5B41F2B5BE0948FDD94C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DCB8A7E70DA9A750F054357B /* Pods-PhotoManipulatorExample.debug.xcconfig */,
-				E9D5BDF3D5FE9D3282E49061 /* Pods-PhotoManipulatorExample.release.xcconfig */,
-				F4C751057A793013B3599549 /* Pods-PhotoManipulatorExample-tvOS.debug.xcconfig */,
-				BCBB3A403881F4BAAA5CE99B /* Pods-PhotoManipulatorExample-tvOS.release.xcconfig */,
-				E2FBAA213CD4980BBA4C3A91 /* Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig */,
-				4AFE3C954AE2959831378FD7 /* Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig */,
-				5BF9BE172B5E5C0D5DAC1090 /* Pods-PhotoManipulatorExampleTests.debug.xcconfig */,
-				56EAC079EFC9656E6B05A7D4 /* Pods-PhotoManipulatorExampleTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7FEFCB4B22701E38000F4050 /* libWCPhotoManipulator.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				5AE795A874DBEE8E3B1B8AF3 /* libPods-PhotoManipulatorExample.a */,
-				4AEFD0B413563AF00ED0E97A /* libPods-PhotoManipulatorExample-tvOS.a */,
-				5916F74F8C70FA5B9CE7DA23 /* libPods-PhotoManipulatorExample-tvOSTests.a */,
-				9DC7945449BBC155727C76A4 /* libPods-PhotoManipulatorExampleTests.a */,
+				0E654A5687CA7CDE6FAA76AB /* libPods-PhotoManipulatorExample.a */,
+				393430F01EAF1103F47D0D67 /* libPods-PhotoManipulatorExample-tvOS.a */,
+				49795440D327CDBE4C7D2B7C /* libPods-PhotoManipulatorExample-tvOSTests.a */,
+				6CE89AEE675DF5E975BF8912 /* libPods-PhotoManipulatorExampleTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7FEFCB8222703384000F4050 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7FEFCBAC22703384000F4050 /* libWCPhotoManipulator.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7FEFCBB0227034A0000F4050 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7FEFCBB5227034A0000F4050 /* libRNPhotoManipulator.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7FEFCBAF227034A0000F4050 /* RNPhotoManipulator.xcodeproj */,
-				7FEFCB8122703384000F4050 /* WCPhotoManipulator.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -244,7 +164,7 @@
 				00E356EF1AD99517003FC87E /* PhotoManipulatorExampleTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				15DC5B41F2B5BE0948FDD94C /* Pods */,
+				A80651A8208DE257D9C04350 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -262,6 +182,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A80651A8208DE257D9C04350 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C1B8360A15B5C23811691737 /* Pods-PhotoManipulatorExample.debug.xcconfig */,
+				165C9D0E347366C09D6CB664 /* Pods-PhotoManipulatorExample.release.xcconfig */,
+				AE01F6FEBB00943CB8B88296 /* Pods-PhotoManipulatorExample-tvOS.debug.xcconfig */,
+				810F5904163FA44F71FB0540 /* Pods-PhotoManipulatorExample-tvOS.release.xcconfig */,
+				26375414024652E7D44F7FCE /* Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig */,
+				FF61DD985F6AF953CB335319 /* Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig */,
+				5738DF78DD7D13CDDE9D3E6D /* Pods-PhotoManipulatorExampleTests.debug.xcconfig */,
+				2DDCA621F41743C9C10B5762 /* Pods-PhotoManipulatorExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,7 +205,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PhotoManipulatorExampleTests" */;
 			buildPhases = (
-				95AAA4EA21F6CD98AB192D0A /* [CP] Check Pods Manifest.lock */,
+				8040F4F996F43A1C081DA8FD /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -288,19 +224,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PhotoManipulatorExample" */;
 			buildPhases = (
-				272B4F851C537D27B6C70BB5 /* [CP] Check Pods Manifest.lock */,
+				B2C22AE792603DE5973AA2F9 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				7F49543A226FFFDE004F8851 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PhotoManipulatorExample;
-			productName = "Hello World";
+			productName = PhotoManipulatorExample;
 			productReference = 13B07F961A680F5B00A75B9A /* PhotoManipulatorExample.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -308,7 +244,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PhotoManipulatorExample-tvOS" */;
 			buildPhases = (
-				73CC13DF70E5CF3CEB20094E /* [CP] Check Pods Manifest.lock */,
+				82C99C981ADBB8EC7B7AD429 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -327,7 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PhotoManipulatorExample-tvOSTests" */;
 			buildPhases = (
-				2F94E782C2402511E934CE37 /* [CP] Check Pods Manifest.lock */,
+				95CBCD40BCBFBAEF63099D20 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -371,23 +308,12 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 7FEFCBB0227034A0000F4050 /* Products */;
-					ProjectRef = 7FEFCBAF227034A0000F4050 /* RNPhotoManipulator.xcodeproj */;
-				},
-				{
-					ProductGroup = 7FEFCB8222703384000F4050 /* Products */;
-					ProjectRef = 7FEFCB8122703384000F4050 /* WCPhotoManipulator.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* PhotoManipulatorExample */,
@@ -397,23 +323,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		7FEFCBAC22703384000F4050 /* libWCPhotoManipulator.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libWCPhotoManipulator.a;
-			remoteRef = 7FEFCBAB22703384000F4050 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7FEFCBB5227034A0000F4050 /* libRNPhotoManipulator.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNPhotoManipulator.a;
-			remoteRef = 7FEFCBB4227034A0000F4050 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -462,29 +371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../../node_modules/react-native/scripts/react-native-xcode.sh  example/index.js\n";
-		};
-		272B4F851C537D27B6C70BB5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PhotoManipulatorExample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -498,9 +385,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../../node_modules/react-native/scripts/react-native-xcode.sh  example/index.js\n";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2F94E782C2402511E934CE37 /* [CP] Check Pods Manifest.lock */ = {
+		8040F4F996F43A1C081DA8FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -515,14 +402,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PhotoManipulatorExample-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-PhotoManipulatorExampleTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		73CC13DF70E5CF3CEB20094E /* [CP] Check Pods Manifest.lock */ = {
+		82C99C981ADBB8EC7B7AD429 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -544,7 +431,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95AAA4EA21F6CD98AB192D0A /* [CP] Check Pods Manifest.lock */ = {
+		95CBCD40BCBFBAEF63099D20 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -559,11 +446,71 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PhotoManipulatorExampleTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-PhotoManipulatorExample-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2C22AE792603DE5973AA2F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoManipulatorExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F122414F3F0027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -633,7 +580,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BF9BE172B5E5C0D5DAC1090 /* Pods-PhotoManipulatorExampleTests.debug.xcconfig */;
+			baseConfigurationReference = 5738DF78DD7D13CDDE9D3E6D /* Pods-PhotoManipulatorExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -646,6 +593,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -655,7 +603,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56EAC079EFC9656E6B05A7D4 /* Pods-PhotoManipulatorExampleTests.release.xcconfig */;
+			baseConfigurationReference = 2DDCA621F41743C9C10B5762 /* Pods-PhotoManipulatorExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -665,6 +613,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
+					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -674,7 +623,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCB8A7E70DA9A750F054357B /* Pods-PhotoManipulatorExample.debug.xcconfig */;
+			baseConfigurationReference = C1B8360A15B5C23811691737 /* Pods-PhotoManipulatorExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -694,7 +643,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9D5BDF3D5FE9D3282E49061 /* Pods-PhotoManipulatorExample.release.xcconfig */;
+			baseConfigurationReference = 165C9D0E347366C09D6CB664 /* Pods-PhotoManipulatorExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -713,7 +662,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4C751057A793013B3599549 /* Pods-PhotoManipulatorExample-tvOS.debug.xcconfig */;
+			baseConfigurationReference = AE01F6FEBB00943CB8B88296 /* Pods-PhotoManipulatorExample-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -727,6 +676,7 @@
 				INFOPLIST_FILE = "PhotoManipulatorExample-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -740,7 +690,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCBB3A403881F4BAAA5CE99B /* Pods-PhotoManipulatorExample-tvOS.release.xcconfig */;
+			baseConfigurationReference = 810F5904163FA44F71FB0540 /* Pods-PhotoManipulatorExample-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -754,6 +704,7 @@
 				INFOPLIST_FILE = "PhotoManipulatorExample-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -767,7 +718,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2FBAA213CD4980BBA4C3A91 /* Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 26375414024652E7D44F7FCE /* Pods-PhotoManipulatorExample-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -780,6 +731,7 @@
 				INFOPLIST_FILE = "PhotoManipulatorExample-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -793,7 +745,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AFE3C954AE2959831378FD7 /* Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = FF61DD985F6AF953CB335319 /* Pods-PhotoManipulatorExample-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -806,6 +758,7 @@
 				INFOPLIST_FILE = "PhotoManipulatorExample-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);

@@ -1,0 +1,57 @@
+{
+  "name": "PhotoManipulatorExample",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.8.6",
+    "react-native": "0.60.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.0",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "babel-jest": "^24.1.0",
+    "detox": "^13.1.1",
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-test-renderer": "16.8.6",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "e2e/config.json",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/PhotoManipulatorExample.app",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath ios/build -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -k",
+        "type": "ios.simulator",
+        "name": "iPhone 5s"
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/PhotoManipulatorExample.app",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath ios/build -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -k",
+        "type": "ios.simulator",
+        "name": "iPhone 5s"
+      },
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.emulator",
+        "name": "TestingAVD"
+      },
+      "android.emu.release": {
+        "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+        "type": "android.emulator",
+        "name": "TestingAVD"
+      }
+    }
+  }
+}
