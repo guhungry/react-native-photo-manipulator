@@ -9,7 +9,7 @@ describe('overlayImage', () => {
   it('should load images after overlay image', async (done) => {
     await expect(element(by.id('example-exampleOverlayImage'))).toExist();
 
-    await expect(element(by.id('overlayImageResult'))).toExist();
+    await waitFor(element(by.id('overlayImageResult'))).toExist().withTimeout(2000);
     done();
   });
 });

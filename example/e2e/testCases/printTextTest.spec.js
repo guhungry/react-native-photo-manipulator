@@ -9,7 +9,7 @@ describe('printText', () => {
   it('should load images after printText', async (done) => {
     await expect(element(by.id('example-examplePrintText'))).toExist();
 
-    await expect(element(by.id('printTextResult'))).toExist();
+    await waitFor(element(by.id('printTextResult'))).toExist().withTimeout(2000);
     done();
   });
 });

@@ -9,7 +9,7 @@ describe('batch', () => {
   it('should load images after batch', async (done) => {
     await expect(element(by.id('example-exampleBatch'))).toExist();
 
-    await expect(element(by.id('batchResult'))).toExist();
+    await waitFor(element(by.id('batchResult'))).toExist().withTimeout(2000);
     done();
   });
 });
