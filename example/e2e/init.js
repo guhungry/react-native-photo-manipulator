@@ -7,18 +7,19 @@ const specReporter = require('detox/runners/jest/specReporter');
 jest.setTimeout(120000);
 jasmine.getEnv().addReporter(adapter);
 
-beforeAll(async (done) => {
+// This takes care of generating status logs on a per-spec basis. By default, jest only reports at file-level.
+// This is strictly optional.
+jasmine.getEnv().addReporter(specReporter);
+
+beforeAll(async () => {
   await detox.init(config);
-  done();
 });
 
-beforeEach(async (done) => {
+beforeEach(async () => {
   await adapter.beforeEach();
-  done();
 });
 
-afterAll(async (done) => {
+afterAll(async () => {
   await adapter.afterAll();
   await detox.cleanup();
-  done();
 });
