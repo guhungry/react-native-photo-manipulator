@@ -31,7 +31,6 @@
     "@typescript-eslint/parser": "1.4.2",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
-    "detox": "^12.11.3",
     "eslint": "5.15.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.1.0",
@@ -47,36 +46,6 @@
     "react-test-renderer": "16.8.6",
     "semantic-release": "^15.13.14",
     "typescript": "3.3.3333"
-  },
-  "detox": {
-    "test-runner": "jest",
-    "runner-config": "example/e2e/config.json",
-    "configurations": {
-      "ios.sim.debug": {
-        "binaryPath": "example/ios/build/Build/Products/Debug-iphonesimulator/PhotoManipulatorExample.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath example/ios/build -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -k",
-        "type": "ios.simulator",
-        "name": "iPhone 5s"
-      },
-      "ios.sim.release": {
-        "binaryPath": "example/ios/build/Build/Products/Release-iphonesimulator/PhotoManipulatorExample.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project example/ios/PhotoManipulatorExample.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath example/ios/build -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -k",
-        "type": "ios.simulator",
-        "name": "iPhone 5s"
-      },
-      "android.emu.debug": {
-        "binaryPath": "example/android/app/build/outputs/apk/debug/app-debug.apk",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && cd example/android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ../..",
-        "type": "android.emulator",
-        "name": "TestingAVD"
-      },
-      "android.emu.release": {
-        "binaryPath": "example/android/app/build/outputs/apk/release/app-release.apk",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && cd example/android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ../..",
-        "type": "android.emulator",
-        "name": "TestingAVD"
-      }
-    }
   },
   "repository": {
     "type": "git",
