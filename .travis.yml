@@ -75,7 +75,7 @@ jobs:
         - xcrun simctl boot "iPhone 5s" || true
       script:
         - yarn detox build -c ios.sim.debug
-        - yarn detox test -c ios.sim.debug -l verbose -U
+        - yarn detox test -c ios.sim.debug -l verbose -u
 
     - stage: deploy
       name: "Publish to npm"
