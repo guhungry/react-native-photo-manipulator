@@ -42,6 +42,7 @@ jobs:
         - yes | sdkmanager "build-tools;28.0.3" >/dev/null # Implicit gradle dependency - gradle drives changes
         - yes | sdkmanager "platforms;android-28" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
         - yes | sdkmanager "extras;android;m2repository" >/dev/null
+        - yes | sdkmanager "emulator"
         - yes | sdkmanager "system-images;android-25;google_apis;x86_64" >/dev/null
         - avdmanager create avd --force -n "TestingAVD" -k "system-images;android-25;google_apis;x86_64"  -g "google_apis" -d "Nexus 4"
         - emulator -verbose -avd TestingAVD -no-accel -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
