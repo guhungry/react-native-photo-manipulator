@@ -70,7 +70,6 @@ jobs:
         - brew tap wix/brew
         - brew install applesimutils
         - yarn global add react-native-cli
-        - react-native start &
         - yarn detox clean-framework-cache &&  yarn detox build-framework-cache
         - xcrun simctl boot "iPhone 5s" || true
       script:
