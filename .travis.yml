@@ -44,6 +44,7 @@ jobs:
         - yes | sdkmanager "extras;android;m2repository" >/dev/null
         - yes | sdkmanager "system-images;android-25;google_apis;x86_64" >/dev/null
         - avdmanager create avd --force -n "TestingAVD" -k "system-images;android-25;google_apis;x86_64"  -g "google_apis" -d "Nexus 4"
+        - emulator -verbose -avd TestingAVD -no-accel -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
         - nvm install 10
         - node --version
         - npm install -g yarn
@@ -52,6 +53,8 @@ jobs:
         - yarn
       script:
         - yarn detox build -c android.emu.release
+        - android-wait-for-emulator
+        - adb shell input keyevent 82 &
         - yarn detox test -c android.emu.release -l verbose -u
 
     - stage: build
