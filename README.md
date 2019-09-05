@@ -142,6 +142,7 @@ static crop(image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<
 | `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The image                                      |
 | `cropRegion`    | [`Rect`](README.md#rect)                  | Yes          | The region of image to be cropped              |
 | `targetSize`    | [`Size`](README.md#size)                  | No           | The target size of result image                |
+| `mimeType`      | 'image/jpeg', 'image/png'                 | No           | Output file format                             |
 
 
 ##### Returns
@@ -172,7 +173,7 @@ static optimize(image: ImageSource, quality: number) => Promise<string>
 | Parameter       | Type                                      | Required     | Description                                    |
 | --------------- | ----------------------------------------- | ------------ | ---------------------------------------------- |
 | `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The image                                      |
-| `quality`       | number                                    | Yes          | The quality of result image between `0 - 100`         |
+| `quality`       | number                                    | Yes          | The quality of result image between `0 - 100`  |
 
 ##### Returns
 Promise with image path in cache directory
@@ -201,6 +202,7 @@ static overlayImage(image: ImageSource, overlay: ImageSource, position: Point) =
 | `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The background image                                   |
 | `overlay`       | [`ImageSource`](README.md#imagesource)    | Yes          | The overlay image                                      |
 | `position`      | [`Point`](README.md#point)                | Yes          | The position of overlay image in background image      |
+| `mimeType`      | 'image/jpeg', 'image/png'                 | No           | Output file format                                     |
 
 ##### Returns
 Promise with image path in cache directory
@@ -229,6 +231,7 @@ static printText(image: ImageSource, texts: TextOptions[]) => Promise<string>
 | --------------- | ----------------------------------------- | ------------ | ------------------------------------------------------ |
 | `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The image                                              |
 | `texts`         | [`TextOptions[]`](README.md#textoptions)  | Yes          | The list of text operations                            |
+| `mimeType`      | 'image/jpeg', 'image/png'                 | No           | Output file format                                     |
 
 ##### Returns
 Promise with image path in cache directory
@@ -262,6 +265,7 @@ static batch(image: ImageSource, operations: PhotoBatchOperations[], cropRegion:
 | `cropRegion`    | [`Rect`](README.md#rect)                                    | Yes          | The region of image to be cropped                 |
 | `targetSize`    | [`Size`](README.md#size)                                    | No           | The target size of result image                   |
 | `quality`       | number                                                      | No           | The quality of result image between `0 - 100`     |
+| `mimeType`      | 'image/jpeg', 'image/png'                                   | No           | Output file format                                |
 
 ##### Returns
 Promise with image path in cache directory

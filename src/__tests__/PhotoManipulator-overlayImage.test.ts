@@ -1,7 +1,8 @@
-import { NativeModules } from "react-native";
+import {NativeModules} from "react-native";
 import "jest-extended"
 import PhotoManipulator from "../PhotoManipulator"
-import { toImageNative } from "../ParamUtils"
+import {toImageNative} from "../ParamUtils"
+import {MimeType} from "../PhotoManipulatorTypes";
 
 describe("Photo Manipulator", () => {
     describe("overlayImage()", () => {
@@ -11,12 +12,17 @@ describe("Photo Manipulator", () => {
 
         test("with network source", () => {
             PhotoManipulator.overlayImage(imageUrl, imageUrl, position)
-            expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(imageUrl, imageUrl, position);
+            expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(imageUrl, imageUrl, position, MimeType.JPEG);
+        })
+
+        test("support png", () => {
+            PhotoManipulator.overlayImage(imageUrl, imageUrl, position, MimeType.PNG)
+            expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(imageUrl, imageUrl, position, MimeType.PNG);
         })
 
         test("with require source", () => {
             PhotoManipulator.overlayImage(imageRequire, imageRequire, position)
-            expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(toImageNative(imageRequire), toImageNative(imageRequire), position);
+            expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(toImageNative(imageRequire), toImageNative(imageRequire), position, MimeType.JPEG);
         })
     });
 });
