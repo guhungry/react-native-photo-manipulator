@@ -1,7 +1,8 @@
-import { NativeModules } from "react-native";
+import {NativeModules} from "react-native";
 import "jest-extended"
 import PhotoManipulator from "../PhotoManipulator"
-import { toImageNative } from "../ParamUtils"
+import {toImageNative} from "../ParamUtils"
+import {MimeType} from "../PhotoManipulatorTypes";
 
 describe("Photo Manipulator", () => {
     describe("printText()", () => {
@@ -10,12 +11,17 @@ describe("Photo Manipulator", () => {
 
         test("with network source", () => {
             PhotoManipulator.printText(imageUrl, [])
-            expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(imageUrl, []);
+            expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(imageUrl, [], MimeType.JPEG);
         })
 
         test("with require source", () => {
             PhotoManipulator.printText(imageRequire, [])
-            expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(toImageNative(imageRequire), []);
+            expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(toImageNative(imageRequire), [], MimeType.JPEG);
+        })
+
+        test("support png", () => {
+            PhotoManipulator.printText(imageRequire, [], MimeType.PNG)
+            expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(toImageNative(imageRequire), [], MimeType.PNG);
         })
 
         test("convert text operations", () => {
@@ -26,7 +32,7 @@ describe("Photo Manipulator", () => {
             expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(imageUrl, [
                 { color: {r: 255, g: 255, b: 255, a: 255}, position: { x: 65, y: 70 }, text: "TEXT MAE", textSize: 45, thickness: 0},
                 { color: {r: 0, g: 0, b: 0, a: 255}, position: { x: 65, y: 70 }, text: "TEXT MAE", textSize: 45, thickness: 3}
-            ]);
+            ], MimeType.JPEG);
         })
     });
 });

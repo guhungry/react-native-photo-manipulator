@@ -1,7 +1,8 @@
-import { NativeModules } from "react-native";
+import {NativeModules} from "react-native";
 import "jest-extended"
 import PhotoManipulator from "../PhotoManipulator"
-import { toImageNative } from "../ParamUtils"
+import {toImageNative} from "../ParamUtils"
+import {MimeType} from "../PhotoManipulatorTypes";
 
 describe("Photo Manipulator", () => {
     describe("crop()", () => {
@@ -12,17 +13,22 @@ describe("Photo Manipulator", () => {
 
         test("all parameters", () => {
             PhotoManipulator.crop(imageUrl, cropRegion, targetSize)
-            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(imageUrl, cropRegion, targetSize);
+            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(imageUrl, cropRegion, targetSize, MimeType.JPEG);
+        })
+
+        test("support png", () => {
+            PhotoManipulator.crop(imageUrl, cropRegion, targetSize, MimeType.PNG)
+            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(imageUrl, cropRegion, targetSize, MimeType.PNG);
         })
 
         test("missing targetSize", () => {
             PhotoManipulator.crop(imageUrl, cropRegion)
-            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(imageUrl, cropRegion, undefined);
+            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(imageUrl, cropRegion, undefined, MimeType.JPEG);
         })
 
         test("require image source", () => {
             PhotoManipulator.crop(imageRequire, cropRegion)
-            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(toImageNative(imageRequire), cropRegion, undefined);
+            expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(toImageNative(imageRequire), cropRegion, undefined, MimeType.JPEG);
         })
     });
 });

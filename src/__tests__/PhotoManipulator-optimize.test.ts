@@ -1,7 +1,7 @@
-import { NativeModules } from "react-native";
+import {NativeModules} from "react-native";
 import "jest-extended"
 import PhotoManipulator from "../PhotoManipulator"
-import { toImageNative } from "../ParamUtils"
+import {toImageNative} from "../ParamUtils"
 
 describe("Photo Manipulator", () => {
     describe("optimize()", () => {

@@ -18,6 +18,9 @@ import com.guhungry.photomanipulator.MimeUtils;
 import com.guhungry.rnphotomanipulator.utils.ImageUtils;
 import com.guhungry.rnphotomanipulator.utils.ParamUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @ReactModule(name = RNPhotoManipulatorModule.NAME)
 public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     public static final String NAME = "RNPhotoManipulator";
@@ -33,8 +36,16 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         return NAME;
     }
 
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        constants.put("JPEG", MimeUtils.JPEG);
+        constants.put("PNG", MimeUtils.PNG);
+        return constants;
+    }
+
     @ReactMethod
-    public void batch(String uri, ReadableArray operations, ReadableMap cropRegion, @Nullable ReadableMap targetSize, int quality, Promise promise) {
+    public void batch(String uri, ReadableArray operations, ReadableMap cropRegion, @Nullable ReadableMap targetSize, int quality, String mimeType, Promise promise) {
         try {
             Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropRegion), ParamUtils.sizeFromMap(targetSize));
 
@@ -44,7 +55,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             }
 
             // Save & Optimize
-            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, quality);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, quality);
             output.recycle();
 
             promise.resolve(file);
@@ -71,11 +82,11 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void crop(String uri, ReadableMap cropRegion, @Nullable ReadableMap targetSize, Promise promise) {
+    public void crop(String uri, ReadableMap cropRegion, @Nullable ReadableMap targetSize, String mimeType, Promise promise) {
         try {
             Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropRegion), ParamUtils.sizeFromMap(targetSize));
 
-            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
 
             promise.resolve(file);
@@ -85,7 +96,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void overlayImage(String uri, String icon, ReadableMap position, Promise promise) {
+    public void overlayImage(String uri, String icon, ReadableMap position, String mimeType, Promise promise) {
         try {
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri, ImageUtils.mutableOptions());
             Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), icon);
@@ -93,7 +104,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             BitmapUtils.overlay(output, overlay, ParamUtils.pointfFromMap(position));
             overlay.recycle();
 
-            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
 
             promise.resolve(file);
@@ -103,7 +114,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void printText(String uri, ReadableArray list, Promise promise) {
+    public void printText(String uri, ReadableArray list, String mimeType, Promise promise) {
         try {
             Bitmap output = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri, ImageUtils.mutableOptions());
 
@@ -113,7 +124,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
                 printLine(output, text.getString("text"), (float) text.getDouble("textSize"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
             }
 
-            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, MimeUtils.JPEG, FILE_PREFIX, DEFAULT_QUALITY);
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
 
             promise.resolve(file);
