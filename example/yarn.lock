@@ -5014,10 +5014,10 @@ react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-native-photo-manipulator@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-photo-manipulator/-/react-native-photo-manipulator-1.0.2.tgz#5e96fef8292174dc08c51292deee75c0ec5b0961"
-  integrity sha512-iqLcF62hr9oRsOLmjqurMZJCIEr3dzFgeJKh6ys0dcuM20nzbmDHK5Txl5Y2M/ttVm3ZxZaJMpL79Qv+xBv0ng==
+react-native-photo-manipulator@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-photo-manipulator/-/react-native-photo-manipulator-1.1.0.tgz#347f8bdc2716213d87029e71b839e3775d2e49ad"
+  integrity sha512-y2tpgpMQkCLdku0sVgb3NKdDnzMuJMhwdBlVwCJKEzga8SfAEHsiM4bew+PwTaqAWPVLqcjvOjT6AeFwuvynsg==
   dependencies:
     parse-color "^1.0.0"
 

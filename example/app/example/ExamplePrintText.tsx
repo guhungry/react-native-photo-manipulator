@@ -1,22 +1,30 @@
 import * as React from "react"
-import { Image } from "react-native"
+import {Image, Text} from "react-native"
 import styles from "../App.styles"
-import { noop } from "../utils"
-import PhotoManipulator, { TextOptions } from "react-native-photo-manipulator"
-import { IMAGE } from "./settings"
+import {noop} from "../utils"
+import PhotoManipulator, {TextOptions} from "react-native-photo-manipulator"
+import {IMAGE} from "./settings"
+import {MimeType} from "react-native-photo-manipulator/lib/PhotoManipulatorTypes";
 
 export default React.memo(function ExamplePrintText() {
   const [image, setImage] = React.useState<string|null>(null);
+  const [imagePng, setImagePng] = React.useState<string|null>(null);
 
   React.useEffect(() => {
     const operation = async () => {
       setImage(await PhotoManipulator.printText(IMAGE, texts()))
+      setImagePng(await PhotoManipulator.printText(IMAGE, texts(), MimeType.PNG))
     };
 
     operation().then(noop).catch(console.log);
   }, []);
 
-  return image && <Image testID="printTextResult" style={styles.image} source={{ uri: image}} /> || null;
+  return <>
+    { typeof image === "string" ? <Text style={styles.exampleDescription}>JPEG</Text> : null }
+    { typeof image === "string" ? <Image testID="printTextResult" style={styles.image} source={{ uri: image}} /> : null }
+    { typeof imagePng === "string" ? <Text style={styles.exampleDescription}>PNG</Text> : null }
+    { typeof imagePng === "string" ? <Image testID="printTextPngResult" style={styles.image} source={{ uri: imagePng}} /> : null }
+    </>;
 
   function texts(): TextOptions[] {
     return [
