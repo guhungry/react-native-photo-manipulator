@@ -10,6 +10,7 @@ describe('printText', () => {
     await expect(element(by.id('example-examplePrintText'))).toExist();
 
     await waitFor(element(by.id('printTextResult'))).toExist().withTimeout(2000);
+    await waitFor(element(by.id('printTextPngResult'))).toExist().withTimeout(2000);
     done();
   });
 });
