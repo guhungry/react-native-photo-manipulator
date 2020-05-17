@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  rn: react-native-community/react-native@1.1.0
+  rn: react-native-community/react-native@4.4.2
 
 jobs:
   checkout_code:
@@ -35,12 +35,14 @@ workflows:
           name: build_android_debug
           project_path: "example/android"
           build_type: debug
+          on_after_initialize: "cd example && yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn && cd .."
           requires:
             - analyse
       - rn/android_build:
           name: build_android_release
           project_path: "example/android"
           build_type: release
+          on_after_initialize: "cd example && yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn && cd .."
           requires:
             - analyse
       - rn/android_test:
