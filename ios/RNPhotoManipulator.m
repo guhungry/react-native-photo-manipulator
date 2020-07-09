@@ -29,6 +29,11 @@ RCT_EXPORT_MODULE()
           };
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
                   operations:(NSArray *)operations
                   cropRegion:(NSDictionary *)cropRegion
