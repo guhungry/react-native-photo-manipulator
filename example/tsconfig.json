@@ -11,7 +11,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "sourceMap": true,
-    "target": "es2015"
+    "target": "esnext"
   },
   "exclude": ["node_modules"],
   "include": ["app", "test", "storybook"]
