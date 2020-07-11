@@ -35,13 +35,13 @@
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/PhotoManipulatorExample.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath ios/build -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -k",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Debug -derivedDataPath ios/build -sdk iphonesimulator | xcpretty -k",
         "type": "ios.simulator",
         "name": "iPhone 5s"
       },
       "ios.sim.release": {
         "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/PhotoManipulatorExample.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath ios/build -sdk iphonesimulator -UseModernBuildSystem=NO | xcpretty -k",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 5s' -scheme PhotoManipulatorExample -parallelizeTargets -configuration Release -derivedDataPath ios/build -sdk iphonesimulator | xcpretty -k",
         "type": "ios.simulator",
         "name": "iPhone 5s"
       },
