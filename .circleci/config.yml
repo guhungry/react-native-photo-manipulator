@@ -45,8 +45,8 @@ workflows:
           on_after_initialize: "cd example && yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn && cd .."
           requires:
             - analyse
-      - rn/android_test:
-          detox_configuration: "android.emu.release"
-          detox_loglevel: "trace"
-          requires:
-            - build_android_release
+#      - rn/android_test:
+#          detox_configuration: "android.emu.release"
+#          detox_loglevel: "trace"
+#          requires:
+#            - build_android_release
