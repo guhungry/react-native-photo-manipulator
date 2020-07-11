@@ -5,12 +5,28 @@ cache:
 
 env:
   global:
-    - ANDROID_HOME=/usr/local/android-sdk
-    - ANDROID_SDK_ROOT=/usr/local/android-sdk
+    - NODE_VERSION=stable
+    - COMPILE_API=29
+    - ANDROID_BUILD_TOOLS=29.0.3
+    - ABI=x86_64
+    - ADB_INSTALL_TIMEOUT=8
+    - ANDROID_HOME=${HOME}/android-sdk
+    - ANDROID_TOOLS_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
+    - EMU_FLAVOR=default # use google_apis flavor if no default flavor emulator
+    - LOCALE="NONE"
+    - GRAVIS_REPO="https://github.com/mikehardy/Gravis-CI.git"
+    - GRAVIS="$HOME/gravis"
+    - JDK="1.8"
     - TOOLS=${ANDROID_HOME}/tools
+    # PATH order is incredibly important. e.g. the 'emulator' script exists in more than one place!
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-    - QEMU_AUDIO_DRV=none
+    - UNIT_TEST=FALSE # by default we don't run the unit tests, they are run only in specific builds
+    - LINT=FALSE # by default we don't lint, they are run only in specific builds
+    - FINALIZE_COVERAGE=FALSE # by default we don't finalize coverage, it is done in one specific build
+    - TERM=dumb
     - secure: hatwqC4bsfDLFU45N5bLhC8W0nxzXo2aH+HSvGKi1hjzwGgm+gjpJyrm1D45S7xJbgtrHkhOm6He4JqFz/kEgW2BfhIq4zHBO8fUUfOzG91lGNk9tvqlOY7FMQOLJL0bIAFsoy3E3ZWhdE4XJOSkvrQVVKA+IH9gDrfyV+9mkA3sgnKIT1Sa589Ty2p6nxbCsTLVyhHT2U1PXnasAa37rrD+jL78GbgoQHY6/2RGKJQIEfB6fgjSSxduft+1o7bC+bpWoSdQBDiWHYfw+7OIvBG64Cpnps5DTjBdnbKGPiFvTZ5pNRD3Q1bdvkF3HGRC4Oss9BeKm1oNx+3AceWHr/qA/LSuSk3M+rEbu7UkigAmILhDvzf10FZgoPC/IdPdwiXDAvpBDYA0CNz9+FwaWwtzncqndOQcj797kwDJ6JUGBpBkQWW9lpNSzxerygNNdmG2QmNEk8xOUPRht2aufc+0pPl/ZY9PUIW11IChvSrq5hqMmd/PIvO3mwf7zVj58ddBy5vFAakFuJrAUB0KD4dKW2NHkKFIwIvIs2NXHFhTJNSQxSs+qTN4vSGTKcPZfH0+eT0/kE6bQ5OnDkZryIbyW+7GTI/56R3EMuu+o5OE762S8G4gN2SwrqGxlxAVUdh3oltBLlfh73fiFdZDny+Nc3ABWC2QHFvAaT8Qor4=
+  matrix:
+   - API=28
 
 jobs:
   include:
@@ -26,27 +42,70 @@ jobs:
 
     - stage: build
       name: "Build Android"
-      language: android
-      dist: trusty
-      android:
-        components:
-          - tools
-        licenses:
-          - 'android-sdk-preview-license-.+'
-          - 'android-sdk-license-.+'
-          - 'google-gdk-license-.+'
+      sudo: true
+      language: bash
+      # ignored on non-linux platforms, but bionic is required for nested virtualization
+      dist: bionic
+
       before_install:
-        - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid harmless sdkmanager warning
-        - yes | sdkmanager "platform-tools" >/dev/null
-        - yes | sdkmanager "tools" >/dev/null # A second time per Travis docs, gets latest versions
-        - yes | sdkmanager "build-tools;28.0.3" >/dev/null # Implicit gradle dependency - gradle drives changes
-        - yes | sdkmanager "platforms;android-28" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
-        - yes | sdkmanager "extras;android;m2repository" >/dev/null
-        - yes | sdkmanager "emulator"
-        - yes | sdkmanager "system-images;android-25;google_apis;x86_64" >/dev/null
-        - avdmanager create avd --force -n "TestingAVD" -k "system-images;android-25;google_apis;x86_64"  -g "google_apis" -d "Nexus 4"
-        - emulator -verbose -avd TestingAVD -no-accel -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
-        - nvm install 10
+        # This section may run on all platforms, and may run for unit tests or for coverage finalization
+        # It should not make assumptions about os platform or desired tool installation
+
+        # Set up JDK 8 for Android SDK - Java is universally needed: codacy, unit tests, emulators
+        - travis_retry git clone --single-branch --branch master --depth 1 $GRAVIS_REPO $GRAVIS
+        - export TARGET_JDK="${JDK}"
+        - JDK="1.8"
+        - source $GRAVIS/install-jdk
+
+        # Set up Android SDK
+        - wget -q "${ANDROID_TOOLS_URL}" -O android-sdk-tools.zip
+        - unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
+        - rm android-sdk-tools.zip
+        - mkdir ~/.android # avoid harmless sdkmanager warning
+        - echo 'count=0' > ~/.android/repositories.cfg # avoid harmless sdkmanager warning
+        - yes | sdkmanager --licenses >/dev/null # accept all sdkmanager warnings
+        - echo y | sdkmanager --no_https "platform-tools" >/dev/null
+        - echo y | sdkmanager --no_https "tools" >/dev/null # A second time per Travis docs, gets latest versions
+        - echo y | sdkmanager --no_https "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null # Implicit gradle dependency - gradle drives changes
+        - echo y | sdkmanager --no_https "platforms;android-${COMPILE_API}" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
+
+        # Download required emulator tools
+        - echo y | sdkmanager --no_https "platforms;android-$API" >/dev/null # We need the API of the emulator we will run
+        - echo y | sdkmanager --no_https "emulator" >/dev/null
+        - echo y | sdkmanager --no_https "system-images;android-$API;$EMU_FLAVOR;$ABI" >/dev/null # install our emulator
+
+        # Set up KVM on linux for hardware acceleration. Manually here so it only happens for emulator tests, takes ~30s
+        - travis_retry sudo -E apt-get -yq --no-install-suggests --no-install-recommends install bridge-utils libpulse0 libvirt-bin libxcursor1 qemu-kvm virtinst ubuntu-vm-builder
+        - sudo adduser $USER libvirt
+        - sudo adduser $USER kvm
+
+        # Create an Android emulator
+        - echo no | avdmanager create avd --force -n TestingAVD -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
+        - printf "\nhw.lcd.height=1334\nhw.lcd.width=750\nhw.lcd.density=320\nskin.name=750x1334" >> /home/travis/.android/avd/TestingAVD.avd/config.ini
+        - |
+          EMU_PARAMS="-verbose -no-snapshot -no-window -camera-back none -camera-front none -selinux permissive -qemu -m 2048"
+          EMU_COMMAND="emulator"
+          # This double "sudo" monstrosity is used to have Travis execute the
+          # emulator with its new group permissions and help preserve the rule
+          # of least privilege.
+          sudo -E sudo -u $USER -E bash -c "${ANDROID_HOME}/emulator/${EMU_COMMAND} -avd TestingAVD ${EMU_PARAMS} &"
+
+        # Wait for emulator to be ready
+        - ./scripts/android-wait-for-emulator.sh
+        - adb shell input keyevent 82 &
+
+        # Switch locale
+        - if [ "$LOCALE" != "NONE" ]; then adb shell am broadcast -a com.android.intent.action.SET_LOCALE --es com.android.intent.extra.LOCALE "$LOCALE" com.android.customlocale2; fi
+
+        # Switch back to our target JDK version to build and run tests
+        - JDK="${TARGET_JDK}"
+        - source $GRAVIS/install-jdk
+
+        - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+        - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        - nvm install $NODE_VERSION
+        - nvm use $NODE_VERSION
+        - nvm alias default $NODE_VERSION
         - node --version
         - npm install -g yarn
         - yarn -version
@@ -54,8 +113,6 @@ jobs:
         - yarn
       script:
         - yarn detox build -c android.emu.release
-        - android-wait-for-emulator
-        - adb shell input keyevent 82 &
         - yarn detox test -c android.emu.release -l verbose -u
 
     - stage: build
