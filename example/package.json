@@ -22,6 +22,7 @@
     "detox": "^17.1.1",
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
+    "jest-circus": "^26.1.0",
     "metro-react-native-babel-preset": "^0.60.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.9.6"
