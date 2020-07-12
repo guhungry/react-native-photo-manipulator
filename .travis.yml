@@ -137,7 +137,7 @@ jobs:
         - yarn detox clean-framework-cache &&  yarn detox build-framework-cache
         - xcrun simctl boot "iPhone 5s" || true
       script:
-        - yarn detox build -c ios.sim.release
+        - travis_wait 30 yarn detox build -c ios.sim.release
         - yarn detox test -c ios.sim.release -l verbose -u
 
     - stage: deploy
