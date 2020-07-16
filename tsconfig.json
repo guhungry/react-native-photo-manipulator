@@ -1,5 +1,5 @@
 {
-  "include": ["src/*"],
+  "include": ["src/"],
   "compilerOptions": {
     "baseUrl": "./src/",
     "jsx": "react-native",
@@ -20,5 +20,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true
-  }
+  },
+  "exclude": ["node_modules", "example"]
 }
