@@ -18,17 +18,17 @@ export interface Color {
   a: number
 }
 
-export type ImageSource = string | number
+export type ImageSource = string | number;
 
 export enum MimeType {
-  JPEG = "image/jpeg",
-  PNG = "image/png"
+  JPEG = 'image/jpeg',
+  PNG = 'image/png'
 }
 
-interface PhotoBatchPrintText { operation: "text", options: TextOptions }
-interface PhotoBatchOverlay { operation: "overlay", overlay: ImageSource, position: Point }
+interface PhotoBatchPrintText { operation: 'text', options: TextOptions }
+interface PhotoBatchOverlay { operation: 'overlay', overlay: ImageSource, position: Point }
 
-export type PhotoBatchOperations = PhotoBatchPrintText | PhotoBatchOverlay
+export type PhotoBatchOperations = PhotoBatchPrintText | PhotoBatchOverlay;
 
 export interface PhotoManipulatorStatic {
   /**
