@@ -113,7 +113,7 @@ jobs:
         - yarn
       script:
         - yarn detox build -c android.emu.release
-        - yarn detox test -c android.emu.release -l verbose -u
+        - yarn detox test -c android.emu.release -l verbose
 
     - stage: build
       name: "Build iOS"
