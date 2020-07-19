@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - "10"
 os: linux
 dist: bionic
 
@@ -32,12 +34,6 @@ env:
 jobs:
   include:
     - stage: test
-      language: node_js
-      node_js:
-        - "10"
-
-      before_install:
-        - npm install -g yarn
       script:
         - yarn ci
 
@@ -143,9 +139,6 @@ jobs:
 
     - stage: deploy
       name: "Publish to npm"
-      language: node_js
-      node_js:
-        - "10"
       before_install:
         - echo "//registry.npmjs.org/:_authToken=$NPM_PUBLISH_TOKEN" > ~/.npmrc
       script:
