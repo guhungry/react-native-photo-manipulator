@@ -87,6 +87,19 @@ jobs:
           # of least privilege.
           sudo -E sudo -u $USER -E bash -c "${ANDROID_HOME}/emulator/${EMU_COMMAND} -avd TestingAVD ${EMU_PARAMS} &"
 
+        # Install node dependencies in example/package.json
+        - nvm install $NODE_VERSION
+        - nvm use $NODE_VERSION
+        - nvm alias default $NODE_VERSION
+        - node --version
+        - npm install -g yarn
+        - yarn -version
+        - cd example && yarn && cd ..
+
+        # Switch back to our target JDK version to build and run tests
+        - JDK="${TARGET_JDK}"
+        - source $GRAVIS/install-jdk
+
         # Wait for emulator to be ready
         - ./scripts/android-wait-for-emulator.sh
         - adb shell input keyevent 82 &
@@ -94,18 +107,8 @@ jobs:
         # Switch locale
         - if [ "$LOCALE" != "NONE" ]; then adb shell am broadcast -a com.android.intent.action.SET_LOCALE --es com.android.intent.extra.LOCALE "$LOCALE" com.android.customlocale2; fi
 
-        # Switch back to our target JDK version to build and run tests
-        - JDK="${TARGET_JDK}"
-        - source $GRAVIS/install-jdk
-
-        - nvm install $NODE_VERSION
-        - nvm use $NODE_VERSION
-        - nvm alias default $NODE_VERSION
-        - node --version
-        - npm install -g yarn
-        - yarn -version
+        # Run script in example
         - cd example
-        - yarn
       script:
         - yarn detox build -c android.emu.release
         - yarn detox test -c android.emu.release -l info
