@@ -1,3 +1,7 @@
+language: node_js
+os: linux
+dist: bionic
+
 cache:
   directories:
     - node_modules
@@ -22,7 +26,7 @@ env:
     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
     - TERM=dumb
     - secure: hatwqC4bsfDLFU45N5bLhC8W0nxzXo2aH+HSvGKi1hjzwGgm+gjpJyrm1D45S7xJbgtrHkhOm6He4JqFz/kEgW2BfhIq4zHBO8fUUfOzG91lGNk9tvqlOY7FMQOLJL0bIAFsoy3E3ZWhdE4XJOSkvrQVVKA+IH9gDrfyV+9mkA3sgnKIT1Sa589Ty2p6nxbCsTLVyhHT2U1PXnasAa37rrD+jL78GbgoQHY6/2RGKJQIEfB6fgjSSxduft+1o7bC+bpWoSdQBDiWHYfw+7OIvBG64Cpnps5DTjBdnbKGPiFvTZ5pNRD3Q1bdvkF3HGRC4Oss9BeKm1oNx+3AceWHr/qA/LSuSk3M+rEbu7UkigAmILhDvzf10FZgoPC/IdPdwiXDAvpBDYA0CNz9+FwaWwtzncqndOQcj797kwDJ6JUGBpBkQWW9lpNSzxerygNNdmG2QmNEk8xOUPRht2aufc+0pPl/ZY9PUIW11IChvSrq5hqMmd/PIvO3mwf7zVj58ddBy5vFAakFuJrAUB0KD4dKW2NHkKFIwIvIs2NXHFhTJNSQxSs+qTN4vSGTKcPZfH0+eT0/kE6bQ5OnDkZryIbyW+7GTI/56R3EMuu+o5OE762S8G4gN2SwrqGxlxAVUdh3oltBLlfh73fiFdZDny+Nc3ABWC2QHFvAaT8Qor4=
-  matrix:
+  jobs:
    - API=29
 
 jobs:
@@ -39,8 +43,7 @@ jobs:
 
     - stage: build
       name: "Build Android"
-      sudo: true
-      language: bash
+      language: shell
       # ignored on non-linux platforms, but bionic is required for nested virtualization
       dist: bionic
 
