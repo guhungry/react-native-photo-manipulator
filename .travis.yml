@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "10"
 os: linux
+# ignored on non-linux platforms, but bionic is required for nested virtualization
 dist: bionic
 
 cache:
@@ -40,8 +41,6 @@ jobs:
     - stage: build
       name: "Build Android"
       language: shell
-      # ignored on non-linux platforms, but bionic is required for nested virtualization
-      dist: bionic
 
       before_install:
         # This section may run on all platforms, and may run for unit tests or for coverage finalization
