@@ -111,7 +111,7 @@ jobs:
         - yarn
       script:
         - yarn detox build -c android.emu.release
-        - yarn detox test -c android.emu.release -l verbose
+        - yarn detox test -c android.emu.release -l info
 
     - stage: build
       name: "Build iOS"
@@ -136,7 +136,7 @@ jobs:
         - xcrun simctl boot "iPhone 5s" || true
       script:
         - travis_wait 30 yarn detox build -c ios.sim.release
-        - yarn detox test -c ios.sim.release -l verbose -u
+        - yarn detox test -c ios.sim.release -l info -u
 
     - stage: deploy
       name: "Publish to npm"
