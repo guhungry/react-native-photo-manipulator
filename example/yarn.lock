@@ -5693,10 +5693,10 @@ react-native-photo-manipulator@^1.1.2:
   dependencies:
     parse-color "^1.0.0"
 
-react-native@0.63.0:
-  version "0.63.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.0.tgz#1444aa04c34b65ca1dce589db166bd112e982b96"
-  integrity sha512-486RaRKKw35+DgZwdbCUQJsjSRflG5JC4w5T9ZfKqUjlyDDQHgew2berQanYAFbgO4Qh/2mAvAMJe6EhUESufQ==
+react-native@0.63.2:
+  version "0.63.2"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.2.tgz#eaebf3430577b37fbd66ef228a86b3408259ef8e"
+  integrity sha512-MkxHeJorUDzmQwKJrTfrFYMDRLyu9GSBpsFFMDX7X+HglVnaZi3CTzW2mRv1eIcazoseBOP2eJe+bnkyLl8Y2A==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^4.7.0"
