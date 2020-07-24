@@ -12,16 +12,6 @@
 		CC18CAD2224890F500BFB221 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CC18CAD1224890F500BFB221 /* ImageUtils.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7FEFCB3B22701CC6000F4050 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7F4954582270118D004F8851;
-			remoteInfo = WCPhotoManipulator;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -38,7 +28,6 @@
 		134814201AA4EA6300B7C361 /* libRNPhotoManipulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNPhotoManipulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F85A5C52249D5CA005139A9 /* ParamUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParamUtils.h; sourceTree = "<group>"; };
 		7F85A5C62249D5CA005139A9 /* ParamUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParamUtils.m; sourceTree = "<group>"; };
-		7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WCPhotoManipulator.xcodeproj; path = WCPhotoManipulator/WCPhotoManipulator.xcodeproj; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNPhotoManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPhotoManipulator.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPhotoManipulator.m; sourceTree = "<group>"; };
 		CC18CAD0224890F500BFB221 /* ImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
@@ -64,17 +53,8 @@
 				B3E7B5881CC2AC0600A0062D /* RNPhotoManipulator.h */,
 				B3E7B5891CC2AC0600A0062D /* RNPhotoManipulator.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				7F138CCA224B904A0070D153 /* Vendor */,
 				7F35D1EA225322410016F006 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		7F138CCA224B904A0070D153 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */,
-			);
-			path = Vendor;
 			sourceTree = "<group>";
 		};
 		7F35D1EA225322410016F006 /* Frameworks */ = {
@@ -82,14 +62,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7FEFCB3822701CC6000F4050 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7FEFCB3C22701CC6000F4050 /* libWCPhotoManipulator.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,28 +107,12 @@
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 7FEFCB3822701CC6000F4050 /* Products */;
-					ProjectRef = 7FEFCB3722701CC6000F4050 /* WCPhotoManipulator.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* RNPhotoManipulator */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		7FEFCB3C22701CC6000F4050 /* libWCPhotoManipulator.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libWCPhotoManipulator.a;
-			remoteRef = 7FEFCB3B22701CC6000F4050 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
