@@ -44,7 +44,7 @@ project(':react-native-photo-manipulator').projectDir = new File(rootProject.pro
 ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
 ```gradle
-  implementation project(':react-native-photo-manipulator')
+implementation project(':react-native-photo-manipulator')
 ```
 
 ## 3. Import library and use.
