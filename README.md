@@ -9,8 +9,17 @@ Image processing library to edit photo programmatically in React Native
 * [x] iOS
 
 ## Getting started
+### For react native 0.60 and above
 
-Read [Get Started Guide](docs/Getting-Started.md)
+```shell
+$ yarn add react-native-photo-manipulator
+```
+(or)
+```shell
+$ npm install react-native-photo-manipulator
+```
+### For react native 0.59 and below
+Please read [Get Started Guide](docs/Getting-Started.md)
 
 ## Usage
 Import library with
