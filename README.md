@@ -65,6 +65,7 @@ static crop(image: ImageSource, cropRegion: Rect, targetSize?: Size) => Promise<
 Promise with image path in cache directory
 
 ##### Example
+
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
@@ -74,7 +75,8 @@ PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
-<img src="/docs/result-crop.jpg?raw=true" alt="Result Crop" width="100" />
+
+<img align="left" src="/docs/result-crop.jpg?raw=true" alt="Result Crop" width="100" />
 <img src="/docs/result-crop-resize.jpg?raw=true" alt="Result Crop and Resize" width="100" />
 
 #### Optimize
@@ -95,6 +97,9 @@ static optimize(image: ImageSource, quality: number) => Promise<string>
 Promise with image path in cache directory
 
 ##### Example
+
+<img align="right" src="/docs/result-optimize.jpg?raw=true" alt="Result Optimize" width="100" />
+
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const quality = 90;
@@ -103,7 +108,6 @@ PhotoManipulator.optimize(image, 90).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
-<img src="/docs/result-optimize.jpg?raw=true" alt="Result Optimize" width="100" />
 
 #### Overlay Image
 Overlay image on top of background image
@@ -124,6 +128,9 @@ static overlayImage(image: ImageSource, overlay: ImageSource, position: Point) =
 Promise with image path in cache directory
 
 ##### Example
+
+<img align="right" src="/docs/result-overlay.jpg?raw=true" alt="Result Overlay" width="100" />
+
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const overlay = "https://www.iconfinder.com/icons/1174949/download/png/128";
@@ -133,7 +140,6 @@ PhotoManipulator.overlayImage(image, overlay, position).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
-<img src="/docs/result-overlay.jpg?raw=true" alt="Result Overlay" width="100" />
 
 #### Print Text
 Print texts into image
@@ -153,6 +159,9 @@ static printText(image: ImageSource, texts: TextOptions[]) => Promise<string>
 Promise with image path in cache directory
 
 ##### Example
+
+<img align="right" src="/docs/result-print-text.jpg?raw=true" alt="Result Print Text" width="100" />
+
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const texts = [
@@ -164,7 +173,6 @@ PhotoManipulator.printText(image, texts).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
-<img src="/docs/result-print-text.jpg?raw=true" alt="Result Print Text" width="100" />
 
 #### Batch
 Crop, resize and do operations (overlay and printText) on image
@@ -187,6 +195,9 @@ static batch(image: ImageSource, operations: PhotoBatchOperations[], cropRegion:
 Promise with image path in cache directory
 
 ##### Example
+
+<img align="right" src="/docs/result-batch.jpg?raw=true" alt="Result Batch" width="100" />
+
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
@@ -201,8 +212,6 @@ PhotoManipulator.batch(image, cropRegion, targetSize, operations, quality).then(
     console.log(`Result image path: ${path}`);
 });
 ```
-<img src="/docs/result-batch.jpg?raw=true" alt="Result Batch" width="100" />
-
 
 ### Types
 #### ImageSource
