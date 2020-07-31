@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
   s.exclude_files = "ios/Vendor/**/*.{h,m}"
 
   s.dependency 'React'
-  s.dependency 'WCPhotoManipulator'
+  s.dependency 'WCPhotoManipulator', '~> 1.0'
 end
