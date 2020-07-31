@@ -43,7 +43,7 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
-    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+    [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -93,7 +93,7 @@ RCT_EXPORT_METHOD(crop:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
-    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+    [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -118,7 +118,7 @@ RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+    [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -144,7 +144,7 @@ RCT_EXPORT_METHOD(printText:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+    [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -169,7 +169,7 @@ RCT_EXPORT_METHOD(optimize:(NSURLRequest *)uri
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(__unused RCTPromiseRejectBlock)reject)
 {
-    [self.bridge.imageLoader loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+    [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
