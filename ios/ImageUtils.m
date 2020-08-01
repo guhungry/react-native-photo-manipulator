@@ -8,7 +8,7 @@
 
 #import "ImageUtils.h"
 
-#import <WCPhotoManipulator/FileUtils.h>
+@import WCPhotoManipulator;
 
 @implementation ImageUtils
 

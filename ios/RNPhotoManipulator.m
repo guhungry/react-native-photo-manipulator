@@ -6,8 +6,7 @@
 #import <React/RCTConvert.h>
 #import <React/RCTImageLoader.h>
 
-#import <WCPhotoManipulator/UIImage+PhotoManipulator.h>
-#import <WCPhotoManipulator/MimeUtils.h>
+@import WCPhotoManipulator;
 
 @implementation RNPhotoManipulator
 
