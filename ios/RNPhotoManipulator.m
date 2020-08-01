@@ -124,7 +124,7 @@ RCT_EXPORT_METHOD(overlayImage:(NSURLRequest *)uri
             return;
         }
 
-        [self->_bridge.imageLoader loadImageWithURLRequest:icon callback:^(NSError *error, UIImage *icon) {
+        [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:icon callback:^(NSError *error, UIImage *icon) {
             if (error) {
                 reject(@(error.code).stringValue, error.description, error);
                 return;
