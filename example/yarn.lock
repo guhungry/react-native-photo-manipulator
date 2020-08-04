@@ -5717,10 +5717,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-photo-manipulator@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-photo-manipulator/-/react-native-photo-manipulator-1.2.0.tgz#e12d320ce387edf32f6cb9856fd7dff2bb8bb981"
-  integrity sha512-EvOFezWlT7yl31pE0xbpaqvGnSLfuJpfIWnFys4ypNswfMryu94iJB0I6tihuYAIu+YBcRKxrCvNSqIKE6idAg==
+react-native-photo-manipulator@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-photo-manipulator/-/react-native-photo-manipulator-1.2.1.tgz#990131a53332a758a0e5296cc8e07eac2b9dbea1"
+  integrity sha512-d3RQzwfFVR0wcubYlZnzKw6pOq2741WQE0Vl7lW77IhVQnnQFzpqTQudojPeiHDTE+7+tk2UlGw9t7fI/oXF3w==
   dependencies:
     parse-color "^1.0.0"
 
