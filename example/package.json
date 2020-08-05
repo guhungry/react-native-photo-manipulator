@@ -15,7 +15,7 @@
     "react-native-photo-manipulator": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.11.1",
     "@babel/runtime": "^7.10.4",
     "@react-native-community/eslint-config": "^2.0.0",
     "babel-jest": "^26.1.0",
