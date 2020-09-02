@@ -19,7 +19,7 @@
     "@babel/runtime": "^7.10.4",
     "@react-native-community/eslint-config": "^2.0.0",
     "babel-jest": "^26.1.0",
-    "detox": "^17.2.1",
+    "detox": "^17.4.5",
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
     "jest-circus": "^26.1.0",
