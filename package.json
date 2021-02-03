@@ -23,7 +23,7 @@
     "@semantic-release/git": "^9.0.0",
     "@types/jest": "^26.0.4",
     "@types/parse-color": "^1.0.0",
-    "@types/react": "^16.9.43",
+    "@types/react": "^17.0.1",
     "@types/react-native": "^0.63.1",
     "@types/react-test-renderer": "^16.8.1",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
