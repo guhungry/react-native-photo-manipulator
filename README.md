@@ -68,7 +68,7 @@ Promise with image path in cache directory
 
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
-const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
+const cropRegion = { x: 5, y: 30, height: 400, width: 250 };
 const targetSize = { size: 200, width: 150 };
 
 PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
