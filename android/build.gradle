@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath("com.android.tools.build:gradle:4.1.0")
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -30,7 +30,7 @@ android {
     compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion = getExtOrIntegerDefault('minSdkVersion')
         targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
         versionCode 1
         versionName "0.0.2"
