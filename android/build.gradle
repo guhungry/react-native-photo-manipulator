@@ -30,7 +30,7 @@ android {
     compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion = getExtOrIntegerDefault('minSdkVersion')
         targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
         versionCode 1
         versionName "0.0.2"
