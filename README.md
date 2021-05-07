@@ -200,8 +200,8 @@ Promise with image path in cache directory
 
 ```javascript
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
-const cropRegion = { x: 5, y: 30, size: 400, width: 250 };
-const targetSize = { size: 200, width: 150 };
+const cropRegion = { x: 5, y: 30, height: 400, width: 250 };
+const targetSize = { height: 200, width: 150 };
 const operations = [
     { operation: "text", options: { position: { x: 50, y: 30 }, text: "Text 1", textSize: 30, color: "#000000" } },
     { operation: "overlay", overlay: "https://www.iconfinder.com/icons/1174949/download/png/128", position: { x: 5, y: 20 } },
