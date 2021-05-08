@@ -52,8 +52,21 @@ object ImageUtils {
      */
     @JvmStatic fun cropBitmapFromUri(context: Context, uri: String, cropRegion: CGRect, targetSize: CGSize?): Bitmap {
         openBitmapInputStream(context, uri).use {
-            return if (targetSize != null) BitmapUtils.cropAndResize(it, cropRegion, targetSize, BitmapFactory.Options())
-            else BitmapUtils.crop(it, cropRegion, BitmapFactory.Options())
+            val output = if (targetSize != null) BitmapUtils.cropAndResize(it, cropRegion, targetSize, mutableOptions())
+            else BitmapUtils.crop(it, cropRegion, mutableOptions())
+
+            return makeMutable(output)
+        }
+    }
+
+    private fun makeMutable(output: Bitmap): Bitmap {
+        return when {
+            output.isMutable -> output
+            else -> try {
+                output.copy(output.config, true)
+            } finally {
+                output.recycle()
+            }
         }
     }
 
