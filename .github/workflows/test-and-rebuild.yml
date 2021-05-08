@@ -1,0 +1,203 @@
+name: "Test and build"
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  cache:
+    name: Cache Dependencies
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Restore cache yarn
+        id: cache-yarn
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn
+          key: yarn-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies [Main]
+        if: steps.cache-yarn.outputs.cache-hit != 'true'
+        run: yarn --cache-folder ~/.yarn
+
+      - name: Install dependencies [Example]
+        if: steps.cache-yarn.outputs.cache-hit != 'true'
+        run: |
+          cd example
+          yarn --cache-folder ~/.yarn
+
+      - name: Restore cache gradle wrapper
+        id: cache-gradle-wrapper
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: gradle-wrapper-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/gradle-wrapper.properties') }}
+
+      - name: Restore cache gradle cache
+        id: cache-gradle-cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: gradle-cache-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
+
+      - name: Downloading Gradle Dependencies
+        if: steps.cache-gradle-wrapper.outputs.cache-hit != 'true' || steps.cache-gradle-cache.outputs.cache-hit != 'true'
+        run: |
+          cd example/android
+          chmod +x gradlew
+          ./gradlew --max-workers 2 downloadDependencies
+
+      - name: Restore cache Pods
+        id: cache-pods
+        uses: actions/cache@v1
+        with:
+          path: example/ios/Pods
+          key: pods-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Install CocoaPods
+        if: steps.cache-pods.outputs.cache-hit != 'true'
+        run: |
+          cd example/ios
+          pod install
+
+  analyse:
+    name: Analyse
+    needs: cache
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Restore cache yarn
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn
+          key: yarn-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies [Main]
+        run: yarn --cache-folder ~/.yarn
+
+      - name: Test
+        run: yarn ci
+
+  build-android:
+    name: Build Android
+    needs: analyse
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Restore cache yarn
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn
+          key: yarn-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Restore cache gradle wrapper
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: gradle-wrapper-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/gradle-wrapper.properties') }}
+
+      - name: Restore cache gradle cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: gradle-cache-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
+
+      - name: Install dependencies [Example]
+        run: |
+          cd example
+          yarn --cache-folder ~/.yarn
+
+      - name: Build Android Release
+        run: |
+          cd example
+          yarn detox build -c android.emu.release
+
+      - name: Test Android Release
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          avd-name: TestingAVD
+          script: cd example && yarn detox test -c android.emu.release -l info
+
+  build-ios:
+    name: Build iOS
+    needs: analyse
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Restore cache yarn
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn
+          key: yarn-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Restore cache Pods
+        uses: actions/cache@v1
+        with:
+          path: example/ios/Pods
+          key: pods-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Install dependencies [Example]
+        run: |
+          cd example
+          yarn --cache-folder ~/.yarn
+
+      - name: Install Detox dependencies
+        run: |
+          cd example
+          brew tap wix/brew
+          brew install applesimutils
+          yarn detox clean-framework-cache
+          yarn detox build-framework-cache
+
+      - name: Install CocoaPods
+        run: |
+          cd example/ios
+          pod install
+
+      - name: Build iOS Release
+        run: |
+          cd example
+          yarn detox build -c ios.sim.release
+
+      - name: Test iOS Release
+        run: |
+          cd example
+          yarn detox test -c ios.sim.release -l info -u
