@@ -1,4 +1,5 @@
 {
+    "setupFilesAfterEnv": ["./setup.js"],
     "testRunner": "jest-circus/runner",
     "testEnvironment": "./environment",
     "testTimeout": 120000,
