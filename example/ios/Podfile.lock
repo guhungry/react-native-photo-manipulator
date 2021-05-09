@@ -252,7 +252,7 @@ PODS:
     - React-jsi (= 0.64.1)
     - React-perflogger (= 0.64.1)
   - React-jsinspector (0.64.1)
-  - react-native-photo-manipulator (1.2.2):
+  - react-native-photo-manipulator (1.2.3):
     - React
     - WCPhotoManipulator (~> 2.0)
   - React-perflogger (0.64.1)
@@ -479,7 +479,7 @@ SPEC CHECKSUMS:
   React-jsi: 5de8204706bd872b78ea646aee5d2561ca1214b6
   React-jsiexecutor: 124e8f99992490d0d13e0649d950d3e1aae06fe9
   React-jsinspector: 500a59626037be5b3b3d89c5151bc3baa9abf1a9
-  react-native-photo-manipulator: f4e034f454c9de29a61dc48a3c71281a8a750909
+  react-native-photo-manipulator: 95d4e247aecc019cba7fe47ba7f583590253bf57
   React-perflogger: aad6d4b4a267936b3667260d1f649b6f6069a675
   React-RCTActionSheet: fc376be462c9c8d6ad82c0905442fd77f82a9d2a
   React-RCTAnimation: ba0a1c3a2738be224a08092fa7f1b444ab77d309
