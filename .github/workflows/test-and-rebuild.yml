@@ -1,4 +1,4 @@
-name: "Test and build"
+name: "Build and Test"
 
 on:
   push:
@@ -34,7 +34,6 @@ jobs:
         run: yarn --cache-folder ~/.yarn
 
       - name: Install dependencies [Example]
-        if: steps.cache-yarn.outputs.cache-hit != 'true'
         run: |
           cd example
           yarn --cache-folder ~/.yarn
