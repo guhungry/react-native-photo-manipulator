@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParamUtils : NSObject
 
++ (UIFont *)font:(id)name size:(id)size;
 + (UIColor *)color:(NSDictionary *)data;
 
 @end

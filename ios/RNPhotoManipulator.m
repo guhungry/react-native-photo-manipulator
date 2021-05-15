@@ -76,11 +76,11 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
 
         NSString *text = [RCTConvert NSString:options[@"text"]];
         CGPoint position = [RCTConvert CGPoint:options[@"position"]];
-        CGFloat textSize = [RCTConvert CGFloat:options[@"textSize"]];
+        UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
         UIColor *color = [ParamUtils color:options[@"color"]];
         CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
 
-        return [image drawText:text position:position color:color size:textSize thickness:thickness];
+        return [image drawText:text position:position color:color font:font thickness:thickness];
     }
     return image;
 }
@@ -151,11 +151,11 @@ RCT_EXPORT_METHOD(printText:(NSURLRequest *)uri
         for (id options in list) {
             NSString *text = [RCTConvert NSString:options[@"text"]];
             CGPoint position = [RCTConvert CGPoint:options[@"position"]];
-            CGFloat textSize = [RCTConvert CGFloat:options[@"textSize"]];
+            UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
             UIColor *color = [ParamUtils color:options[@"color"]];
             CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
 
-            image = [image drawText:text position:position color:color size:textSize thickness:thickness];
+            image = [image drawText:text position:position color:color font:font thickness:thickness];
         }
 
         NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];
