@@ -6,7 +6,7 @@ export interface Rect extends Size, Point {}
 export interface TextOptions {
   position: Point
   text: string
-  textSize?: number
+  textSize: number
   fontName?: string
   color?: string
   thickness?: number
