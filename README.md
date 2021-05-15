@@ -271,11 +271,11 @@ Represent size (width, height) of region or image
 #### TextOptions
 Represent attributes of text such as text, color, size, and etc.
 
-| Property        | Type                          | Description                                    |
-| --------------- | ----------------------------- | ---------------------------------------------- |
-| `position`      | [`Point`](README.md#point)    | The position of the text in background image   |
-| `text`          | string                        | The value of the text                          |
-| `textSize`      | number                        | The size of the text                           |
-| `fontName`      | number                        | The font name that can resolve by React Native |
-| `color`         | string                        | The color of the text                          |
-| `thickness`     | number                        | The thickness (border width) of the region     |
+| Property        | Type                          | Required | Description                                    |
+| --------------- | ----------------------------- | -------- | ---------------------------------------------- |
+| `position`      | [`Point`](README.md#point)    | Yes      | The position of the text in background image   |
+| `text`          | string                        | Yes      | The value of the text                          |
+| `textSize`      | number                        | Yes      | The size of the text                           |
+| `fontName`      | number                        | No       | The font name that can resolve by React Native |
+| `color`         | string                        | No       | The color of the text                          |
+| `thickness`     | number                        | No       | The thickness (border width) of the region     |
