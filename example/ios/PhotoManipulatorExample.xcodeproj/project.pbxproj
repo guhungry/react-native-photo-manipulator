@@ -17,8 +17,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* PhotoManipulatorExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PhotoManipulatorExampleTests.m */; };
 		46CAA811EDDD93B2DAFE68C2 /* libPods-PhotoManipulatorExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B688E697950AC37FD62785E1 /* libPods-PhotoManipulatorExample.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		ADC6A978E901EF3C4CE1CABC /* libPods-PhotoManipulatorExample-PhotoManipulatorExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF6202E40771D68E73214D1 /* libPods-PhotoManipulatorExample-PhotoManipulatorExampleTests.a */; };
 		A7738ED654D5442C8422EEEE /* Girassol-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F92850E98454E6B859E1A0B /* Girassol-Regular.ttf */; };
+		ADC6A978E901EF3C4CE1CABC /* libPods-PhotoManipulatorExample-PhotoManipulatorExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF6202E40771D68E73214D1 /* libPods-PhotoManipulatorExample-PhotoManipulatorExampleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +51,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PhotoManipulatorExample/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* PhotoManipulatorExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoManipulatorExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PhotoManipulatorExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PhotoManipulatorExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F92850E98454E6B859E1A0B /* Girassol-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Girassol-Regular.ttf"; path = "../assets/fonts/Girassol-Regular.ttf"; sourceTree = "<group>"; };
 		6FF6202E40771D68E73214D1 /* libPods-PhotoManipulatorExample-PhotoManipulatorExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoManipulatorExample-PhotoManipulatorExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = PhotoManipulatorExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8272644CB770F4E1DD061F18 /* Pods-PhotoManipulatorExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample.release.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample/Pods-PhotoManipulatorExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F2D816420FB647A8CF47CF68 /* Pods-PhotoManipulatorExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoManipulatorExample.debug.xcconfig"; path = "Target Support Files/Pods-PhotoManipulatorExample/Pods-PhotoManipulatorExample.debug.xcconfig"; sourceTree = "<group>"; };
-		2F92850E98454E6B859E1A0B /* Girassol-Regular.ttf */ = {isa = PBXFileReference; name = "Girassol-Regular.ttf"; path = "../assets/fonts/Girassol-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +128,15 @@
 			name = PhotoManipulatorExample;
 			sourceTree = "<group>";
 		};
+		26FB9107ED8D4FCE83FD903D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F92850E98454E6B859E1A0B /* Girassol-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,15 +193,6 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
-		};
-		26FB9107ED8D4FCE83FD903D /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				2F92850E98454E6B859E1A0B /* Girassol-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

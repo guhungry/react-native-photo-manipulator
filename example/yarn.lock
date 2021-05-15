@@ -5568,10 +5568,10 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-photo-manipulator@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-photo-manipulator/-/react-native-photo-manipulator-1.2.3.tgz#eee5ef9fb3ed5667bb46787b0bb0cd51924cffd1"
-  integrity sha512-q4q9Hmzgnq67sQJkrpAWnXauQYwPAy8WgqtP4Ga/VwjZlOWoAG/sYNBKcrB1MRVOq6VMOGIP/wUSbzan4xiN7g==
+react-native-photo-manipulator@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-photo-manipulator/-/react-native-photo-manipulator-1.2.4.tgz#60da9c68c815695c43fa3ed8c77bd9f08d076158"
+  integrity sha512-EGkDxmVfom52G2jDWvY+rzzHVTlXLCfBs+IQut+VaH7TtShxQekzzqxFRr0Pch/0I5s6Vt+gjrhFZBIv7FweVg==
   dependencies:
     parse-color "^1.0.0"
 
