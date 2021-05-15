@@ -28,8 +28,8 @@ export default React.memo(function ExampleBatch() {
 
   function operations(): PhotoBatchOperations[] {
     return [
-      { operation: "text", options: { text: "Test Print Text", color: "black", textSize: 30, position: { x: 80, y: 30 }, thickness: 4 } },
-      { operation: "text", options: { text: "Test Print Text", color: "white", textSize: 30, position: { x: 80, y: 30 } } },
+      { operation: "text", options: { text: "Test Print Text", color: "black", textSize: 30, fontName: "Girassol-Regular", position: { x: 80, y: 30 }, thickness: 4 } },
+      { operation: "text", options: { text: "Test Print Text", color: "white", textSize: 30, fontName: "Girassol-Regular", position: { x: 80, y: 30 } } },
       { operation: "overlay", overlay: OVERLAY, position: { x: 110, y: 25 } },
       { operation: "text", options: { text: "Test Print Text 2", color: "blue", textSize: 30, position: { x: 100, y: 80 }, thickness: 4 } },
       { operation: "text", options: { text: "Test Print Text 2", color: "brown", textSize: 30, position: { x: 100, y: 80 } } },
