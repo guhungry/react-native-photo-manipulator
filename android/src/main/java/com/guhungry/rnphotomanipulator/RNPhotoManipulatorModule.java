@@ -4,6 +4,7 @@ package com.guhungry.rnphotomanipulator;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.Typeface;
 import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Promise;
@@ -12,6 +13,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.views.text.ReactFontManager;
 import com.facebook.react.module.annotations.ReactModule;
 import com.guhungry.photomanipulator.BitmapUtils;
 import com.guhungry.photomanipulator.MimeUtils;
@@ -71,7 +73,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             ReadableMap text = operation.getMap("options");
             if (text == null) return;
 
-            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
         } else if ("overlay".equals(type)) {
             String uri = operation.getString("overlay");
             if (uri == null) return;
@@ -121,7 +123,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             for (int i = 0, count = list.size(); i < count; i++) {
                 ReadableMap text = list.getMap(i);
                 if (text == null) continue;
-                printLine(output, text.getString("text"), (float) text.getDouble("textSize"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+                printLine(output, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
             }
 
             String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
@@ -133,8 +135,18 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void printLine(Bitmap image, String text, float scale, PointF location, int color, int thickness) {
-        BitmapUtils.printText(image, text, location, color, scale, Paint.Align.LEFT, thickness);
+    private void printLine(Bitmap image, String text, float scale, String fontName, PointF location, int color, int thickness) {
+        Typeface font = getFont(fontName);
+        BitmapUtils.printText(image, text, location, color, scale, font, Paint.Align.LEFT, thickness);
+    }
+
+    private Typeface getFont(String fontName) {
+        if (fontName == null) return Typeface.DEFAULT;
+        try {
+            return ReactFontManager.getInstance().getTypeface(fontName, Typeface.NORMAL, getReactApplicationContext().getAssets());
+        } catch (Exception e) {
+            return Typeface.DEFAULT;
+        }
     }
 
     @ReactMethod
