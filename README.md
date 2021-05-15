@@ -276,6 +276,6 @@ Represent attributes of text such as text, color, size, and etc.
 | `position`      | [`Point`](README.md#point)    | Yes      | The position of the text in background image   |
 | `text`          | string                        | Yes      | The value of the text                          |
 | `textSize`      | number                        | Yes      | The size of the text                           |
-| `fontName`      | number                        | No       | The font name that can resolve by React Native |
+| `fontName`      | string                        | No       | The font name that can resolve by React Native<br/>iOS: Use "PostScript name"<br/>Android: Use filename |
 | `color`         | string                        | No       | The color of the text                          |
 | `thickness`     | number                        | No       | The thickness (border width) of the region     |
