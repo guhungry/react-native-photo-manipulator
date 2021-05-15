@@ -7,6 +7,7 @@ export interface TextOptions {
   position: Point
   text: string
   textSize?: number
+  fontName?: string
   color?: string
   thickness?: number
 }
