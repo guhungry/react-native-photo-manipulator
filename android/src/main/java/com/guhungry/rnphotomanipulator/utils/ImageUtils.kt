@@ -3,10 +3,10 @@ package com.guhungry.rnphotomanipulator.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Point
 import android.net.Uri
 import com.guhungry.photomanipulator.*
 import java.io.InputStream
+import java.util.*
 
 object ImageUtils {
     /**
@@ -40,7 +40,7 @@ object ImageUtils {
             // Do nothing.
         }
 
-        val resource = name.toLowerCase().replace("-", "_")
+        val resource = name.lowercase(Locale.getDefault()).replace("-", "_")
         return context.resources.getIdentifier(resource, "drawable", context.packageName)
     }
 
@@ -51,9 +51,15 @@ object ImageUtils {
      * @param uri Uri of Image file
      */
     @JvmStatic fun cropBitmapFromUri(context: Context, uri: String, cropRegion: CGRect, targetSize: CGSize?): Bitmap {
-        openBitmapInputStream(context, uri).use {
-            val output = if (targetSize != null) BitmapUtils.cropAndResize(it, cropRegion, targetSize, mutableOptions())
-            else BitmapUtils.crop(it, cropRegion, mutableOptions())
+        openBitmapInputStream(context, uri).use { image ->
+            val output = if (targetSize == null) BitmapUtils.crop(image, cropRegion, mutableOptions())
+            else {
+                val matrix = openBitmapInputStream(context, uri).use {
+                    BitmapUtils.getCorrectOrientationMatrix(it)
+                }
+
+                BitmapUtils.cropAndResize(image, cropRegion, targetSize, mutableOptions(), matrix)
+            }
 
             return makeMutable(output)
         }
@@ -71,22 +77,9 @@ object ImageUtils {
     }
 
     /**
-     * Get Size of Image from Image Uri
-     *
-     * @param context
-     * @param uri Uri of Image file
-     */
-    @JvmStatic fun dimensionFromUri(context: Context, uri: String): CGSize {
-        openBitmapInputStream(context, uri).use {
-            return BitmapUtils.readImageDimensions(it)
-        }
-    }
-
-    /**
      * Save image to temp file
      *
      * @param context
-     * @param uri Uri of Image file
      */
     @JvmStatic fun saveTempFile(context: Context, image: Bitmap, mimeType: String, prefix: String, quality: Int): String {
         val file = FileUtils.createTempFile(context, prefix, mimeType)
