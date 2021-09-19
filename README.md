@@ -71,7 +71,7 @@ const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const cropRegion = { x: 5, y: 30, height: 400, width: 250 };
 const targetSize = { height: 200, width: 150 };
 
-PhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
+RNPhotoManipulator.crop(image, cropRegion, targetSize).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
@@ -104,7 +104,7 @@ Promise with image path in cache directory
 const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const quality = 90;
 
-PhotoManipulator.optimize(image, 90).then(path => {
+RNPhotoManipulator.optimize(image, 90).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
@@ -136,7 +136,7 @@ const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const overlay = "https://www.iconfinder.com/icons/1174949/download/png/128";
 const position = { x: 5, y: 20 };
 
-PhotoManipulator.overlayImage(image, overlay, position).then(path => {
+RNPhotoManipulator.overlayImage(image, overlay, position).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
@@ -169,7 +169,7 @@ const texts = [
     { position: { x: 50, y: 30 }, text: "Text 1", textSize: 30, color: "#FFFFFF", thickness: 3 }
 ];
 
-PhotoManipulator.printText(image, texts).then(path => {
+RNPhotoManipulator.printText(image, texts).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
@@ -208,7 +208,7 @@ const operations = [
 ];
 const quality = 90;
 
-PhotoManipulator.batch(image, cropRegion, targetSize, operations, quality).then(path => {
+RNPhotoManipulator.batch(image, cropRegion, targetSize, operations, quality).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
