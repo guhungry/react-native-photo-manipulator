@@ -17,8 +17,15 @@ object ImageUtils {
      */
     @JvmOverloads
     @JvmStatic fun bitmapFromUri(context: Context, uri: String, options: BitmapFactory.Options? = null): Bitmap {
-        openBitmapInputStream(context, uri).use {
-            return BitmapFactory.decodeStream(it, null, options)!!
+        openBitmapInputStream(context, uri).use { image ->
+            val matrix = openBitmapInputStream(context, uri).use {
+                BitmapUtils.getCorrectOrientationMatrix(it)
+            }
+
+            val bitmap: Bitmap = BitmapFactory.decodeStream(image, null, options)!!
+
+            return if (matrix != null) Bitmap.createBitmap(bitmap, 0, 0, bitmap.width,
+                bitmap.height, matrix, true).also { bitmap.recycle()  } else bitmap
         }
     }
 
