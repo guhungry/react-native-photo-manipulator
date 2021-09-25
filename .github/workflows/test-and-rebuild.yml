@@ -191,6 +191,12 @@ jobs:
           cd example/ios
           pod install
 
+      - name: Xcode Version
+        run: |
+          cd example
+          xcodebuild -version
+          xcrun simctl list
+
       - name: Build iOS Release
         run: |
           cd example
