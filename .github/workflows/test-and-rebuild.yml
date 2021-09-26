@@ -17,10 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup node 12
+      - name: Setup node 14
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
 
       - name: Restore cache yarn
         id: cache-yarn
@@ -81,10 +81,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup node 12
+      - name: Setup node 14
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
 
       - name: Restore cache yarn
         uses: actions/cache@v2
@@ -107,10 +107,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup node 12
+      - name: Setup node 14
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
 
       - name: Restore cache yarn
         uses: actions/cache@v2
@@ -156,10 +156,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup node 12
+      - name: Setup node 14
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
 
       - name: Restore cache yarn
         uses: actions/cache@v2
@@ -190,6 +190,12 @@ jobs:
         run: |
           cd example/ios
           pod install
+
+      - name: Xcode Version
+        run: |
+          cd example
+          xcodebuild -version
+          xcrun simctl list
 
       - name: Build iOS Release
         run: |
