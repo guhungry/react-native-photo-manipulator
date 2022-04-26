@@ -38,7 +38,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-native": "^3.10.0",
-    "jest": "^27.2.2",
+    "jest": "^28.0.1",
     "jest-extended": "^0.11.5",
     "metro-react-native-babel-preset": "^0.66.2",
     "react": "17.0.2",
