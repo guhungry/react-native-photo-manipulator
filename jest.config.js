@@ -163,7 +163,7 @@ module.exports = {
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
   // timers: "real",
 
-  setupFilesAfterEnv: ["jest-extended", "./jest.setup"],
+  setupFilesAfterEnv: ["./jest.setup"],
 
   // A map from regular expressions to paths to transformers
   transform: {
