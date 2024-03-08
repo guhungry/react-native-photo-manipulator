@@ -1,3 +1,8 @@
+// add all jest-extended matchers
+import * as matchers from 'jest-extended';
+expect.extend(matchers);
+
+// Mock NativeModules
 import { NativeModules } from "react-native"
 
 NativeModules.RNPhotoManipulator = {
