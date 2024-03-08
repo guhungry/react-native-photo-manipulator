@@ -10,16 +10,19 @@ jobs:
       node_version: '20.11'
     steps:
       - checkout
+      - rn/yarn_install
+      - rn/yarn_install:
+          yarn_install_directory: 'example'
       - persist_to_workspace:
           root: .
           paths: .
   analyse:
     executor: 
       name: rn/linux_js
+      node_version: '20.11'
     steps:
       - attach_workspace:
           at: .
-      - rn/yarn_install
       - run:
           name: Lint JS Code (ESLint)
           command: yarn run lint
@@ -36,18 +39,20 @@ workflows:
             - checkout_code
       - rn/android_build:
           name: build_android_debug
-          attach_workspace: true
-          workspace_root: "example"
+          project_path: "example/android"
           build_type: debug
           requires:
             - analyse
+          build_image_version: 'latest'
+          java_options: '-Xmx2024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
       - rn/android_build:
           name: build_android_release
-          attach_workspace: true
-          workspace_root: "example"
+          project_path: "example/android"
           build_type: release
           requires:
             - analyse
+          build_image_version: 'latest'
+          java_options: '-Xmx2024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
 #      - rn/android_test:
 #          detox_configuration: "android.emu.release"
 #          detox_loglevel: "trace"
