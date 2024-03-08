@@ -29,6 +29,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
+    namespace "com.guhungry.rnphotomanipulator"
     defaultConfig {
         minSdkVersion getExtOrIntegerDefault('minSdkVersion')
         targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
