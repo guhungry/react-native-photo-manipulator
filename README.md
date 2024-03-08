@@ -208,7 +208,7 @@ const operations = [
 ];
 const quality = 90;
 
-RNPhotoManipulator.batch(image, cropRegion, targetSize, operations, quality).then(path => {
+RNPhotoManipulator.batch(image, operations, cropRegion, targetSize, quality).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
