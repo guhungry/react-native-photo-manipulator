@@ -23,7 +23,7 @@
     "@react-native/babel-preset": "0.73.21",
     "@react-native/eslint-config": "0.73.2",
     "@react-native/metro-config": "0.73.5",
-    "@react-native/typescript-config": "0.73.1",
+    "@react-native/typescript-config": "0.74.0",
     "@types/jest": "^29",
     "@types/parse-color": "^1.0.0",
     "@types/react-test-renderer": "^18.0.0",
