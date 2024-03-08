@@ -7,7 +7,6 @@
   "author": "Woraphot Chokratanasombat <guhungry@gmail.com>",
   "scripts": {
     "ci": "CI=true && yarn lint && yarn test",
-    "ci:publish": "yarn semantic-release",
     "lint": "yarn tsc --noEmit && yarn eslint ./src --ext .ts,.tsx",
     "build": "yarn tsc",
     "prepack": "yarn build",
@@ -25,7 +24,6 @@
     "@react-native/eslint-config": "0.73.2",
     "@react-native/metro-config": "0.73.5",
     "@react-native/typescript-config": "0.73.1",
-    "@semantic-release/git": "^10.0.0",
     "@types/jest": "^29",
     "@types/parse-color": "^1.0.0",
     "@types/react-test-renderer": "^18.0.0",
@@ -38,7 +36,6 @@
     "react-native": "0.73.5",
     "react-test-renderer": "18.2.0",
     "react": "18.2.0",
-    "semantic-release": "^23.0.0",
     "typescript": "5.0.4"
 
   },
