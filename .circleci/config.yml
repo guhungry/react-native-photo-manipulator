@@ -1,11 +1,13 @@
 version: 2.1
 
 orbs:
-  rn: react-native-community/react-native@5.1.0
+  rn: react-native-community/react-native@7.4.0
 
 jobs:
   checkout_code:
-    executor: rn/linux_js
+    executor:
+      name: rn/linux_js
+      node_version: '20.11'
     steps:
       - checkout
       - persist_to_workspace:
@@ -14,7 +16,6 @@ jobs:
   analyse:
     executor: 
       name: rn/linux_js
-      node_version: '14'
     steps:
       - attach_workspace:
           at: .
@@ -35,16 +36,16 @@ workflows:
             - checkout_code
       - rn/android_build:
           name: build_android_debug
-          project_path: "example/android"
+          attach_workspace: true
+          workspace_root: "example"
           build_type: debug
-          on_after_initialize: "cd example && yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn && cd .."
           requires:
             - analyse
       - rn/android_build:
           name: build_android_release
-          project_path: "example/android"
+          attach_workspace: true
+          workspace_root: "example"
           build_type: release
-          on_after_initialize: "cd example && yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn && cd .."
           requires:
             - analyse
 #      - rn/android_test:

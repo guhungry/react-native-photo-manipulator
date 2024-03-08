@@ -16,14 +16,14 @@ export default class App extends React.Component<{}, {}> {
 
   render() {
     return (
-      <ScrollView testID="scrollView" style={styles.container}>
-        <SafeAreaView>
-          <Text testID="examplesTitle" style={styles.sectionTitle}>
-            Examples
-          </Text>
-          { EXAMPLES.map(this.renderExample) }
-        </SafeAreaView>
-      </ScrollView>
+      <SafeAreaView style={styles.container}>
+        <ScrollView testID="scrollView" style={styles.container}>
+            <Text testID="examplesTitle" style={styles.sectionTitle}>
+              Examples
+            </Text>
+            { EXAMPLES.map(this.renderExample) }
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
