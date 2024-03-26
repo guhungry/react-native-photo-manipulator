@@ -1980,10 +1980,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.2.6":
-  version "18.2.63"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.63.tgz#4637c56146ad90f96d0583171edab953f7e6fe57"
-  integrity sha512-ppaqODhs15PYL2nGUOaOu2RSCCB4Difu4UFrP4I3NHLloXC/ESQzQMi9nvjfT1+rudd0d2L3fQPJxRSey+rGlQ==
+"@types/react@*", "@types/react@^18.2.71":
+  version "18.2.71"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.71.tgz#77c3b97b02014bf351b21b684f80273a3a343f96"
+  integrity sha512-PxEsB9OjmQeYGffoWnYAd/r5FiJuUw2niFQHPc2v2idwh8wGPkkYzOHuinNJJY6NZqfoTCiOIizDOz38gYNsyw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
