@@ -33,6 +33,7 @@ export default React.memo(function ExamplePrintText() {
       { text: "Test Print Text 2", color: "blue", textSize: 30, position: { x: 100, y: 80 }, thickness: 4 },
       { text: "Test Print Text 2", color: "brown", textSize: 30, position: { x: 100, y: 80 } },
       { text: "Test Print Text 3", color: "green", textSize: 30, position: { x: 180, y: 180 } },
+      { text: "Test Print Text 3", color: "pink", textSize: 30, position: { x: 280, y: 180 }, rotation: 30 },
     ]
   }
 })
