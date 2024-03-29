@@ -36,9 +36,10 @@ export const toTextOptionsNative = (it: TextOptions) => ({
 export const toBatchNative = (it: PhotoBatchOperations) => {
   if (it.operation === 'text') {
     return {...it, options: toTextOptionsNative(it.options)};
-  }
-  if (it.operation === 'overlay') {
+  } else if (it.operation === 'overlay') {
     return {...it, overlay: toImageNative(it.overlay)};
+  } else if (it.operation === 'flip') {
+    return {...it};
   }
   return it;
 };

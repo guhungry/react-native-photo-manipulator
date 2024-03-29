@@ -5,6 +5,7 @@ import android.graphics.PointF
 import com.facebook.react.bridge.ReadableMap
 import com.guhungry.photomanipulator.CGRect
 import com.guhungry.photomanipulator.CGSize
+import com.guhungry.photomanipulator.FlipMode
 
 /**
  * Parameter Utilities for Convert JS Parameter to Native Java
@@ -22,4 +23,7 @@ object ParamUtils {
 
     // CGSize
     @JvmStatic fun sizeFromMap(map: ReadableMap?): CGSize? = if (map != null) CGSize(map.getInt("width"), map.getInt("height")) else null
+
+    // FlipMode
+    @JvmStatic fun flipModeFromString(mode: String): FlipMode = runCatching { FlipMode.valueOf(mode) }.getOrDefault(FlipMode.None)
 }

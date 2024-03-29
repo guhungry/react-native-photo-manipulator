@@ -2,6 +2,7 @@ import {NativeModules} from 'react-native';
 import * as ParamUtils from './ParamUtils';
 import {MimeType} from './PhotoManipulatorTypes';
 import type {
+  FlipMode,
   ImageSource,
   PhotoBatchOperations,
   PhotoManipulatorStatic,
@@ -41,6 +42,16 @@ const PhotoManipulator: PhotoManipulatorStatic = {
       ParamUtils.toImageNative(image),
       cropRegion,
       targetSize,
+      mimeType,
+    ),
+  flipImage: (
+    image: ImageSource,
+    mode: FlipMode,
+    mimeType: MimeType = MimeType.JPEG,
+  ) =>
+    RNPhotoManipulator.flipImage(
+      ParamUtils.toImageNative(image),
+      mode,
       mimeType,
     ),
   overlayImage: (
