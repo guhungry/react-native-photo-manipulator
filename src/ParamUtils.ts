@@ -31,6 +31,7 @@ export const toTextOptionsNative = (it: TextOptions) => ({
   ...it,
   color: toColorNative(it.color),
   thickness: it.thickness || 0,
+  rotation: it.rotation || 0,
 });
 
 export const toBatchNative = (it: PhotoBatchOperations) => {

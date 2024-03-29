@@ -79,8 +79,9 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
         UIColor *color = [ParamUtils color:options[@"color"]];
         CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
+        CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
 
-        return [image drawText:text position:position color:color font:font thickness:thickness rotation:0];
+        return [image drawText:text position:position color:color font:font thickness:thickness rotation:rotation];
     } else if ([type isEqual:@"flip"]) {
         NSString *mode = [RCTConvert NSString:operation[@"mode"]];
 
@@ -177,8 +178,9 @@ RCT_EXPORT_METHOD(printText:(NSURLRequest *)uri
             UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
             UIColor *color = [ParamUtils color:options[@"color"]];
             CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
+            CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
 
-            image = [image drawText:text position:position color:color font:font thickness:thickness rotation:0];
+            image = [image drawText:text position:position color:color font:font thickness:thickness rotation:rotation];
         }
 
         NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];

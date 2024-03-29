@@ -16,6 +16,7 @@ export interface TextOptions {
   fontName?: string;
   color?: string;
   thickness?: number;
+  rotation?: number;
 }
 
 export interface Color {
