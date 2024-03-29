@@ -52,7 +52,10 @@ interface PhotoBatchFlip {
   mode: FlipMode;
 }
 
-export type PhotoBatchOperations = PhotoBatchPrintText | PhotoBatchOverlay | PhotoBatchFlip;
+export type PhotoBatchOperations =
+  | PhotoBatchPrintText
+  | PhotoBatchOverlay
+  | PhotoBatchFlip;
 
 export interface PhotoManipulatorStatic {
   /**
