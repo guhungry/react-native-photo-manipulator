@@ -31,6 +31,7 @@ import RNPhotoManipulator from 'react-native-photo-manipulator';
 * __Methods:__
   * [`crop()`](README.md#crop-and-resize)
   * [`optimize()`](README.md#optimize)
+  * [`flipImage()`](README.md#flip-image)
   * [`overlayImage()`](README.md#overlay-image)
   * [`printText()`](README.md#print-text)
   * [`batch()`](README.md#batch)
@@ -40,6 +41,8 @@ import RNPhotoManipulator from 'react-native-photo-manipulator';
     * [`PhotoBatchOperations`](README.md#photobatchoperations)
     * [`PhotoBatchOverlay`](README.md#photobatchoperations)
     * [`PhotoBatchPrintText`](README.md#photobatchoperations)
+    * [`PhotoBatchFlip`](README.md#photobatchoperations)
+    * [`FlipMode`](README.md#flipmode)
     * [`Point`](README.md#point)
     * [`Rect`](README.md#rect)
     * [`Size`](README.md#size)
@@ -105,6 +108,36 @@ const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const quality = 90;
 
 RNPhotoManipulator.optimize(image, 90).then(path => {
+    console.log(`Result image path: ${path}`);
+});
+```
+
+#### Flip Image
+Flip image horizontally, vertically or both
+
+##### Signature
+```typescript
+static flipImage(image: ImageSource, mode: FlipMode) => Promise<string>
+```
+
+| Parameter       | Type                                      | Required     | Description                                            |
+| --------------- | ----------------------------------------- | ------------ | ------------------------------------------------------ |
+| `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The background image                                   |
+| `mode`          | [`FlipMode`](README.md#flipmode)          | Yes          | Flip mode Horizontal, Vertical or Both                 |
+| `mimeType`      | 'image/jpeg', 'image/png'                 | No           | Output file format                                     |
+
+##### Returns
+Promise with image path in cache directory
+
+##### Example
+
+<img align="right" src="/docs/result-flip.png?raw=true" alt="Result Flip" width="100" />
+
+```javascript
+const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
+const mode = FlipMode.Vertical;
+
+RNPhotoManipulator.flipImage(image, mode).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
@@ -223,7 +256,7 @@ Image resource can be url or require()
 | string    | Image from url supports file://, http://, https:// and ftp://    |
 
 #### PhotoBatchOperations
-Represent [overlay image](README.md#photobatchoverlay) or [print text](README.md#photobatchprinttext) operation
+Represent [overlay image](README.md#photobatchoverlay), [print text](README.md#photobatchprinttext) or [flip] (README.md#photobatchflip) operation
 
 #### PhotoBatchOverlay
 Overlay image batch operation
@@ -241,6 +274,23 @@ Print text batch operation
 | --------------- | ----------------------------------------- | ------------------------------------ |
 | `operation`     | "text"                                    |                                      |
 | `options`       | [`TextOptions`](README.md#textoptions)    | The text attributes                  |
+
+#### PhotoBatchFlip
+Flip image batch operation
+
+| Property        | Type                                      | Description                            |
+| --------------- | ----------------------------------------- | -------------------------------------- |
+| `operation`     | "flip"                                    |                                        |
+| `mode`          | [`FlipMode`](README.md#flipmode)          | Flip mode Vertical, Horizontal or Both |
+
+#### FlipMode
+Enum represent flip Mode
+
+| Enum            | Description                          |
+| --------------- | ------------------------------------ |
+| Horizontal      | Flip horizontal (y-axis)             |
+| Vertical        | Flip vertical (x-asis)               |
+| Both            | Flip vertical and horizontal         |
 
 #### Point
 Represent position (x, y) from top-left of image
