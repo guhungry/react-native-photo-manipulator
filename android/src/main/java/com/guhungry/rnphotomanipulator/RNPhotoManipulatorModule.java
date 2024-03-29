@@ -16,7 +16,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.views.text.ReactFontManager;
 import com.facebook.react.module.annotations.ReactModule;
 import com.guhungry.photomanipulator.BitmapUtils;
-import com.guhungry.photomanipulator.FlipMode;
 import com.guhungry.photomanipulator.MimeUtils;
 import com.guhungry.rnphotomanipulator.utils.ImageUtils;
 import com.guhungry.rnphotomanipulator.utils.ParamUtils;
@@ -74,7 +73,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             ReadableMap text = operation.getMap("options");
             if (text == null) return image;
 
-            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"), text.getInt("rotation"));
             return image;
         } else if ("overlay".equals(type)) {
             String uri = operation.getString("overlay");
@@ -146,7 +145,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
             for (int i = 0, count = list.size(); i < count; i++) {
                 ReadableMap text = list.getMap(i);
                 if (text == null) continue;
-                printLine(output, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+                printLine(output, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"), text.getInt("rotation"));
             }
 
             String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
@@ -158,9 +157,9 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void printLine(Bitmap image, String text, float scale, String fontName, PointF location, int color, int thickness) {
+    private void printLine(Bitmap image, String text, float scale, String fontName, PointF location, int color, float thickness, float rotation) {
         Typeface font = getFont(fontName);
-        BitmapUtils.printText(image, text, location, color, scale, font, Paint.Align.LEFT, thickness);
+        BitmapUtils.printText(image, text, location, color, scale, font, Paint.Align.LEFT, thickness, rotation);
     }
 
     private Typeface getFont(String fontName) {
