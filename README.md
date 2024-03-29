@@ -329,3 +329,4 @@ Represent attributes of text such as text, color, size, and etc.
 | `fontName`      | string                        | No       | The font name that can resolve by React Native<br/>iOS: Use "PostScript name"<br/>Android: Use filename |
 | `color`         | string                        | No       | The color of the text                          |
 | `thickness`     | number                        | No       | The thickness (border width) of the region     |
+| `rotation`      | number                        | No       | The rotation of text in degrees                |
