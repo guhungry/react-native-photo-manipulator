@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIFont *)font:(id)name size:(id)size;
 + (UIColor *)color:(NSDictionary *)data;
++ (enum FlipMode)flipMode:(NSString *)mode;
 
 @end
 
