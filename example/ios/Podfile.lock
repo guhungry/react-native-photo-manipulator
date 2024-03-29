@@ -944,9 +944,9 @@ PODS:
   - React-Mapbuffer (0.73.5):
     - glog
     - React-debug
-  - react-native-photo-manipulator (1.2.7):
-    - React
-    - WCPhotoManipulator (~> 2.0.4)
+  - react-native-photo-manipulator (1.3.1):
+    - React-Core
+    - WCPhotoManipulator (~> 2.1.1)
   - React-nativeconfig (0.73.5)
   - React-NativeModulesApple (0.73.5):
     - glog
@@ -1115,7 +1115,7 @@ PODS:
     - React-logger (= 0.73.5)
     - React-perflogger (= 0.73.5)
   - SocketRocket (0.6.1)
-  - WCPhotoManipulator (2.0.4)
+  - WCPhotoManipulator (2.1.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -1352,7 +1352,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 32db5e364bcae8fca8cdf8891830636275add0c5
   React-logger: 0331362115f0f5b392bd7ed14636d1a3ea612479
   React-Mapbuffer: 7c35cd53a22d0be04d3f26f7881c7fb7dd230216
-  react-native-photo-manipulator: dce015c4d602abb529931a40d9d34c277ee478b8
+  react-native-photo-manipulator: 97ef4a7251f3580e63abc73883d45ceb19d1e52d
   React-nativeconfig: 1166714a4f7ea57a0df5c2cb44fbc70f98d580f9
   React-NativeModulesApple: 726664e9829eb5eed8170241000e46ead269a05f
   React-perflogger: 0dd9f1725d55f8264b81efadd373fe1d9cca7dc2
@@ -1374,7 +1374,7 @@ SPEC CHECKSUMS:
   React-utils: 987a4526a2fc0acdfaf87888adfe0bf9d0452066
   ReactCommon: 2947b0bffd82ea0e58ca7928881152d4c6dae9af
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  WCPhotoManipulator: 45b7be19b75c9edf6d2b44f2f61dbc3673862a8f
+  WCPhotoManipulator: f309cda2ce49f51232b834fe2ee429d93c0dc1a2
   Yoga: a716eea57d0d3430219c0a5a233e1e93ee931eb7
 
 PODFILE CHECKSUM: d4f87148e8eadf91ec88adc400e283059ad398c3
