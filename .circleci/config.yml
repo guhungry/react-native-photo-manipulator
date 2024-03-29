@@ -44,7 +44,7 @@ workflows:
           requires:
             - analyse
           build_image_version: 'latest'
-          java_options: '-Xmx2024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+          java_options: '-Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
       - rn/android_build:
           name: build_android_release
           project_path: "example/android"
@@ -52,7 +52,7 @@ workflows:
           requires:
             - analyse
           build_image_version: 'latest'
-          java_options: '-Xmx2024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+          java_options: '-Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
 #      - rn/android_test:
 #          detox_configuration: "android.emu.release"
 #          detox_loglevel: "trace"
