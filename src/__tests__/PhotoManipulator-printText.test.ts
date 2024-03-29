@@ -52,6 +52,7 @@ describe('Photo Manipulator', () => {
           textSize: 45,
           color: 'black',
           thickness: 3,
+          rotation: 3,
         },
       ]);
       expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(
@@ -60,6 +61,7 @@ describe('Photo Manipulator', () => {
           {
             color: {r: 255, g: 255, b: 255, a: 255},
             position: {x: 65, y: 70},
+            rotation: 0,
             text: 'TEXT MAE',
             textSize: 45,
             thickness: 0,
@@ -67,6 +69,7 @@ describe('Photo Manipulator', () => {
           {
             color: {r: 0, g: 0, b: 0, a: 255},
             position: {x: 65, y: 70},
+            rotation: 3,
             text: 'TEXT MAE',
             textSize: 45,
             thickness: 3,

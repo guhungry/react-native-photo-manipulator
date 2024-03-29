@@ -15,7 +15,7 @@ describe('Photo Manipulator', () => {
 
     test('all parameters', () => {
       PhotoManipulator.batch(imageUrl, [], cropRegion, targetSize, quality);
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
         [],
         cropRegion,
@@ -34,7 +34,7 @@ describe('Photo Manipulator', () => {
         quality,
         MimeType.PNG,
       );
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
         [],
         cropRegion,
@@ -46,7 +46,7 @@ describe('Photo Manipulator', () => {
 
     test('missing quality. use default = 100', () => {
       PhotoManipulator.batch(imageUrl, [], cropRegion, targetSize);
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
         [],
         cropRegion,
@@ -58,7 +58,7 @@ describe('Photo Manipulator', () => {
 
     test('missing targetSize and quality', () => {
       PhotoManipulator.batch(imageUrl, [], cropRegion);
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
         [],
         cropRegion,
@@ -70,7 +70,7 @@ describe('Photo Manipulator', () => {
 
     test('support require image', () => {
       PhotoManipulator.batch(imageRequire, [], cropRegion, targetSize, quality);
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         [],
         cropRegion,
@@ -97,7 +97,7 @@ describe('Photo Manipulator', () => {
         ],
         cropRegion,
       );
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
         [
           {
@@ -105,6 +105,7 @@ describe('Photo Manipulator', () => {
             options: {
               color: {a: 255, b: 17, g: 50, r: 35},
               position: {x: 4, y: 12},
+              rotation: 0,
               text: 'PRINT ME',
               textSize: 30,
               thickness: 0,
@@ -124,7 +125,7 @@ describe('Photo Manipulator', () => {
         [{operation: 'overlay', overlay: imageUrl, position: {x: 9, y: 31}}],
         cropRegion,
       );
-      expect(NativeModules.RNPhotoManipulator.batch).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
         [{operation: 'overlay', overlay: imageUrl, position: {x: 9, y: 31}}],
         cropRegion,

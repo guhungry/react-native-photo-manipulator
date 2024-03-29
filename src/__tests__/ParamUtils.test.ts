@@ -40,6 +40,7 @@ describe('ParamUtils', () => {
     expect(value).toEqual({
       color: {r: 102, b: 18, g: 50, a: 255},
       position: {x: 50, y: 10},
+      rotation: 0,
       text: 'Bee',
       textSize: 32,
       thickness: 0,
@@ -62,6 +63,7 @@ describe('ParamUtils', () => {
       options: {
         color: {r: 163, b: 111, g: 66, a: 255},
         position: {x: 12, y: 27},
+        rotation: 0,
         text: 'TEXT',
         textSize: 22,
         thickness: 1,
