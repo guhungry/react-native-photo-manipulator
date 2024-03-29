@@ -32,6 +32,12 @@ export enum MimeType {
   PNG = 'image/png',
 }
 
+export enum FlipMode {
+  Both = 'Both',
+  Horizontal = 'Horizontal',
+  Vertical = 'Vertical',
+}
+
 interface PhotoBatchPrintText {
   operation: 'text';
   options: TextOptions;
@@ -41,8 +47,15 @@ interface PhotoBatchOverlay {
   overlay: ImageSource;
   position: Point;
 }
+interface PhotoBatchFlip {
+  operation: 'flip';
+  mode: FlipMode;
+}
 
-export type PhotoBatchOperations = PhotoBatchPrintText | PhotoBatchOverlay;
+export type PhotoBatchOperations =
+  | PhotoBatchPrintText
+  | PhotoBatchOverlay
+  | PhotoBatchFlip;
 
 export interface PhotoManipulatorStatic {
   /**
@@ -76,6 +89,19 @@ export interface PhotoManipulatorStatic {
     image: ImageSource,
     cropRegion: Rect,
     targetSize?: Size,
+    mimeType?: MimeType,
+  ) => Promise<string>;
+
+  /**
+   * Flip Image horizontally or vertically
+   *
+   * @param image (required) Uri of image can be http://, https://, file:// and require()
+   * @param mode (required) Flip mode Horizontal or Vertical
+   * @param mimeType (optional) Mimetype of output image (image/jpeg, image/png)
+   */
+  flipImage: (
+    image: ImageSource,
+    mode: FlipMode,
     mimeType?: MimeType,
   ) => Promise<string>;
 

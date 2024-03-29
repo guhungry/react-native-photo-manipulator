@@ -1,0 +1,32 @@
+import * as React from "react"
+import {Image, Text} from "react-native"
+import styles from "../App.styles"
+import {noop} from "../utils"
+import PhotoManipulator from "react-native-photo-manipulator"
+import {IMAGE} from "./settings"
+import {FlipMode, MimeType} from "react-native-photo-manipulator/lib/PhotoManipulatorTypes";
+
+export default React.memo(function ExampleFlip() {
+  const [imageBoth, setImageBoth] = React.useState<string|null>(null);
+  const [imageHorizontal, setImageHorizontal] = React.useState<string|null>(null);
+  const [imageVertical, setImageVertical] = React.useState<string|null>(null);
+
+  React.useEffect(() => {
+    const operation = async () => {
+      setImageBoth(await PhotoManipulator.flipImage(IMAGE, FlipMode.Both, MimeType.PNG))
+      setImageHorizontal(await PhotoManipulator.flipImage(IMAGE, FlipMode.Horizontal))
+      setImageVertical(await PhotoManipulator.flipImage(IMAGE, FlipMode.Vertical))
+    };
+
+    operation().then(noop).catch(console.log);
+  }, []);
+
+  return <>
+    { typeof imageHorizontal === "string" ? <Text style={styles.exampleDescription}>Horizontal</Text> : null }
+    { typeof imageHorizontal === "string" ? <Image testID="flipHorizontalResult" style={styles.image} source={{ uri: imageHorizontal}} /> : null }
+    { typeof imageVertical === "string" ? <Text style={styles.exampleDescription}>Vertical</Text> : null }
+    { typeof imageVertical === "string" ? <Image testID="flipVerticalResult" style={styles.image} source={{ uri: imageVertical}} /> : null }
+    { typeof imageBoth === "string" ? <Text style={styles.exampleDescription}>Both</Text> : null }
+    { typeof imageBoth === "string" ? <Image testID="flipBothResult" style={styles.image} source={{ uri: imageBoth}} /> : null }
+    </>;
+})

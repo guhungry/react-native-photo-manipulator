@@ -80,7 +80,11 @@ RCT_EXPORT_METHOD(batch:(NSURLRequest *)uri
         UIColor *color = [ParamUtils color:options[@"color"]];
         CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
 
-        return [image drawText:text position:position color:color font:font thickness:thickness];
+        return [image drawText:text position:position color:color font:font thickness:thickness rotation:0];
+    } else if ([type isEqual:@"flip"]) {
+        NSString *mode = [RCTConvert NSString:operation[@"mode"]];
+
+        return [image flip:[ParamUtils flipMode:mode]];
     }
     return image;
 }
@@ -104,6 +108,25 @@ RCT_EXPORT_METHOD(crop:(NSURLRequest *)uri
         } else {
             result = [image crop:[RCTConvert CGRect:cropRegion] targetSize:[RCTConvert CGSize:targetSize]];
         }
+
+        NSString *uri = [ImageUtils saveTempFile:result mimeType:mimeType quality:DEFAULT_QUALITY];
+        resolve(uri);
+    }];
+}
+
+RCT_EXPORT_METHOD(flipImage:(NSURLRequest *)uri
+                  mode:(NSString *)mode
+                  mimeType:(NSString *)mimeType
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(__unused RCTPromiseRejectBlock)reject)
+{
+    [[self.bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:uri callback:^(NSError *error, UIImage *image) {
+        if (error) {
+            reject(@(error.code).stringValue, error.description, error);
+            return;
+        }
+
+        UIImage *result = [image flip:[ParamUtils flipMode:mode]];
 
         NSString *uri = [ImageUtils saveTempFile:result mimeType:mimeType quality:DEFAULT_QUALITY];
         resolve(uri);
@@ -155,7 +178,7 @@ RCT_EXPORT_METHOD(printText:(NSURLRequest *)uri
             UIColor *color = [ParamUtils color:options[@"color"]];
             CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
 
-            image = [image drawText:text position:position color:color font:font thickness:thickness];
+            image = [image drawText:text position:position color:color font:font thickness:thickness rotation:0];
         }
 
         NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];

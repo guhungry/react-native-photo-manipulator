@@ -7,6 +7,7 @@ import { IMAGE, OVERLAY } from "./settings"
 import ExampleCrop from "./ExampleCrop"
 import ExampleOptimize from "./ExampleOptimize"
 import ExampleBatch from "./ExampleBatch"
+import ExampleFlip from "./ExampleFlip"
 
 export interface Example {
   id: string
@@ -26,7 +27,13 @@ const EXAMPLES: Example[] = [
     id: "overlayImage",
     title: "Overlay Image",
     description: "Overlay Image size 200 * 141",
-    render: () => <Image style={{ width: "100%", height: 141, paddingHorizontal: 20 }} resizeMode="center" source={{ uri: OVERLAY}} />
+    render: () => <Image style={styles.image} resizeMode="center" source={{ uri: OVERLAY}} />
+  },
+  {
+    id: "exampleFlip",
+    title: "flipImage()",
+    description: "Flip image horizontally of vertically",
+    render: () => <ExampleFlip />
   },
   {
     id: "exampleOverlayImage",

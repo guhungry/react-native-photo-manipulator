@@ -9,6 +9,8 @@
 #import "ParamUtils.h"
 #import <React/RCTConvert.h>
 
+@import WCPhotoManipulator;
+
 @implementation ParamUtils
 
 + (UIFont *)font:(id)name size:(id)size {
@@ -26,6 +28,17 @@
 
 + (CGFloat)colorComponent:(id)color {
     return [RCTConvert CGFloat:color] / 255;
+}
+
++ (enum FlipMode)flipMode:(NSString *)mode {
+    if ([mode isEqualToString:@"Both"]) {
+        return FlipModeBoth;
+    } else if ([mode isEqualToString:@"Horizontal"]) {
+        return FlipModeHorizontal;
+    } else if ([mode isEqualToString:@"Vertical"]) {
+        return FlipModeVertical;
+    }
+    return FlipModeNone;
 }
 
 @end

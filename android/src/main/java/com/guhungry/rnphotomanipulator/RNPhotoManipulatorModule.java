@@ -16,6 +16,7 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.views.text.ReactFontManager;
 import com.facebook.react.module.annotations.ReactModule;
 import com.guhungry.photomanipulator.BitmapUtils;
+import com.guhungry.photomanipulator.FlipMode;
 import com.guhungry.photomanipulator.MimeUtils;
 import com.guhungry.rnphotomanipulator.utils.ImageUtils;
 import com.guhungry.rnphotomanipulator.utils.ParamUtils;
@@ -53,7 +54,7 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
 
             // Operations
             for (int i = 0, count = operations.size(); i < count; i++) {
-                processBatchOperation(output, operations.getMap(i));
+                output = processBatchOperation(output, operations.getMap(i));
             }
 
             // Save & Optimize
@@ -66,27 +67,49 @@ public class RNPhotoManipulatorModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void processBatchOperation(Bitmap image, ReadableMap operation) {
-        if (operation == null) return;
+    private Bitmap processBatchOperation(Bitmap image, ReadableMap operation) {
+        if (operation == null) return image;
         String type = operation.getString("operation");
         if ("text".equals(type)) {
             ReadableMap text = operation.getMap("options");
-            if (text == null) return;
+            if (text == null) return image;
 
             printLine(image, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"));
+            return image;
         } else if ("overlay".equals(type)) {
             String uri = operation.getString("overlay");
-            if (uri == null) return;
+            if (uri == null) return image;
 
             Bitmap overlay = ImageUtils.bitmapFromUri(getReactApplicationContext(), operation.getString("overlay"));
             BitmapUtils.overlay(image, overlay, ParamUtils.pointfFromMap(operation.getMap("position")));
+            return image;
+        } else if ("flip".equals(type)) {
+            return BitmapUtils.flip(image, ParamUtils.flipModeFromString(operation.getString("mode")));
         }
+        return image;
     }
 
     @ReactMethod
     public void crop(String uri, ReadableMap cropRegion, @Nullable ReadableMap targetSize, String mimeType, Promise promise) {
         try {
             Bitmap output = ImageUtils.cropBitmapFromUri(getReactApplicationContext(), uri, ParamUtils.rectFromMap(cropRegion), ParamUtils.sizeFromMap(targetSize));
+
+            String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
+            output.recycle();
+
+            promise.resolve(file);
+        } catch (Exception e) {
+            promise.reject(e);
+        }
+    }
+
+    @ReactMethod
+    public void flipImage(String uri, String mode, String mimeType, Promise promise) {
+        try {
+            Bitmap input = ImageUtils.bitmapFromUri(getReactApplicationContext(), uri, ImageUtils.mutableOptions());
+
+            Bitmap output = BitmapUtils.flip(input, ParamUtils.flipModeFromString(mode));
+            input.recycle();
 
             String file = ImageUtils.saveTempFile(getReactApplicationContext(), output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
             output.recycle();
