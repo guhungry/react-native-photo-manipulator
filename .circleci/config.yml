@@ -17,7 +17,7 @@ jobs:
           root: .
           paths: .
   analyse:
-    executor: 
+    executor:
       name: rn/linux_js
       node_version: '20.11'
     steps:
@@ -53,6 +53,9 @@ workflows:
             - analyse
           build_image_version: 'latest'
           java_options: '-Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+          # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+          resource_class: large
+
 #      - rn/android_test:
 #          detox_configuration: "android.emu.release"
 #          detox_loglevel: "trace"
