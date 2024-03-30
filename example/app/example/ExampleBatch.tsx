@@ -36,6 +36,7 @@ export default React.memo(function ExampleBatch() {
       { operation: "text", options: { text: "Test Print Text 2", color: "brown", textSize: 30, position: { x: 100, y: 80 } } },
       { operation: "text", options: { text: "Test Print Text 3", color: "green", textSize: 30, position: { x: 180, y: 180 } } },
       { operation: "overlay", overlay: OVERLAY, position: { x: 15, y: 65 } },
+      { operation: "text", options: { text: "Test Print Text 4", color: "orange", textSize: 30, position: { x: 30, y: 300 }, rotation: -40 } },
     ]
   }
 })
