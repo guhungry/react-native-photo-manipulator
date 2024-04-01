@@ -256,7 +256,7 @@ Image resource can be url or require()
 | string    | Image from url supports file://, http://, https:// and ftp://    |
 
 #### PhotoBatchOperations
-Represent [overlay image](README.md#photobatchoverlay), [print text](README.md#photobatchprinttext) or [flip] (README.md#photobatchflip) operation
+Represent [overlay image](README.md#photobatchoverlay), [print text](README.md#photobatchprinttext) or [flip](README.md#photobatchflip) operation
 
 #### PhotoBatchOverlay
 Overlay image batch operation
