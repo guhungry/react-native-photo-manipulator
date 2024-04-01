@@ -28,7 +28,7 @@
     "detox": "^20.19.5",
     "eslint": "^8.19.0",
     "jest": "^29",
-    "prettier": "2.8.8",
+    "prettier": "3.2.5",
     "react-test-renderer": "18.2.0",
     "typescript": "5.0.4"
   },
