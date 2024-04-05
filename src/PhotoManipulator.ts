@@ -5,12 +5,12 @@ import type {
   FlipMode,
   ImageSource,
   PhotoBatchOperations,
-  PhotoManipulatorStatic,
   Point,
   Rect,
   Size,
   TextOptions,
 } from './PhotoManipulatorTypes';
+import {PhotoManipulatorStatic} from './privateTypes';
 
 const {RNPhotoManipulator} = NativeModules;
 
