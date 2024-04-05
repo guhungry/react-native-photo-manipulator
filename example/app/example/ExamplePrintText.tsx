@@ -2,9 +2,8 @@ import * as React from "react"
 import {Image, Text} from "react-native"
 import styles from "../App.styles"
 import {noop} from "../utils"
-import PhotoManipulator, {TextOptions} from "react-native-photo-manipulator"
+import PhotoManipulator, {MimeType, TextOptions} from "react-native-photo-manipulator"
 import {IMAGE} from "./settings"
-import {MimeType} from "react-native-photo-manipulator/lib/PhotoManipulatorTypes";
 
 export default React.memo(function ExamplePrintText() {
   const [image, setImage] = React.useState<string|null>(null);

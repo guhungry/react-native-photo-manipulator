@@ -944,7 +944,7 @@ PODS:
   - React-Mapbuffer (0.73.6):
     - glog
     - React-debug
-  - react-native-photo-manipulator (1.3.1):
+  - react-native-photo-manipulator (1.3.2):
     - React-Core
     - WCPhotoManipulator (~> 2.1.1)
   - React-nativeconfig (0.73.6)
@@ -1352,7 +1352,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 85583ef014ce53d731a98c66a0e24496f7a83066
   React-logger: 3eb80a977f0d9669468ef641a5e1fabbc50a09ec
   React-Mapbuffer: 84ea43c6c6232049135b1550b8c60b2faac19fab
-  react-native-photo-manipulator: 97ef4a7251f3580e63abc73883d45ceb19d1e52d
+  react-native-photo-manipulator: a599b9bfdfbb4d3b6b15ca34bdc7077379aa535f
   React-nativeconfig: b4d4e9901d4cabb57be63053fd2aa6086eb3c85f
   React-NativeModulesApple: cd26e56d56350e123da0c1e3e4c76cb58a05e1ee
   React-perflogger: 5f49905de275bac07ac7ea7f575a70611fa988f2
