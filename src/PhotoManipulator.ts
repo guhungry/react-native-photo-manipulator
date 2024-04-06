@@ -11,8 +11,18 @@ import type {
   TextOptions,
 } from './PhotoManipulatorTypes';
 import {PhotoManipulatorStatic} from './privateTypes';
+import TurboModuleRNPhotoManipulator, {Spec} from './NativeRNPhotoManipulator';
 
-const {RNPhotoManipulator} = NativeModules;
+// React Native sets `__turboModuleProxy` on global when TurboModules are enabled.
+// Currently, this is the recommended way to detect TurboModules.
+// https://reactnative.dev/docs/the-new-architecture/backward-compatibility-turbomodules#unify-the-javascript-specs
+
+// @ts-ignore
+const isTurboModuleEnabled = global.__turboModuleProxy != null;
+
+const RNPhotoManipulator: Spec = isTurboModuleEnabled
+  ? TurboModuleRNPhotoManipulator
+  : NativeModules.RNPhotoManipulator;
 
 const PhotoManipulator: PhotoManipulatorStatic = {
   batch: (
