@@ -137,6 +137,10 @@ jobs:
           path: ~/.gradle/caches
           key: gradle-cache-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
 
+      - name: Install dependencies [Main]
+        run: |
+          yarn --cache-folder ~/.yarn
+
       - name: Install dependencies [Example]
         run: |
           cd example
@@ -179,6 +183,10 @@ jobs:
         with:
           path: example/ios/Pods
           key: pods-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Install dependencies [Main]
+        run: |
+          yarn --cache-folder ~/.yarn
 
       - name: Install dependencies [Example]
         run: |
