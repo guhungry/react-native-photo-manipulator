@@ -11,7 +11,6 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 
 public class RNPhotoManipulatorModule extends NativeRNPhotoManipulatorSpec {
-    public static final String NAME = "RNPhotoManipulator";
     private final RNPhotoManipulatorModuleImpl implement;
 
     public RNPhotoManipulatorModule(ReactApplicationContext reactContext) {
