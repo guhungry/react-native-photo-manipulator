@@ -12,9 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ParamUtils : NSObject
 
++ (NSURLRequest *)url:(NSString *)value;
 + (UIFont *)font:(id)name size:(id)size;
 + (UIColor *)color:(NSDictionary *)data;
-+ (enum FlipMode)flipMode:(NSString *)mode;
++ (enum FlipMode: int)flipMode:(NSString *)mode;
 
 @end
 
