@@ -48,7 +48,11 @@
   },
   "keywords": [
     "react-native",
-    "image-processing"
+    "react native",
+    "image editor",
+    "image processing",
+    "photo editor",
+    "photo manipulator"
   ],
   "license": "MIT",
   "bugs": {
@@ -74,5 +78,13 @@
       "module",
       "typescript"
     ]
+  },
+  "codegenConfig": {
+    "name": "RNPhotoManipulatorSpec",
+    "type": "modules",
+    "jsSrcsDir": "./src",
+    "android": {
+      "javaPackageName": "com.guhungry.rnphotomanipulator"
+    }
   }
 }

@@ -1,10 +1,9 @@
 import * as React from "react"
 import {Image, Text} from "react-native"
 import styles from "../App.styles"
-import PhotoManipulator from "react-native-photo-manipulator"
+import PhotoManipulator, {MimeType} from "react-native-photo-manipulator"
 import {noop} from "../utils"
 import {IMAGE, OVERLAY} from "./settings"
-import {MimeType} from "react-native-photo-manipulator/lib/PhotoManipulatorTypes";
 
 export default React.memo(function ExampleOverlayImage() {
   const [image, setImage] = React.useState<string|null>(null);

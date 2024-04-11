@@ -44,7 +44,8 @@ workflows:
           requires:
             - analyse
           build_image_version: 'latest'
-          java_options: '-Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+          java_options: '-Xmx3584m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+          resource_class: large
       - rn/android_build:
           name: build_android_release
           project_path: "example/android"
@@ -52,7 +53,7 @@ workflows:
           requires:
             - analyse
           build_image_version: 'latest'
-          java_options: '-Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+          java_options: '-Xmx3584m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
           # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
           resource_class: large
 

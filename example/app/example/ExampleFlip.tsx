@@ -2,9 +2,8 @@ import * as React from "react"
 import {Image, Text} from "react-native"
 import styles from "../App.styles"
 import {noop} from "../utils"
-import PhotoManipulator from "react-native-photo-manipulator"
+import PhotoManipulator, {FlipMode, MimeType} from "react-native-photo-manipulator"
 import {IMAGE} from "./settings"
-import {FlipMode, MimeType} from "react-native-photo-manipulator/lib/PhotoManipulatorTypes";
 
 export default React.memo(function ExampleFlip() {
   const [imageBoth, setImageBoth] = React.useState<string|null>(null);

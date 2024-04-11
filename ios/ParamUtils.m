@@ -13,6 +13,10 @@
 
 @implementation ParamUtils
 
++ (NSURLRequest *)url:(NSString *)value {
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:value]];
+}
+
 + (UIFont *)font:(id)name size:(id)size {
     NSString* fontName = [RCTConvert NSString:name];
     CGFloat fontSize = [RCTConvert CGFloat:size];
@@ -30,7 +34,7 @@
     return [RCTConvert CGFloat:color] / 255;
 }
 
-+ (enum FlipMode)flipMode:(NSString *)mode {
++ (enum FlipMode: int)flipMode:(NSString *)mode {
     if ([mode isEqualToString:@"Both"]) {
         return FlipModeBoth;
     } else if ([mode isEqualToString:@"Horizontal"]) {

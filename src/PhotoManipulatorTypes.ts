@@ -14,7 +14,7 @@ export interface TextOptions {
   text: string;
   textSize: number;
   fontName?: string;
-  color?: string;
+  color?: string | Color;
   thickness?: number;
   rotation?: number;
 }

@@ -1,28 +1,44 @@
 
 package com.guhungry.rnphotomanipulator;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import com.facebook.react.ReactPackage;
+import com.facebook.react.TurboReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
-import com.facebook.react.bridge.JavaScriptModule;
-public class RNPhotoManipulatorPackage implements ReactPackage {
+import com.facebook.react.module.model.ReactModuleInfo;
+import com.facebook.react.module.model.ReactModuleInfoProvider;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class RNPhotoManipulatorPackage extends TurboReactPackage {
+    @Nullable
     @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNPhotoManipulatorModule(reactContext));
+    public NativeModule getModule(@NonNull String name, @NonNull ReactApplicationContext reactContext) {
+        if (name.equals(RNPhotoManipulatorModuleImpl.NAME)) {
+            return new RNPhotoManipulatorModule(reactContext);
+        }
+        return null;
     }
 
-    // Deprecated from RN 0.47
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
-    }
-
     @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Collections.emptyList();
+    public ReactModuleInfoProvider getReactModuleInfoProvider() {
+        return () -> {
+            final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
+            boolean turboModulesEnabled = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
+            moduleInfos.put(
+                    RNPhotoManipulatorModuleImpl.NAME,
+                    new ReactModuleInfo(
+                            RNPhotoManipulatorModuleImpl.NAME,
+                            RNPhotoManipulatorModuleImpl.NAME,
+                            false, // canOverrideExistingModule
+                            false, // needsEagerInit
+                            false, // isCxxModule
+                            turboModulesEnabled // isTurboModule
+                    ));
+            return moduleInfos;
+        };
     }
 }
