@@ -3030,10 +3030,10 @@ detect-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
   integrity sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==
 
-detox@^20.19.5:
-  version "20.20.0"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-20.20.0.tgz#ab5d01d0c2121b5da37d16e643b621e7568a0b7e"
-  integrity sha512-8aiIcNrrjsrWCMGiDB22vGKYHLfDVgwcCMlFmEiJsVbPfhtjDbhGSfSvHqpyf6rb63GEPq/HxCkCy+NBkowXtQ==
+detox@^20.20.1:
+  version "20.20.1"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-20.20.1.tgz#620e735dfdc817da03f185275e47afbede52aa22"
+  integrity sha512-QGdmz+XZhJg1T2ySomdWDTSV7uRXn0WS438XGfC7f7fxePFrPOhxaJioXsDtTeGITWGr78lo2jehwYhRTjh4Pw==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
@@ -5910,8 +5910,9 @@ react-is@^17.0.1:
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 "react-native-photo-manipulator@link:..":
-  version "0.0.0"
-  uid ""
+  version "1.4.0"
+  dependencies:
+    parse-color "^1.0.0"
 
 react-native@0.73.6:
   version "0.73.6"
