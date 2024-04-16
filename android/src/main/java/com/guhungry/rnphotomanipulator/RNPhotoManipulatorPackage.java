@@ -35,6 +35,7 @@ public class RNPhotoManipulatorPackage extends TurboReactPackage {
                             RNPhotoManipulatorModuleImpl.NAME,
                             false, // canOverrideExistingModule
                             false, // needsEagerInit
+                            false, // hasConstants
                             false, // isCxxModule
                             turboModulesEnabled // isTurboModule
                     ));
