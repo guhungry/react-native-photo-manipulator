@@ -102,7 +102,7 @@ jobs:
   build-android:
     name: Build Android
     needs: analyse
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
       - name: Checkout
