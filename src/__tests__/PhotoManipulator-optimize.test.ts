@@ -12,7 +12,7 @@ describe('Photo Manipulator', () => {
 
     test('with network source', () => {
       PhotoManipulator.optimize(imageUrl, quality);
-      expect(NativeModules.RNPhotoManipulator.optimize).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.optimize).toHaveBeenCalledWith(
         imageUrl,
         quality,
       );
@@ -20,7 +20,7 @@ describe('Photo Manipulator', () => {
 
     test('with require source', () => {
       PhotoManipulator.optimize(imageRequire, quality);
-      expect(NativeModules.RNPhotoManipulator.optimize).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.optimize).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         quality,
       );

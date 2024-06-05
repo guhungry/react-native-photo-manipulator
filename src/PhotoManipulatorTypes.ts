@@ -39,6 +39,12 @@ export enum FlipMode {
   Vertical = 'Vertical',
 }
 
+export enum RotationMode {
+  R90 = 'R90',
+  R180 = 'R180',
+  R270 = 'R270',
+}
+
 interface PhotoBatchPrintText {
   operation: 'text';
   options: TextOptions;
@@ -52,8 +58,13 @@ interface PhotoBatchFlip {
   operation: 'flip';
   mode: FlipMode;
 }
+interface PhotoBatchRotate {
+  operation: 'rotate';
+  mode: RotationMode;
+}
 
 export type PhotoBatchOperations =
   | PhotoBatchPrintText
   | PhotoBatchOverlay
-  | PhotoBatchFlip;
+  | PhotoBatchFlip
+  | PhotoBatchRotate;

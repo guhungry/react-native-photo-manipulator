@@ -13,7 +13,7 @@ describe('Photo Manipulator', () => {
 
     test('with network source', () => {
       PhotoManipulator.overlayImage(imageUrl, imageUrl, position);
-      expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.overlayImage).toHaveBeenCalledWith(
         imageUrl,
         imageUrl,
         position,
@@ -23,7 +23,7 @@ describe('Photo Manipulator', () => {
 
     test('support png', () => {
       PhotoManipulator.overlayImage(imageUrl, imageUrl, position, MimeType.PNG);
-      expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.overlayImage).toHaveBeenCalledWith(
         imageUrl,
         imageUrl,
         position,
@@ -33,7 +33,7 @@ describe('Photo Manipulator', () => {
 
     test('with require source', () => {
       PhotoManipulator.overlayImage(imageRequire, imageRequire, position);
-      expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.overlayImage).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         toImageNative(imageRequire),
         position,

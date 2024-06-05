@@ -49,6 +49,19 @@ export interface Spec extends TurboModule {
   ) => Promise<string>;
 
   /**
+   * Flip Image horizontally or vertically
+   *
+   * @param image (required) Uri of image can be http://, https://, file:// and require()
+   * @param mode (required) Rotation mode 90° (90° Clockwise), 180° (Half Rotation) or 270° (90° Counterclockwise)
+   * @param mimeType (optional) Mimetype of output image (image/jpeg, image/png)
+   */
+  rotateImage: (
+    image: string,
+    mode: string,
+    mimeType?: string,
+  ) => Promise<string>;
+
+  /**
    * Overlay image on top of background image
    *
    * @param image (required) Uri of image can be http://, https://, file:// and require()

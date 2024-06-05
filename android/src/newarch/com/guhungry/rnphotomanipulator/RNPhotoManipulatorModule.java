@@ -39,6 +39,11 @@ public class RNPhotoManipulatorModule extends NativeRNPhotoManipulatorSpec {
     }
 
     @ReactMethod
+    public void rotateImage(String uri, String mode, String mimeType, Promise promise) {
+        implement.rotateImage(uri, mode, mimeType, promise);
+    }
+
+    @ReactMethod
     public void overlayImage(String uri, String icon, ReadableMap position, String mimeType, Promise promise) {
         implement.overlayImage(uri, icon, position, mimeType, promise);
     }

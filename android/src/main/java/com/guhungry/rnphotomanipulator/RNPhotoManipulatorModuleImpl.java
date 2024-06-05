@@ -66,6 +66,8 @@ public class RNPhotoManipulatorModuleImpl {
             return image;
         } else if ("flip".equals(type)) {
             return BitmapUtils.flip(image, ParamUtils.flipModeFromString(operation.getString("mode")));
+        } else if ("rotate".equals(type)) {
+            return BitmapUtils.rotate(image, ParamUtils.rotationModeFromString(operation.getString("mode")));
         }
         return image;
     }
@@ -88,6 +90,22 @@ public class RNPhotoManipulatorModuleImpl {
             Bitmap input = ImageUtils.bitmapFromUri(reactContext, uri, ImageUtils.mutableOptions());
 
             Bitmap output = BitmapUtils.flip(input, ParamUtils.flipModeFromString(mode));
+            input.recycle();
+
+            String file = ImageUtils.saveTempFile(reactContext, output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
+            output.recycle();
+
+            promise.resolve(file);
+        } catch (Exception e) {
+            promise.reject(e);
+        }
+    }
+
+    public void rotateImage(String uri, String mode, String mimeType, Promise promise) {
+        try {
+            Bitmap input = ImageUtils.bitmapFromUri(reactContext, uri, ImageUtils.mutableOptions());
+
+            Bitmap output = BitmapUtils.rotate(input, ParamUtils.rotationModeFromString(mode));
             input.recycle();
 
             String file = ImageUtils.saveTempFile(reactContext, output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);

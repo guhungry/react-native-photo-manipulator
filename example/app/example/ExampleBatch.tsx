@@ -2,7 +2,7 @@ import * as React from "react"
 import {Image, Text} from "react-native"
 import styles from "../App.styles"
 import {noop} from "../utils"
-import PhotoManipulator, {FlipMode, PhotoBatchOperations, MimeType} from "react-native-photo-manipulator"
+import PhotoManipulator, {FlipMode, PhotoBatchOperations, MimeType, RotationMode} from "react-native-photo-manipulator"
 import {IMAGE, OVERLAY} from "./settings"
 
 export default React.memo(function ExampleBatch() {
@@ -28,6 +28,7 @@ export default React.memo(function ExampleBatch() {
   function operations(): PhotoBatchOperations[] {
     return [
       { operation: "flip", mode: FlipMode.Horizontal },
+      { operation: "rotate", mode: RotationMode.R180 },
       { operation: "text", options: { text: "Test Print Text", color: "black", textSize: 30, fontName: "Girassol-Regular", position: { x: 80, y: 30 }, thickness: 4 } },
       { operation: "text", options: { text: "Test Print Text", color: "white", textSize: 30, fontName: "Girassol-Regular", position: { x: 80, y: 30 } } },
       { operation: "overlay", overlay: OVERLAY, position: { x: 110, y: 25 } },

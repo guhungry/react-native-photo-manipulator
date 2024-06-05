@@ -44,6 +44,15 @@ RCT_EXPORT_METHOD(crop:(NSString *)uri
     [RNPhotoManipulatorImpl crop:uri cropRegion:cropRegion targetSize:targetSize mimeType:mimeType resolve:resolve reject:reject bridge:self.bridge];
 }
 
+RCT_EXPORT_METHOD(rotateImage:(NSString *)uri
+                  mode:(NSString *)mode
+                  mimeType:(NSString *)mimeType
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
+{
+    [RNPhotoManipulatorImpl rotateImage:uri mode:mode mimeType:mimeType resolve:resolve reject:reject bridge:self.bridge];
+}
+
 RCT_EXPORT_METHOD(flipImage:(NSString *)uri
                   mode:(NSString *)mode
                   mimeType:(NSString *)mimeType

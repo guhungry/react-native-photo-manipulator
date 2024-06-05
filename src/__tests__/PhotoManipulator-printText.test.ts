@@ -12,7 +12,7 @@ describe('Photo Manipulator', () => {
 
     test('with network source', () => {
       PhotoManipulator.printText(imageUrl, []);
-      expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         imageUrl,
         [],
         MimeType.JPEG,
@@ -21,7 +21,7 @@ describe('Photo Manipulator', () => {
 
     test('with require source', () => {
       PhotoManipulator.printText(imageRequire, []);
-      expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         [],
         MimeType.JPEG,
@@ -30,7 +30,7 @@ describe('Photo Manipulator', () => {
 
     test('support png', () => {
       PhotoManipulator.printText(imageRequire, [], MimeType.PNG);
-      expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         [],
         MimeType.PNG,
@@ -55,7 +55,7 @@ describe('Photo Manipulator', () => {
           rotation: 3,
         },
       ]);
-      expect(NativeModules.RNPhotoManipulator.printText).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         imageUrl,
         [
           {

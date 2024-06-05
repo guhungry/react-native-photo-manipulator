@@ -45,4 +45,15 @@
     return FlipModeNone;
 }
 
++ (enum RotationMode: int)rotationMode:(NSString *)mode {
+    if ([mode isEqualToString:@"R90"]) {
+        return RotationModeR90;
+    } else if ([mode isEqualToString:@"R180"]) {
+        return RotationModeR180;
+    } else if ([mode isEqualToString:@"R270"]) {
+        return RotationModeR270;
+    }
+    return RotationModeNone;
+}
+
 @end
