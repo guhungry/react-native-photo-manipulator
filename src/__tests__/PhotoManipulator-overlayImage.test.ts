@@ -13,27 +13,23 @@ describe('Photo Manipulator', () => {
 
     test('with network source', () => {
       PhotoManipulator.overlayImage(imageUrl, imageUrl, position);
-      expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(
-        imageUrl,
-        imageUrl,
-        position,
-        MimeType.JPEG,
-      );
+      expect(
+        NativeModules.RNPhotoManipulator.overlayImage,
+      ).toHaveBeenCalledWith(imageUrl, imageUrl, position, MimeType.JPEG);
     });
 
     test('support png', () => {
       PhotoManipulator.overlayImage(imageUrl, imageUrl, position, MimeType.PNG);
-      expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(
-        imageUrl,
-        imageUrl,
-        position,
-        MimeType.PNG,
-      );
+      expect(
+        NativeModules.RNPhotoManipulator.overlayImage,
+      ).toHaveBeenCalledWith(imageUrl, imageUrl, position, MimeType.PNG);
     });
 
     test('with require source', () => {
       PhotoManipulator.overlayImage(imageRequire, imageRequire, position);
-      expect(NativeModules.RNPhotoManipulator.overlayImage).toBeCalledWith(
+      expect(
+        NativeModules.RNPhotoManipulator.overlayImage,
+      ).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         toImageNative(imageRequire),
         position,

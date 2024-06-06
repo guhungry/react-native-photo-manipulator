@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReadableMap
 import com.guhungry.photomanipulator.CGRect
 import com.guhungry.photomanipulator.CGSize
 import com.guhungry.photomanipulator.FlipMode
+import com.guhungry.photomanipulator.RotationMode
 
 /**
  * Parameter Utilities for Convert JS Parameter to Native Java
@@ -26,4 +27,7 @@ object ParamUtils {
 
     // FlipMode
     @JvmStatic fun flipModeFromString(mode: String): FlipMode = runCatching { FlipMode.valueOf(mode) }.getOrDefault(FlipMode.None)
+
+    // FlipMode
+    @JvmStatic fun rotationModeFromString(mode: String): RotationMode = runCatching { RotationMode.valueOf(mode) }.getOrDefault(RotationMode.None)
 }

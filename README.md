@@ -32,6 +32,7 @@ import RNPhotoManipulator from 'react-native-photo-manipulator';
   * [`crop()`](README.md#crop-and-resize)
   * [`optimize()`](README.md#optimize)
   * [`flipImage()`](README.md#flip-image)
+  * [`rotateImage()`](README.md#rotate-image)
   * [`overlayImage()`](README.md#overlay-image)
   * [`printText()`](README.md#print-text)
   * [`batch()`](README.md#batch)
@@ -42,7 +43,9 @@ import RNPhotoManipulator from 'react-native-photo-manipulator';
     * [`PhotoBatchOverlay`](README.md#photobatchoperations)
     * [`PhotoBatchPrintText`](README.md#photobatchoperations)
     * [`PhotoBatchFlip`](README.md#photobatchoperations)
+    * [`PhotoBatchRotate`](README.md#photobatchoperations)
     * [`FlipMode`](README.md#flipmode)
+    * [`RotationMode`](README.md#rotationmode)
     * [`Point`](README.md#point)
     * [`Rect`](README.md#rect)
     * [`Size`](README.md#size)
@@ -138,6 +141,36 @@ const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
 const mode = FlipMode.Vertical;
 
 RNPhotoManipulator.flipImage(image, mode).then(path => {
+    console.log(`Result image path: ${path}`);
+});
+```
+
+#### Rotate Image
+Rotate image 90° (90° Clockwise), 180° (Half Rotation) or 270° (90° Counterclockwise)
+
+##### Signature
+```typescript
+static rotateImage(image: ImageSource, mode: RotationMode) => Promise<string>
+```
+
+| Parameter       | Type                                      | Required     | Description                                            |
+| --------------- | ----------------------------------------- | ------------ | ------------------------------------------------------ |
+| `image`         | [`ImageSource`](README.md#imagesource)    | Yes          | The background image                                   |
+| `mode`          | [`RotationMode`](README.md#rotationmode)  | Yes          | Rotation mode 90° (90° Clockwise), 180° (Half Rotation) or 270° (90° Counterclockwise)                 |
+| `mimeType`      | 'image/jpeg', 'image/png'                 | No           | Output file format                                     |
+
+##### Returns
+Promise with image path in cache directory
+
+##### Example
+
+<img align="right" src="/docs/result-rotate.png?raw=true" alt="Result Rotate" width="100" />
+
+```javascript
+const image = "https://unsplash.com/photos/qw6qQQyYQpo/download?force=true";
+const mode = RotationMode.R90;
+
+RNPhotoManipulator.rotateImage(image, mode).then(path => {
     console.log(`Result image path: ${path}`);
 });
 ```
@@ -283,6 +316,14 @@ Flip image batch operation
 | `operation`     | "flip"                                    |                                        |
 | `mode`          | [`FlipMode`](README.md#flipmode)          | Flip mode Vertical, Horizontal or Both |
 
+#### PhotoBatchRotate
+Rotate image batch operation
+
+| Property        | Type                                      | Description                            |
+| --------------- | ----------------------------------------- | -------------------------------------- |
+| `operation`     | "rotate"                                    |                                        |
+| `mode`          | [`RotationMode`](README.md#rotationmode)          | Rotation mode 90° (90° Clockwise), 180° (Half Rotation) or 270° (90° Counterclockwise) |
+
 #### FlipMode
 Enum represent flip Mode
 
@@ -291,6 +332,15 @@ Enum represent flip Mode
 | Horizontal      | Flip horizontal (y-axis)             |
 | Vertical        | Flip vertical (x-asis)               |
 | Both            | Flip vertical and horizontal         |
+
+#### RotationMode
+Enum represent rotation Mode
+
+| Enum            | Description                          |
+| --------------- | ------------------------------------ |
+| R90             | Rotate 90° (90° Clockwise)           |
+| R180            | Rotate 180° (Half Rotation)          |
+| R270            | Rotate 270° (90° Counterclockwise)   |
 
 #### Point
 Represent position (x, y) from top-left of image

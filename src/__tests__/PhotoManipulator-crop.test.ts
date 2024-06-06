@@ -14,7 +14,7 @@ describe('Photo Manipulator', () => {
 
     test('all parameters', () => {
       PhotoManipulator.crop(imageUrl, cropRegion, targetSize);
-      expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.crop).toHaveBeenCalledWith(
         imageUrl,
         cropRegion,
         targetSize,
@@ -24,7 +24,7 @@ describe('Photo Manipulator', () => {
 
     test('support png', () => {
       PhotoManipulator.crop(imageUrl, cropRegion, targetSize, MimeType.PNG);
-      expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.crop).toHaveBeenCalledWith(
         imageUrl,
         cropRegion,
         targetSize,
@@ -34,7 +34,7 @@ describe('Photo Manipulator', () => {
 
     test('missing targetSize', () => {
       PhotoManipulator.crop(imageUrl, cropRegion);
-      expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.crop).toHaveBeenCalledWith(
         imageUrl,
         cropRegion,
         undefined,
@@ -44,7 +44,7 @@ describe('Photo Manipulator', () => {
 
     test('require image source', () => {
       PhotoManipulator.crop(imageRequire, cropRegion);
-      expect(NativeModules.RNPhotoManipulator.crop).toBeCalledWith(
+      expect(NativeModules.RNPhotoManipulator.crop).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         cropRegion,
         undefined,

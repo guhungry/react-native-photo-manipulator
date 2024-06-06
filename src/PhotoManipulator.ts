@@ -7,6 +7,7 @@ import type {
   PhotoBatchOperations,
   Point,
   Rect,
+  RotationMode,
   Size,
   TextOptions,
 } from './PhotoManipulatorTypes';
@@ -60,6 +61,16 @@ const PhotoManipulator: PhotoManipulatorStatic = {
     mimeType: MimeType = MimeType.JPEG,
   ) =>
     RNPhotoManipulator.flipImage(
+      ParamUtils.toImageNative(image),
+      mode,
+      mimeType,
+    ),
+  rotateImage: (
+    image: ImageSource,
+    mode: RotationMode,
+    mimeType: MimeType = MimeType.JPEG,
+  ) =>
+    RNPhotoManipulator.rotateImage(
       ParamUtils.toImageNative(image),
       mode,
       mimeType,

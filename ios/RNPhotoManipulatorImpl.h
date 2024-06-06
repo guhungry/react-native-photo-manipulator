@@ -30,6 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge;
 
++ (void)rotateImage:(NSString *)uri
+        mode:(NSString *)mode
+        mimeType:(NSString *)mimeType
+        resolve:(RCTPromiseResolveBlock)resolve
+        reject:(RCTPromiseRejectBlock)reject
+        bridge:(RCTBridge *)bridge;
+
 + (void)overlayImage:(NSString *)uri
         overlay:(NSString *)overlay
         position:(NSDictionary *)position

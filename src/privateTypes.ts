@@ -5,6 +5,7 @@ import {
   PhotoBatchOperations,
   Point,
   Rect,
+  RotationMode,
   Size,
   TextOptions,
 } from './PhotoManipulatorTypes';
@@ -54,6 +55,19 @@ export interface PhotoManipulatorStatic {
   flipImage: (
     image: ImageSource,
     mode: FlipMode,
+    mimeType?: MimeType,
+  ) => Promise<string>;
+
+  /**
+   * Rotate Image 90°, 180° or 270°
+   *
+   * @param image (required) Uri of image can be http://, https://, file:// and require()
+   * @param mode (required) 90° (90° Clockwise), 180° (Half Rotation) or 270° (90° Counterclockwise)
+   * @param mimeType (optional) Mimetype of output image (image/jpeg, image/png)
+   */
+  rotateImage: (
+    image: ImageSource,
+    mode: RotationMode,
     mimeType?: MimeType,
   ) => Promise<string>;
 

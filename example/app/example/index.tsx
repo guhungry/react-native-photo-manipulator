@@ -8,6 +8,7 @@ import ExampleCrop from "./ExampleCrop"
 import ExampleOptimize from "./ExampleOptimize"
 import ExampleBatch from "./ExampleBatch"
 import ExampleFlip from "./ExampleFlip"
+import ExampleRotate from "./ExampleRotate"
 
 export interface Example {
   id: string
@@ -34,6 +35,12 @@ const EXAMPLES: Example[] = [
     title: "flipImage()",
     description: "Flip image horizontally of vertically",
     render: () => <ExampleFlip />
+  },
+  {
+    id: "exampleRotate",
+    title: "rotateImage()",
+    description: "Rotate image 90°, 180° or 270°",
+    render: () => <ExampleRotate />
   },
   {
     id: "exampleOverlayImage",

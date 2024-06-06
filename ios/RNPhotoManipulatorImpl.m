@@ -66,6 +66,10 @@ const CGFloat DEFAULT_QUALITY = 100;
         NSString *mode = [RCTConvert NSString:operation[@"mode"]];
 
         return [image flip:[ParamUtils flipMode:mode]];
+    } else if ([type isEqual:@"rotate"]) {
+        NSString *mode = [RCTConvert NSString:operation[@"mode"]];
+
+        return [image rotate:[ParamUtils rotationMode:mode]];
     }
     return image;
 }
@@ -108,6 +112,25 @@ const CGFloat DEFAULT_QUALITY = 100;
        }
 
        UIImage *result = [image flip:[ParamUtils flipMode:mode]];
+
+       NSString *uri = [ImageUtils saveTempFile:result mimeType:mimeType quality:DEFAULT_QUALITY];
+       resolve(uri);
+    }];
+}
+
++ (void)rotateImage:(NSString *)uri
+        mode:(NSString *)mode
+        mimeType:(NSString *)mimeType
+        resolve:(RCTPromiseResolveBlock)resolve
+        reject:(RCTPromiseRejectBlock)reject
+        bridge:(RCTBridge *)bridge {
+    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+       if (error) {
+           reject(@(error.code).stringValue, error.description, error);
+           return;
+       }
+
+       UIImage *result = [image rotate:[ParamUtils rotationMode:mode]];
 
        NSString *uri = [ImageUtils saveTempFile:result mimeType:mimeType quality:DEFAULT_QUALITY];
        resolve(uri);
