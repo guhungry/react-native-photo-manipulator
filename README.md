@@ -313,7 +313,7 @@ Flip image batch operation
 
 | Property        | Type                                      | Description                            |
 | --------------- | ----------------------------------------- | -------------------------------------- |
-| `operation`     | "rotate"                                    |                                        |
+| `operation`     | "flip"                                    |                                        |
 | `mode`          | [`FlipMode`](README.md#flipmode)          | Flip mode Vertical, Horizontal or Both |
 
 #### PhotoBatchRotate
@@ -321,7 +321,7 @@ Rotate image batch operation
 
 | Property        | Type                                      | Description                            |
 | --------------- | ----------------------------------------- | -------------------------------------- |
-| `operation`     | "flip"                                    |                                        |
+| `operation`     | "rotate"                                    |                                        |
 | `mode`          | [`RotationMode`](README.md#rotationmode)          | Rotation mode 90° (90° Clockwise), 180° (Half Rotation) or 270° (90° Counterclockwise) |
 
 #### FlipMode
