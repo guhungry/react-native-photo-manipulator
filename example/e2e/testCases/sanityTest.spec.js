@@ -14,5 +14,7 @@ describe('PhotoManipulator', () => {
     await expect(element(by.id('example-exampleCrop'))).toExist();
     await expect(element(by.id('example-exampleOptimize'))).toExist();
     await expect(element(by.id('example-exampleBatch'))).toExist();
+    await expect(element(by.id('example-exampleFlip'))).toExist();
+    await expect(element(by.id('example-exampleRotate'))).toExist();
   });
 });
