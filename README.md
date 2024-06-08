@@ -1,8 +1,10 @@
 # React Native Photo Manipulator
-React Native Image Processing API to edit photo programmatically for Android and iOS.
-
 [![npm version](http://img.shields.io/npm/v/react-native-photo-manipulator.svg?style=flat)](https://npmjs.org/package/react-native-photo-manipulator "View this project on npm")
 [![build](https://github.com/guhungry/react-native-photo-manipulator/actions/workflows/test-and-rebuild.yml/badge.svg?branch=master&event=push)](https://github.com/guhungry/react-native-photo-manipulator/actions/workflows/test-and-rebuild.yml)
+
+React Native Image Processing API to edit photo programmatically for Android and iOS.
+
+[demo.webm](https://github.com/guhungry/react-native-photo-manipulator/assets/4032276/8b22be79-9b1c-455d-9ce7-e92509e1c019)
 
 ## Platform Supported
 * [x] Android
