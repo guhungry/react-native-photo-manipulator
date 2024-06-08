@@ -1,6 +1,6 @@
 import * as React from "react"
 import {Image, Text} from "react-native"
-import styles from "../App.styles"
+import styles, { ImageResultProps } from "../App.styles"
 import {noop} from "../utils"
 import PhotoManipulator, {MimeType, TextOptions} from "react-native-photo-manipulator"
 import {IMAGE} from "./settings"
@@ -20,9 +20,9 @@ export default React.memo(function ExamplePrintText() {
 
   return <>
     { typeof image === "string" ? <Text style={styles.exampleDescription}>JPEG</Text> : null }
-    { typeof image === "string" ? <Image testID="printTextResult" style={styles.image} source={{ uri: image}} /> : null }
+    { typeof image === "string" ? <Image testID="printTextResult" {...ImageResultProps} source={{ uri: image}} /> : null }
     { typeof imagePng === "string" ? <Text style={styles.exampleDescription}>PNG</Text> : null }
-    { typeof imagePng === "string" ? <Image testID="printTextPngResult" style={styles.image} source={{ uri: imagePng}} /> : null }
+    { typeof imagePng === "string" ? <Image testID="printTextPngResult" {...ImageResultProps} source={{ uri: imagePng}} /> : null }
     </>;
 
   function texts(): TextOptions[] {

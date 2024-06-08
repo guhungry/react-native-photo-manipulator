@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Image } from "react-native"
-import styles from "../App.styles"
+import { ImageResultProps } from "../App.styles"
 import ExampleOverlayImage from "./ExampleOverlayImage"
 import ExamplePrintText from "./ExamplePrintText"
 import { IMAGE, OVERLAY } from "./settings"
@@ -22,13 +22,13 @@ const EXAMPLES: Example[] = [
     id: "originalImage",
     title: "Source Image",
     description: "Original Source Image size 1120 * 800",
-    render: () => <Image style={styles.image} source={{ uri: IMAGE}} />
+    render: () => <Image {...ImageResultProps} source={{ uri: IMAGE}} />
   },
   {
     id: "overlayImage",
     title: "Overlay Image",
     description: "Overlay Image size 200 * 141",
-    render: () => <Image style={styles.image} resizeMode="center" source={{ uri: OVERLAY}} />
+    render: () => <Image {...ImageResultProps} resizeMode="center" source={{ uri: OVERLAY}} />
   },
   {
     id: "exampleFlip",

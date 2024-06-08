@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native"
+import { ImageProps, StyleSheet } from "react-native"
 
-export default StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
@@ -36,3 +36,11 @@ export default StyleSheet.create({
     paddingHorizontal: 20
   },
 });
+
+
+export let ImageResultProps : ImageProps = {
+  style: styles.image,
+  resizeMode: "contain"
+}
+
+export default styles

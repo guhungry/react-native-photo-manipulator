@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Image } from "react-native"
-import styles from "../App.styles"
+import { ImageResultProps } from "../App.styles"
 import PhotoManipulator from "react-native-photo-manipulator"
 import { noop } from "../utils"
 import { IMAGE } from "./settings"
@@ -16,5 +16,5 @@ export default React.memo(function ExampleOptimize() {
     operation().then(noop).catch(console.log);
   }, [])
 
-  return image && <Image testID="optimizeResult" style={styles.image} source={{ uri: image}} /> || null
+  return image && <Image testID="optimizeResult" {...ImageResultProps} resizeMode="contain" source={{ uri: image}} /> || null
 })

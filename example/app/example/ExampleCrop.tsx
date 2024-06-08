@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Image, Text } from "react-native"
-import styles from "../App.styles"
+import styles, { ImageResultProps } from "../App.styles"
 import { noop } from "../utils"
 import PhotoManipulator from "react-native-photo-manipulator"
 import { IMAGE } from "./settings"
@@ -23,11 +23,11 @@ export default React.memo(function ExampleCrop() {
   return (
     <>
       { typeof crop === "string" ? <Text style={styles.exampleDescription}>Crop</Text> : null }
-      { typeof crop === "string" ? <Image testID="cropResult" style={styles.image} source={{ uri: crop}} /> : null }
+      { typeof crop === "string" ? <Image testID="cropResult" {...ImageResultProps} source={{ uri: crop}} /> : null }
       { typeof resize === "string" ? <Text style={styles.exampleDescription}>Crop & Resize</Text> : null }
-      { typeof resize === "string" ? <Image testID="cropResizeResult" style={styles.image} source={{ uri: resize}} /> : null }
+      { typeof resize === "string" ? <Image testID="cropResizeResult" {...ImageResultProps} source={{ uri: resize}} /> : null }
       { typeof cropPng === "string" ? <Text style={styles.exampleDescription}>PNG</Text> : null }
-      { typeof cropPng === "string" ? <Image testID="cropPngResult" style={styles.image} source={{ uri: cropPng}} /> : null }
+      { typeof cropPng === "string" ? <Image testID="cropPngResult" {...ImageResultProps} source={{ uri: cropPng}} /> : null }
     </>
   )
 })

@@ -1,6 +1,6 @@
 import * as React from "react"
 import {Image, Text} from "react-native"
-import styles from "../App.styles"
+import styles, { ImageResultProps } from "../App.styles"
 import {noop} from "../utils"
 import PhotoManipulator, {FlipMode, PhotoBatchOperations, MimeType, RotationMode} from "react-native-photo-manipulator"
 import {IMAGE, OVERLAY} from "./settings"
@@ -20,9 +20,9 @@ export default React.memo(function ExampleBatch() {
 
   return <>
       { typeof image === "string" ? <Text style={styles.exampleDescription}>Crop & Resize</Text> : null }
-      { typeof image === "string" ? <Image testID="batchResult" style={styles.image} source={{ uri: image}} /> : null }
+      { typeof image === "string" ? <Image testID="batchResult" {...ImageResultProps} source={{ uri: image}} /> : null }
       { typeof imagePng === "string" ? <Text style={styles.exampleDescription}>Crop Only</Text> : null }
-      { typeof imagePng === "string" ? <Image testID="batchResultPng" style={styles.image} source={{ uri: imagePng}} /> : null }
+      { typeof imagePng === "string" ? <Image testID="batchResultPng" {...ImageResultProps} source={{ uri: imagePng}} /> : null }
     </>
 
   function operations(): PhotoBatchOperations[] {

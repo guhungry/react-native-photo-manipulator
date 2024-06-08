@@ -1,6 +1,6 @@
 import * as React from "react"
 import {Image, Text} from "react-native"
-import styles from "../App.styles"
+import styles, { ImageResultProps } from "../App.styles"
 import PhotoManipulator, {MimeType} from "react-native-photo-manipulator"
 import {noop} from "../utils"
 import {IMAGE, OVERLAY} from "./settings"
@@ -11,8 +11,8 @@ export default React.memo(function ExampleOverlayImage() {
 
   React.useEffect(() => {
     const operation = async () => {
-      setImage(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 30, y: 65 }))
-      setImagePng(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 30, y: 65 }, MimeType.PNG))
+      setImage(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 1500 - 200 - 10, y: 1000 -141 - 10 }))
+      setImagePng(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 1500 - 200 -10, y: 1000 -141 - 10 }, MimeType.PNG))
     };
 
     operation().then(noop).catch(console.log);
@@ -20,8 +20,8 @@ export default React.memo(function ExampleOverlayImage() {
 
   return <>
     { typeof image === "string" ? <Text style={styles.exampleDescription}>JPEG</Text> : null }
-    { typeof image === "string" ? <Image testID="overlayImageResult" style={styles.image} source={{ uri: image}} /> : null }
+    { typeof image === "string" ? <Image testID="overlayImageResult" {...ImageResultProps} source={{ uri: image}} /> : null }
     { typeof imagePng === "string" ? <Text style={styles.exampleDescription}>PNG</Text> : null }
-    { typeof imagePng === "string" ? <Image testID="overlayImagePngResult" style={styles.image} source={{ uri: imagePng}} /> : null }
+    { typeof imagePng === "string" ? <Image testID="overlayImagePngResult"  {...ImageResultProps} source={{ uri: imagePng}} /> : null }
     </>
 })
