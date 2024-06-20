@@ -11,12 +11,12 @@ updates:
     schedule:
       interval: daily
 
-  - package-ecosystem: "npm"
+  - package-ecosystem: "yarn"
     directory: "/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
       
-  - package-ecosystem: "npm"
+  - package-ecosystem: "yarn"
     directory: "/example" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
