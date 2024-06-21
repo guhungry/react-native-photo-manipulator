@@ -40,7 +40,7 @@
     "react-native": "0.74.2",
     "react-native-builder-bob": "^0.23.2",
     "react-test-renderer": "18.2.0",
-    "typescript": "5.4.5"
+    "typescript": "5.5.2"
   },
   "repository": {
     "type": "git",
