@@ -11,8 +11,8 @@ export default React.memo(function ExampleOverlayImage() {
 
   React.useEffect(() => {
     const operation = async () => {
-      setImage(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 1500 - 200 - 10, y: 1000 -141 - 10 }))
-      setImagePng(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 1500 - 200 -10, y: 1000 -141 - 10 }, MimeType.PNG))
+      setImage(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 800 - 200 - 10, y: 600 - 141 - 10 }))
+      setImagePng(await PhotoManipulator.overlayImage(IMAGE, OVERLAY, { x: 30, y: 100 }, MimeType.PNG))
     };
 
     operation().then(noop).catch(console.log);
