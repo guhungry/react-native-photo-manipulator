@@ -1,4 +1,4 @@
-import { by, device, element, expect } from 'detox';
+import {by, device, element, expect, waitFor} from 'detox';
 
 describe('optimize', () => {
   beforeAll(async () => {
@@ -8,6 +8,8 @@ describe('optimize', () => {
   it('should load images after optimize', async () => {
     await expect(element(by.id('example-exampleOptimize'))).toExist();
 
-    await waitFor(element(by.id('optimizeResult'))).toExist().withTimeout(15000);
+    await waitFor(element(by.id('optimizeResult')))
+      .toExist()
+      .withTimeout(15000);
   });
 });

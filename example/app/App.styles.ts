@@ -1,4 +1,4 @@
-import { ImageProps, StyleSheet } from "react-native"
+import {ImageProps, StyleSheet} from 'react-native';
 
 let styles = StyleSheet.create({
   container: {
@@ -31,16 +31,15 @@ let styles = StyleSheet.create({
     paddingTop: 16,
   },
   image: {
-    width: "100%",
+    width: '100%',
     aspectRatio: 1120 / 800,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
 });
 
-
-export let ImageResultProps : ImageProps = {
+export let ImageResultProps: ImageProps = {
   style: styles.image,
-  resizeMode: "contain"
-}
+  resizeMode: 'contain',
+};
 
-export default styles
+export default styles;
