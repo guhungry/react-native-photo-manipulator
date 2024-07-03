@@ -15,6 +15,7 @@ jobs:
           node-version: 20.11.0
       - run: yarn
       - run: yarn ci
+      - run: npm run prepack
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
