@@ -3,10 +3,10 @@ package com.guhungry.rnphotomanipulator.utils
 import android.graphics.Color
 import android.graphics.PointF
 import com.facebook.react.bridge.ReadableMap
-import com.guhungry.photomanipulator.CGRect
-import com.guhungry.photomanipulator.CGSize
-import com.guhungry.photomanipulator.FlipMode
-import com.guhungry.photomanipulator.RotationMode
+import com.guhungry.photomanipulator.model.CGRect
+import com.guhungry.photomanipulator.model.CGSize
+import com.guhungry.photomanipulator.model.FlipMode
+import com.guhungry.photomanipulator.model.RotationMode
 
 /**
  * Parameter Utilities for Convert JS Parameter to Native Java

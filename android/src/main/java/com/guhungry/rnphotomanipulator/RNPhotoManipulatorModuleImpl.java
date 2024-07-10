@@ -15,6 +15,7 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.views.text.ReactFontManager;
 import com.guhungry.photomanipulator.BitmapUtils;
 import com.guhungry.photomanipulator.MimeUtils;
+import com.guhungry.photomanipulator.model.TextStyle;
 import com.guhungry.rnphotomanipulator.utils.ImageUtils;
 import com.guhungry.rnphotomanipulator.utils.ParamUtils;
 
@@ -154,7 +155,8 @@ public class RNPhotoManipulatorModuleImpl {
 
     private void printLine(Bitmap image, String text, float scale, String fontName, PointF location, int color, float thickness, float rotation) {
         Typeface font = getFont(fontName);
-        BitmapUtils.printText(image, text, location, color, scale, font, Paint.Align.LEFT, thickness, rotation);
+        TextStyle style = new TextStyle(color, scale, font, Paint.Align.LEFT, thickness, rotation, 0, 0, 0, null);
+        BitmapUtils.printText(image, text, location, style);
     }
 
     private Typeface getFont(String fontName) {
