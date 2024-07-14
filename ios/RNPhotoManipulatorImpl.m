@@ -183,7 +183,8 @@ const CGFloat DEFAULT_QUALITY = 100;
           CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
           CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
 
-          image = [image drawText:text position:position color:color font:font thickness:thickness rotation:rotation];
+          TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation];
+          image = [image drawText:text position:position style:style];
       }
 
       NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];
