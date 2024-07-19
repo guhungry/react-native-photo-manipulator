@@ -13,11 +13,11 @@ import com.guhungry.photomanipulator.model.RotationMode
  */
 object ParamUtils {
     // PointF
-    @JvmStatic fun pointfFromMap(map: ReadableMap): PointF = pointfFromXY(map.getInt("x"), map.getInt("y"))
+    @JvmStatic fun pointfFromMap(map: ReadableMap?): PointF? = map?.let { pointfFromXY(it.getInt("x"), it.getInt("y")) }
     @JvmStatic fun pointfFromXY(x: Int, y: Int): PointF = PointF(x.toFloat(), y.toFloat())
 
     // Color
-    @JvmStatic fun colorFromMap(map: ReadableMap): Int = Color.argb(map.getInt("a"), map.getInt("r"), map.getInt("g"), map.getInt("b"))
+    @JvmStatic fun colorFromMap(map: ReadableMap?): Int? = map?.let { Color.argb(it.getInt("a"), it.getInt("r"), it.getInt("g"), it.getInt("b")) }
 
     // CGRect
     @JvmStatic fun rectFromMap(map: ReadableMap): CGRect = CGRect(map.getInt("x"), map.getInt("y"), map.getInt("width"), map.getInt("height"))

@@ -56,7 +56,7 @@ public class RNPhotoManipulatorModuleImpl {
             ReadableMap text = operation.getMap("options");
             if (text == null) return image;
 
-            printLine(image, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"), text.getInt("rotation"));
+            printLine(image, text.getString("text"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), text);
             return image;
         } else if ("overlay".equals(type)) {
             String uri = operation.getString("overlay");
@@ -141,7 +141,7 @@ public class RNPhotoManipulatorModuleImpl {
 
             for (int i = 0, count = list.size(); i < count; i++) {
                 ReadableMap text = list.getMap(i);
-                printLine(output, text.getString("text"), (float) text.getDouble("textSize"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), ParamUtils.colorFromMap(text.getMap("color")), text.getInt("thickness"), text.getInt("rotation"));
+                printLine(output, text.getString("text"), text.getString("fontName"), ParamUtils.pointfFromMap(text.getMap("position")), text);
             }
 
             String file = ImageUtils.saveTempFile(reactContext, output, mimeType, FILE_PREFIX, DEFAULT_QUALITY);
@@ -153,9 +153,21 @@ public class RNPhotoManipulatorModuleImpl {
         }
     }
 
-    private void printLine(Bitmap image, String text, float scale, String fontName, PointF location, int color, float thickness, float rotation) {
+    private void printLine(Bitmap image, String text, String fontName, PointF location, ReadableMap options) {
         Typeface font = getFont(fontName);
-        TextStyle style = new TextStyle(color, scale, font, Paint.Align.LEFT, thickness, rotation, 0, 0, 0, null);
+
+        PointF shadowOffset = ParamUtils.pointfFromMap(options.getMap("shadowOffset"));
+        TextStyle style = new TextStyle(
+                ParamUtils.colorFromMap(options.getMap("color")),
+                (float) options.getDouble("textSize"),
+                font,
+                Paint.Align.LEFT,
+                options.getInt("thickness"),
+                (float) options.getDouble("rotation"),
+                (float) options.getDouble("shadowRadius"),
+                shadowOffset != null ? shadowOffset.x : 0,
+                shadowOffset != null ? shadowOffset.y : 0,
+                ParamUtils.colorFromMap(options.getMap("shadowColor")));
         BitmapUtils.printText(image, text, location, style);
     }
 
