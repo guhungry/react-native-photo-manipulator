@@ -40,6 +40,19 @@ const CGFloat DEFAULT_QUALITY = 100;
     }];
 }
 
+static TextStyle *toTextStyle(NSDictionary *options) {
+    UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
+    UIColor *color = [ParamUtils color:options[@"color"]];
+    CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
+    CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
+    CGFloat shadowRadius = [RCTConvert CGFloat:options[@"shadowRadius"]];
+    CGPoint shadowOffset = [RCTConvert CGPoint:options[@"shadowOffset"]];
+    UIColor *shadowColor = [ParamUtils color:options[@"shadowColor"]];
+    
+    TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor];
+    return style;
+}
+
 + (UIImage *)processBatchOperation:(UIImage *)image
         operation:(NSDictionary *)operation
         bridge:(RCTBridge *)bridge {
@@ -53,15 +66,11 @@ const CGFloat DEFAULT_QUALITY = 100;
         return [image overlayImage:overlay position:position];
     } else if ([type isEqual:@"text"]) {
         NSDictionary *options = [RCTConvert NSDictionary:operation[@"options"]];
-
+        
         NSString *text = [RCTConvert NSString:options[@"text"]];
         CGPoint position = [RCTConvert CGPoint:options[@"position"]];
-        UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
-        UIColor *color = [ParamUtils color:options[@"color"]];
-        CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
-        CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
-
-        return [image drawText:text position:position color:color font:font thickness:thickness rotation:rotation];
+        TextStyle * style = toTextStyle(options);
+        return [image drawText:text position:position style:style];
     } else if ([type isEqual:@"flip"]) {
         NSString *mode = [RCTConvert NSString:operation[@"mode"]];
 
@@ -178,12 +187,8 @@ const CGFloat DEFAULT_QUALITY = 100;
       for (id options in texts) {
           NSString *text = [RCTConvert NSString:options[@"text"]];
           CGPoint position = [RCTConvert CGPoint:options[@"position"]];
-          UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
-          UIColor *color = [ParamUtils color:options[@"color"]];
-          CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
-          CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
+          TextStyle * style = toTextStyle(options);
 
-          TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation];
           image = [image drawText:text position:position style:style];
       }
 

@@ -17,6 +17,9 @@ export interface TextOptions {
   color?: string | Color;
   thickness?: number;
   rotation?: number;
+  shadowRadius?: number;
+  shadowOffset?: Point;
+  shadowColor?: string | Color;
 }
 
 export interface Color {
