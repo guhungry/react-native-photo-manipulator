@@ -18,6 +18,10 @@ Pod::Spec.new do |s|
 
   s.dependency 'WCPhotoManipulator', '~> 2.3.0'
 
-  # React Native Core dependency
-  install_modules_dependencies(s)
+  if respond_to?(:install_modules_dependencies, true)
+    # React Native Core dependency
+    install_modules_dependencies(s)
+  else
+    s.dependency "React-Core"
+  end
 end
