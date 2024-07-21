@@ -38,7 +38,17 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
-    namespace "com.guhungry.rnphotomanipulator"
+    def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+    // Check AGP version for backward compatibility reasons
+    if (agpVersion.tokenize('.')[0].toInteger() >= 7) {
+        namespace "com.guhungry.rnphotomanipulator"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         minSdkVersion getExtOrIntegerDefault('minSdkVersion')
         targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
@@ -77,5 +87,5 @@ repositories {
 dependencies {
     implementation 'com.facebook.react:react-native:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${getExtOrDefault('kotlinVersion')}"
-    implementation "com.guhungry.android:photo-manipulator:1.2.2"
+    implementation "com.guhungry.android:photo-manipulator:1.2.3"
 }
