@@ -87,5 +87,7 @@ repositories {
 dependencies {
     implementation 'com.facebook.react:react-native:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${getExtOrDefault('kotlinVersion')}"
-    implementation "com.guhungry.android:photo-manipulator:1.2.3"
+    implementation("com.guhungry.android:photo-manipulator:1.2.5") {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
+    }
 }
