@@ -106,6 +106,8 @@ describe('Photo Manipulator', () => {
               color: {a: 255, b: 17, g: 50, r: 35},
               position: {x: 4, y: 12},
               rotation: 0,
+              shadowColor: undefined,
+              shadowRadius: 0,
               text: 'PRINT ME',
               textSize: 30,
               thickness: 0,

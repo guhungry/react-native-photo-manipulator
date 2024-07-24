@@ -51,6 +51,22 @@ export default React.memo(function ExamplePrintText() {
   function texts(): TextOptions[] {
     return [
       {
+        text: 'Test Shadow',
+        color: 'red',
+        textSize: 100,
+        position: {x: 80, y: 300},
+        thickness: 10,
+        shadowRadius: 10,
+        shadowOffset: {x: 5, y: 10},
+        shadowColor: 'green'
+      },
+      {
+        text: 'Test Shadow',
+        color: 'blue',
+        textSize: 100,
+        position: {x: 80, y: 300},
+      },
+      {
         text: 'Test Print Text',
         color: 'black',
         textSize: 30,

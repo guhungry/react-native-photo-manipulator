@@ -382,3 +382,6 @@ Represent attributes of text such as text, color, size, and etc.
 | `color`         | string                        | No       | The color of the text                          |
 | `thickness`     | number                        | No       | The thickness (border width) of the region     |
 | `rotation`      | number                        | No       | The rotation of text in degrees                |
+| `shadowRadius`      | number                        | No       | The shadow radius                |
+| `shadowOffset`      | [`Point`](README.md#point)                        | No       | The shadow offset                |
+| `shadowColor`         | string                        | No       | The color of the shadow                          |

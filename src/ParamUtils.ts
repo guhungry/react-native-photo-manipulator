@@ -36,6 +36,8 @@ export const toTextOptionsNative = (it: TextOptions): TextOptions => ({
   color: toColorNative(it.color),
   thickness: it.thickness || 0,
   rotation: it.rotation || 0,
+  shadowRadius: it.shadowRadius || 0,
+  shadowColor: it.shadowColor && toColorNative(it.shadowColor),
 });
 
 export const toBatchNative = (
