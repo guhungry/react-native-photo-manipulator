@@ -1,24 +1,28 @@
 {
-  "include": ["src/"],
   "compilerOptions": {
-    "baseUrl": "./src/",
-    "jsx": "react-native",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["es2017"],
-    "declaration": true,
-    "declarationMap": true,
-    "allowSyntheticDefaultImports": true,
+    "rootDir": ".",
+    "paths": {
+      "react-native-photo-manipulator": ["./src/index"]
+    },
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "pretty": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true
-  },
-  "exclude": ["node_modules", "example"]
+    "strict": true,
+    "target": "ESNext",
+    "verbatimModuleSyntax": true
+  }
 }
