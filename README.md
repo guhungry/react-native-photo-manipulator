@@ -2,6 +2,7 @@
 [![build](https://github.com/guhungry/react-native-photo-manipulator/actions/workflows/test-and-rebuild.yml/badge.svg?branch=master&event=push)](https://github.com/guhungry/react-native-photo-manipulator/actions/workflows/test-and-rebuild.yml)
 ![Supports Android, iOS](https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg)
 [![npm version](http://img.shields.io/npm/v/react-native-photo-manipulator.svg?style=flat)](https://npmjs.org/package/react-native-photo-manipulator "View this project on npm")
+![NPM Downloads](https://img.shields.io/npm/dt/react-native-photo-manipulator)
 ![NPM Downloads](https://img.shields.io/npm/dm/react-native-photo-manipulator)
 ![NPM License](https://img.shields.io/npm/l/react-native-photo-manipulator)
 
