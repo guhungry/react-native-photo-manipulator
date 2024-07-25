@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
-import EXAMPLES, {Example} from './example';
+import EXAMPLES from './example';
+import type {Example} from './example';
 import styles from './App.styles';
 
 export default class App extends React.Component<{}, {}> {

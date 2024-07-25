@@ -2,12 +2,8 @@ import * as React from 'react';
 import {Image, Text} from 'react-native';
 import styles, {ImageResultProps} from '../App.styles';
 import {noop} from '../utils';
-import PhotoManipulator, {
-  FlipMode,
-  PhotoBatchOperations,
-  MimeType,
-  RotationMode,
-} from 'react-native-photo-manipulator';
+import PhotoManipulator, {FlipMode, MimeType, RotationMode} from 'react-native-photo-manipulator';
+import type {PhotoBatchOperations} from 'react-native-photo-manipulator';
 import {IMAGE, OVERLAY} from './settings';
 
 export default React.memo(function ExampleBatch() {
