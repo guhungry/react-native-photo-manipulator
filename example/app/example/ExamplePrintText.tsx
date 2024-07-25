@@ -58,7 +58,7 @@ export default React.memo(function ExamplePrintText() {
         thickness: 10,
         shadowRadius: 10,
         shadowOffset: {x: 5, y: 10},
-        shadowColor: 'green'
+        shadowColor: 'green',
       },
       {
         text: 'Test Shadow',

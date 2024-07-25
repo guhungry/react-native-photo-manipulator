@@ -1,16 +1,16 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 import 'jest-extended';
 import PhotoManipulator from '../PhotoManipulator';
-import {toImageNative} from '../ParamUtils';
-import {MimeType} from '../PhotoManipulatorTypes';
+import { toImageNative } from '../ParamUtils';
+import { MimeType } from '../PhotoManipulatorTypes';
 
 describe('Photo Manipulator', () => {
   describe('batch()', () => {
     const imageUrl =
       'https://image.freepik.com/free-photo/tulips-bouquet-pink-background-with-copyspace_24972-271.jpg';
     const imageRequire = require.resolve('../../docs/test.png');
-    const cropRegion = {x: 30, y: 10, height: 400, width: 300};
-    const targetSize = {width: 300, height: 200};
+    const cropRegion = { x: 30, y: 10, height: 400, width: 300 };
+    const targetSize = { width: 300, height: 200 };
     const quality = 85;
 
     test('all parameters', () => {
@@ -21,7 +21,7 @@ describe('Photo Manipulator', () => {
         cropRegion,
         targetSize,
         quality,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -32,7 +32,7 @@ describe('Photo Manipulator', () => {
         cropRegion,
         targetSize,
         quality,
-        MimeType.PNG,
+        MimeType.PNG
       );
       expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
@@ -40,7 +40,7 @@ describe('Photo Manipulator', () => {
         cropRegion,
         targetSize,
         quality,
-        MimeType.PNG,
+        MimeType.PNG
       );
     });
 
@@ -52,7 +52,7 @@ describe('Photo Manipulator', () => {
         cropRegion,
         targetSize,
         100,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -64,7 +64,7 @@ describe('Photo Manipulator', () => {
         cropRegion,
         undefined,
         100,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -76,7 +76,7 @@ describe('Photo Manipulator', () => {
         cropRegion,
         targetSize,
         quality,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -87,7 +87,7 @@ describe('Photo Manipulator', () => {
           {
             operation: 'text',
             options: {
-              position: {x: 4, y: 12},
+              position: { x: 4, y: 12 },
               text: 'PRINT ME',
               textSize: 30,
               color: '#233211',
@@ -95,7 +95,7 @@ describe('Photo Manipulator', () => {
             },
           },
         ],
-        cropRegion,
+        cropRegion
       );
       expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
@@ -103,8 +103,8 @@ describe('Photo Manipulator', () => {
           {
             operation: 'text',
             options: {
-              color: {a: 255, b: 17, g: 50, r: 35},
-              position: {x: 4, y: 12},
+              color: { a: 255, b: 17, g: 50, r: 35 },
+              position: { x: 4, y: 12 },
               rotation: 0,
               shadowColor: undefined,
               shadowRadius: 0,
@@ -117,23 +117,35 @@ describe('Photo Manipulator', () => {
         cropRegion,
         undefined,
         100,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
     test('convert operation overlay', () => {
       PhotoManipulator.batch(
         imageUrl,
-        [{operation: 'overlay', overlay: imageUrl, position: {x: 9, y: 31}}],
-        cropRegion,
+        [
+          {
+            operation: 'overlay',
+            overlay: imageUrl,
+            position: { x: 9, y: 31 },
+          },
+        ],
+        cropRegion
       );
       expect(NativeModules.RNPhotoManipulator.batch).toHaveBeenCalledWith(
         imageUrl,
-        [{operation: 'overlay', overlay: imageUrl, position: {x: 9, y: 31}}],
+        [
+          {
+            operation: 'overlay',
+            overlay: imageUrl,
+            position: { x: 9, y: 31 },
+          },
+        ],
         cropRegion,
         undefined,
         100,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
   });

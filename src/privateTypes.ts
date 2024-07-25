@@ -27,7 +27,7 @@ export interface PhotoManipulatorStatic {
     cropRegion: Rect,
     targetSize?: Size,
     quality?: number,
-    mimeType?: MimeType,
+    mimeType?: MimeType
   ) => Promise<string>;
 
   /**
@@ -42,7 +42,7 @@ export interface PhotoManipulatorStatic {
     image: ImageSource,
     cropRegion: Rect,
     targetSize?: Size,
-    mimeType?: MimeType,
+    mimeType?: MimeType
   ) => Promise<string>;
 
   /**
@@ -55,7 +55,7 @@ export interface PhotoManipulatorStatic {
   flipImage: (
     image: ImageSource,
     mode: FlipMode,
-    mimeType?: MimeType,
+    mimeType?: MimeType
   ) => Promise<string>;
 
   /**
@@ -68,7 +68,7 @@ export interface PhotoManipulatorStatic {
   rotateImage: (
     image: ImageSource,
     mode: RotationMode,
-    mimeType?: MimeType,
+    mimeType?: MimeType
   ) => Promise<string>;
 
   /**
@@ -83,7 +83,7 @@ export interface PhotoManipulatorStatic {
     image: ImageSource,
     overlay: ImageSource,
     position: Point,
-    mimeType?: MimeType,
+    mimeType?: MimeType
   ) => Promise<string>;
 
   /**
@@ -96,7 +96,7 @@ export interface PhotoManipulatorStatic {
   printText: (
     image: ImageSource,
     texts: TextOptions[],
-    mimeType?: MimeType,
+    mimeType?: MimeType
   ) => Promise<string>;
 
   /**

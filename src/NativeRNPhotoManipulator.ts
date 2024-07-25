@@ -18,7 +18,7 @@ export interface Spec extends TurboModule {
     cropRegion: Object,
     targetSize?: Object,
     quality?: number,
-    mimeType?: string,
+    mimeType?: string
   ) => Promise<string>;
 
   /**
@@ -33,7 +33,7 @@ export interface Spec extends TurboModule {
     image: string,
     cropRegion: Object,
     targetSize?: Object,
-    mimeType?: string,
+    mimeType?: string
   ) => Promise<string>;
 
   /**
@@ -46,7 +46,7 @@ export interface Spec extends TurboModule {
   flipImage: (
     image: string,
     mode: string,
-    mimeType?: string,
+    mimeType?: string
   ) => Promise<string>;
 
   /**
@@ -59,7 +59,7 @@ export interface Spec extends TurboModule {
   rotateImage: (
     image: string,
     mode: string,
-    mimeType?: string,
+    mimeType?: string
   ) => Promise<string>;
 
   /**
@@ -74,7 +74,7 @@ export interface Spec extends TurboModule {
     image: string,
     overlay: string,
     position: Object,
-    mimeType?: string,
+    mimeType?: string
   ) => Promise<string>;
 
   /**
@@ -87,7 +87,7 @@ export interface Spec extends TurboModule {
   printText: (
     image: string,
     texts: Object[],
-    mimeType?: string,
+    mimeType?: string
   ) => Promise<string>;
 
   /**

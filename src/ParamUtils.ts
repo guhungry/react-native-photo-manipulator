@@ -1,7 +1,7 @@
 /**
  * Parameter Utilities Class
  */
-import {Image} from 'react-native';
+import { Image } from 'react-native';
 import parse from 'parse-color';
 import type {
   Color,
@@ -41,14 +41,14 @@ export const toTextOptionsNative = (it: TextOptions): TextOptions => ({
 });
 
 export const toBatchNative = (
-  it: PhotoBatchOperations,
+  it: PhotoBatchOperations
 ): PhotoBatchOperations => {
   if (it.operation === 'text') {
-    return {...it, options: toTextOptionsNative(it.options)};
+    return { ...it, options: toTextOptionsNative(it.options) };
   } else if (it.operation === 'overlay') {
-    return {...it, overlay: toImageNative(it.overlay)};
+    return { ...it, overlay: toImageNative(it.overlay) };
   } else if (it.operation === 'flip') {
-    return {...it};
+    return { ...it };
   }
   return it;
 };
