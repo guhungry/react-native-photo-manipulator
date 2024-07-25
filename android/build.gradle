@@ -1,8 +1,6 @@
-
 buildscript {
-    ext.safeExtGet = {prop ->
-        rootProject.ext.has(prop) ? rootProject.ext.get(prop) : project.properties['RNPM_' + prop]
-    }
+    // Buildscript is evaluated before everything else so we can't use getExtOrDefault
+    def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RNPM_kotlinVersion"]
 
     repositories {
         google()
@@ -12,13 +10,25 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:7.4.2"
-
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion')}"
+        // noinspection DifferentKotlinGradleVersion
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+}
+
+def reactNativeArchitectures() {
+  def value = rootProject.getProperties().get("reactNativeArchitectures")
+  return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
 def isNewArchitectureEnabled() {
   return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+if (isNewArchitectureEnabled()) {
+  apply plugin: 'com.facebook.react'
 }
 
 def getExtOrDefault(name) {
@@ -29,20 +39,26 @@ def getExtOrIntegerDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['RNPM_' + name]).toInteger()
 }
 
-apply plugin: 'com.android.library'
-if (isNewArchitectureEnabled()) {
-  apply plugin: 'com.facebook.react'
+def supportsNamespace() {
+  def parsed = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')
+  def major = parsed[0].toInteger()
+  def minor = parsed[1].toInteger()
+
+  // Namespace support was added in 7.3.0
+  return (major == 7 && minor >= 3) || major >= 8
 }
-apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
-
-    def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
-    // Check AGP version for backward compatibility reasons
-    if (agpVersion.tokenize('.')[0].toInteger() >= 7) {
+    if (supportsNamespace()) {
         namespace "com.guhungry.rnphotomanipulator"
+
+        sourceSets {
+            main {
+                manifest.srcFile "src/main/AndroidManifestNew.xml"
+            }
+        }
     }
+    compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -52,14 +68,16 @@ android {
     defaultConfig {
         minSdkVersion getExtOrIntegerDefault('minSdkVersion')
         targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
-        versionCode 1
-        versionName "0.0.2"
         buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
     }
     sourceSets {
         main {
             if (isNewArchitectureEnabled()) {
-                java.srcDirs += ['src/newarch']
+                java.srcDirs += [
+                    "src/newarch",
+                    // This is needed to build Kotlin project with NewArch enabled
+                    "${project.buildDir}/generated/source/codegen/java"
+                ]
             } else {
                 java.srcDirs += ['src/oldarch']
             }
@@ -84,10 +102,23 @@ repositories {
     google()
 }
 
+def kotlin_version = getExtOrDefault("kotlinVersion")
+
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${getExtOrDefault('kotlinVersion')}"
+    // For < 0.71, this will be from the local maven repo
+    // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
+    //noinspection GradleDynamicVersion
+    implementation "com.facebook.react:react-native:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation("com.guhungry.android:photo-manipulator:1.2.5") {
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
     }
+}
+
+if (isNewArchitectureEnabled()) {
+  react {
+    jsRootDir = file("../src/")
+    libraryName = "RNPhotoManipulator"
+    codegenJavaPackageName = "com.guhungry.rnphotomanipulator"
+  }
 }
