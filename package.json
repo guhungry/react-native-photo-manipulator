@@ -151,13 +151,13 @@
       [
         "commonjs",
         {
-          "esm": false
+          "esm": true
         }
       ],
       [
         "module",
         {
-          "esm": false
+          "esm": true
         }
       ],
       [
