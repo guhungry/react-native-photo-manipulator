@@ -3,7 +3,6 @@
  */
 
 import 'react-native';
-import 'react';
 import App from '../app/App';
 
 // Note: import explicitly to use the types shipped with jest.
