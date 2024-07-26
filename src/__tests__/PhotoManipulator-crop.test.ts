@@ -1,16 +1,16 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 import 'jest-extended';
 import PhotoManipulator from '../PhotoManipulator';
-import {toImageNative} from '../ParamUtils';
-import {MimeType} from '../PhotoManipulatorTypes';
+import { toImageNative } from '../ParamUtils';
+import { MimeType } from '../PhotoManipulatorTypes';
 
 describe('Photo Manipulator', () => {
   describe('crop()', () => {
     const imageUrl =
       'https://image.freepik.com/free-photo/tulips-bouquet-pink-background-with-copyspace_24972-271.jpg';
     const imageRequire = require.resolve('../../docs/test.png');
-    const cropRegion = {x: 30, y: 10, height: 400, width: 300};
-    const targetSize = {width: 300, height: 200};
+    const cropRegion = { x: 30, y: 10, height: 400, width: 300 };
+    const targetSize = { width: 300, height: 200 };
 
     test('all parameters', () => {
       PhotoManipulator.crop(imageUrl, cropRegion, targetSize);
@@ -18,7 +18,7 @@ describe('Photo Manipulator', () => {
         imageUrl,
         cropRegion,
         targetSize,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -28,7 +28,7 @@ describe('Photo Manipulator', () => {
         imageUrl,
         cropRegion,
         targetSize,
-        MimeType.PNG,
+        MimeType.PNG
       );
     });
 
@@ -38,7 +38,7 @@ describe('Photo Manipulator', () => {
         imageUrl,
         cropRegion,
         undefined,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -48,7 +48,7 @@ describe('Photo Manipulator', () => {
         toImageNative(imageRequire),
         cropRegion,
         undefined,
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
   });

@@ -1,7 +1,7 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 import 'jest-extended';
 import PhotoManipulator from '../PhotoManipulator';
-import {toImageNative} from '../ParamUtils';
+import { toImageNative } from '../ParamUtils';
 
 describe('Photo Manipulator', () => {
   describe('optimize()', () => {
@@ -14,7 +14,7 @@ describe('Photo Manipulator', () => {
       PhotoManipulator.optimize(imageUrl, quality);
       expect(NativeModules.RNPhotoManipulator.optimize).toHaveBeenCalledWith(
         imageUrl,
-        quality,
+        quality
       );
     });
 
@@ -22,7 +22,7 @@ describe('Photo Manipulator', () => {
       PhotoManipulator.optimize(imageRequire, quality);
       expect(NativeModules.RNPhotoManipulator.optimize).toHaveBeenCalledWith(
         toImageNative(imageRequire),
-        quality,
+        quality
       );
     });
   });

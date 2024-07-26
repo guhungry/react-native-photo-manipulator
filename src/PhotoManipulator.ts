@@ -1,6 +1,6 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 import * as ParamUtils from './ParamUtils';
-import {MimeType} from './PhotoManipulatorTypes';
+import { MimeType } from './PhotoManipulatorTypes';
 import type {
   FlipMode,
   ImageSource,
@@ -11,18 +11,18 @@ import type {
   Size,
   TextOptions,
 } from './PhotoManipulatorTypes';
-import {PhotoManipulatorStatic} from './privateTypes';
-import TurboModuleRNPhotoManipulator, {Spec} from './NativeRNPhotoManipulator';
+import type { PhotoManipulatorStatic } from './privateTypes';
+import type { Spec } from './NativeRNPhotoManipulator';
 
 // React Native sets `__turboModuleProxy` on global when TurboModules are enabled.
 // Currently, this is the recommended way to detect TurboModules.
 // https://reactnative.dev/docs/the-new-architecture/backward-compatibility-turbomodules#unify-the-javascript-specs
 
-// @ts-ignore
+// @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
 const RNPhotoManipulator: Spec = isTurboModuleEnabled
-  ? TurboModuleRNPhotoManipulator
+  ? require('./NativeRNPhotoManipulator').default
   : NativeModules.RNPhotoManipulator;
 
 const PhotoManipulator: PhotoManipulatorStatic = {
@@ -32,7 +32,7 @@ const PhotoManipulator: PhotoManipulatorStatic = {
     cropRegion: Rect,
     targetSize?: Size,
     quality = 100,
-    mimeType: MimeType = MimeType.JPEG,
+    mimeType: MimeType = MimeType.JPEG
   ) => {
     return RNPhotoManipulator.batch(
       ParamUtils.toImageNative(image),
@@ -40,62 +40,62 @@ const PhotoManipulator: PhotoManipulatorStatic = {
       cropRegion,
       targetSize,
       quality,
-      mimeType,
+      mimeType
     );
   },
   crop: (
     image: ImageSource,
     cropRegion: Rect,
     targetSize?: Size,
-    mimeType: MimeType = MimeType.JPEG,
+    mimeType: MimeType = MimeType.JPEG
   ) =>
     RNPhotoManipulator.crop(
       ParamUtils.toImageNative(image),
       cropRegion,
       targetSize,
-      mimeType,
+      mimeType
     ),
   flipImage: (
     image: ImageSource,
     mode: FlipMode,
-    mimeType: MimeType = MimeType.JPEG,
+    mimeType: MimeType = MimeType.JPEG
   ) =>
     RNPhotoManipulator.flipImage(
       ParamUtils.toImageNative(image),
       mode,
-      mimeType,
+      mimeType
     ),
   rotateImage: (
     image: ImageSource,
     mode: RotationMode,
-    mimeType: MimeType = MimeType.JPEG,
+    mimeType: MimeType = MimeType.JPEG
   ) =>
     RNPhotoManipulator.rotateImage(
       ParamUtils.toImageNative(image),
       mode,
-      mimeType,
+      mimeType
     ),
   overlayImage: (
     image: ImageSource,
     overlay: ImageSource,
     position: Point,
-    mimeType: MimeType = MimeType.JPEG,
+    mimeType: MimeType = MimeType.JPEG
   ) =>
     RNPhotoManipulator.overlayImage(
       ParamUtils.toImageNative(image),
       ParamUtils.toImageNative(overlay),
       position,
-      mimeType,
+      mimeType
     ),
   printText: (
     image: ImageSource,
     texts: TextOptions[],
-    mimeType: MimeType = MimeType.JPEG,
+    mimeType: MimeType = MimeType.JPEG
   ) =>
     RNPhotoManipulator.printText(
       ParamUtils.toImageNative(image),
       texts.map(ParamUtils.toTextOptionsNative),
-      mimeType,
+      mimeType
     ),
   optimize: (image: ImageSource, quality: number) =>
     RNPhotoManipulator.optimize(ParamUtils.toImageNative(image), quality),

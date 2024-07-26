@@ -2,10 +2,8 @@ import * as React from 'react';
 import {Image, Text} from 'react-native';
 import styles, {ImageResultProps} from '../App.styles';
 import {noop} from '../utils';
-import PhotoManipulator, {
-  MimeType,
-  TextOptions,
-} from 'react-native-photo-manipulator';
+import PhotoManipulator, {MimeType} from 'react-native-photo-manipulator';
+import type {TextOptions} from 'react-native-photo-manipulator';
 import {IMAGE} from './settings';
 
 export default React.memo(function ExamplePrintText() {
@@ -58,7 +56,7 @@ export default React.memo(function ExamplePrintText() {
         thickness: 10,
         shadowRadius: 10,
         shadowOffset: {x: 5, y: 10},
-        shadowColor: 'green'
+        shadowColor: 'green',
       },
       {
         text: 'Test Shadow',

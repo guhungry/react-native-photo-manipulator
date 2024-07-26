@@ -1,8 +1,8 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 import 'jest-extended';
 import PhotoManipulator from '../PhotoManipulator';
-import {toImageNative} from '../ParamUtils';
-import {MimeType} from '../PhotoManipulatorTypes';
+import { toImageNative } from '../ParamUtils';
+import { MimeType } from '../PhotoManipulatorTypes';
 
 describe('Photo Manipulator', () => {
   describe('printText()', () => {
@@ -15,7 +15,7 @@ describe('Photo Manipulator', () => {
       expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         imageUrl,
         [],
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -24,7 +24,7 @@ describe('Photo Manipulator', () => {
       expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         [],
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
 
@@ -33,21 +33,21 @@ describe('Photo Manipulator', () => {
       expect(NativeModules.RNPhotoManipulator.printText).toHaveBeenCalledWith(
         toImageNative(imageRequire),
         [],
-        MimeType.PNG,
+        MimeType.PNG
       );
     });
 
     test('convert text operations', () => {
       PhotoManipulator.printText(imageUrl, [
         {
-          position: {x: 65, y: 70},
+          position: { x: 65, y: 70 },
           text: 'TEXT MAE',
           textSize: 45,
           color: 'white',
           thickness: 0,
         },
         {
-          position: {x: 65, y: 70},
+          position: { x: 65, y: 70 },
           text: 'TEXT MAE',
           textSize: 45,
           color: 'black',
@@ -59,8 +59,8 @@ describe('Photo Manipulator', () => {
         imageUrl,
         [
           {
-            color: {r: 255, g: 255, b: 255, a: 255},
-            position: {x: 65, y: 70},
+            color: { r: 255, g: 255, b: 255, a: 255 },
+            position: { x: 65, y: 70 },
             rotation: 0,
             shadowColor: undefined,
             shadowRadius: 0,
@@ -69,8 +69,8 @@ describe('Photo Manipulator', () => {
             thickness: 0,
           },
           {
-            color: {r: 0, g: 0, b: 0, a: 255},
-            position: {x: 65, y: 70},
+            color: { r: 0, g: 0, b: 0, a: 255 },
+            position: { x: 65, y: 70 },
             rotation: 3,
             shadowColor: undefined,
             shadowRadius: 0,
@@ -79,7 +79,7 @@ describe('Photo Manipulator', () => {
             thickness: 3,
           },
         ],
-        MimeType.JPEG,
+        MimeType.JPEG
       );
     });
   });
