@@ -36,7 +36,7 @@ public class RNPhotoManipulatorPackage extends TurboReactPackage implements Reac
     @Nullable
     @Override
     public NativeModule getModule(@NonNull String name, @NonNull ReactApplicationContext reactContext) {
-        if (name.equals(RNPhotoManipulatorModuleImpl.NAME)) {
+        if (name.equals(RNPhotoManipulatorModule.NAME)) {
             return new RNPhotoManipulatorModule(reactContext);
         }
         return null;
@@ -48,10 +48,10 @@ public class RNPhotoManipulatorPackage extends TurboReactPackage implements Reac
             final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
             boolean turboModulesEnabled = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
             moduleInfos.put(
-                    RNPhotoManipulatorModuleImpl.NAME,
+                    RNPhotoManipulatorModule.NAME,
                     new ReactModuleInfo(
-                            RNPhotoManipulatorModuleImpl.NAME,
-                            RNPhotoManipulatorModuleImpl.NAME,
+                            RNPhotoManipulatorModule.NAME,
+                            RNPhotoManipulatorModule.NAME,
                             false, // canOverrideExistingModule
                             false, // needsEagerInit
                             false, // hasConstants
