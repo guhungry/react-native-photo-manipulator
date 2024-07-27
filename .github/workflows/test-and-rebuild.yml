@@ -93,16 +93,22 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            **/vender/bundle
+            **/vendor/bundle
             **/ios/Pods
           key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-cocoapods-
 
-      - name: Install CocoaPods
+      - name: Install Bundle
+        if: steps.cache-pods.outputs.cache-hit != 'true'
         run: |
           cd example
           bundle install
+
+
+      - name: Install CocoaPods
+        run: |
+          cd example
           cd ios && bundle exec pod install
         env:
           RCT_NEW_ARCH_ENABLED: 0
