@@ -103,16 +103,9 @@ jobs:
         run: |
           cd example
           bundle install
-          yarn pod-install
+          cd ios && bundle exec pod install
         env:
-          RCT_NEW_ARCH_ENABLED: 1
-
-      - name: Install CocoaPods
-        run: |
-          cd example/ios
-          bundle exec pod install
-        env:
-          RCT_NEW_ARCH_ENABLED: 1
+          RCT_NEW_ARCH_ENABLED: 0
 
       - name: Install Detox dependencies
         run: |
