@@ -97,16 +97,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cocoapods-
 
-      - name: Install Bundle
-        if: steps.cache-pods.outputs.cache-hit != 'true'
+      - name: Install CocoaPods
         run: |
           cd example
           bundle install
-
-      - name: Install CocoaPods
-        run: |
-          cd example/ios
-          bundle exec pod install
+          yarn pod-install
         env:
           RCT_NEW_ARCH_ENABLED: 1
 
