@@ -95,12 +95,19 @@ jobs:
             **/ios/Pods
           key: pods-cache-${{ hashFiles('**/Podfile.lock') }}
 
-      - name: Install CocoaPods
+      - name: Install Bundle
         if: steps.cache-pods.outputs.cache-hit != 'true'
         run: |
           cd example
           bundle install
           cd ios && pod install
+
+      - name: Install CocoaPods
+        run: |
+          cd example/ios
+          bundle exec pod install
+        env:
+          RCT_NEW_ARCH_ENABLED: 1
 
       - name: Install Detox dependencies
         run: |
