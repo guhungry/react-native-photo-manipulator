@@ -49,6 +49,8 @@ jobs:
             ~/.gradle/wrapper
             ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/gradle-wrapper.properties') }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
       - name: Downloading Gradle Dependencies
         if: steps.cache-gradle-cache.outputs.cache-hit != 'true'
