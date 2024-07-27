@@ -20,19 +20,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      # - name: Restore cache Pods
-      #   id: cache-pods
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: example/ios/Pods
-      #     key: pods-${{ hashFiles('**/Podfile.lock') }}
-
-      # - name: Install CocoaPods
-      #   if: steps.cache-pods.outputs.cache-hit != 'true'
-      #   run: |
-      #     cd example/ios
-      #     pod install
-
   analyse:
     name: Analyse
     needs: cache
@@ -103,16 +90,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup
+        uses: ./.github/actions/setup
+
       - name: setup-cocoapods
         uses: maxim-lobanov/setup-cocoapods@v1
         with:
           podfile-path: example/ios/Podfile.lock
 
       - name: Restore cache Pods
+        id: cache-pods
         uses: actions/cache@v4
         with:
-          path: example/ios/Pods
-          key: pods-${{ hashFiles('**/Podfile.lock') }}
+          path: |
+            **/vender/bundle
+            **/ios/Pods
+          key: pods-cache-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Install CocoaPods
+        if: steps.cache-pods.outputs.cache-hit != 'true'
+        run: |
+          cd example
+          bundle install
+          cd ios && pod install
 
       - name: Install Detox dependencies
         run: |
@@ -121,11 +121,6 @@ jobs:
           brew install applesimutils
           yarn detox clean-framework-cache
           yarn detox build-framework-cache
-
-      - name: Install CocoaPods
-        run: |
-          cd example/ios
-          pod install
 
       - name: Xcode Version
         run: |
