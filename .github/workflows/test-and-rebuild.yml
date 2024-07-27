@@ -93,14 +93,22 @@ jobs:
           path: |
             **/vender/bundle
             **/ios/Pods
-          key: pods-cache-${{ hashFiles('**/Podfile.lock') }}
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cocoapods-
 
       - name: Install Bundle
         if: steps.cache-pods.outputs.cache-hit != 'true'
         run: |
           cd example
           bundle install
-          cd ios && pod install
+
+      - name: Install CocoaPods
+        run: |
+          cd example/ios
+          bundle exec pod install
+        env:
+          RCT_NEW_ARCH_ENABLED: 1
 
       - name: Install CocoaPods
         run: |
@@ -119,7 +127,6 @@ jobs:
 
       - name: Xcode Version
         run: |
-          cd example
           xcodebuild -version
           xcrun simctl list
 
