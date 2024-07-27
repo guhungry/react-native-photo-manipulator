@@ -33,7 +33,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "ci": "CI=true && yarn typecheck && yarn lint && yarn test",
+    "ci": "CI=true && yarn typecheck && yarn lint && yarn test --maxWorkers=2 --coverage",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
