@@ -20,54 +20,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      # - name: Setup java
-      #   uses: actions/setup-java@v4
-      #   with:
-      #     distribution: 'temurin' # See 'Supported distributions' for available options
-      #     java-version: '19'
-
-      # - name: setup-cocoapods
-      #   uses: maxim-lobanov/setup-cocoapods@v1
-      #   with:
-      #     podfile-path: example/ios/Podfile.lock
-
-      # - name: Restore cache yarn
-      #   id: cache-yarn
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.yarn
-      #     key: yarn-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/yarn.lock') }}
-
-      # - name: Install dependencies [Main]
-      #   if: steps.cache-yarn.outputs.cache-hit != 'true'
-      #   run: yarn --cache-folder ~/.yarn
-
-      # - name: Install dependencies [Example]
-      #   run: |
-      #     cd example
-      #     yarn --cache-folder ~/.yarn
-
-      # - name: Restore cache gradle wrapper
-      #   id: cache-gradle-wrapper
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.gradle/wrapper
-      #     key: gradle-wrapper-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/gradle-wrapper.properties') }}
-
-      # - name: Restore cache gradle cache
-      #   id: cache-gradle-cache
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.gradle/caches
-      #     key: gradle-cache-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
-
-      # - name: Downloading Gradle Dependencies
-      #   if: steps.cache-gradle-wrapper.outputs.cache-hit != 'true' || steps.cache-gradle-cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     cd example/android
-      #     chmod +x gradlew
-      #     ./gradlew --max-workers 2 downloadDependencies
-
       # - name: Restore cache Pods
       #   id: cache-pods
       #   uses: actions/cache@v4
@@ -113,17 +65,22 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '19'
-      - name: Restore cache gradle wrapper
-        uses: actions/cache@v4
-        with:
-          path: ~/.gradle/wrapper
-          key: gradle-wrapper-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/gradle-wrapper.properties') }}
 
       - name: Restore cache gradle cache
+        id: cache-gradle-cache
         uses: actions/cache@v4
         with:
-          path: ~/.gradle/caches
-          key: gradle-cache-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
+          path: |
+            ~/.gradle/wrapper
+            ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/gradle-wrapper.properties') }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('**/settings.gradle') }}
+
+      - name: Downloading Gradle Dependencies
+        if: steps.cache-gradle-cache.outputs.cache-hit != 'true'
+        run: |
+          cd example/android
+          chmod +x gradlew
+          ./gradlew --max-workers 2 downloadDependencies
 
       - name: Build Android Release
         run: |
