@@ -86,7 +86,7 @@
     "react-native": "0.74.3",
     "react-native-builder-bob": "^0.28.1",
     "react-test-renderer": "18.2.0",
-    "turbo": "^1.10.7",
+    "turbo": "^2.0.10",
     "typescript": "^5.5.3"
   },
   "dependencies": {
