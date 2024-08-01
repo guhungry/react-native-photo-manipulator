@@ -95,9 +95,10 @@ jobs:
           path: |
             **/vendor/bundle
             **/ios/Pods
-          key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Gemfile.lock') }}-${{ hashFiles('**/Podfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-cocoapods-
+            ${{ runner.os }}-cocoapods-${{ hashFiles('**/Gemfile.lock') }}-${{ hashFiles('**/Podfile.lock') }}
+            ${{ runner.os }}-cocoapods-${{ hashFiles('**/Gemfile.lock') }}-
 
       - name: Install Bundle
         if: steps.cache-pods.outputs.cache-hit != 'true'
