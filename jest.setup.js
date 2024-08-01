@@ -4,7 +4,7 @@ import * as matchers from 'jest-extended';
 expect.extend(matchers);
 
 // Mock NativeModules
-import { NativeModules } from 'react-native';
+import { Image, NativeModules } from 'react-native';
 
 NativeModules.RNPhotoManipulator = {
   batch: jest.fn(),
@@ -13,6 +13,10 @@ NativeModules.RNPhotoManipulator = {
   printText: jest.fn(),
   optimize: jest.fn(),
 };
+
+Image.resolveAssetSource = (source) => ({
+  uri: JSON.stringify(source),
+});
 
 // Reset the mocks before each test
 global.beforeEach(jest.resetAllMocks);

@@ -47,8 +47,6 @@ export const toBatchNative = (
     return { ...it, options: toTextOptionsNative(it.options) };
   } else if (it.operation === 'overlay') {
     return { ...it, overlay: toImageNative(it.overlay) };
-  } else if (it.operation === 'flip') {
-    return { ...it };
   }
   return it;
 };
