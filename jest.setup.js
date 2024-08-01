@@ -12,6 +12,8 @@ NativeModules.RNPhotoManipulator = {
   overlayImage: jest.fn(),
   printText: jest.fn(),
   optimize: jest.fn(),
+  flipImage: jest.fn(),
+  rotateImage: jest.fn(),
 };
 
 Image.resolveAssetSource = (source) => ({
