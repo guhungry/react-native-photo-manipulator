@@ -70,6 +70,7 @@
     "@react-native/eslint-config": "0.74.85",
     "@react-native/metro-config": "0.74.85",
     "@react-native/typescript-config": "0.74.85",
+    "@types/color-rgba": "^2.1.3",
     "@types/jest": "^29.5.5",
     "@types/parse-color": "^1.0.0",
     "@types/react": "^18.2.44",
@@ -90,6 +91,7 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
+    "color-rgba": "^3.0.0",
     "parse-color": "^1.0.0"
   },
   "resolutions": {
@@ -101,6 +103,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!@react-native|react-native|color-)"
+    ],
     "modulePathIgnorePatterns": [
       "<rootDir>/example/",
       "<rootDir>/lib/"
