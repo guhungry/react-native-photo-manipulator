@@ -19,12 +19,12 @@ export const toColorNative = (color?: string | Color): Color => {
     return color;
   }
 
-  const result = rgba(color || '#000000');
+  const result = rgba(color ?? '#000000');
   return {
-    r: result[0] || 0,
-    g: result[1] || 0,
-    b: result[2] || 0,
-    a: (result[3] || 1) * 255,
+    r: result[0] ?? 0,
+    g: result[1] ?? 0,
+    b: result[2] ?? 0,
+    a: (result[3] ?? 1) * 255,
   };
 };
 
@@ -34,9 +34,9 @@ export const toImageNative = (source: ImageSource): string =>
 export const toTextOptionsNative = (it: TextOptions): TextOptions => ({
   ...it,
   color: toColorNative(it.color),
-  thickness: it.thickness || 0,
-  rotation: it.rotation || 0,
-  shadowRadius: it.shadowRadius || 0,
+  thickness: it.thickness ?? 0,
+  rotation: it.rotation ?? 0,
+  shadowRadius: it.shadowRadius ?? 0,
   shadowColor: it.shadowColor && toColorNative(it.shadowColor),
 });
 
