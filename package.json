@@ -84,7 +84,7 @@
     "jest-extended": "^4.0",
     "prettier": "^3.0.3",
     "react": "18.2.0",
-    "react-native": "0.74.3",
+    "react-native": "0.74.4",
     "react-native-builder-bob": "^0.29.0",
     "react-test-renderer": "18.2.0",
     "turbo": "^1.10.7",
