@@ -49,6 +49,7 @@ example/vendor/
 
 # node.js
 #
+coverage/
 node_modules/
 npm-debug.log
 yarn-debug.log

@@ -2,7 +2,7 @@
  * Parameter Utilities Class
  */
 import { Image } from 'react-native';
-import parse from 'parse-color';
+import rgba from 'color-rgba';
 import type {
   Color,
   ImageSource,
@@ -19,12 +19,12 @@ export const toColorNative = (color?: string | Color): Color => {
     return color;
   }
 
-  const result = parse(color || '#000000').rgba;
+  const result = rgba(color || '#000000');
   return {
-    r: result[0],
-    g: result[1],
-    b: result[2],
-    a: result[3] * 255,
+    r: result[0] || 0,
+    g: result[1] || 0,
+    b: result[2] || 0,
+    a: (result[3] || 1) * 255,
   };
 };
 
@@ -47,8 +47,6 @@ export const toBatchNative = (
     return { ...it, options: toTextOptionsNative(it.options) };
   } else if (it.operation === 'overlay') {
     return { ...it, overlay: toImageNative(it.overlay) };
-  } else if (it.operation === 'flip') {
-    return { ...it };
   }
   return it;
 };
