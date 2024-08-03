@@ -65,7 +65,7 @@ jobs:
         run: |
           cd example/android
           chmod +x gradlew
-          ./gradlew --max-workers 2 downloadDependencies
+          ./gradlew --max-workers 2 dependencies
 
       - name: Build Android Release
         run: |
