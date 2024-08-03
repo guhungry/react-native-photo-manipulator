@@ -10,9 +10,8 @@ jobs:
       node_version: '20.11'
     steps:
       - checkout
-      - rn/yarn_install
-      - rn/yarn_install:
-          yarn_install_directory: 'example'
+      - run:
+          command: yarn install
       - persist_to_workspace:
           root: .
           paths: .
