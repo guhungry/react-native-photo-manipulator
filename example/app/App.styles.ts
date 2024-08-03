@@ -1,5 +1,5 @@
-import type {ImageProps} from 'react-native';
-import {StyleSheet} from 'react-native';
+import type { ImageProps } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 let styles = StyleSheet.create({
   container: {

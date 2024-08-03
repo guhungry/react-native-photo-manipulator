@@ -1,4 +1,4 @@
-import {by, device, element, expect} from 'detox';
+import { by, device, element, expect } from 'detox';
 
 describe('PhotoManipulator', () => {
   beforeAll(async () => {

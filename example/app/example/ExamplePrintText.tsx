@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Image, Text} from 'react-native';
-import styles, {ImageResultProps} from '../App.styles';
-import {noop} from '../utils';
-import PhotoManipulator, {MimeType} from 'react-native-photo-manipulator';
-import type {TextOptions} from 'react-native-photo-manipulator';
-import {IMAGE} from './settings';
+import { Image, Text } from 'react-native';
+import styles, { ImageResultProps } from '../App.styles';
+import { noop } from '../utils';
+import PhotoManipulator, { MimeType } from 'react-native-photo-manipulator';
+import type { TextOptions } from 'react-native-photo-manipulator';
+import { IMAGE } from './settings';
 
 export default React.memo(function ExamplePrintText() {
   const [image, setImage] = React.useState<string | null>(null);
@@ -14,7 +14,7 @@ export default React.memo(function ExamplePrintText() {
     const operation = async () => {
       setImage(await PhotoManipulator.printText(IMAGE, texts()));
       setImagePng(
-        await PhotoManipulator.printText(IMAGE, texts(), MimeType.PNG),
+        await PhotoManipulator.printText(IMAGE, texts(), MimeType.PNG)
       );
     };
 
@@ -30,7 +30,7 @@ export default React.memo(function ExamplePrintText() {
         <Image
           testID="printTextResult"
           {...ImageResultProps}
-          source={{uri: image}}
+          source={{ uri: image }}
         />
       ) : null}
       {typeof imagePng === 'string' ? (
@@ -40,7 +40,7 @@ export default React.memo(function ExamplePrintText() {
         <Image
           testID="printTextPngResult"
           {...ImageResultProps}
-          source={{uri: imagePng}}
+          source={{ uri: imagePng }}
         />
       ) : null}
     </>
@@ -52,55 +52,55 @@ export default React.memo(function ExamplePrintText() {
         text: 'Test Shadow',
         color: 'red',
         textSize: 100,
-        position: {x: 80, y: 300},
+        position: { x: 80, y: 300 },
         thickness: 10,
         shadowRadius: 10,
-        shadowOffset: {x: 5, y: 10},
+        shadowOffset: { x: 5, y: 10 },
         shadowColor: 'green',
       },
       {
         text: 'Test Shadow',
         color: 'blue',
         textSize: 100,
-        position: {x: 80, y: 300},
+        position: { x: 80, y: 300 },
       },
       {
         text: 'Test Print Text',
         color: 'black',
         textSize: 30,
-        position: {x: 80, y: 30},
+        position: { x: 80, y: 30 },
         thickness: 4,
       },
       {
         text: 'Test Print Text',
         color: 'white',
         textSize: 30,
-        position: {x: 80, y: 30},
+        position: { x: 80, y: 30 },
       },
       {
         text: 'Test Print Text 2',
         color: 'blue',
         textSize: 30,
-        position: {x: 100, y: 80},
+        position: { x: 100, y: 80 },
         thickness: 4,
       },
       {
         text: 'Test Print Text 2',
         color: 'brown',
         textSize: 30,
-        position: {x: 100, y: 80},
+        position: { x: 100, y: 80 },
       },
       {
         text: 'Test Print Text 3',
         color: 'green',
         textSize: 30,
-        position: {x: 180, y: 180},
+        position: { x: 180, y: 180 },
       },
       {
         text: 'Test Print Text 3',
         color: 'pink',
         textSize: 30,
-        position: {x: 280, y: 180},
+        position: { x: 280, y: 180 },
         rotation: 30,
       },
     ];
