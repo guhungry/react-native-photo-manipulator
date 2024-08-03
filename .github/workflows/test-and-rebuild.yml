@@ -69,15 +69,15 @@ jobs:
 
       - name: Build Android Release
         run: |
-          cd example
-          yarn detox build -c android.emu.release
+          yarn example build:android
+          yarn example test:android:build
 
       - name: Test Android Release
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           avd-name: TestingAVD
-          script: cd example && yarn detox test -c android.emu.release -l info --headless
+          script: yarn example test:android:run
 
   build-ios:
     name: Build iOS
@@ -114,14 +114,6 @@ jobs:
           cd example
           bundle install
 
-
-      - name: Install CocoaPods
-        run: |
-          cd example
-          cd ios && bundle exec pod install
-        env:
-          RCT_NEW_ARCH_ENABLED: 0
-
       - name: Install Detox dependencies
         run: |
           cd example
@@ -137,10 +129,13 @@ jobs:
 
       - name: Build iOS Release
         run: |
-          cd example
-          yarn detox build -c ios.sim.release
+          yarn example build:ios
+          cd example/ios && pod install && cd -
+          yarn example test:ios:build
+        env:
+          RCT_NEW_ARCH_ENABLED: 0
+          USE_HERMES: 1
 
       - name: Test iOS Release
         run: |
-          cd example
-          yarn detox test -c ios.sim.release -l info -u --headless
+          yarn example test:ios:run

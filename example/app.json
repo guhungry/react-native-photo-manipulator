@@ -1,4 +1,43 @@
 {
   "name": "PhotoManipulatorExample",
-  "displayName": "PhotoManipulatorExample"
+  "displayName": "PhotoManipulatorExample",
+  "components": [
+    {
+      "appKey": "PhotoManipulatorExample",
+      "displayName": "PhotoManipulatorExample"
+    }
+  ],
+  "resources": {
+    "android": [
+      "assets/fonts/Girassol-Regular.ttf",
+      "dist/res",
+      "dist/main.android.jsbundle"
+    ],
+    "ios": [
+      "assets/fonts/Girassol-Regular.ttf",
+      "dist/assets",
+      "dist/main.ios.jsbundle"
+    ],
+    "macos": [
+      "assets/fonts/Girassol-Regular.ttf",
+      "dist/assets",
+      "dist/main.macos.jsbundle"
+    ],
+    "visionos": [
+      "assets/fonts/Girassol-Regular.ttf",
+      "dist/assets",
+      "dist/main.visionos.jsbundle"
+    ],
+    "windows": [
+      "assets/fonts/Girassol-Regular.ttf",
+      "dist/assets",
+      "dist/main.windows.bundle"
+    ]
+  },
+  "android": {
+    "package": "photomanipulator.example"
+  },
+  "ios": {
+    "bundleIdentifier": "photomanipulator.example"
+  }
 }

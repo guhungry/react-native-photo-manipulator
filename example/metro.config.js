@@ -1,21 +1,18 @@
 const path = require('path');
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+const { getDefaultConfig } = require('@react-native/metro-config');
+const { getConfig } = require('react-native-builder-bob/metro-config');
+const pkg = require('../package.json');
 
-const extraNodeModules = {
-  'react-native-photo-manipulator': path.resolve(__dirname, '..'),
-};
+const root = path.resolve(__dirname, '..');
 
 /**
  * Metro configuration
- * https://reactnative.dev/docs/metro
+ * https://facebook.github.io/metro/docs/configuration
  *
  * @type {import('metro-config').MetroConfig}
  */
-const config = {
-  watchFolders: [extraNodeModules['react-native-photo-manipulator']],
-  resolver: {
-    extraNodeModules,
-  },
-};
-
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+module.exports = getConfig(getDefaultConfig(__dirname), {
+  root,
+  pkg,
+  project: __dirname,
+});

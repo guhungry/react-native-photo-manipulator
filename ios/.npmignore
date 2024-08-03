@@ -1,7 +1,0 @@
-.npmignore
-
-.git
-.gitignore
-**/xcuserdata/
-
-.DS_Store
