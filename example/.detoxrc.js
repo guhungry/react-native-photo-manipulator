@@ -37,6 +37,7 @@ module.exports = {
   devices: {
     simulator: {
       type: 'ios.simulator',
+      headless: Boolean(process.env.CI),
       device: {
         type: 'iPhone 15'
       }
@@ -49,6 +50,7 @@ module.exports = {
     },
     emulator: {
       type: 'android.emulator',
+      headless: Boolean(process.env.CI),
       device: {
         avdName: 'TestingAVD'
       }
