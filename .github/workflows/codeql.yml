@@ -55,21 +55,8 @@ jobs:
       with:
         node-version: 20.11
 
-    - name: Restore cache yarn
-      id: cache-yarn
-      uses: actions/cache@v4
-      with:
-        path: ~/.yarn
-        key: yarn-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/yarn.lock') }}
-
-    - name: Install dependencies [Main]
-      if: steps.cache-yarn.outputs.cache-hit != 'true'
-      run: yarn --cache-folder ~/.yarn
-
-    - name: Install dependencies [Example]
-      run: |
-        cd example
-        yarn --cache-folder ~/.yarn
+    - name: Setup
+      uses: ./.github/actions/setup
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
