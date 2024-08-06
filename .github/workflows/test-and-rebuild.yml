@@ -80,7 +80,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Downloading Gradle Dependencies
-        if: steps.cache-gradle-cache.outputs.cache-hit != 'true'
+        if: env.turbo_cache_hit != 1
         run: |
           cd example/android
           chmod +x gradlew
