@@ -1,4 +1,4 @@
-package com.photomanipulatorexample;
+package com.microsoft.reacttestapp;
 
 import com.wix.detox.Detox;
 import com.wix.detox.config.DetoxConfig;

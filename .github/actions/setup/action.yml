@@ -25,5 +25,4 @@ runs:
       if: steps.yarn-cache.outputs.cache-hit != 'true'
       run: |
         yarn install --immutable
-        cd example && yarn install --immutable
       shell: bash

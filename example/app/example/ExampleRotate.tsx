@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {Image, Text} from 'react-native';
-import styles, {ImageResultProps} from '../App.styles';
-import {noop} from '../utils';
+import { Image, Text } from 'react-native';
+import styles, { ImageResultProps } from '../App.styles';
+import { noop } from '../utils';
 import PhotoManipulator, {
   RotationMode,
   MimeType,
 } from 'react-native-photo-manipulator';
-import {IMAGE} from './settings';
+import { IMAGE } from './settings';
 
 export default React.memo(function ExampleRotate() {
   const [image90, setImage90] = React.useState<string | null>(null);
@@ -19,8 +19,8 @@ export default React.memo(function ExampleRotate() {
         await PhotoManipulator.rotateImage(
           IMAGE,
           RotationMode.R90,
-          MimeType.PNG,
-        ),
+          MimeType.PNG
+        )
       );
       setImage180(await PhotoManipulator.rotateImage(IMAGE, RotationMode.R180));
       setImage270(await PhotoManipulator.rotateImage(IMAGE, RotationMode.R270));
@@ -38,7 +38,7 @@ export default React.memo(function ExampleRotate() {
         <Image
           testID="rotate90Result"
           {...ImageResultProps}
-          source={{uri: image90}}
+          source={{ uri: image90 }}
         />
       ) : null}
       {typeof image180 === 'string' ? (
@@ -48,7 +48,7 @@ export default React.memo(function ExampleRotate() {
         <Image
           testID="rotate180Result"
           {...ImageResultProps}
-          source={{uri: image180}}
+          source={{ uri: image180 }}
         />
       ) : null}
       {typeof image270 === 'string' ? (
@@ -58,7 +58,7 @@ export default React.memo(function ExampleRotate() {
         <Image
           testID="rotate270Result"
           {...ImageResultProps}
-          source={{uri: image270}}
+          source={{ uri: image270 }}
         />
       ) : null}
     </>

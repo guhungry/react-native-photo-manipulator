@@ -1,30 +1,30 @@
 import * as React from 'react';
-import {Image, Text} from 'react-native';
-import styles, {ImageResultProps} from '../App.styles';
-import {noop} from '../utils';
+import { Image, Text } from 'react-native';
+import styles, { ImageResultProps } from '../App.styles';
+import { noop } from '../utils';
 import PhotoManipulator, {
   FlipMode,
   MimeType,
 } from 'react-native-photo-manipulator';
-import {IMAGE} from './settings';
+import { IMAGE } from './settings';
 
 export default React.memo(function ExampleFlip() {
   const [imageBoth, setImageBoth] = React.useState<string | null>(null);
   const [imageHorizontal, setImageHorizontal] = React.useState<string | null>(
-    null,
+    null
   );
   const [imageVertical, setImageVertical] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const operation = async () => {
       setImageBoth(
-        await PhotoManipulator.flipImage(IMAGE, FlipMode.Both, MimeType.PNG),
+        await PhotoManipulator.flipImage(IMAGE, FlipMode.Both, MimeType.PNG)
       );
       setImageHorizontal(
-        await PhotoManipulator.flipImage(IMAGE, FlipMode.Horizontal),
+        await PhotoManipulator.flipImage(IMAGE, FlipMode.Horizontal)
       );
       setImageVertical(
-        await PhotoManipulator.flipImage(IMAGE, FlipMode.Vertical),
+        await PhotoManipulator.flipImage(IMAGE, FlipMode.Vertical)
       );
     };
 
@@ -40,7 +40,7 @@ export default React.memo(function ExampleFlip() {
         <Image
           testID="flipHorizontalResult"
           {...ImageResultProps}
-          source={{uri: imageHorizontal}}
+          source={{ uri: imageHorizontal }}
         />
       ) : null}
       {typeof imageVertical === 'string' ? (
@@ -50,7 +50,7 @@ export default React.memo(function ExampleFlip() {
         <Image
           testID="flipVerticalResult"
           {...ImageResultProps}
-          source={{uri: imageVertical}}
+          source={{ uri: imageVertical }}
         />
       ) : null}
       {typeof imageBoth === 'string' ? (
@@ -60,7 +60,7 @@ export default React.memo(function ExampleFlip() {
         <Image
           testID="flipBothResult"
           {...ImageResultProps}
-          source={{uri: imageBoth}}
+          source={{ uri: imageBoth }}
         />
       ) : null}
     </>

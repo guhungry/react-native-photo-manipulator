@@ -1,4 +1,4 @@
-import {by, device, element, expect, waitFor} from 'detox';
+import { by, device, element, expect, waitFor } from 'detox';
 
 describe('flipImage', () => {
   beforeAll(async () => {

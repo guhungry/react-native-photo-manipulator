@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  rn: react-native-community/react-native@7.4.0
+  rn: react-native-community/react-native@8.0.0
 
 jobs:
   checkout_code:
@@ -10,9 +10,8 @@ jobs:
       node_version: '20.11'
     steps:
       - checkout
-      - rn/yarn_install
-      - rn/yarn_install:
-          yarn_install_directory: 'example'
+      - run:
+          command: yarn install
       - persist_to_workspace:
           root: .
           paths: .
@@ -29,6 +28,19 @@ jobs:
       - run:
           name: Jest
           command: yarn run test
+  build_android:
+    executor:
+      name: rn/linux_android
+      build_image_version: 'latest'
+      resource_class: large
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: build
+          command: |
+            yarn example build:android
+            yarn example test:android:build
 
 workflows:
   test:
@@ -37,28 +49,7 @@ workflows:
       - analyse:
           requires:
             - checkout_code
-      - rn/android_build:
-          name: build_android_debug
-          project_path: "example/android"
-          build_type: debug
+      - build_android:
+          name: build_android
           requires:
             - analyse
-          build_image_version: 'latest'
-          java_options: '-Xmx3584m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
-          resource_class: large
-      - rn/android_build:
-          name: build_android_release
-          project_path: "example/android"
-          build_type: release
-          requires:
-            - analyse
-          build_image_version: 'latest'
-          java_options: '-Xmx3584m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
-          # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
-          resource_class: large
-
-#      - rn/android_test:
-#          detox_configuration: "android.emu.release"
-#          detox_loglevel: "trace"
-#          requires:
-#            - build_android_release

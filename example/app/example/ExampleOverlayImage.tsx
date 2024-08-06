@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Image, Text} from 'react-native';
-import styles, {ImageResultProps} from '../App.styles';
-import PhotoManipulator, {MimeType} from 'react-native-photo-manipulator';
-import {noop} from '../utils';
-import {IMAGE, OVERLAY} from './settings';
+import { Image, Text } from 'react-native';
+import styles, { ImageResultProps } from '../App.styles';
+import PhotoManipulator, { MimeType } from 'react-native-photo-manipulator';
+import { noop } from '../utils';
+import { IMAGE, OVERLAY } from './settings';
 
 export default React.memo(function ExampleOverlayImage() {
   const [image, setImage] = React.useState<string | null>(null);
@@ -15,15 +15,15 @@ export default React.memo(function ExampleOverlayImage() {
         await PhotoManipulator.overlayImage(IMAGE, OVERLAY, {
           x: 800 - 200 - 10,
           y: 600 - 141 - 10,
-        }),
+        })
       );
       setImagePng(
         await PhotoManipulator.overlayImage(
           IMAGE,
           OVERLAY,
-          {x: 30, y: 100},
-          MimeType.PNG,
-        ),
+          { x: 30, y: 100 },
+          MimeType.PNG
+        )
       );
     };
 
@@ -39,7 +39,7 @@ export default React.memo(function ExampleOverlayImage() {
         <Image
           testID="overlayImageResult"
           {...ImageResultProps}
-          source={{uri: image}}
+          source={{ uri: image }}
         />
       ) : null}
       {typeof imagePng === 'string' ? (
@@ -49,7 +49,7 @@ export default React.memo(function ExampleOverlayImage() {
         <Image
           testID="overlayImagePngResult"
           {...ImageResultProps}
-          source={{uri: imagePng}}
+          source={{ uri: imagePng }}
         />
       ) : null}
     </>

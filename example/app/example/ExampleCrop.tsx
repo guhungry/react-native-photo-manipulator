@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Image, Text} from 'react-native';
-import styles, {ImageResultProps} from '../App.styles';
-import {noop} from '../utils';
+import { Image, Text } from 'react-native';
+import styles, { ImageResultProps } from '../App.styles';
+import { noop } from '../utils';
 import PhotoManipulator from 'react-native-photo-manipulator';
-import {IMAGE} from './settings';
+import { IMAGE } from './settings';
 
 export default React.memo(function ExampleCrop() {
   const [crop, setCrop] = React.useState<string | null>(null);
@@ -18,14 +18,14 @@ export default React.memo(function ExampleCrop() {
           y: 200,
           width: 300,
           height: 200,
-        }),
+        })
       );
       setResize(
         await PhotoManipulator.crop(
           IMAGE,
-          {x: 400, y: 200, width: 300, height: 200},
-          {width: 60, height: 40},
-        ),
+          { x: 400, y: 200, width: 300, height: 200 },
+          { width: 60, height: 40 }
+        )
       );
       setCropPng(
         await PhotoManipulator.crop(IMAGE, {
@@ -33,7 +33,7 @@ export default React.memo(function ExampleCrop() {
           y: 200,
           width: 300,
           height: 200,
-        }),
+        })
       );
     };
 
@@ -46,7 +46,11 @@ export default React.memo(function ExampleCrop() {
         <Text style={styles.exampleDescription}>Crop</Text>
       ) : null}
       {typeof crop === 'string' ? (
-        <Image testID="cropResult" {...ImageResultProps} source={{uri: crop}} />
+        <Image
+          testID="cropResult"
+          {...ImageResultProps}
+          source={{ uri: crop }}
+        />
       ) : null}
       {typeof resize === 'string' ? (
         <Text style={styles.exampleDescription}>Crop & Resize</Text>
@@ -55,7 +59,7 @@ export default React.memo(function ExampleCrop() {
         <Image
           testID="cropResizeResult"
           {...ImageResultProps}
-          source={{uri: resize}}
+          source={{ uri: resize }}
         />
       ) : null}
       {typeof cropPng === 'string' ? (
@@ -65,7 +69,7 @@ export default React.memo(function ExampleCrop() {
         <Image
           testID="cropPngResult"
           {...ImageResultProps}
-          source={{uri: cropPng}}
+          source={{ uri: cropPng }}
         />
       ) : null}
     </>

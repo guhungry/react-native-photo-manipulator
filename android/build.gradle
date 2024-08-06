@@ -1,18 +1,17 @@
 buildscript {
-    // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-    def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RNPM_kotlinVersion"]
+  // Buildscript is evaluated before everything else so we can't use getExtOrDefault
+  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RNPM_kotlinVersion"]
 
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
+  repositories {
+    google()
+    mavenCentral()
+  }
 
-    dependencies {
-        classpath "com.android.tools.build:gradle:7.4.2"
-        // noinspection DifferentKotlinGradleVersion
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+  dependencies {
+    classpath "com.android.tools.build:gradle:7.2.1"
+    // noinspection DifferentKotlinGradleVersion
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
 }
 
 def reactNativeArchitectures() {
@@ -24,11 +23,11 @@ def isNewArchitectureEnabled() {
   return rootProject.hasProperty("newArchEnabled") && rootProject.getProperty("newArchEnabled") == "true"
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
 
 if (isNewArchitectureEnabled()) {
-  apply plugin: 'com.facebook.react'
+  apply plugin: "com.facebook.react"
 }
 
 def getExtOrDefault(name) {
@@ -49,70 +48,79 @@ def supportsNamespace() {
 }
 
 android {
-    if (supportsNamespace()) {
-        namespace "com.guhungry.rnphotomanipulator"
+  if (supportsNamespace()) {
+    namespace "com.guhungry.rnphotomanipulator"
 
-        sourceSets {
-            main {
-                manifest.srcFile "src/main/AndroidManifestNew.xml"
-            }
-        }
-    }
-    compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    defaultConfig {
-        minSdkVersion getExtOrIntegerDefault('minSdkVersion')
-        targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
-        buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
-    }
     sourceSets {
-        main {
-            if (isNewArchitectureEnabled()) {
-                java.srcDirs += [
-                    "src/newarch",
-                    // This is needed to build Kotlin project with NewArch enabled
-                    "${project.buildDir}/generated/source/codegen/java"
-                ]
-            } else {
-                java.srcDirs += ['src/oldarch']
-            }
-        }
+      main {
+        manifest.srcFile "src/main/AndroidManifestNew.xml"
+      }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
+  }
+
+  compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
+
+  defaultConfig {
+    minSdkVersion getExtOrIntegerDefault("minSdkVersion")
+    targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
+
+  }
+
+  buildFeatures {
+    buildConfig true
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
     }
-    lintOptions {
-        abortOnError false
+  }
+
+  lintOptions {
+    disable "GradleCompatible"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  sourceSets {
+    main {
+      if (isNewArchitectureEnabled()) {
+        java.srcDirs += [
+          "src/newarch",
+          // This is needed to build Kotlin project with NewArch enabled
+          "${project.buildDir}/generated/source/codegen/java"
+        ]
+      } else {
+        java.srcDirs += ["src/oldarch"]
+      }
     }
+  }
 }
 
 repositories {
-    maven {
-        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        url "$rootDir/../node_modules/react-native/android"
-    }
-    mavenCentral()
-    google()
+  maven {
+    // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+    url "$rootDir/../node_modules/react-native/android"
+  }
+  mavenCentral()
+  google()
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
 
 dependencies {
-    // For < 0.71, this will be from the local maven repo
-    // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
-    //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation("com.guhungry.android:photo-manipulator:1.2.5") {
-        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
-    }
+  // For < 0.71, this will be from the local maven repo
+  // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
+  //noinspection GradleDynamicVersion
+  implementation "com.facebook.react:react-native:+"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation("com.guhungry.android:photo-manipulator:1.2.5") {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
+  }
 }
 
 if (isNewArchitectureEnabled()) {

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {Image, Text} from 'react-native';
-import styles, {ImageResultProps} from '../App.styles';
-import {noop} from '../utils';
+import { Image, Text } from 'react-native';
+import styles, { ImageResultProps } from '../App.styles';
+import { noop } from '../utils';
 import PhotoManipulator, {
   FlipMode,
   MimeType,
   RotationMode,
 } from 'react-native-photo-manipulator';
-import type {PhotoBatchOperations} from 'react-native-photo-manipulator';
-import {IMAGE, OVERLAY} from './settings';
+import type { PhotoBatchOperations } from 'react-native-photo-manipulator';
+import { IMAGE, OVERLAY } from './settings';
 
 export default React.memo(function ExampleBatch() {
   const [image, setImage] = React.useState<string | null>(null);
@@ -20,20 +20,20 @@ export default React.memo(function ExampleBatch() {
         await PhotoManipulator.batch(
           IMAGE,
           operations(),
-          {x: 40, y: 5, width: 600, height: 400},
-          {width: 300, height: 200},
-          30,
-        ),
+          { x: 40, y: 5, width: 600, height: 400 },
+          { width: 300, height: 200 },
+          30
+        )
       );
       setImagePng(
         await PhotoManipulator.batch(
           IMAGE,
           operations(),
-          {x: 40, y: 5, width: 600, height: 400},
+          { x: 40, y: 5, width: 600, height: 400 },
           undefined,
           undefined,
-          MimeType.PNG,
-        ),
+          MimeType.PNG
+        )
       );
     };
 
@@ -49,7 +49,7 @@ export default React.memo(function ExampleBatch() {
         <Image
           testID="batchResult"
           {...ImageResultProps}
-          source={{uri: image}}
+          source={{ uri: image }}
         />
       ) : null}
       {typeof imagePng === 'string' ? (
@@ -59,7 +59,7 @@ export default React.memo(function ExampleBatch() {
         <Image
           testID="batchResultPng"
           {...ImageResultProps}
-          source={{uri: imagePng}}
+          source={{ uri: imagePng }}
         />
       ) : null}
     </>
@@ -67,8 +67,8 @@ export default React.memo(function ExampleBatch() {
 
   function operations(): PhotoBatchOperations[] {
     return [
-      {operation: 'flip', mode: FlipMode.Horizontal},
-      {operation: 'rotate', mode: RotationMode.R180},
+      { operation: 'flip', mode: FlipMode.Horizontal },
+      { operation: 'rotate', mode: RotationMode.R180 },
       {
         operation: 'text',
         options: {
@@ -76,7 +76,7 @@ export default React.memo(function ExampleBatch() {
           color: 'black',
           textSize: 30,
           fontName: 'Girassol-Regular',
-          position: {x: 80, y: 30},
+          position: { x: 80, y: 30 },
           thickness: 4,
         },
       },
@@ -87,17 +87,17 @@ export default React.memo(function ExampleBatch() {
           color: 'white',
           textSize: 30,
           fontName: 'Girassol-Regular',
-          position: {x: 80, y: 30},
+          position: { x: 80, y: 30 },
         },
       },
-      {operation: 'overlay', overlay: OVERLAY, position: {x: 110, y: 25}},
+      { operation: 'overlay', overlay: OVERLAY, position: { x: 110, y: 25 } },
       {
         operation: 'text',
         options: {
           text: 'Test Print Text 2',
           color: 'blue',
           textSize: 30,
-          position: {x: 100, y: 80},
+          position: { x: 100, y: 80 },
           thickness: 4,
         },
       },
@@ -107,7 +107,7 @@ export default React.memo(function ExampleBatch() {
           text: 'Test Print Text 2',
           color: 'brown',
           textSize: 30,
-          position: {x: 100, y: 80},
+          position: { x: 100, y: 80 },
         },
       },
       {
@@ -116,17 +116,17 @@ export default React.memo(function ExampleBatch() {
           text: 'Test Print Text 3',
           color: 'green',
           textSize: 30,
-          position: {x: 180, y: 180},
+          position: { x: 180, y: 180 },
         },
       },
-      {operation: 'overlay', overlay: OVERLAY, position: {x: 15, y: 65}},
+      { operation: 'overlay', overlay: OVERLAY, position: { x: 15, y: 65 } },
       {
         operation: 'text',
         options: {
           text: 'Test Print Text 4',
           color: 'orange',
           textSize: 30,
-          position: {x: 30, y: 300},
+          position: { x: 30, y: 300 },
           rotation: -40,
         },
       },

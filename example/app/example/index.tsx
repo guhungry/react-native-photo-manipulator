@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Image} from 'react-native';
-import {ImageResultProps} from '../App.styles';
+import { Image } from 'react-native';
+import { ImageResultProps } from '../App.styles';
 import ExampleOverlayImage from './ExampleOverlayImage';
 import ExamplePrintText from './ExamplePrintText';
-import {IMAGE, OVERLAY} from './settings';
+import { IMAGE, OVERLAY } from './settings';
 import ExampleCrop from './ExampleCrop';
 import ExampleOptimize from './ExampleOptimize';
 import ExampleBatch from './ExampleBatch';
@@ -22,7 +22,7 @@ const EXAMPLES: Example[] = [
     id: 'originalImage',
     title: 'Source Image',
     description: 'Original Source Image size 1120 * 800',
-    render: () => <Image {...ImageResultProps} source={{uri: IMAGE}} />,
+    render: () => <Image {...ImageResultProps} source={{ uri: IMAGE }} />,
   },
   {
     id: 'overlayImage',
@@ -32,7 +32,7 @@ const EXAMPLES: Example[] = [
       <Image
         {...ImageResultProps}
         resizeMode="center"
-        source={{uri: OVERLAY}}
+        source={{ uri: OVERLAY }}
       />
     ),
   },

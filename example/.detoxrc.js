@@ -12,12 +12,12 @@ module.exports = {
   apps: {
     'ios.debug': {
       type: 'ios.app',
-      binaryPath: 'ios/build/Build/Products/Debug-iphonesimulator/PhotoManipulatorExample.app',
+      binaryPath: 'ios/build/Build/Products/Debug-iphonesimulator/ReactTestApp.app',
       build: 'xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -scheme PhotoManipulatorExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build'
     },
     'ios.release': {
       type: 'ios.app',
-      binaryPath: 'ios/build/Build/Products/Release-iphonesimulator/PhotoManipulatorExample.app',
+      binaryPath: 'ios/build/Build/Products/Release-iphonesimulator/ReactTestApp.app',
       build: 'xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -scheme PhotoManipulatorExample -configuration Release -sdk iphonesimulator -derivedDataPath ios/build'
     },
     'android.debug': {
@@ -37,6 +37,7 @@ module.exports = {
   devices: {
     simulator: {
       type: 'ios.simulator',
+      headless: Boolean(process.env.CI),
       device: {
         type: 'iPhone 15'
       }
@@ -49,6 +50,7 @@ module.exports = {
     },
     emulator: {
       type: 'android.emulator',
+      headless: Boolean(process.env.CI),
       device: {
         avdName: 'TestingAVD'
       }
