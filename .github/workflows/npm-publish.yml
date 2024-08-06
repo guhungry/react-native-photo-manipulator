@@ -7,13 +7,15 @@ on:
 
 jobs:
   publish:
+    permissions:
+      id-token: write
+      contents: read
+      attestations: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20.11.0
-      - run: yarn
+      - name: Setup
+        uses: ./.github/actions/setup
       - run: yarn ci
       - run: npm run prepare
       - uses: JS-DevTools/npm-publish@v3
