@@ -33,6 +33,9 @@
       ],
       "outputs": [
         "android/app/build/outputs/apk/**"
+      ],
+      "env": [
+        "ANDROID_HOME"
       ]
     },
     "build:ios": {
