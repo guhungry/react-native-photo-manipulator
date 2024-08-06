@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build:android": {
       "inputs": [
         "package.json",
@@ -14,7 +14,9 @@
         "!example/android/build",
         "!example/android/app/build"
       ],
-      "outputs": ["dist/**"]
+      "outputs": [
+        "dist/**"
+      ]
     },
     "test:android:build": {
       "inputs": [
@@ -29,7 +31,9 @@
         "!example/android/build",
         "!example/android/app/build"
       ],
-      "outputs": ["android/app/build/outputs/apk/**"]
+      "outputs": [
+        "android/app/build/outputs/apk/**"
+      ]
     },
     "build:ios": {
       "inputs": [
@@ -43,7 +47,9 @@
         "!example/ios/build",
         "!example/ios/Pods"
       ],
-      "outputs": ["dist/**"]
+      "outputs": [
+        "dist/**"
+      ]
     },
     "test:ios:build": {
       "inputs": [
@@ -57,7 +63,9 @@
         "!example/ios/build",
         "!example/ios/Pods"
       ],
-      "outputs": ["ios/build/**/ReactTestApp.app"]
+      "outputs": [
+        "ios/build/**/ReactTestApp.app"
+      ]
     }
   }
 }
