@@ -67,7 +67,7 @@
         "!example/ios/Pods"
       ],
       "outputs": [
-        "ios/build/**/ReactTestApp.app"
+        "ios/build/**/ReactTestApp.app/**"
       ]
     }
   }
