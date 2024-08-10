@@ -15,8 +15,11 @@ React Native Image Processing API to edit photo programmatically for Android and
 [demo.webm](https://github.com/guhungry/react-native-photo-manipulator/assets/4032276/8b22be79-9b1c-455d-9ce7-e92509e1c019)
 
 ## Platform Supported
-* [x] Android
-* [x] iOS
+| Framework                   | Android | iOS |
+|-----------------------------|---------|-----|
+| React Native                |    ✔️    |  ✔️  |
+| Expo with [development build](https://docs.expo.dev/develop/development-builds/create-a-build/) |    ✔️    |  ✔️  |
+| Expo Go                     |    ❌    |  ❌  |
 
 ## Getting started
 ### For react native 0.60 and above
@@ -28,9 +31,19 @@ $ yarn add react-native-photo-manipulator
 ```shell
 $ npm install react-native-photo-manipulator
 ```
+
 ### For react native 0.59 and below
 Please read [Get Started Guide](docs/Getting-Started.md)
 
+### For Expo with [development build](https://docs.expo.dev/develop/development-builds/create-a-build/)
+
+```shell
+$ yarn expo install react-native-photo-manipulator
+```
+(or)
+```shell
+$ npx expo install react-native-photo-manipulator
+```
 ## Usage
 Import library with
 ```javascript
