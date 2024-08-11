@@ -9,25 +9,25 @@ import com.guhungry.photomanipulator.model.FlipMode
 import com.guhungry.photomanipulator.model.RotationMode
 
 /**
- * Parameter Utilities for Convert JS Parameter to Native Java
+ * Parameter Utilities for Convert JavaScript Parameter to Native Object
  */
 object ParamUtils {
     // PointF
-    @JvmStatic fun pointfFromMap(map: ReadableMap?): PointF? = map?.let { pointfFromXY(it.getInt("x"), it.getInt("y")) }
-    @JvmStatic fun pointfFromXY(x: Int, y: Int): PointF = PointF(x.toFloat(), y.toFloat())
+    @JvmStatic fun toPointF(map: ReadableMap?): PointF? = map?.let { toPointF(it.getInt("x"), it.getInt("y")) }
+    @JvmStatic fun toPointF(x: Number, y: Number): PointF = PointF(x.toFloat(), y.toFloat())
 
     // Color
-    @JvmStatic fun colorFromMap(map: ReadableMap?): Int? = map?.let { Color.argb(it.getInt("a"), it.getInt("r"), it.getInt("g"), it.getInt("b")) }
+    @JvmStatic fun toColorInt(map: ReadableMap?): Int? = map?.let { Color.argb(it.getInt("a"), it.getInt("r"), it.getInt("g"), it.getInt("b")) }
 
     // CGRect
-    @JvmStatic fun rectFromMap(map: ReadableMap): CGRect = CGRect(map.getInt("x"), map.getInt("y"), map.getInt("width"), map.getInt("height"))
+    @JvmStatic fun toCGRect(map: ReadableMap): CGRect = CGRect(map.getInt("x"), map.getInt("y"), map.getInt("width"), map.getInt("height"))
 
     // CGSize
-    @JvmStatic fun sizeFromMap(map: ReadableMap?): CGSize? = if (map != null) CGSize(map.getInt("width"), map.getInt("height")) else null
+    @JvmStatic fun toCGSize(map: ReadableMap?): CGSize? = if (map != null) CGSize(map.getInt("width"), map.getInt("height")) else null
 
     // FlipMode
-    @JvmStatic fun flipModeFromString(mode: String): FlipMode = runCatching { FlipMode.valueOf(mode) }.getOrDefault(FlipMode.None)
+    @JvmStatic fun toFlipMode(mode: String): FlipMode = runCatching { FlipMode.valueOf(mode) }.getOrDefault(FlipMode.None)
 
     // FlipMode
-    @JvmStatic fun rotationModeFromString(mode: String): RotationMode = runCatching { RotationMode.valueOf(mode) }.getOrDefault(RotationMode.None)
+    @JvmStatic fun toRotationMode(mode: String): RotationMode = runCatching { RotationMode.valueOf(mode) }.getOrDefault(RotationMode.None)
 }

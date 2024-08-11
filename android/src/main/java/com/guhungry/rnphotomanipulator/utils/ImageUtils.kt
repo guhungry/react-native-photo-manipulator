@@ -1,5 +1,6 @@
 package com.guhungry.rnphotomanipulator.utils
 
+import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -38,7 +39,7 @@ object ImageUtils {
     private fun computeUri(context: Context, uri: String): String {
         return if (Uri.parse(uri).scheme != null) uri else computeDrawableResourceUri(context, uri)
     }
-    private fun computeDrawableResourceUri(context: Context, name: String) = "android.resource://${context.packageName}/${computeDrawableResourceId(context, name)}"
+    private fun computeDrawableResourceUri(context: Context, name: String) = "${ContentResolver.SCHEME_ANDROID_RESOURCE}://${context.packageName}/${computeDrawableResourceId(context, name)}"
     private fun computeDrawableResourceId(context: Context, name: String): Int {
         if (name.isEmpty()) return 0
 

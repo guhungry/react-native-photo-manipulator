@@ -20,14 +20,14 @@ import com.guhungry.rnphotomanipulator.utils.ImageUtils.bitmapFromUri
 import com.guhungry.rnphotomanipulator.utils.ImageUtils.cropBitmapFromUri
 import com.guhungry.rnphotomanipulator.utils.ImageUtils.mutableOptions
 import com.guhungry.rnphotomanipulator.utils.ImageUtils.saveTempFile
-import com.guhungry.rnphotomanipulator.utils.ParamUtils.colorFromMap
-import com.guhungry.rnphotomanipulator.utils.ParamUtils.flipModeFromString
-import com.guhungry.rnphotomanipulator.utils.ParamUtils.pointfFromMap
-import com.guhungry.rnphotomanipulator.utils.ParamUtils.rectFromMap
-import com.guhungry.rnphotomanipulator.utils.ParamUtils.rotationModeFromString
-import com.guhungry.rnphotomanipulator.utils.ParamUtils.sizeFromMap
+import com.guhungry.rnphotomanipulator.utils.ParamUtils.toColorInt
+import com.guhungry.rnphotomanipulator.utils.ParamUtils.toFlipMode
+import com.guhungry.rnphotomanipulator.utils.ParamUtils.toPointF
+import com.guhungry.rnphotomanipulator.utils.ParamUtils.toCGRect
+import com.guhungry.rnphotomanipulator.utils.ParamUtils.toRotationMode
+import com.guhungry.rnphotomanipulator.utils.ParamUtils.toCGSize
 
-class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext) : RNPhotoManipulatorSpec(reactContext) {
+class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : RNPhotoManipulatorSpec(context) {
     override fun getName(): String {
         return NAME
     }
@@ -35,7 +35,7 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun batch(uri: String, operations: ReadableArray, cropRegion: ReadableMap, targetSize: ReadableMap?, quality: Double?, mimeType: String?, promise: Promise) {
         try {
-            var output = cropBitmapFromUri(reactContext, uri, rectFromMap(cropRegion), sizeFromMap(targetSize))
+            var output = cropBitmapFromUri(context, uri, toCGRect(cropRegion), toCGSize(targetSize))
 
             // Operations
             for (i in 0 until operations.size()) {
@@ -43,7 +43,7 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
             }
 
             // Save & Optimize
-            val file = saveTempFile(reactContext, output, mimeType!!, FILE_PREFIX, quality!!.toInt())
+            val file = saveTempFile(context, output, mimeType!!, FILE_PREFIX, quality!!.toInt())
             output.recycle()
 
             promise.resolve(file)
@@ -61,7 +61,7 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
                 printLine(
                     image,
                     text.getString("text")!!,
-                    pointfFromMap(text.getMap("position"))!!,
+                    toPointF(text.getMap("position"))!!,
                     text
                 )
                 return image
@@ -70,17 +70,17 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
             "overlay" -> {
                 val uri = operation.getString("overlay") ?: return image
 
-                val overlay = bitmapFromUri(reactContext, uri)
-                overlay(image, overlay, pointfFromMap(operation.getMap("position"))!!)
+                val overlay = bitmapFromUri(context, uri)
+                overlay(image, overlay, toPointF(operation.getMap("position"))!!)
                 return image
             }
 
             "flip" -> {
-                return flip(image, flipModeFromString(operation.getString("mode")!!))
+                return flip(image, toFlipMode(operation.getString("mode")!!))
             }
 
             "rotate" -> {
-                return rotate(image, rotationModeFromString(operation.getString("mode")!!))
+                return rotate(image, toRotationMode(operation.getString("mode")!!))
             }
 
             else -> return image
@@ -90,9 +90,9 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun crop(uri: String, cropRegion: ReadableMap, targetSize: ReadableMap?, mimeType: String?, promise: Promise) {
         try {
-            val output = cropBitmapFromUri(reactContext, uri, rectFromMap(cropRegion), sizeFromMap(targetSize))
+            val output = cropBitmapFromUri(context, uri, toCGRect(cropRegion), toCGSize(targetSize))
 
-            val file = saveTempFile(reactContext, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
+            val file = saveTempFile(context, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
             output.recycle()
 
             promise.resolve(file)
@@ -104,12 +104,12 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun flipImage(uri: String, mode: String, mimeType: String?, promise: Promise) {
         try {
-            val input = bitmapFromUri(reactContext, uri, mutableOptions())
+            val input = bitmapFromUri(context, uri, mutableOptions())
 
-            val output = flip(input, flipModeFromString(mode))
+            val output = flip(input, toFlipMode(mode))
             input.recycle()
 
-            val file = saveTempFile(reactContext, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
+            val file = saveTempFile(context, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
             output.recycle()
 
             promise.resolve(file)
@@ -121,12 +121,12 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun rotateImage(uri: String, mode: String, mimeType: String?, promise: Promise) {
         try {
-            val input = bitmapFromUri(reactContext, uri, mutableOptions())
+            val input = bitmapFromUri(context, uri, mutableOptions())
 
-            val output = rotate(input, rotationModeFromString(mode))
+            val output = rotate(input, toRotationMode(mode))
             input.recycle()
 
-            val file = saveTempFile(reactContext, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
+            val file = saveTempFile(context, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
             output.recycle()
 
             promise.resolve(file)
@@ -138,13 +138,13 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun overlayImage(uri: String, icon: String, position: ReadableMap, mimeType: String?, promise: Promise) {
         try {
-            val output = bitmapFromUri(reactContext, uri, mutableOptions())
-            val overlay = bitmapFromUri(reactContext, icon)
+            val output = bitmapFromUri(context, uri, mutableOptions())
+            val overlay = bitmapFromUri(context, icon)
 
-            overlay(output, overlay, pointfFromMap(position)!!)
+            overlay(output, overlay, toPointF(position)!!)
             overlay.recycle()
 
-            val file = saveTempFile(reactContext, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
+            val file = saveTempFile(context, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
             output.recycle()
 
             promise.resolve(file)
@@ -156,14 +156,14 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun printText(uri: String, list: ReadableArray, mimeType: String?, promise: Promise) {
         try {
-            val output = bitmapFromUri(reactContext, uri, mutableOptions())
+            val output = bitmapFromUri(context, uri, mutableOptions())
 
             for (i in 0 until list.size()) {
                 val text = list.getMap(i)
-                printLine(output, text.getString("text")!!, pointfFromMap(text.getMap("position"))!!, text)
+                printLine(output, text.getString("text")!!, toPointF(text.getMap("position"))!!, text)
             }
 
-            val file = saveTempFile(reactContext, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
+            val file = saveTempFile(context, output, mimeType!!, FILE_PREFIX, DEFAULT_QUALITY)
             output.recycle()
 
             promise.resolve(file)
@@ -173,9 +173,9 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     }
 
     private fun printLine(image: Bitmap, text: String, location: PointF, options: ReadableMap) {
-        val shadowOffset = pointfFromMap(options.getMap("shadowOffset"))
+        val shadowOffset = toPointF(options.getMap("shadowOffset"))
         val style = TextStyle(
-            colorFromMap(options.getMap("color"))!!,
+            toColorInt(options.getMap("color"))!!,
             options.getDouble("textSize").toFloat(),
             getFont(options.getString("fontName")),
             Paint.Align.LEFT,
@@ -184,7 +184,7 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
             options.getDouble("shadowRadius").toFloat(),
             shadowOffset?.x ?: 0f,
             shadowOffset?.y ?: 0f,
-            colorFromMap(options.getMap("shadowColor"))
+            toColorInt(options.getMap("shadowColor"))
         )
         printText(image, text, location, style)
     }
@@ -193,7 +193,7 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
         if (fontName == null) return Typeface.DEFAULT
         return try {
             ReactFontManager.getInstance()
-                .getTypeface(fontName, Typeface.NORMAL, reactContext.assets)
+                .getTypeface(fontName, Typeface.NORMAL, context.assets)
         } catch (e: Exception) {
             Typeface.DEFAULT
         }
@@ -202,9 +202,9 @@ class RNPhotoManipulatorModule(private val reactContext: ReactApplicationContext
     @ReactMethod
     override fun optimize(uri: String, quality: Double, promise: Promise) {
         try {
-            val output = bitmapFromUri(reactContext, uri)
+            val output = bitmapFromUri(context, uri)
 
-            val file = saveTempFile(reactContext, output, MimeUtils.JPEG, FILE_PREFIX, quality.toInt())
+            val file = saveTempFile(context, output, MimeUtils.JPEG, FILE_PREFIX, quality.toInt())
             output.recycle()
 
             promise.resolve(file)
