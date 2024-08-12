@@ -18,7 +18,7 @@ const CGFloat DEFAULT_QUALITY = 100;
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -88,7 +88,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -112,7 +112,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
        if (error) {
            reject(@(error.code).stringValue, error.description, error);
            return;
@@ -131,7 +131,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
        if (error) {
            reject(@(error.code).stringValue, error.description, error);
            return;
@@ -151,13 +151,13 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
        if (error) {
            reject(@(error.code).stringValue, error.description, error);
            return;
        }
 
-       [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:overlay] callback:^(NSError *error, UIImage *icon) {
+        [self loadImage:bridge uri:overlay callback:^(NSError *error, UIImage *icon) {
            if (error) {
                reject(@(error.code).stringValue, error.description, error);
                return;
@@ -177,7 +177,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
       if (error) {
           reject(@(error.code).stringValue, error.description, error);
           return;
@@ -200,7 +200,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -209,6 +209,23 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         NSString *uri = [ImageUtils saveTempFile:image mimeType:MimeUtils.JPEG quality:quality];
         resolve(uri);
     }];
+}
+
++ (void)loadImage:(RCTBridge *)bridge uri:(NSString *)uri callback:(RCTImageLoaderCompletionBlock)callback {
+    if ([uri hasPrefix:@"data:"]) {
+        return [self decodeBase64Image:uri callback:callback];
+    }
+    
+    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:callback];
+}
+
++ (void)decodeBase64Image:(NSString *)uri callback:(RCTImageLoaderCompletionBlock)callback {
+    UIImage *result = [ImageUtils imageFromString:uri];
+    if (result == nil) {
+        callback(RCTErrorWithMessage(@"Cannot decode base64 iamge"), nil);
+        return;
+    }
+    callback(nil, result);
 }
 
 @end
