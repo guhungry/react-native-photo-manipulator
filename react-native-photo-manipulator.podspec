@@ -14,10 +14,17 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
 
   s.source       = { :git => "https://github.com/guhungry/react-native-photo-manipulator.git", :tag => "#{s.version}" }
-  s.source_files  = "ios/**/*.{h,m,mm}"
+  s.source_files  = "ios/**/*.{h,m,mm,swift}"
   s.exclude_files = "ios/Vendor/**/*.{h,m,mm}"
 
   s.dependency 'WCPhotoManipulator', '~> 2.4.0'
+
+  # Swift/Objective-C compatibility
+  s.pod_target_xcconfig = {
+    'DEFINES_MODULE' => 'YES',
+    'SWIFT_COMPILATION_MODE' => 'wholemodule',
+    "SWIFT_ACTIVE_COMPILATION_CONDITIONS" => "$(inherited)"
+  }
 
   if respond_to?(:install_modules_dependencies, true)
     # React Native Core dependency
