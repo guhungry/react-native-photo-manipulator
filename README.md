@@ -309,7 +309,7 @@ Image resource can be url or require()
 | Type      | Description                                                      |
 | --------- | ---------------------------------------------------------------- |
 | number    | Image from require('path/to/image')                              |
-| string    | Image from url supports file://, http://, https:// and ftp://    |
+| string    | Image from url supports (file://, http://, https:// and ftp://) or base64 encoded (data:image/png;base64,iVBORw...)   |
 
 #### PhotoBatchOperations
 Represent [overlay image](README.md#photobatchoverlay), [print text](README.md#photobatchprinttext) or [flip](README.md#photobatchflip) operation

@@ -1,9 +1,7 @@
 #import "RNPhotoManipulatorImpl.h"
-#import "ImageUtils.h"
-#import "ParamUtils.h"
 
-#import <React/RCTConvert.h>
 #import <React/RCTImageLoader.h>
+#import "react_native_photo_manipulator-Swift.h"
 
 @import WCPhotoManipulator;
 
@@ -20,15 +18,15 @@ const CGFloat DEFAULT_QUALITY = 100;
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
         }
 
-        UIImage *result = [image crop:[RCTConvert CGRect:cropRegion]];
+        UIImage *result = [image crop:[ParamUtils cgRect:cropRegion]];
         if (targetSize != nil) {
-            result = [result resize:[RCTConvert CGSize:targetSize] scale:result.scale];
+            result = [result resize:[ParamUtils cgSize:targetSize] scale:result.scale];
         }
 
         for (NSDictionary *operation in operations) {
@@ -43,10 +41,10 @@ const CGFloat DEFAULT_QUALITY = 100;
 static TextStyle *toTextStyle(NSDictionary *options) {
     UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
     UIColor *color = [ParamUtils color:options[@"color"]];
-    CGFloat thickness = [RCTConvert CGFloat:options[@"thickness"]];
-    CGFloat rotation = [RCTConvert CGFloat:options[@"rotation"]];
-    CGFloat shadowRadius = [RCTConvert CGFloat:options[@"shadowRadius"]];
-    CGPoint shadowOffset = [RCTConvert CGPoint:options[@"shadowOffset"]];
+    CGFloat thickness = [ParamUtils cgFloat:options[@"thickness"]];
+    CGFloat rotation = [ParamUtils cgFloat:options[@"rotation"]];
+    CGFloat shadowRadius = [ParamUtils cgFloat:options[@"shadowRadius"]];
+    CGPoint shadowOffset = [ParamUtils cgPoint:options[@"shadowOffset"]];
     UIColor *shadowColor = [ParamUtils color:options[@"shadowColor"]];
     
     TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor];
@@ -56,27 +54,27 @@ static TextStyle *toTextStyle(NSDictionary *options) {
 + (UIImage *)processBatchOperation:(UIImage *)image
         operation:(NSDictionary *)operation
         bridge:(RCTBridge *)bridge {
-    NSString *type = [RCTConvert NSString:operation[@"operation"]];
+    NSString *type = [ParamUtils string:operation[@"operation"]];
 
     if ([type isEqual:@"overlay"]) {
-        NSURL *url = [RCTConvert NSURL:operation[@"overlay"]];
-        CGPoint position = [RCTConvert CGPoint:operation[@"position"]];
-        UIImage *overlay = [ImageUtils imageFromUrl:url];
+        NSString *url = [ParamUtils string:operation[@"overlay"]];
+        CGPoint position = [ParamUtils cgPoint:operation[@"position"]];
+        UIImage *overlay = [ImageUtils imageFromString:url];
 
         return [image overlayImage:overlay position:position];
     } else if ([type isEqual:@"text"]) {
-        NSDictionary *options = [RCTConvert NSDictionary:operation[@"options"]];
+        NSDictionary *options = [ParamUtils dictionary:operation[@"options"]];
         
-        NSString *text = [RCTConvert NSString:options[@"text"]];
-        CGPoint position = [RCTConvert CGPoint:options[@"position"]];
+        NSString *text = [ParamUtils string:options[@"text"]];
+        CGPoint position = [ParamUtils cgPoint:options[@"position"]];
         TextStyle * style = toTextStyle(options);
         return [image drawText:text position:position style:style];
     } else if ([type isEqual:@"flip"]) {
-        NSString *mode = [RCTConvert NSString:operation[@"mode"]];
+        NSString *mode = [ParamUtils string:operation[@"mode"]];
 
         return [image flip:[ParamUtils flipMode:mode]];
     } else if ([type isEqual:@"rotate"]) {
-        NSString *mode = [RCTConvert NSString:operation[@"mode"]];
+        NSString *mode = [ParamUtils string:operation[@"mode"]];
 
         return [image rotate:[ParamUtils rotationMode:mode]];
     }
@@ -90,7 +88,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -98,9 +96,9 @@ static TextStyle *toTextStyle(NSDictionary *options) {
 
         UIImage *result = nil;
         if (targetSize == nil) {
-            result = [image crop:[RCTConvert CGRect:cropRegion]];
+            result = [image crop:[ParamUtils cgRect:cropRegion]];
         } else {
-            result = [image crop:[RCTConvert CGRect:cropRegion] targetSize:[RCTConvert CGSize:targetSize]];
+            result = [image crop:[ParamUtils cgRect:cropRegion] targetSize:[ParamUtils cgSize:targetSize]];
         }
 
         NSString *uri = [ImageUtils saveTempFile:result mimeType:mimeType quality:DEFAULT_QUALITY];
@@ -114,7 +112,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
        if (error) {
            reject(@(error.code).stringValue, error.description, error);
            return;
@@ -133,7 +131,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
        if (error) {
            reject(@(error.code).stringValue, error.description, error);
            return;
@@ -153,19 +151,19 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
        if (error) {
            reject(@(error.code).stringValue, error.description, error);
            return;
        }
 
-       [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:overlay] callback:^(NSError *error, UIImage *icon) {
+        [self loadImage:bridge uri:overlay callback:^(NSError *error, UIImage *icon) {
            if (error) {
                reject(@(error.code).stringValue, error.description, error);
                return;
            }
 
-           UIImage *result = [image overlayImage:icon position:[RCTConvert CGPoint:position]];
+           UIImage *result = [image overlayImage:icon position:[ParamUtils cgPoint:position]];
 
            NSString *uri = [ImageUtils saveTempFile:result mimeType:mimeType quality:DEFAULT_QUALITY];
            resolve(uri);
@@ -179,14 +177,14 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
       if (error) {
           reject(@(error.code).stringValue, error.description, error);
           return;
       }
       for (id options in texts) {
-          NSString *text = [RCTConvert NSString:options[@"text"]];
-          CGPoint position = [RCTConvert CGPoint:options[@"position"]];
+          NSString *text = [ParamUtils string:options[@"text"]];
+          CGPoint position = [ParamUtils cgPoint:options[@"position"]];
           TextStyle * style = toTextStyle(options);
 
           image = [image drawText:text position:position style:style];
@@ -202,7 +200,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         resolve:(RCTPromiseResolveBlock)resolve
         reject:(RCTPromiseRejectBlock)reject
         bridge:(RCTBridge *)bridge {
-    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:^(NSError *error, UIImage *image) {
+    [self loadImage:bridge uri:uri callback:^(NSError *error, UIImage *image) {
         if (error) {
             reject(@(error.code).stringValue, error.description, error);
             return;
@@ -211,6 +209,23 @@ static TextStyle *toTextStyle(NSDictionary *options) {
         NSString *uri = [ImageUtils saveTempFile:image mimeType:MimeUtils.JPEG quality:quality];
         resolve(uri);
     }];
+}
+
++ (void)loadImage:(RCTBridge *)bridge uri:(NSString *)uri callback:(RCTImageLoaderCompletionBlock)callback {
+    if ([uri hasPrefix:@"data:"]) {
+        return [self decodeBase64Image:uri callback:callback];
+    }
+    
+    [[bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:[ParamUtils url:uri] callback:callback];
+}
+
++ (void)decodeBase64Image:(NSString *)uri callback:(RCTImageLoaderCompletionBlock)callback {
+    UIImage *result = [ImageUtils imageFromString:uri];
+    if (result == nil) {
+        callback(RCTErrorWithMessage(@"Cannot decode base64 iamge"), nil);
+        return;
+    }
+    callback(nil, result);
 }
 
 @end
