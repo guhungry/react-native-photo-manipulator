@@ -28,7 +28,7 @@ public class ParamUtils: NSObject {
             ?? UIFont.systemFont(ofSize: size)
     }
     
-    @objc public class func color(_ data: Any) -> UIColor? {
+    @objc public class func color(_ data: Any?) -> UIColor? {
         guard let data = dictionary(data) else {
             return nil
         }
