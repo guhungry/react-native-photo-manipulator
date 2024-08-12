@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source_files  = "ios/**/*.{h,m,mm}"
   s.exclude_files = "ios/Vendor/**/*.{h,m,mm}"
 
-  s.dependency 'WCPhotoManipulator', '~> 2.3.0'
+  s.dependency 'WCPhotoManipulator', '~> 2.4.0'
 
   if respond_to?(:install_modules_dependencies, true)
     # React Native Core dependency
