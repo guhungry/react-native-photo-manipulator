@@ -11028,14 +11028,10 @@ __metadata:
   linkType: hard
 
 "react-native-builder-bob@npm:^0.29.0":
-  version: 0.29.0
-  resolution: "react-native-builder-bob@npm:0.29.0"
+  version: 0.29.1
+  resolution: "react-native-builder-bob@npm:0.29.1"
   dependencies:
     "@babel/core": ^7.25.2
-    "@babel/plugin-transform-class-properties": ^7.24.7
-    "@babel/plugin-transform-classes": ^7.25.0
-    "@babel/plugin-transform-private-methods": ^7.24.7
-    "@babel/plugin-transform-private-property-in-object": ^7.24.7
     "@babel/plugin-transform-strict-mode": ^7.24.7
     "@babel/preset-env": ^7.25.2
     "@babel/preset-flow": ^7.24.7
@@ -11059,7 +11055,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     bob: bin/bob
-  checksum: 2af3139966a37ae07346e3e29a225e0df2a6e5421972288a83d770ec62d91643e32871e7b2b4cb12c59ac21d90c7b580f8ce3bc5bf9785c59960e03613cf1a4d
+  checksum: 9325ee6b9a41e59e8a0add825318d6c7830b9b2fec1f98c485f722ef60128240146eced878e494c17699cef8ae0cdc92788384f718bcf38078d865969cff6c14
   languageName: node
   linkType: hard
 
