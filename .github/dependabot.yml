@@ -11,12 +11,42 @@ updates:
     schedule:
       interval: daily
 
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
       
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/example" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
+
+  - package-ecosystem: "gradle"
+    directory: "/android" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
+
+  - package-ecosystem: "gradle"
+    directory: "/example/android" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
