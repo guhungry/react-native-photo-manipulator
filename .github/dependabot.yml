@@ -20,6 +20,11 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+        exclude-patterns:
+        - "*eslint*"
+      eslint:
+        patterns:
+        - "*eslint*"
       
   - package-ecosystem: "npm"
     directory: "/example" # Location of package manifests
@@ -30,6 +35,11 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+        exclude-patterns:
+        - "*eslint*"
+      eslint:
+        patterns:
+        - "*eslint*"
 
   - package-ecosystem: "gradle"
     directory: "/android" # Location of package manifests
