@@ -3,11 +3,11 @@
 ![Supports Android, iOS](https://img.shields.io/badge/platforms-android%20|%20ios-lightgrey.svg)
 ![NPM License](https://img.shields.io/npm/l/react-native-photo-manipulator)
 [![npm version](http://img.shields.io/npm/v/react-native-photo-manipulator.svg?style=flat)](https://npmjs.org/package/react-native-photo-manipulator "View this project on npm")
-![NPM Downloads](https://img.shields.io/npm/dt/react-native-photo-manipulator)
-![NPM Downloads](https://img.shields.io/npm/dm/react-native-photo-manipulator)
-![NPM Downloads](https://img.shields.io/npm/dw/react-native-photo-manipulator)
-![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/guhungry_react-native-photo-manipulator?server=https%3A%2F%2Fsonarcloud.io)
-![Sonar Coverage](https://img.shields.io/sonar/coverage/guhungry_react-native-photo-manipulator?server=https%3A%2F%2Fsonarcloud.io)
+[![NPM Downloads](https://img.shields.io/npm/dt/react-native-photo-manipulator)](https://www.npmjs.com/package/react-native-photo-manipulator)
+[![NPM Downloads](https://img.shields.io/npm/dm/react-native-photo-manipulator)](https://www.npmjs.com/package/react-native-photo-manipulator)
+[![NPM Downloads](https://img.shields.io/npm/dw/react-native-photo-manipulator)](https://www.npmjs.com/package/react-native-photo-manipulator)
+[![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/guhungry_react-native-photo-manipulator?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=guhungry_react-native-photo-manipulator)
+[![Sonar Coverage](https://img.shields.io/sonar/coverage/guhungry_react-native-photo-manipulator?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=guhungry_react-native-photo-manipulator)
 
 
 React Native Image Processing API to edit photo programmatically for Android and iOS.
