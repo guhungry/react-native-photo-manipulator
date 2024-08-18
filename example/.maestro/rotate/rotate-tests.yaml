@@ -1,0 +1,22 @@
+appId: photomanipulator.example
+---
+- launchApp
+
+- scrollUntilVisible:
+    element:
+      id: "example-exampleRotate"
+    direction: DOWN
+    visibilityPercentage: 70
+    timeout: 30000
+    speed: 100
+- assertVisible:
+    id: "example-exampleRotate"
+
+- assertVisible:
+    id: "rotate90Result"
+
+- assertVisible:
+    id: "rotate180Result"
+
+- assertVisible:
+    id: "rotate270Result"

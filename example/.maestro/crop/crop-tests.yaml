@@ -1,0 +1,22 @@
+appId: photomanipulator.example
+---
+- launchApp
+
+- scrollUntilVisible:
+    element:
+      id: "example-exampleCrop"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 100
+- assertVisible:
+    id: "example-exampleCrop"
+
+- assertVisible:
+    id: "cropResult"
+
+- assertVisible:
+    id: "cropResizeResult"
+
+- assertVisible:
+    id: "cropPngResult"

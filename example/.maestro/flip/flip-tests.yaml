@@ -1,0 +1,22 @@
+appId: photomanipulator.example
+---
+- launchApp
+
+- scrollUntilVisible:
+    element:
+      id: "example-exampleFlip"
+    direction: DOWN
+    visibilityPercentage: 60
+    timeout: 30000
+    speed: 80
+- assertVisible:
+    id: "example-exampleFlip"
+
+- assertVisible:
+    id: "flipBothResult"
+
+- assertVisible:
+    id: "flipHorizontalResult"
+
+- assertVisible:
+    id: "flipVerticalResult"
