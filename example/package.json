@@ -12,11 +12,11 @@
     "mkdist": "node -e \"require('node:fs').mkdirSync('dist', { recursive: true, mode: 0o755 })\"",
     "start": "react-native start",
     "test:android": "yarn test:android:build && yarn test:android:run",
-    "test:android:build": "detox build --configuration android.emu.release",
-    "test:android:run": "detox test --configuration android.emu.release",
+    "test:android:build": "cd android && ./gradlew assembleRelease",
+    "test:android:run": "adb install android/app/build/outputs/apk/release/app-release.apk && maestro test .maestro",
     "test:ios": "yarn test:ios:build && yarn test:ios:run",
-    "test:ios:build": "detox build --configuration ios.sim.release",
-    "test:ios:run": "detox test --configuration ios.sim.release"
+    "test:ios:build": "xcodebuild -workspace ios/PhotoManipulatorExample.xcworkspace -scheme PhotoManipulatorExample -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+    "test:ios:run": "xcrun simctl install Booted ios/build/Build/Products/Release-iphonesimulator/ReactTestApp.app && maestro test .maestro"
   },
   "dependencies": {
     "react": "^18.3.0",
