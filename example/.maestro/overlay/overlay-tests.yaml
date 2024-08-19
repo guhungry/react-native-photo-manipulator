@@ -15,5 +15,12 @@ appId: photomanipulator.example
 - assertVisible:
     id: "overlayImageResult"
 
+- scrollUntilVisible:
+    element:
+      id: "overlayImagePngResult"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 80
 - assertVisible:
     id: "overlayImagePngResult"

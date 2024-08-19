@@ -15,5 +15,12 @@ appId: photomanipulator.example
 - assertVisible:
     id: "printTextResult"
 
+- scrollUntilVisible:
+    element:
+      id: "printTextPngResult"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 80
 - assertVisible:
     id: "printTextPngResult"

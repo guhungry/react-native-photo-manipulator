@@ -6,17 +6,38 @@ appId: photomanipulator.example
     element:
       id: "example-exampleCrop"
     direction: DOWN
-    visibilityPercentage: 80
-    timeout: 30000
-    speed: 100
+    visibilityPercentage: 60
+    timeout: 60000
+    speed: 80
 - assertVisible:
     id: "example-exampleCrop"
 
+- scrollUntilVisible:
+    element:
+      id: "cropResult"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 60
 - assertVisible:
     id: "cropResult"
 
+- scrollUntilVisible:
+    element:
+      id: "cropResizeResult"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 60
 - assertVisible:
     id: "cropResizeResult"
 
+- scrollUntilVisible:
+    element:
+      id: "cropPngResult"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 60
 - assertVisible:
     id: "cropPngResult"
