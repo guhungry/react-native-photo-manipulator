@@ -221,11 +221,7 @@ jobs:
         with:
           model: 'iPhone 15'
 
-      - name: Install Test App
-        run: |
-          xcrun simctl install Booted example/ios/build/Build/Products/Release-iphonesimulator/ReactTestApp.app
-
       - uses: dniHze/maestro-test-action@v1
-        with:
-          flow: example/.maestro
-          report: example/.maestro/report.xml
+
+      - name: Run Tests
+        run: yarn example test:ios:run
