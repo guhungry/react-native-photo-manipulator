@@ -217,7 +217,7 @@ jobs:
           RCT_NEW_ARCH_ENABLED: 1
           USE_HERMES: 1
 
-      - uses: futureware-tech/simulator-action@v2
+      - uses: futureware-tech/simulator-action@v3
         with:
           model: 'iPhone 15'
 
