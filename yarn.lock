@@ -1864,11 +1864,11 @@ __metadata:
   linkType: hard
 
 "@evilmartians/lefthook@npm:^1.7.0":
-  version: 1.7.12
-  resolution: "@evilmartians/lefthook@npm:1.7.12"
+  version: 1.7.14
+  resolution: "@evilmartians/lefthook@npm:1.7.14"
   bin:
     lefthook: bin/index.js
-  checksum: 2c2e19b298ca40dca6d87482e997bb559f4a481d39453dd8893b60b5e9cff8b8db89917eee38e9f8c482e91d26040ea1aa5a1da11cec6c93a6501a1c6cb8ce6a
+  checksum: ddd1b6eda95d0d4f8728900d65a597075499ebec2d3181dab87fd3de2897d68ff47a111da6672e226c54952a477807dde7d1300f5622822701864846166887e2
   conditions: (os=darwin | os=linux | os=win32) & (cpu=x64 | cpu=arm64 | cpu=ia32)
   languageName: node
   linkType: hard
@@ -2737,7 +2737,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/babel-preset@npm:0.75.0, @react-native/babel-preset@npm:^0.75.0":
+"@react-native/babel-plugin-codegen@npm:0.75.1":
+  version: 0.75.1
+  resolution: "@react-native/babel-plugin-codegen@npm:0.75.1"
+  dependencies:
+    "@react-native/codegen": 0.75.1
+  checksum: 7d2fb64f197ada49effef46eb18484e784ba34fe506f56ca5af5f18dd9542efc3936c700958b7cd9190b8ee0b978aa7110f9b2db9977abe15c3c750fc5e830a7
+  languageName: node
+  linkType: hard
+
+"@react-native/babel-preset@npm:0.75.0":
   version: 0.75.0
   resolution: "@react-native/babel-preset@npm:0.75.0"
   dependencies:
@@ -2792,6 +2801,61 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/babel-preset@npm:0.75.1, @react-native/babel-preset@npm:^0.75.0":
+  version: 0.75.1
+  resolution: "@react-native/babel-preset@npm:0.75.1"
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@babel/plugin-proposal-export-default-from": ^7.0.0
+    "@babel/plugin-syntax-dynamic-import": ^7.8.0
+    "@babel/plugin-syntax-export-default-from": ^7.0.0
+    "@babel/plugin-syntax-flow": ^7.18.0
+    "@babel/plugin-syntax-nullish-coalescing-operator": ^7.0.0
+    "@babel/plugin-syntax-optional-chaining": ^7.0.0
+    "@babel/plugin-transform-arrow-functions": ^7.0.0
+    "@babel/plugin-transform-async-generator-functions": ^7.24.3
+    "@babel/plugin-transform-async-to-generator": ^7.20.0
+    "@babel/plugin-transform-block-scoping": ^7.0.0
+    "@babel/plugin-transform-class-properties": ^7.24.1
+    "@babel/plugin-transform-classes": ^7.0.0
+    "@babel/plugin-transform-computed-properties": ^7.0.0
+    "@babel/plugin-transform-destructuring": ^7.20.0
+    "@babel/plugin-transform-flow-strip-types": ^7.20.0
+    "@babel/plugin-transform-for-of": ^7.0.0
+    "@babel/plugin-transform-function-name": ^7.0.0
+    "@babel/plugin-transform-literals": ^7.0.0
+    "@babel/plugin-transform-logical-assignment-operators": ^7.24.1
+    "@babel/plugin-transform-modules-commonjs": ^7.0.0
+    "@babel/plugin-transform-named-capturing-groups-regex": ^7.0.0
+    "@babel/plugin-transform-nullish-coalescing-operator": ^7.24.1
+    "@babel/plugin-transform-numeric-separator": ^7.24.1
+    "@babel/plugin-transform-object-rest-spread": ^7.24.5
+    "@babel/plugin-transform-optional-catch-binding": ^7.24.1
+    "@babel/plugin-transform-optional-chaining": ^7.24.5
+    "@babel/plugin-transform-parameters": ^7.0.0
+    "@babel/plugin-transform-private-methods": ^7.22.5
+    "@babel/plugin-transform-private-property-in-object": ^7.22.11
+    "@babel/plugin-transform-react-display-name": ^7.0.0
+    "@babel/plugin-transform-react-jsx": ^7.0.0
+    "@babel/plugin-transform-react-jsx-self": ^7.0.0
+    "@babel/plugin-transform-react-jsx-source": ^7.0.0
+    "@babel/plugin-transform-regenerator": ^7.20.0
+    "@babel/plugin-transform-runtime": ^7.0.0
+    "@babel/plugin-transform-shorthand-properties": ^7.0.0
+    "@babel/plugin-transform-spread": ^7.0.0
+    "@babel/plugin-transform-sticky-regex": ^7.0.0
+    "@babel/plugin-transform-typescript": ^7.5.0
+    "@babel/plugin-transform-unicode-regex": ^7.0.0
+    "@babel/template": ^7.0.0
+    "@react-native/babel-plugin-codegen": 0.75.1
+    babel-plugin-transform-flow-enums: ^0.0.2
+    react-refresh: ^0.14.0
+  peerDependencies:
+    "@babel/core": "*"
+  checksum: 090ec7a6fded4f35336782757c6ac94e43efe06769a542a48e45cfd2e1a088b070244ed1f28bf93dcf86147540443a6d62a0101b627d1c32d664f73d017630c7
+  languageName: node
+  linkType: hard
+
 "@react-native/codegen@npm:0.75.0":
   version: 0.75.0
   resolution: "@react-native/codegen@npm:0.75.0"
@@ -2806,6 +2870,23 @@ __metadata:
   peerDependencies:
     "@babel/preset-env": ^7.1.6
   checksum: a59971e0189cdd70d4f5fc144e852d03a2b5ea5f98305b3919c4ee33db50ab55aac95cac26b89059821c4cfe4cd28736e91d7ac85f5ca6d711d1dbd0c99c4f6e
+  languageName: node
+  linkType: hard
+
+"@react-native/codegen@npm:0.75.1":
+  version: 0.75.1
+  resolution: "@react-native/codegen@npm:0.75.1"
+  dependencies:
+    "@babel/parser": ^7.20.0
+    glob: ^7.1.1
+    hermes-parser: 0.22.0
+    invariant: ^2.2.4
+    jscodeshift: ^0.14.0
+    mkdirp: ^0.5.1
+    nullthrows: ^1.1.1
+  peerDependencies:
+    "@babel/preset-env": ^7.1.6
+  checksum: a698fe1755b96ed042c1e60d3ac6f339e11d68488df8ab4c0bcda684289902bdc015970c1c62661bacbf486aa7330475462c11025a9ad179844cabda9dc1a7e3
   languageName: node
   linkType: hard
 
@@ -2901,6 +2982,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/js-polyfills@npm:0.75.1":
+  version: 0.75.1
+  resolution: "@react-native/js-polyfills@npm:0.75.1"
+  checksum: 519c8545fffb09c9de03a460260efeb5d09f80090fe5553caba0c05f12afabb324a8483458ed3e85877f373b182047adfa1fca18e24e31956e438edbd8bf2a7d
+  languageName: node
+  linkType: hard
+
 "@react-native/metro-babel-transformer@npm:0.75.0":
   version: 0.75.0
   resolution: "@react-native/metro-babel-transformer@npm:0.75.0"
@@ -2915,15 +3003,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/metro-config@npm:^0.75.0":
-  version: 0.75.0
-  resolution: "@react-native/metro-config@npm:0.75.0"
+"@react-native/metro-babel-transformer@npm:0.75.1":
+  version: 0.75.1
+  resolution: "@react-native/metro-babel-transformer@npm:0.75.1"
   dependencies:
-    "@react-native/js-polyfills": 0.75.0
-    "@react-native/metro-babel-transformer": 0.75.0
+    "@babel/core": ^7.20.0
+    "@react-native/babel-preset": 0.75.1
+    hermes-parser: 0.22.0
+    nullthrows: ^1.1.1
+  peerDependencies:
+    "@babel/core": "*"
+  checksum: 66189a39686dfcb597f3f456d32b415d0ac1b73d8d4fe373146e36093565ce74cb4bcaab8b270402f6c67dd4be202f409bba2130b329bddb4d799ba87e01eea8
+  languageName: node
+  linkType: hard
+
+"@react-native/metro-config@npm:^0.75.0":
+  version: 0.75.1
+  resolution: "@react-native/metro-config@npm:0.75.1"
+  dependencies:
+    "@react-native/js-polyfills": 0.75.1
+    "@react-native/metro-babel-transformer": 0.75.1
     metro-config: ^0.80.3
     metro-runtime: ^0.80.3
-  checksum: ea249173dcc5b7ab5648d492a344dccce6a98d5e11830022e918e809bdcfc4a2f9a29b4defa4ed3b82be4d7f9505f9aebe1cc550f4495594e00e3d3108d2c745
+  checksum: 662884aa1faed249f3521c0092aa4484fd4536a424d669519f43811246060a8b9808dd6af582f9afae6a4b18c14026aaa1b5bc26453c096169288bebde128420
   languageName: node
   linkType: hard
 
@@ -2935,9 +3037,9 @@ __metadata:
   linkType: hard
 
 "@react-native/typescript-config@npm:^0.75.0":
-  version: 0.75.0
-  resolution: "@react-native/typescript-config@npm:0.75.0"
-  checksum: 854833973a4b6d5d5e8d772dbe52ff9cef37873de48631217e5ef29a4226e939b1e91062b63d25a79464e53c13003eee2e68c29739da8d95ed30bca635c4f4c0
+  version: 0.75.1
+  resolution: "@react-native/typescript-config@npm:0.75.1"
+  checksum: 831025b476fece79a91e6f6ada4bfbc8c7de3f32149c1c9d64b1bc2ad43bb5ebe1eaf738fb53761cd648d1a546a52fa552b0836e20868ed12c41ace8c10daa4c
   languageName: node
   linkType: hard
 
@@ -5433,8 +5535,8 @@ __metadata:
   linkType: hard
 
 "detox@npm:^20.25.1":
-  version: 20.25.4
-  resolution: "detox@npm:20.25.4"
+  version: 20.25.5
+  resolution: "detox@npm:20.25.5"
   dependencies:
     ajv: ^8.6.3
     bunyan: ^1.8.12
@@ -5478,7 +5580,7 @@ __metadata:
       optional: true
   bin:
     detox: local-cli/cli.js
-  checksum: d1a0937008d71e36ff87dabb8e9352432f26da7e59a11947ed0fd4e5f6de863b03b2fc62ca3a7044945ca0dd0bd7407caa0ab8de44d9bf0ab4f3e00d56949751
+  checksum: 03322935859ad4725830fc724927ed6ac53a87b14f280b957af97bda8aa2aa4358b284c71332712222c50de475145b29242df2b5433aec12e8c4361b70f685dc
   languageName: node
   linkType: hard
 
@@ -10960,9 +11062,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-builder-bob@npm:^0.29.0":
-  version: 0.29.1
-  resolution: "react-native-builder-bob@npm:0.29.1"
+"react-native-builder-bob@npm:^0.30.0":
+  version: 0.30.0
+  resolution: "react-native-builder-bob@npm:0.30.0"
   dependencies:
     "@babel/core": ^7.25.2
     "@babel/plugin-transform-strict-mode": ^7.24.7
@@ -10988,7 +11090,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     bob: bin/bob
-  checksum: 9325ee6b9a41e59e8a0add825318d6c7830b9b2fec1f98c485f722ef60128240146eced878e494c17699cef8ae0cdc92788384f718bcf38078d865969cff6c14
+  checksum: fe4092547308d946756f0c41b1cde970781d00e22d8f3ae235a3d0e3ab8e7c8dfcb2e3b313af593986d07c672058b071f9f7397284b548139d4b9dc81f1b7a7e
   languageName: node
   linkType: hard
 
@@ -11008,7 +11110,7 @@ __metadata:
     jest-junit: ^16.0.0
     react: ^18.3.0
     react-native: ^0.75.0
-    react-native-builder-bob: ^0.29.0
+    react-native-builder-bob: ^0.30.0
     react-native-test-app: ^3.9.0
   languageName: unknown
   linkType: soft
@@ -11035,7 +11137,7 @@ __metadata:
     prettier: ^3.0.3
     react: ^18.3.0
     react-native: ^0.75.0
-    react-native-builder-bob: ^0.29.0
+    react-native-builder-bob: ^0.30.0
     release-it: ^17.0.0
     turbo: ^2.0.11
     typescript: ^5.2.2
@@ -11046,8 +11148,8 @@ __metadata:
   linkType: soft
 
 "react-native-test-app@npm:^3.9.0":
-  version: 3.9.2
-  resolution: "react-native-test-app@npm:3.9.2"
+  version: 3.9.3
+  resolution: "react-native-test-app@npm:3.9.3"
   dependencies:
     "@rnx-kit/react-native-host": ^0.4.11
     ajv: ^8.0.0
@@ -11077,7 +11179,7 @@ __metadata:
     init: scripts/init.mjs
     init-test-app: scripts/init.mjs
     install-windows-test-app: windows/test-app.mjs
-  checksum: 9b60a42df70f40aeeabcca7315c01639daaf7096b5b76ec4000dd0d1a2244c2b7f7bb291f7033e3424b0a24a97d0d82bc71287fda9d8c8ca3a766b2382bcc3a9
+  checksum: 332fbb5eed8f9e6395e922657f2e633c1adb184ffe915089ba1c7ae68aa44a25e8c44793fa9ac5603c98db48b03efbfac9a6f4f041fa918e0df84f1edebcdc8d
   languageName: node
   linkType: hard
 
@@ -12644,58 +12746,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.0.13":
-  version: 2.0.13
-  resolution: "turbo-darwin-64@npm:2.0.13"
+"turbo-darwin-64@npm:2.0.14":
+  version: 2.0.14
+  resolution: "turbo-darwin-64@npm:2.0.14"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.0.13":
-  version: 2.0.13
-  resolution: "turbo-darwin-arm64@npm:2.0.13"
+"turbo-darwin-arm64@npm:2.0.14":
+  version: 2.0.14
+  resolution: "turbo-darwin-arm64@npm:2.0.14"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.0.13":
-  version: 2.0.13
-  resolution: "turbo-linux-64@npm:2.0.13"
+"turbo-linux-64@npm:2.0.14":
+  version: 2.0.14
+  resolution: "turbo-linux-64@npm:2.0.14"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.0.13":
-  version: 2.0.13
-  resolution: "turbo-linux-arm64@npm:2.0.13"
+"turbo-linux-arm64@npm:2.0.14":
+  version: 2.0.14
+  resolution: "turbo-linux-arm64@npm:2.0.14"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.0.13":
-  version: 2.0.13
-  resolution: "turbo-windows-64@npm:2.0.13"
+"turbo-windows-64@npm:2.0.14":
+  version: 2.0.14
+  resolution: "turbo-windows-64@npm:2.0.14"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.0.13":
-  version: 2.0.13
-  resolution: "turbo-windows-arm64@npm:2.0.13"
+"turbo-windows-arm64@npm:2.0.14":
+  version: 2.0.14
+  resolution: "turbo-windows-arm64@npm:2.0.14"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
 "turbo@npm:^2.0.11":
-  version: 2.0.13
-  resolution: "turbo@npm:2.0.13"
+  version: 2.0.14
+  resolution: "turbo@npm:2.0.14"
   dependencies:
-    turbo-darwin-64: 2.0.13
-    turbo-darwin-arm64: 2.0.13
-    turbo-linux-64: 2.0.13
-    turbo-linux-arm64: 2.0.13
-    turbo-windows-64: 2.0.13
-    turbo-windows-arm64: 2.0.13
+    turbo-darwin-64: 2.0.14
+    turbo-darwin-arm64: 2.0.14
+    turbo-linux-64: 2.0.14
+    turbo-linux-arm64: 2.0.14
+    turbo-windows-64: 2.0.14
+    turbo-windows-arm64: 2.0.14
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -12711,7 +12813,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: fee33d7ce01d4adfc99923fc09d76524cb421c1bc66c67d7462a2d24e7e093725cff6024c3504740789cd73668fccf8efc8ca0181d3205f3f0578e0a46bfc633
+  checksum: 68df50a1898143cdbd0058fde9cae415bc0e316223bd4eae4a2dde5b6c29f2e3e561e0cde95f3a7e0b1de1fc28110f60b05021a3862c25d0c0544d1ae8816ab6
   languageName: node
   linkType: hard
 
