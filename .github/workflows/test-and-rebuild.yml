@@ -229,8 +229,11 @@ jobs:
         with:
           model: 'iPhone 15'
 
-      - uses: dniHze/maestro-test-action@v1
-
-      - name: Test iOS Release
+      - name: Install Test App
         run: |
-          yarn example test:ios:run
+          xcrun simctl install Booted example/ios/build/Build/Products/Release-iphonesimulator/ReactTestApp.app
+
+      - uses: dniHze/maestro-test-action@v1
+        with:
+          flow: example/.maestro
+          report: example/.maestro/report.xml
