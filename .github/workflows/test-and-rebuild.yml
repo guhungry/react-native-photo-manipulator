@@ -203,14 +203,6 @@ jobs:
           cd example
           bundle install
 
-      - name: Install Detox dependencies
-        run: |
-          cd example
-          brew tap wix/brew
-          brew install applesimutils
-          yarn detox clean-framework-cache
-          yarn detox build-framework-cache
-
       - name: Xcode Version
         run: |
           xcodebuild -version
