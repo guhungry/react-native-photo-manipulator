@@ -146,7 +146,7 @@
     "root": true,
     "extends": [
       "@react-native",
-      "prettier"
+      "plugin:prettier/recommended"
     ],
     "rules": {
       "react/react-in-jsx-scope": "off",
