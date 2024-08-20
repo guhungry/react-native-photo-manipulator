@@ -1542,7 +1542,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - ReactTestApp-DevSupport (3.9.2):
+  - ReactTestApp-DevSupport (3.9.4):
     - React-Core
     - React-jsi
   - ReactTestApp-Resources (1.0.0-dev)
@@ -1824,7 +1824,7 @@ SPEC CHECKSUMS:
   ReactCodegen: e9156d86a166f3e10dc8fb6160764048df3528bc
   ReactCommon: 3ae48fa4cfa7052a270c2150ececfc94e541fb8a
   ReactNativeHost: a2b2a1369ca06fee98c4dcbf93ce2fc9548d04f1
-  ReactTestApp-DevSupport: cbe23c1d1999516afa35e9758ef400b6bd3f7046
+  ReactTestApp-DevSupport: 500214ef58436e2962b6fbd4e6037b3107e4c2cb
   ReactTestApp-Resources: ccfef9a90b8ac3972d309a8243f428e9af010e9a
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   WCPhotoManipulator: ed75cbf88c7a32a829e64bb203136ad620cbce81
