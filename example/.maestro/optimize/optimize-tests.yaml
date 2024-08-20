@@ -1,0 +1,16 @@
+appId: photomanipulator.example
+---
+- launchApp
+
+- scrollUntilVisible:
+    element:
+      id: "example-exampleOptimize"
+    direction: DOWN
+    visibilityPercentage: 60
+    timeout: 60000
+    speed: 80
+- assertVisible:
+    id: "example-exampleOptimize"
+
+- assertVisible:
+    id: "optimizeResult"

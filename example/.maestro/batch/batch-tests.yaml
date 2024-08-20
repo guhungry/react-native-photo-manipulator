@@ -1,0 +1,33 @@
+appId: photomanipulator.example
+---
+- launchApp
+
+- scrollUntilVisible:
+    element:
+      id: "example-exampleBatch"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 50000
+    speed: 80
+- assertVisible:
+    id: "example-exampleBatch"
+
+- scrollUntilVisible:
+    element:
+      id: "batchResult"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 60
+- assertVisible:
+    id: "batchResult"
+
+- scrollUntilVisible:
+    element:
+      id: "batchResultPng"
+    direction: DOWN
+    visibilityPercentage: 80
+    timeout: 30000
+    speed: 60
+- assertVisible:
+    id: "batchResultPng"
