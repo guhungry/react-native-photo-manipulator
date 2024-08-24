@@ -16,8 +16,16 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/guhungry/react-native-photo-manipulator.git", :tag => "#{s.version}" }
   s.source_files  = "ios/**/*.{h,m,mm,swift}"
   s.exclude_files = "ios/Vendor/**/*.{h,m,mm}"
-
-  s.dependency 'WCPhotoManipulator', '~> 2.4.0'
+  
+  if defined?(:spm_dependency)
+    spm_dependency(s,
+      url: 'https://github.com/guhungry/ios-photo-manipulator.git',
+      requirement: {kind: 'upToNextMajorVersion', minimumVersion: '2.4.0'},
+      products: ['WCPhotoManipulator']
+    )
+  else
+    s.dependency 'WCPhotoManipulator', '~> 2.4.0'
+  end
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
