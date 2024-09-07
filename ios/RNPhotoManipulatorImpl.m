@@ -1,7 +1,8 @@
 #import "RNPhotoManipulatorImpl.h"
 
 #import <React/RCTImageLoader.h>
-#import "react_native_photo_manipulator-Swift.h"
+#import "ImageUtils.h"
+#import "ParamUtils.h"
 
 @import WCPhotoManipulator;
 
