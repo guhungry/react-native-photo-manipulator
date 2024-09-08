@@ -211,7 +211,7 @@ jobs:
       - name: Build iOS Release
         run: |
           yarn turbo run build:ios --cache-dir="${{ env.TURBO_CACHE_DIR }}"
-          cd example/ios && pod install --deployment && cd -
+          cd example/ios && pod repo update && pod install --deployment && cd -
           yarn turbo run test:ios:build --cache-dir="${{ env.TURBO_CACHE_DIR }}"
         env:
           RCT_NEW_ARCH_ENABLED: 1
