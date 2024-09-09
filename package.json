@@ -177,6 +177,7 @@
     "source": "src",
     "output": "lib",
     "targets": [
+      "codegen",
       [
         "commonjs",
         {
@@ -200,15 +201,20 @@
   },
   "codegenConfig": {
     "name": "RNPhotoManipulatorSpec",
-    "type": "modules",
+    "type": "all",
     "jsSrcsDir": "src",
+    "outputDir": {
+      "ios": "ios/generated",
+      "android": "android/generated"
+    },
     "android": {
       "javaPackageName": "com.guhungry.rnphotomanipulator"
-    }
+    },
+    "includesGeneratedCode": true
   },
   "create-react-native-library": {
     "type": "module-mixed",
     "languages": "kotlin-objc",
-    "version": "0.41.0"
+    "version": "0.41.1"
   }
 }
