@@ -225,3 +225,5 @@ jobs:
 
       - name: Run Tests
         run: yarn example test:ios:run
+        env:
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
