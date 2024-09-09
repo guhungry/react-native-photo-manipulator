@@ -1,6 +1,6 @@
 {
   "name": "react-native-photo-manipulator",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "React Native Image Processing API to edit photo programmatically for Android and iOS.",
   "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
@@ -24,6 +24,7 @@
     "ios",
     "cpp",
     "*.podspec",
+    "react-native.config.js",
     "!ios/build",
     "!android/build",
     "!android/gradle",
