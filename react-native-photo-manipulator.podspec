@@ -14,8 +14,8 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
 
   s.source       = { :git => "https://github.com/guhungry/react-native-photo-manipulator.git", :tag => "#{s.version}" }
-  s.source_files  = "ios/**/*.{h,m,mm,cpp}"
-  
+  s.source_files = "ios/**/*.{h,m,mm,cpp}"
+
   s.dependency 'WCPhotoManipulator', '~> 2.4.0'
 
   if respond_to?(:install_modules_dependencies, true)
