@@ -1,6 +1,6 @@
 {
   "name": "react-native-photo-manipulator",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "React Native Image Processing API to edit photo programmatically for Android and iOS.",
   "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
@@ -178,7 +178,6 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "codegen",
       [
         "commonjs",
         {
@@ -202,7 +201,7 @@
   },
   "codegenConfig": {
     "name": "RNPhotoManipulatorSpec",
-    "type": "all",
+    "type": "modules",
     "jsSrcsDir": "src",
     "outputDir": {
       "ios": "ios/generated",
@@ -211,11 +210,11 @@
     "android": {
       "javaPackageName": "com.guhungry.rnphotomanipulator"
     },
-    "includesGeneratedCode": true
+    "includesGeneratedCode": false
   },
   "create-react-native-library": {
     "type": "module-mixed",
     "languages": "kotlin-objc",
-    "version": "0.41.1"
+    "version": "0.41.2"
   }
 }
