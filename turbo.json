@@ -54,7 +54,8 @@
         "!example/ios/Pods"
       ],
       "outputs": [
-        "dist/**"
+        "dist/**",
+        "example/dist/**"
       ]
     },
     "test:ios:build": {
@@ -71,7 +72,8 @@
         "!example/ios/Pods"
       ],
       "outputs": [
-        "ios/build/**/ReactTestApp.app/**"
+        "ios/build/**/ReactTestApp.app/**",
+        "example/ios/build/**/ReactTestApp.app/**"
       ]
     }
   }
