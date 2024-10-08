@@ -1237,7 +1237,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-photo-manipulator (1.7.3):
+  - react-native-photo-manipulator (1.7.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1796,7 +1796,7 @@ SPEC CHECKSUMS:
   React-logger: d79b704bf215af194f5213a6b7deec50ba8e6a9b
   React-Mapbuffer: b982d5bba94a8bc073bda48f0d27c9b28417fae3
   React-microtasksnativemodule: 2cec1d6e126598df0f165268afa231174dd1a611
-  react-native-photo-manipulator: 524d5b422b88afc51643510037c2964aaef5ff41
+  react-native-photo-manipulator: 2dec0b7179389d42470005ad8e72a5fc069b828a
   React-nativeconfig: 8c83d992b9cc7d75b5abe262069eaeea4349f794
   React-NativeModulesApple: 9f7920224a3b0c7d04d77990067ded14cee3c614
   React-perflogger: 59e1a3182dca2cee7b9f1f7aab204018d46d1914
