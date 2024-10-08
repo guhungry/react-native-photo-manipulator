@@ -5,7 +5,6 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "example-exampleRotate"
-    direction: DOWN
     visibilityPercentage: 60
     timeout: 60000
     speed: 80
@@ -15,8 +14,7 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "rotate90Result"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
     timeout: 30000
     speed: 60
 - assertVisible:
@@ -25,8 +23,7 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "rotate180Result"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
     timeout: 30000
     speed: 60
 - assertVisible:
@@ -35,8 +32,7 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "rotate270Result"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
     timeout: 30000
     speed: 60
 - assertVisible:

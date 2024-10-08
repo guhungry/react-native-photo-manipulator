@@ -11,63 +11,55 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "example-overlayImage"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-overlayImage"
 
 - scrollUntilVisible:
     element:
       id: "example-exampleFlip"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-exampleFlip"
 
 - scrollUntilVisible:
     element:
       id: "example-exampleRotate"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-exampleRotate"
 
 - scrollUntilVisible:
     element:
       id: "example-exampleOverlayImage"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-exampleOverlayImage"
 
 - scrollUntilVisible:
     element:
       id: "example-examplePrintText"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-examplePrintText"
 
 - scrollUntilVisible:
     element:
       id: "example-exampleCrop"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-exampleCrop"
 
 - scrollUntilVisible:
     element:
       id: "example-exampleOptimize"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-exampleOptimize"
 
 - scrollUntilVisible:
     element:
       id: "example-exampleBatch"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
 - assertVisible:
     id: "example-exampleBatch"

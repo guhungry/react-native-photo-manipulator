@@ -5,9 +5,8 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "example-examplePrintText"
-    direction: DOWN
-    visibilityPercentage: 70
-    timeout: 30000
+    visibilityPercentage: 60
+    timeout: 60000
     speed: 80
 - assertVisible:
     id: "example-examplePrintText"
@@ -18,9 +17,8 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "printTextPngResult"
-    direction: DOWN
-    visibilityPercentage: 80
+    visibilityPercentage: 60
     timeout: 30000
-    speed: 80
+    speed: 60
 - assertVisible:
     id: "printTextPngResult"

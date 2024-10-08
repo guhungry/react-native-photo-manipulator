@@ -5,7 +5,6 @@ appId: photomanipulator.example
 - scrollUntilVisible:
     element:
       id: "example-exampleOptimize"
-    direction: DOWN
     visibilityPercentage: 60
     timeout: 60000
     speed: 80
