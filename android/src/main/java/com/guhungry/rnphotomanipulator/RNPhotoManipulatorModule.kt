@@ -174,19 +174,49 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
 
     private fun printLine(image: Bitmap, text: String, location: PointF, options: ReadableMap) {
         val shadowOffset = toPointF(options.getMap("shadowOffset"))
+        // BidiFormatter to ensure correct direction of RTL/LTR mixed text
+        val bidiFormatter = android.text.BidiFormatter.getInstance()
+
+        // Detect if the text contains Arabic or is RTL
+        val isRTL = bidiFormatter.isRtl(text) || containsArabic(text)
+
+        // Adjust the alignment based on the text direction (RTL or LTR)
+        val alignment = if (isRTL) Paint.Align.RIGHT else Paint.Align.LEFT
+
+        // Adjust the location for RTL text
+        val adjustedLocation = if (isRTL) {
+            PointF(image.width - location.x, location.y)  // Flip location for RTL
+        } else {
+            location
+        }
+
+        // Set the text style, including shadow, alignment, etc.
         val style = TextStyle(
-            toColorInt(options.getMap("color"))!!,
-            options.getDouble("textSize").toFloat(),
-            getFont(options.getString("fontName")),
-            Paint.Align.LEFT,
-            options.getInt("thickness").toFloat(),
-            options.getDouble("rotation").toFloat(),
-            options.getDouble("shadowRadius").toFloat(),
-            shadowOffset?.x ?: 0f,
-            shadowOffset?.y ?: 0f,
-            toColorInt(options.getMap("shadowColor"))
+            toColorInt(options.getMap("color"))!!,            // Text color
+            options.getDouble("textSize").toFloat(),          // Text size
+            getFont(options.getString("fontName")),           // Typeface
+            alignment,                                        // Paint alignment based on RTL
+            options.getInt("thickness").toFloat(),            // Stroke thickness (if applicable)
+            options.getDouble("rotation").toFloat(),          // Text rotation
+            options.getDouble("shadowRadius").toFloat(),      // Shadow radius
+            shadowOffset?.x ?: 0f,                            // Shadow X offset
+            shadowOffset?.y ?: 0f,                            // Shadow Y offset
+            toColorInt(options.getMap("shadowColor"))         // Shadow color
         )
-        printText(image, text, location, style)
+
+        // Print the text on the image with the adjusted location and style
+        printText(image, bidiFormatter.unicodeWrap(text), adjustedLocation, style)
+    }
+
+    // Helper function to detect Arabic characters in a string
+    private fun containsArabic(text: String): Boolean {
+        // Arabic Unicode range: \u0600 - \u06FF
+        for (char in text) {
+            if (char in '\u0600'..'\u06FF') {
+                return true
+            }
+        }
+        return false
     }
 
     private fun getFont(fontName: String?): Typeface {
