@@ -187,13 +187,62 @@ static TextStyle *toTextStyle(NSDictionary *options) {
           NSString *text = [ParamUtils string:options[@"text"]];
           CGPoint position = [ParamUtils cgPoint:options[@"position"]];
           TextStyle * style = toTextStyle(options);
+        
+        // Get font and color directly from options dictionary
+            UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
+            UIColor *color = [ParamUtils color:options[@"color"]];
 
-          image = [image drawText:text position:position style:style];
+            // Use NSAttributedString for better text rendering support (including RTL)
+            NSDictionary *attributes = @{
+                NSFontAttributeName: font,
+                NSForegroundColorAttributeName: color
+            };
+            NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+
+            // Create a text drawing context
+            UIGraphicsBeginImageContext(image.size);
+            [image drawAtPoint:CGPointZero];  // Draw the base image
+            
+            // Check if the text is RTL
+            BOOL isRTL = [self isTextRTL:text];
+
+            // If the text is RTL, flip the context horizontally
+            if (isRTL) {
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                CGContextSaveGState(context);
+                CGContextTranslateCTM(context, image.size.width, 0);
+                CGContextScaleCTM(context, -1.0, 1.0);  // Flip horizontally
+            }
+
+            // Draw the text
+            CGRect textRect = CGRectMake(position.x, position.y, image.size.width, image.size.height);
+            [attributedText drawInRect:textRect];
+
+            // If the text is RTL, restore the context
+            if (isRTL) {
+                CGContextRestoreGState(UIGraphicsGetCurrentContext());
+            }
+
+            // Get the final image with text
+            image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
       }
 
       NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];
       resolve(uri);
     }];
+}
+
++ (BOOL)isTextRTL:(NSString *)text {
+    // Check if the text contains any RTL character
+    for (NSUInteger i = 0; i < text.length; i++) {
+        unichar c = [text characterAtIndex:i];
+        // Unicode range for Arabic and Hebrew scripts (add more ranges as needed)
+        if ((c >= 0x0590 && c <= 0x05FF) || (c >= 0x0600 && c <= 0x06FF)) {
+            return YES; // RTL detected
+        }
+    }
+    return NO; // No RTL characters found
 }
 
 + (void)optimize:(NSString *)uri
