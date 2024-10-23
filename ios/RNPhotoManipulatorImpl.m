@@ -50,7 +50,7 @@ static TextStyle *toTextStyle(NSDictionary *options, NSTextAlignment alignment) 
     CGPoint shadowOffset = [ParamUtils cgPoint:options[@"shadowOffset"]];
     UIColor *shadowColor = [ParamUtils color:options[@"shadowColor"]];
     
-  TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor alignment:alignment];
+    TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor alignment:alignment];
     return style;
 }
 
@@ -179,7 +179,7 @@ static UIImage* printLine(UIImage *image, id options) {
     NSTextAlignment alignment = isRTL ? NSTextAlignmentRight : NSTextAlignmentLeft;
     CGPoint adjustedPosition = position;
     if (isRTL) adjustedPosition = CGPointMake(image.size.width - position.x, position.y);
-    TextStyle * style = toTextStyle(options, alignment);
+    TextStyle *style = toTextStyle(options, alignment);
   
     return [image drawText:text position:adjustedPosition style:style];
 }
