@@ -111,6 +111,7 @@ describe('Photo Manipulator', () => {
               text: 'PRINT ME',
               textSize: 30,
               thickness: 0,
+              direction: 'ltr',
             },
           },
         ],

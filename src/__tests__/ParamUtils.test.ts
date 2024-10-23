@@ -5,7 +5,7 @@ import {
   toTextOptionsNative,
 } from '../ParamUtils';
 import 'jest-extended';
-import { FlipMode } from '../PhotoManipulatorTypes';
+import { FlipMode, TextDirection } from '../PhotoManipulatorTypes';
 
 describe('ParamUtils', () => {
   describe('toColorNative', () => {
@@ -113,6 +113,7 @@ describe('ParamUtils', () => {
         text: 'Bee',
         textSize: 32,
         thickness: 0,
+        direction: TextDirection.RTL,
       });
       expect(value).toEqual({
         color: { r: 102, b: 18, g: 50, a: 255 },
@@ -123,6 +124,7 @@ describe('ParamUtils', () => {
         text: 'Bee',
         textSize: 32,
         thickness: 0,
+        direction: 'rtl',
       });
     });
 
@@ -147,6 +149,7 @@ describe('ParamUtils', () => {
         text: 'holla',
         textSize: 2,
         thickness: 0,
+        direction: 'ltr',
       });
     });
   });
@@ -174,6 +177,7 @@ describe('ParamUtils', () => {
           text: 'TEXT',
           textSize: 22,
           thickness: 1,
+          direction: 'ltr',
         },
       });
     });

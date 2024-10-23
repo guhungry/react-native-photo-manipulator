@@ -1,11 +1,9 @@
 #import "RNPhotoManipulatorImpl.h"
 
-#import <CoreFoundation/CoreFoundation.h>
 #import <React/RCTImageLoader.h>
 #import "ImageUtils.h"
 #import "ParamUtils.h"
 
-@import UIKit;
 @import WCPhotoManipulator;
 
 @implementation RNPhotoManipulatorImpl
@@ -175,7 +173,7 @@ static UIImage* printLine(UIImage *image, id options) {
     NSString *text = [ParamUtils string:options[@"text"]];
     CGPoint position = [ParamUtils cgPoint:options[@"position"]];
 
-    BOOL isRTL = isTextRTL(text);
+    BOOL isRTL = isTextRTL([ParamUtils string:options[@"direction"]]);
     NSTextAlignment alignment = isRTL ? NSTextAlignmentRight : NSTextAlignmentLeft;
     CGPoint adjustedPosition = position;
     if (isRTL) adjustedPosition = CGPointMake(image.size.width - position.x, position.y);
@@ -185,14 +183,7 @@ static UIImage* printLine(UIImage *image, id options) {
 }
 
 static BOOL isTextRTL(NSString* text) {
-    NSString *language = (NSString *)CFBridgingRelease(CFStringTokenizerCopyBestStringLanguage((CFStringRef)text, CFRangeMake(0, text.length)));
-  
-    if (language) {
-        NSLocaleLanguageDirection direction = [NSLocale characterDirectionForLanguage:language];
-        return direction == NSLocaleLanguageDirectionRightToLeft;
-    }
-  
-    return NO;
+    return [text isEqualToString:@"rtl"];
 }
 
 + (void)printText:(NSString *)uri

@@ -27,6 +27,8 @@ import com.guhungry.rnphotomanipulator.utils.ParamUtils.toCGRect
 import com.guhungry.rnphotomanipulator.utils.ParamUtils.toRotationMode
 import com.guhungry.rnphotomanipulator.utils.ParamUtils.toCGSize
 
+private const val LANGUAGE_RTL = "rtl"
+
 class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : RNPhotoManipulatorSpec(context) {
     override fun getName(): String {
         return NAME
@@ -178,7 +180,7 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
         val bidiFormatter = android.text.BidiFormatter.getInstance()
 
         // Detect if the text contains Arabic or is RTL
-        val isRTL = bidiFormatter.isRtl(text)
+        val isRTL = LANGUAGE_RTL == options.getString("direction")
 
         // Adjust the alignment based on the text direction (RTL or LTR)
         val alignment = if (isRTL) Paint.Align.RIGHT else Paint.Align.LEFT

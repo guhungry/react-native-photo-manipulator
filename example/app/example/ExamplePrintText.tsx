@@ -2,7 +2,10 @@ import * as React from 'react';
 import { Image, Text } from 'react-native';
 import styles, { ImageResultProps } from '../App.styles';
 import { noop } from '../utils';
-import PhotoManipulator, { MimeType } from 'react-native-photo-manipulator';
+import PhotoManipulator, {
+  MimeType,
+  TextDirection,
+} from 'react-native-photo-manipulator';
 import type { TextOptions } from 'react-native-photo-manipulator';
 import { IMAGE } from './settings';
 
@@ -95,6 +98,7 @@ export default React.memo(function ExamplePrintText() {
         color: 'green',
         textSize: 300,
         position: { x: 180, y: 1550 },
+        direction: TextDirection.LTR,
       },
       {
         text: 'Test Print Text 3',
@@ -102,6 +106,7 @@ export default React.memo(function ExamplePrintText() {
         textSize: 30,
         position: { x: 280, y: 1200 },
         rotation: 30,
+        direction: TextDirection.LTR,
       },
       {
         text: 'اَلْعَرَبِيَّةُ',
@@ -112,12 +117,14 @@ export default React.memo(function ExamplePrintText() {
         shadowRadius: 10,
         shadowOffset: { x: 5, y: 10 },
         shadowColor: 'green',
+        direction: TextDirection.RTL,
       },
       {
         text: 'اَلْعَرَبِيَّةُ',
         color: 'blue',
         textSize: 500,
         position: { x: 80, y: 300 },
+        direction: TextDirection.RTL,
       },
     ];
   }

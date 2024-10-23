@@ -3,11 +3,12 @@
  */
 import { Image } from 'react-native';
 import rgba from 'color-rgba';
-import type {
-  Color,
-  ImageSource,
-  PhotoBatchOperations,
-  TextOptions,
+import {
+  TextDirection,
+  type Color,
+  type ImageSource,
+  type PhotoBatchOperations,
+  type TextOptions,
 } from './PhotoManipulatorTypes';
 
 /**
@@ -38,6 +39,7 @@ export const toTextOptionsNative = (it: TextOptions): TextOptions => ({
   rotation: it.rotation ?? 0,
   shadowRadius: it.shadowRadius ?? 0,
   shadowColor: it.shadowColor && toColorNative(it.shadowColor),
+  direction: it.direction ?? TextDirection.LTR,
 });
 
 export const toBatchNative = (
