@@ -178,7 +178,7 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
         val bidiFormatter = android.text.BidiFormatter.getInstance()
 
         // Detect if the text contains Arabic or is RTL
-        val isRTL = bidiFormatter.isRtl(text) || containsArabic(text)
+        val isRTL = bidiFormatter.isRtl(text)
 
         // Adjust the alignment based on the text direction (RTL or LTR)
         val alignment = if (isRTL) Paint.Align.RIGHT else Paint.Align.LEFT
@@ -206,17 +206,6 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
 
         // Print the text on the image with the adjusted location and style
         printText(image, bidiFormatter.unicodeWrap(text), adjustedLocation, style)
-    }
-
-    // Helper function to detect Arabic characters in a string
-    private fun containsArabic(text: String): Boolean {
-        // Arabic Unicode range: \u0600 - \u06FF
-        for (char in text) {
-            if (char in '\u0600'..'\u06FF') {
-                return true
-            }
-        }
-        return false
     }
 
     private fun getFont(fontName: String?): Typeface {
