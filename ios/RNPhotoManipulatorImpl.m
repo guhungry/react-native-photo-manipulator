@@ -1,9 +1,11 @@
 #import "RNPhotoManipulatorImpl.h"
 
+#import <CoreFoundation/CoreFoundation.h>
 #import <React/RCTImageLoader.h>
 #import "ImageUtils.h"
 #import "ParamUtils.h"
 
+@import UIKit;
 @import WCPhotoManipulator;
 
 @implementation RNPhotoManipulatorImpl
@@ -39,7 +41,7 @@ const CGFloat DEFAULT_QUALITY = 100;
     }];
 }
 
-static TextStyle *toTextStyle(NSDictionary *options) {
+static TextStyle *toTextStyle(NSDictionary *options, NSTextAlignment alignment) {
     UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
     UIColor *color = [ParamUtils color:options[@"color"]];
     CGFloat thickness = [ParamUtils cgFloat:options[@"thickness"]];
@@ -48,7 +50,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
     CGPoint shadowOffset = [ParamUtils cgPoint:options[@"shadowOffset"]];
     UIColor *shadowColor = [ParamUtils color:options[@"shadowColor"]];
     
-    TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor];
+  TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor alignment:alignment];
     return style;
 }
 
@@ -66,10 +68,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
     } else if ([type isEqual:@"text"]) {
         NSDictionary *options = [ParamUtils dictionary:operation[@"options"]];
         
-        NSString *text = [ParamUtils string:options[@"text"]];
-        CGPoint position = [ParamUtils cgPoint:options[@"position"]];
-        TextStyle * style = toTextStyle(options);
-        return [image drawText:text position:position style:style];
+        return printLine(image, options);
     } else if ([type isEqual:@"flip"]) {
         NSString *mode = [ParamUtils string:operation[@"mode"]];
 
@@ -172,6 +171,30 @@ static TextStyle *toTextStyle(NSDictionary *options) {
     }];
 }
 
+static UIImage* printLine(UIImage *image, id options) {
+    NSString *text = [ParamUtils string:options[@"text"]];
+    CGPoint position = [ParamUtils cgPoint:options[@"position"]];
+
+    BOOL isRTL = isTextRTL(text);
+    NSTextAlignment alignment = isRTL ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    CGPoint adjustedPosition = position;
+    if (isRTL) adjustedPosition = CGPointMake(image.size.width - position.x, position.y);
+    TextStyle * style = toTextStyle(options, alignment);
+  
+    return [image drawText:text position:adjustedPosition style:style];
+}
+
+static BOOL isTextRTL(NSString* text) {
+    NSString *language = (NSString *)CFBridgingRelease(CFStringTokenizerCopyBestStringLanguage((CFStringRef)text, CFRangeMake(0, text.length)));
+  
+    if (language) {
+        NSLocaleLanguageDirection direction = [NSLocale characterDirectionForLanguage:language];
+        return direction == NSLocaleLanguageDirectionRightToLeft;
+    }
+  
+    return NO;
+}
+
 + (void)printText:(NSString *)uri
         texts:(NSArray *)texts
         mimeType:(NSString *)mimeType
@@ -184,65 +207,12 @@ static TextStyle *toTextStyle(NSDictionary *options) {
           return;
       }
       for (id options in texts) {
-          NSString *text = [ParamUtils string:options[@"text"]];
-          CGPoint position = [ParamUtils cgPoint:options[@"position"]];
-          TextStyle * style = toTextStyle(options);
-        
-        // Get font and color directly from options dictionary
-            UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
-            UIColor *color = [ParamUtils color:options[@"color"]];
-
-            // Use NSAttributedString for better text rendering support (including RTL)
-            NSDictionary *attributes = @{
-                NSFontAttributeName: font,
-                NSForegroundColorAttributeName: color
-            };
-            NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributes];
-
-            // Create a text drawing context
-            UIGraphicsBeginImageContext(image.size);
-            [image drawAtPoint:CGPointZero];  // Draw the base image
-            
-            // Check if the text is RTL
-            BOOL isRTL = [self isTextRTL:text];
-
-            // If the text is RTL, flip the context horizontally
-            if (isRTL) {
-                CGContextRef context = UIGraphicsGetCurrentContext();
-                CGContextSaveGState(context);
-                CGContextTranslateCTM(context, image.size.width, 0);
-                CGContextScaleCTM(context, -1.0, 1.0);  // Flip horizontally
-            }
-
-            // Draw the text
-            CGRect textRect = CGRectMake(position.x, position.y, image.size.width, image.size.height);
-            [attributedText drawInRect:textRect];
-
-            // If the text is RTL, restore the context
-            if (isRTL) {
-                CGContextRestoreGState(UIGraphicsGetCurrentContext());
-            }
-
-            // Get the final image with text
-            image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
+          image = printLine(image, options);
       }
 
       NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];
       resolve(uri);
     }];
-}
-
-+ (BOOL)isTextRTL:(NSString *)text {
-    // Check if the text contains any RTL character
-    for (NSUInteger i = 0; i < text.length; i++) {
-        unichar c = [text characterAtIndex:i];
-        // Unicode range for Arabic and Hebrew scripts (add more ranges as needed)
-        if ((c >= 0x0590 && c <= 0x05FF) || (c >= 0x0600 && c <= 0x06FF)) {
-            return YES; // RTL detected
-        }
-    }
-    return NO; // No RTL characters found
 }
 
 + (void)optimize:(NSString *)uri
