@@ -39,7 +39,7 @@ const CGFloat DEFAULT_QUALITY = 100;
     }];
 }
 
-static TextStyle *toTextStyle(NSDictionary *options) {
+static TextStyle *toTextStyle(NSDictionary *options, NSTextAlignment alignment) {
     UIFont *font = [ParamUtils font:options[@"fontName"] size:options[@"textSize"]];
     UIColor *color = [ParamUtils color:options[@"color"]];
     CGFloat thickness = [ParamUtils cgFloat:options[@"thickness"]];
@@ -48,7 +48,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
     CGPoint shadowOffset = [ParamUtils cgPoint:options[@"shadowOffset"]];
     UIColor *shadowColor = [ParamUtils color:options[@"shadowColor"]];
     
-    TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor];
+    TextStyle *style = [[TextStyle alloc] initWithColor:color font:font thickness:thickness rotation:rotation shadowRadius:shadowRadius shadowOffsetX:shadowOffset.x shadowOffsetY:shadowOffset.y shadowColor:shadowColor alignment:alignment];
     return style;
 }
 
@@ -66,10 +66,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
     } else if ([type isEqual:@"text"]) {
         NSDictionary *options = [ParamUtils dictionary:operation[@"options"]];
         
-        NSString *text = [ParamUtils string:options[@"text"]];
-        CGPoint position = [ParamUtils cgPoint:options[@"position"]];
-        TextStyle * style = toTextStyle(options);
-        return [image drawText:text position:position style:style];
+        return printLine(image, options);
     } else if ([type isEqual:@"flip"]) {
         NSString *mode = [ParamUtils string:operation[@"mode"]];
 
@@ -172,6 +169,23 @@ static TextStyle *toTextStyle(NSDictionary *options) {
     }];
 }
 
+static UIImage* printLine(UIImage *image, id options) {
+    NSString *text = [ParamUtils string:options[@"text"]];
+    CGPoint position = [ParamUtils cgPoint:options[@"position"]];
+
+    BOOL isRTL = isTextRTL([ParamUtils string:options[@"direction"]]);
+    NSTextAlignment alignment = isRTL ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    CGPoint adjustedPosition = position;
+    if (isRTL) adjustedPosition = CGPointMake(image.size.width - position.x, position.y);
+    TextStyle *style = toTextStyle(options, alignment);
+  
+    return [image drawText:text position:adjustedPosition style:style];
+}
+
+static BOOL isTextRTL(NSString* text) {
+    return [text isEqualToString:@"rtl"];
+}
+
 + (void)printText:(NSString *)uri
         texts:(NSArray *)texts
         mimeType:(NSString *)mimeType
@@ -184,11 +198,7 @@ static TextStyle *toTextStyle(NSDictionary *options) {
           return;
       }
       for (id options in texts) {
-          NSString *text = [ParamUtils string:options[@"text"]];
-          CGPoint position = [ParamUtils cgPoint:options[@"position"]];
-          TextStyle * style = toTextStyle(options);
-
-          image = [image drawText:text position:position style:style];
+          image = printLine(image, options);
       }
 
       NSString *uri = [ImageUtils saveTempFile:image mimeType:mimeType quality:DEFAULT_QUALITY];

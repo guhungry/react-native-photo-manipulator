@@ -67,6 +67,7 @@ describe('Photo Manipulator', () => {
             text: 'TEXT MAE',
             textSize: 45,
             thickness: 0,
+            direction: 'ltr',
           },
           {
             color: { r: 0, g: 0, b: 0, a: 255 },
@@ -77,6 +78,7 @@ describe('Photo Manipulator', () => {
             text: 'TEXT MAE',
             textSize: 45,
             thickness: 3,
+            direction: 'ltr',
           },
         ],
         MimeType.JPEG

@@ -1,3 +1,15 @@
+export enum TextDirection {
+  /**
+   * Left-to-Right text direction (e.g., English, Spanish)
+   */
+  LTR = 'ltr',
+
+  /**
+   * Right-to-Left text direction (e.g., Arabic, Hebrew)
+   */
+  RTL = 'rtl',
+}
+
 export interface Point {
   x: number;
   y: number;
@@ -20,6 +32,7 @@ export interface TextOptions {
   shadowRadius?: number;
   shadowOffset?: Point;
   shadowColor?: string | Color;
+  direction?: TextDirection;
 }
 
 export interface Color {
