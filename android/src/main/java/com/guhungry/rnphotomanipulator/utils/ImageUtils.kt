@@ -79,7 +79,7 @@ object ImageUtils {
         return when {
             output.isMutable -> output
             else -> try {
-                output.copy(output.config, true)
+                output.copy(output.config ?: Bitmap.Config.ARGB_8888, true)
             } finally {
                 output.recycle()
             }
