@@ -4,6 +4,7 @@ import styles, { ImageResultProps } from '../App.styles';
 import { noop } from '../utils';
 import PhotoManipulator, {
   MimeType,
+  TextAlign,
   TextDirection,
 } from 'react-native-photo-manipulator';
 import type { TextOptions } from 'react-native-photo-manipulator';
@@ -124,6 +125,51 @@ export default React.memo(function ExamplePrintText() {
         color: 'blue',
         textSize: 500,
         position: { x: 80, y: 300 },
+        direction: TextDirection.RTL,
+      },
+      {
+        text: 'LTR Start',
+        color: 'green',
+        textSize: 300,
+        position: { x: 1000, y: 2050 },
+        align: TextAlign.START,
+      },
+      {
+        text: 'LTR Center',
+        color: 'green',
+        textSize: 300,
+        position: { x: 1000, y: 2550 },
+        align: TextAlign.CENTER,
+      },
+      {
+        text: 'LTR End',
+        color: 'green',
+        textSize: 300,
+        position: { x: 1000, y: 3050 },
+        align: TextAlign.END,
+      },
+      {
+        text: 'RTL Start',
+        color: 'green',
+        textSize: 300,
+        position: { x: 1000, y: 3550 },
+        align: TextAlign.START,
+        direction: TextDirection.RTL,
+      },
+      {
+        text: 'RTL Center',
+        color: 'green',
+        textSize: 300,
+        position: { x: 1000, y: 4050 },
+        align: TextAlign.CENTER,
+        direction: TextDirection.RTL,
+      },
+      {
+        text: 'RTL End',
+        color: 'green',
+        textSize: 300,
+        position: { x: 1000, y: 4550 },
+        align: TextAlign.END,
         direction: TextDirection.RTL,
       },
     ];

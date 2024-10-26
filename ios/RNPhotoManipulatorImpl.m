@@ -174,7 +174,7 @@ static UIImage* printLine(UIImage *image, id options) {
     CGPoint position = [ParamUtils cgPoint:options[@"position"]];
 
     BOOL isRTL = isTextRTL([ParamUtils string:options[@"direction"]]);
-    NSTextAlignment alignment = isRTL ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    NSTextAlignment alignment = toTextAlign(isRTL, [ParamUtils string:options[@"align"]]);
     CGPoint adjustedPosition = position;
     if (isRTL) adjustedPosition = CGPointMake(image.size.width - position.x, position.y);
     TextStyle *style = toTextStyle(options, alignment);
@@ -184,6 +184,12 @@ static UIImage* printLine(UIImage *image, id options) {
 
 static BOOL isTextRTL(NSString* text) {
     return [text isEqualToString:@"rtl"];
+}
+
+static NSTextAlignment toTextAlign(BOOL isRTL, NSString* align) {
+    if ([align isEqualToString:@"center"]) return NSTextAlignmentCenter;
+    if ([align isEqualToString:@"end"]) return isRTL ? NSTextAlignmentLeft : NSTextAlignmentRight;
+    return isRTL ? NSTextAlignmentRight : NSTextAlignmentLeft;
 }
 
 + (void)printText:(NSString *)uri

@@ -10,6 +10,23 @@ export enum TextDirection {
   RTL = 'rtl',
 }
 
+export enum TextAlign {
+  /**
+   * Align text to the start of the line (e.g., left-aligned text in LTR scripts, right-aligned text in RTL scripts)
+   */
+  START = 'start',
+
+  /**
+   * Align text to the end of the line (e.g., right-aligned text in LTR scripts, left-aligned text in RTL scripts)
+   */
+  END = 'end',
+
+  /**
+   * Align text to the center of the line
+   */
+  CENTER = 'center',
+}
+
 export interface Point {
   x: number;
   y: number;
@@ -33,6 +50,7 @@ export interface TextOptions {
   shadowOffset?: Point;
   shadowColor?: string | Color;
   direction?: TextDirection;
+  align?: TextAlign;
 }
 
 export interface Color {
