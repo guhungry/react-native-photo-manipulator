@@ -72,6 +72,7 @@ import RNPhotoManipulator from 'react-native-photo-manipulator';
     * [`Point`](README.md#point)
     * [`Rect`](README.md#rect)
     * [`Size`](README.md#size)
+    * [`TextAlign`](README.md#textalign)
     * [`TextDirection`](README.md#textdirection)
     * [`TextOptions`](README.md#textoptions)
 ### Method
@@ -392,6 +393,15 @@ Represent size (width, height) of region or image
 | `width`         | number    | The width of the region  |
 | `height`        | number    | The height of the region |
 
+#### TextAlign
+Enum represent text align
+
+| Enum            | Description                                                       |
+| --------------- | ----------------------------------------------------------------- |
+| START           | Align text to the start of the line (e.g., left-aligned text in LTR, right-aligned text in RTL)            |
+| CENTER          | Align text to the center of the line                              |
+| END             | Align text to the end of the line (e.g., right-aligned text in LTR, left-aligned text in RTL)               |
+
 #### TextDirection
 Enum represent text direction, this will affect coordinate and alignment
 
@@ -416,3 +426,4 @@ Represent attributes of text such as text, color, size, and etc.
 | `shadowOffset`      | [`Point`](README.md#point)                        | No       | The shadow offset                |
 | `shadowColor`         | string                        | No       | The color of the shadow                          |
 | `direction`         | [`TextDirection`](README.md#textdirection) | No       | The direction of the text, default to TextDirection.LTR       |
+| `align`             | [`TextAlign`](README.md#textalign) | No       | The direction of the text, default to TextAlign.START       |
