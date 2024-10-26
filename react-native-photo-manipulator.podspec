@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/guhungry/react-native-photo-manipulator.git", :tag => "#{s.version}" }
   s.source_files = "ios/**/*.{h,m,mm,cpp}"
 
-  s.dependency 'WCPhotoManipulator', '~> 2.5.0'
+  s.dependency 'WCPhotoManipulator', '~> 2.6.0'
 
   if respond_to?(:install_modules_dependencies, true)
     # React Native Core dependency
