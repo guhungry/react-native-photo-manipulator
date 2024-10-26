@@ -393,12 +393,12 @@ Represent size (width, height) of region or image
 | `height`        | number    | The height of the region |
 
 #### TextDirection
-Enum represent text direction
+Enum represent text direction, this will affect coordinate and alignment
 
 | Enum            | Description                                                       |
 | --------------- | ----------------------------------------------------------------- |
-| LTR             | Left-to-Right text direction (e.g., English, Spanish)             |
-| RTL             | Right-to-Left text direction (e.g., Arabic, Hebrew)               |
+| LTR             | Left-to-Right text direction (e.g., English, Spanish) `[Top-Left, Right]`            |
+| RTL             | Right-to-Left text direction (e.g., Arabic, Hebrew) `[Top-Right, Right]`               |
 
 #### TextOptions
 Represent attributes of text such as text, color, size, and etc.
