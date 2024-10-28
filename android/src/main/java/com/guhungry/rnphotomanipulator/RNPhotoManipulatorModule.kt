@@ -27,6 +27,10 @@ import com.guhungry.rnphotomanipulator.utils.ParamUtils.toCGRect
 import com.guhungry.rnphotomanipulator.utils.ParamUtils.toRotationMode
 import com.guhungry.rnphotomanipulator.utils.ParamUtils.toCGSize
 
+private const val LANGUAGE_RTL = "rtl"
+private const val ALIGNMENT_CENTER = "center"
+private const val ALIGNMENT_END = "end"
+
 class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : RNPhotoManipulatorSpec(context) {
     override fun getName(): String {
         return NAME
@@ -178,17 +182,12 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
         val bidiFormatter = android.text.BidiFormatter.getInstance()
 
         // Detect if the text contains Arabic or is RTL
-        val isRTL = bidiFormatter.isRtl(text) || containsArabic(text)
+        val isRTL = LANGUAGE_RTL == options.getString("direction")
 
         // Adjust the alignment based on the text direction (RTL or LTR)
-        val alignment = if (isRTL) Paint.Align.RIGHT else Paint.Align.LEFT
+        val alignment = toTextAlign(isRTL, options.getString("align"))
 
-        // Adjust the location for RTL text
-        val adjustedLocation = if (isRTL) {
-            PointF(image.width - location.x, location.y)  // Flip location for RTL
-        } else {
-            location
-        }
+        val adjustedLocation = toAdjustedLocation(isRTL, location, image.width)
 
         // Set the text style, including shadow, alignment, etc.
         val style = TextStyle(
@@ -208,15 +207,17 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
         printText(image, bidiFormatter.unicodeWrap(text), adjustedLocation, style)
     }
 
-    // Helper function to detect Arabic characters in a string
-    private fun containsArabic(text: String): Boolean {
-        // Arabic Unicode range: \u0600 - \u06FF
-        for (char in text) {
-            if (char in '\u0600'..'\u06FF') {
-                return true
-            }
-        }
-        return false
+
+    private fun toAdjustedLocation(isRTL: Boolean, location: PointF, imageWidth: Int) = if (isRTL) {
+        PointF(imageWidth - location.x, location.y)  // Flip location for RTL
+    } else {
+        location
+    }
+
+    private fun toTextAlign(isRTL: Boolean, align: String?): Paint.Align {
+        if (ALIGNMENT_CENTER == align) return Paint.Align.CENTER
+        if (ALIGNMENT_END == align) return if (isRTL) Paint.Align.LEFT else Paint.Align.RIGHT
+        return if (isRTL) Paint.Align.RIGHT else Paint.Align.LEFT
     }
 
     private fun getFont(fontName: String?): Typeface {

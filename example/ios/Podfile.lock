@@ -1237,7 +1237,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-photo-manipulator (1.7.4):
+  - react-native-photo-manipulator (1.9.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1257,7 +1257,7 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - WCPhotoManipulator (~> 2.4.0)
+    - WCPhotoManipulator (~> 2.6.0)
     - Yoga
   - React-nativeconfig (0.75.4)
   - React-NativeModulesApple (0.75.4):
@@ -1547,7 +1547,7 @@ PODS:
     - React-jsi
   - ReactTestApp-Resources (1.0.0-dev)
   - SocketRocket (0.7.0)
-  - WCPhotoManipulator (2.4.5)
+  - WCPhotoManipulator (2.6.0)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1796,7 +1796,7 @@ SPEC CHECKSUMS:
   React-logger: d79b704bf215af194f5213a6b7deec50ba8e6a9b
   React-Mapbuffer: b982d5bba94a8bc073bda48f0d27c9b28417fae3
   React-microtasksnativemodule: 2cec1d6e126598df0f165268afa231174dd1a611
-  react-native-photo-manipulator: 2dec0b7179389d42470005ad8e72a5fc069b828a
+  react-native-photo-manipulator: bcee816aaed91833f8ad7608586d4a9cfeb8f108
   React-nativeconfig: 8c83d992b9cc7d75b5abe262069eaeea4349f794
   React-NativeModulesApple: 9f7920224a3b0c7d04d77990067ded14cee3c614
   React-perflogger: 59e1a3182dca2cee7b9f1f7aab204018d46d1914
@@ -1827,7 +1827,7 @@ SPEC CHECKSUMS:
   ReactTestApp-DevSupport: ed439cce949caf074af3ae05051b4bd157ed4019
   ReactTestApp-Resources: 4636447c40726b843aab474e2fe6ef5b897952e8
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  WCPhotoManipulator: 1a35d40ae966b7fbc3954cd6597448fd953f3852
+  WCPhotoManipulator: 804988e16a6fe941cddff942b2acf887110de5d6
   Yoga: 055f92ad73f8c8600a93f0e25ac0b2344c3b07e6
 
 PODFILE CHECKSUM: 655fdb7d5e7844c47be69bf3213a13dc508787a2
