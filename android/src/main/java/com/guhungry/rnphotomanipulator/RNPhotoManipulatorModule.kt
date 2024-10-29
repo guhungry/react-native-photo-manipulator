@@ -221,13 +221,11 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
     }
 
     private fun getFont(fontName: String?): Typeface {
-        if (fontName == null) return Typeface.DEFAULT
-        return try {
-            ReactFontManager.getInstance()
-                .getTypeface(fontName, Typeface.NORMAL, context.assets)
-        } catch (e: Exception) {
-            Typeface.DEFAULT
-        }
+        return fontName?.let {
+            runCatching {
+                ReactFontManager.getInstance().getTypeface(it, Typeface.NORMAL, context.assets)
+            }.getOrElse { Typeface.DEFAULT }
+        } ?: Typeface.DEFAULT
     }
 
     @ReactMethod
