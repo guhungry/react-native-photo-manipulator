@@ -407,7 +407,7 @@ Enum represent text direction, this will affect coordinate and alignment
 
 | Enum            | Description                                                       |
 | --------------- | ----------------------------------------------------------------- |
-| LTR             | Left-to-Right text direction (e.g., English, Spanish) `[Top-Left, Right]`            |
+| LTR             | Left-to-Right text direction (e.g., English, Spanish) `[Top-Left, Left]`            |
 | RTL             | Right-to-Left text direction (e.g., Arabic, Hebrew) `[Top-Right, Right]`               |
 
 #### TextOptions
