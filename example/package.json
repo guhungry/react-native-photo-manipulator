@@ -19,8 +19,8 @@
     "test:ios:run": "xcrun simctl install Booted ios/build/Build/Products/Release-iphonesimulator/ReactTestApp.app && maestro test .maestro"
   },
   "dependencies": {
-    "react": "^18.3.0",
-    "react-native": "^0.75.0"
+    "react": "^19.0.0",
+    "react-native": "^0.76.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
