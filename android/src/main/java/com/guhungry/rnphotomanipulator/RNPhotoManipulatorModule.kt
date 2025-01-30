@@ -163,7 +163,7 @@ class RNPhotoManipulatorModule(private val context: ReactApplicationContext) : R
             val output = bitmapFromUri(context, uri, mutableOptions())
 
             for (i in 0 until list.size()) {
-                val text = list.getMap(i)
+                val text = list.getMap(i) ?: continue
                 printLine(output, text.getString("text")!!, toPointF(text.getMap("position"))!!, text)
             }
 
