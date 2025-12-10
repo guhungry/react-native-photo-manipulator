@@ -139,6 +139,8 @@ jobs:
         run: ls -R example/android/app/build/outputs/apk
 
       - uses: dniHze/maestro-test-action@v1
+        with:
+          version: 2.0.10
 
       - name: Run Tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -222,6 +224,8 @@ jobs:
           model: 'iPhone 15'
 
       - uses: dniHze/maestro-test-action@v1
+        with:
+          version: 2.0.10
 
       - name: Run Tests
         run: yarn example test:ios:run
