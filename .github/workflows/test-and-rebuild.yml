@@ -221,7 +221,7 @@ jobs:
 
       - uses: futureware-tech/simulator-action@v4
         with:
-          model: 'iPhone 15'
+          model: 'iPhone 16'
 
       - uses: dniHze/maestro-test-action@v1
         with:
