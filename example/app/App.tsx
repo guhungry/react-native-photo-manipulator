@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import EXAMPLES from './example';
 import type { Example } from './example';
 import styles from './App.styles';
@@ -21,14 +22,16 @@ export default class App extends React.Component<{}, {}> {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView testID="scrollView" style={styles.container}>
-          <Text testID="examplesTitle" style={styles.sectionTitle}>
-            Examples
-          </Text>
-          {EXAMPLES.map(this.renderExample)}
-        </ScrollView>
-      </SafeAreaView>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <ScrollView testID="scrollView" style={styles.container}>
+            <Text testID="examplesTitle" style={styles.sectionTitle}>
+              Examples
+            </Text>
+            {EXAMPLES.map(this.renderExample)}
+          </ScrollView>
+        </SafeAreaView>
+      </SafeAreaProvider>
     );
   }
 }
