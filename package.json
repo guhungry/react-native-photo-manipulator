@@ -109,6 +109,9 @@
   "packageManager": "yarn@4.11.0",
   "jest": {
     "preset": "react-native",
+    "moduleNameMapper": {
+      "^\\.\\./mockComponent$": "<rootDir>/jest/fixedMockComponent.js"
+    },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!@react-native|react-native|color-)"
     ],
