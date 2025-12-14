@@ -11,10 +11,6 @@ const project = (() => {
       ios: {
         sourceDir: 'ios',
       },
-      windows: {
-        sourceDir: 'windows',
-        solutionFile: 'windows/PhotoManipulatorExample.sln',
-      },
     });
   } catch (_) {
     return undefined;

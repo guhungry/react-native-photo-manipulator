@@ -18,20 +18,10 @@
       "dist/assets",
       "dist/main.ios.jsbundle"
     ],
-    "macos": [
-      "assets/fonts/Girassol-Regular.ttf",
-      "dist/assets",
-      "dist/main.macos.jsbundle"
-    ],
     "visionos": [
       "assets/fonts/Girassol-Regular.ttf",
       "dist/assets",
       "dist/main.visionos.jsbundle"
-    ],
-    "windows": [
-      "assets/fonts/Girassol-Regular.ttf",
-      "dist/assets",
-      "dist/main.windows.bundle"
     ]
   },
   "android": {

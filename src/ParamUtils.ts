@@ -30,7 +30,9 @@ export const toColorNative = (color?: string | Color): Color => {
 };
 
 export const toImageNative = (source: ImageSource): string =>
-  typeof source === 'string' ? source : Image.resolveAssetSource(source).uri;
+  typeof source === 'string'
+    ? source
+    : (Image.resolveAssetSource(source)?.uri ?? '');
 
 export const toTextOptionsNative = (it: TextOptions): TextOptions => ({
   ...it,
