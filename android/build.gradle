@@ -1,6 +1,9 @@
+import java.nio.file.Paths
+
 buildscript {
-  // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["RNPM_kotlinVersion"]
+  ext.safeExtGet = { String prop ->  
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : project.properties['RNPM_' + prop]
+  }
 
   repositories {
     google()
@@ -10,8 +13,26 @@ buildscript {
   dependencies {
     classpath "com.android.tools.build:gradle:8.5.2"
     // noinspection DifferentKotlinGradleVersion
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion')}"
   }
+}
+
+def safeExtGetInt = { String prop ->
+  return rootProject.ext.has(prop) ? rootProject.ext.get(prop) : (project.properties['RNPM_' + prop]).toInteger()
+}
+
+static def findNodeModulePath(baseDir, packageName) {
+    def basePath = baseDir.toPath().normalize()
+    // Node's module resolution algorithm searches up to the root directory,
+    // after which the base path will be null
+    while (basePath) {
+        def candidatePath = Paths.get(basePath.toString(), "node_modules", packageName)
+        if (candidatePath.toFile().exists()) {
+            return candidatePath.toString()
+        }
+        basePath = basePath.getParent()
+    }
+    return null
 }
 
 def reactNativeArchitectures() {
@@ -20,7 +41,7 @@ def reactNativeArchitectures() {
 }
 
 def isNewArchitectureEnabled() {
-  return rootProject.hasProperty("newArchEnabled") && rootProject.getProperty("newArchEnabled") == "true"
+  return project.findProperty("newArchEnabled")?.toString()?.toBoolean() ?: false
 }
 
 apply plugin: "com.android.library"
@@ -28,14 +49,6 @@ apply plugin: "kotlin-android"
 
 if (isNewArchitectureEnabled()) {
   apply plugin: "com.facebook.react"
-}
-
-def getExtOrDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['RNPM_' + name]
-}
-
-def getExtOrIntegerDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['RNPM_' + name]).toInteger()
 }
 
 def supportsNamespace() {
@@ -49,7 +62,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "com.guhungry.rnphotomanipulator"
+    namespace = "com.guhungry.rnphotomanipulator"
 
     sourceSets {
       main {
@@ -58,22 +71,22 @@ android {
     }
   }
 
-  compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
+  compileSdkVersion safeExtGetInt("compileSdkVersion")
 
   defaultConfig {
-    minSdkVersion getExtOrIntegerDefault("minSdkVersion")
-    targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    minSdkVersion safeExtGetInt("minSdkVersion")
+    targetSdkVersion safeExtGetInt("targetSdkVersion")
     buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
   }
 
   buildFeatures {
-    buildConfig true
+    buildConfig = true
   }
 
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled = false
     }
   }
 
@@ -102,23 +115,22 @@ android {
   }
 }
 
+def reactNativePath = findNodeModulePath(projectDir, "react-native")
+
 repositories {
   maven {
     // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-    url "$rootDir/../node_modules/react-native/android"
+    url = "$reactNativePath/android"
   }
   mavenCentral()
   google()
 }
 
-def kotlin_version = getExtOrDefault("kotlinVersion")
+def kotlin_version = safeExtGet("kotlinVersion")
 
 dependencies {
-  // For < 0.71, this will be from the local maven repo
-  // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
-  //noinspection GradleDynamicVersion
-  implementation "com.facebook.react:react-native:+"
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation("com.facebook.react:react-native:+")
+  implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
   implementation("com.guhungry.android:photo-manipulator:1.3.0") {
     exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
   }
