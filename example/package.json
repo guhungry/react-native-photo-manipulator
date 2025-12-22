@@ -19,23 +19,23 @@
     "test:ios:run": "xcrun simctl install Booted ios/build/Build/Products/Release-iphonesimulator/ReactTestApp.app && maestro test .maestro"
   },
   "dependencies": {
-    "react": "19.1.0",
-    "react-native": "^0.81.0",
+    "react": "19.2.0",
+    "react-native": "^0.83.0",
     "react-native-safe-area-context": "^5.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "^0.81.0",
-    "@react-native/metro-config": "^0.81.0",
+    "@react-native/babel-preset": "^0.83.0",
+    "@react-native/metro-config": "^0.83.0",
     "@react-native/typescript-config": "^0.81.0",
     "@rnx-kit/metro-config": "^2.1.0",
     "@types/react": "^19.1.0",
     "jest": "^29.2.1",
     "react-native-builder-bob": "^0.40.16",
     "react-native-monorepo-config": "^0.1.9",
-    "react-native-test-app": "^5.0.4"
+    "react-native-test-app": "^5.0.5"
   },
   "engines": {
     "node": ">=20"
